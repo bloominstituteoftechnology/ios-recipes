@@ -11,6 +11,8 @@ import UIKit
 class RecipesTableViewController: UITableViewController
 {
     var recipe: Recipe?
+    var isSearching: Bool = false
+    
     var recipes: [Recipe] = []
     {
         didSet{
@@ -34,6 +36,7 @@ class RecipesTableViewController: UITableViewController
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeNameCell", for: indexPath)
         
         recipe = recipes[indexPath.row]
+        
         cell.textLabel?.text = recipe?.name
 
         return cell

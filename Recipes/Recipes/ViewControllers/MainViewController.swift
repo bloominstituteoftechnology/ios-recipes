@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController
+class MainViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var searchTextField: UITextField!
     var recipesTableViewController: RecipesTableViewController?
@@ -35,6 +35,8 @@ class MainViewController: UIViewController
     {
         super.viewDidLoad()
         
+        searchTextField.delegate = self
+        
         networkClient.fetchRecipes { (recipes, error) in
             if let error = error
             {
@@ -52,22 +54,44 @@ class MainViewController: UIViewController
             if searchTerm == ""
             {
                 self.filteredRecipes = self.allRecipes
+                print(self.filteredRecipes)
             }
             else
             {
-                self.filteredRecipes = self.allRecipes.filter { $0.name == searchTerm }
+                self.filteredRecipes = self.allRecipes.filter{$0.name.contains(searchTerm) || $0.instructions.contains(searchTerm)}
+                print(self.filteredRecipes)
             }
-            
-            
         }
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        view.endEditing(true)
+        filterRecipes()
+        recipesTableViewController?.tableView.reloadData()
+        return true
+    }
+    
+ 
     @IBAction func search(_ sender: Any)
     {
-        searchTextField.resignFirstResponder()
-        filterRecipes()
+        view.endEditing(true)
     }
+    
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+//    {
+//        if let textFieldString = textField.text, let swtRange = Range(range, in: textFieldString) {
+//            
+//            let fullString = textFieldString.replacingCharacters(in: swtRange, with: string)
+//            
+//            print("FullString: \(fullString)")
+//        }
+//        
+//        return true
+//    }
+    
+
     
     // MARK: - Navigation
 

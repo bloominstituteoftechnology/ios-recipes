@@ -25,7 +25,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="search:" destination="Zpp-au-f4o" eventType="editingDidEnd" id="a5Q-L6-Rfm"/>
                                 </connections>
