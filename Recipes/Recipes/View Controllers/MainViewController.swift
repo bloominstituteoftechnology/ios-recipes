@@ -48,15 +48,16 @@ class MainViewController: UIViewController {
     // MARK: - Methods
     
     func filterRecipes() {
-        
-        if let searchTerm = searchTextField.text, searchTerm.count > 0 {
-            filteredRecipes = allRecipes.filter({ (recipe) -> Bool in
-                return recipe.name.contains(searchTerm) || recipe.instructions.contains(searchTerm)
-            })
-//            filteredRecipes = allRecipes.filter { $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm) }
-        } else {
-            // Display all recipes
-            filteredRecipes = allRecipes
+        DispatchQueue.main.async {
+            if let searchTerm = self.searchTextField.text, searchTerm.count > 0 {
+                self.filteredRecipes = self.allRecipes.filter({ (recipe) -> Bool in
+                    return recipe.name.contains(searchTerm) || recipe.instructions.contains(searchTerm)
+                })
+                // filteredRecipes = allRecipes.filter { $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm) }
+            } else {
+                // Display all recipes
+                self.filteredRecipes = self.allRecipes
+            }
         }
     }
     
