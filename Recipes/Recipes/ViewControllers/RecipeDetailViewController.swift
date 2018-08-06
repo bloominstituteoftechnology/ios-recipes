@@ -12,14 +12,15 @@ class RecipeDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        updateViews()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*
@@ -31,7 +32,23 @@ class RecipeDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // Custom functions
+    
+    private func updateViews() {
+        guard let name = recipe?.name, let instructions = recipe?.instructions, isViewLoaded else { return }
+        recipeTitleLabel.text = name
+        recipeBodyTextView.text = instructions
+    }
 
+    // MARK: - Properties
+    
+    var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var recipeBodyTextView: UITextView!
 }

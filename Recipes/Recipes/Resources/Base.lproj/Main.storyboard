@@ -28,7 +28,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="searchRecipes:" destination="7By-9o-JzZ" eventType="editingDidEnd" id="cvT-B0-k0r"/>
+                                            <action selector="searchRecipes:" destination="7By-9o-JzZ" eventType="primaryActionTriggered" id="P2q-Ng-4xx"/>
                                         </connections>
                                     </textField>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFI-am-hwk">
@@ -96,7 +96,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDC-rC-lHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1903" y="171"/>
+            <point key="canvasLocation" x="1108" y="877"/>
         </scene>
         <!--Recipe Detail View Controller-->
         <scene sceneID="7Q6-lc-UeR">
@@ -138,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uji-Nd-B9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2711.1999999999998" y="190.25487256371815"/>
+            <point key="canvasLocation" x="1991" y="185"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hUp-c4-cC5">

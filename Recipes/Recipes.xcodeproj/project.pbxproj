@@ -55,8 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
-				F8CC4A9F2118DEFA008E5EAA /* RecipesTableViewController.swift */,
-				F8CC4AA12118DFF5008E5EAA /* RecipeDetailViewController.swift */,
 				9DA0F0832117E40100A99E97 /* Assets.xcassets */,
 				9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */,
 				9DA0F0882117E40100A99E97 /* Info.plist */,
@@ -91,10 +89,10 @@
 		9DA0F07B2117E3F800A99E97 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				F8CC4A9C2118DD44008E5EAA /* ViewControllers */,
 				9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */,
 				9D59AF412117E637002FB7CD /* Networking */,
 				9D59B52A2117F520002FB7CD /* Model */,
+				F8CC4A9C2118DD44008E5EAA /* ViewControllers */,
 				9D59AF452117E652002FB7CD /* Resources */,
 			);
 			path = Recipes;
@@ -103,6 +101,8 @@
 		F8CC4A9C2118DD44008E5EAA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F8CC4AA12118DFF5008E5EAA /* RecipeDetailViewController.swift */,
+				F8CC4A9F2118DEFA008E5EAA /* RecipesTableViewController.swift */,
 				F8CC4A9D2118DD94008E5EAA /* MainViewController.swift */,
 			);
 			path = ViewControllers;
