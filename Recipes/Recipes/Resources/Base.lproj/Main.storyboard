@@ -17,13 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBL-2T-QCl">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for recipe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBL-2T-QCl">
                                 <rect key="frame" x="0.0" y="64" width="375" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="searchRecipes:" destination="0cZ-8z-chK" eventType="editingDidEnd" id="BzL-r5-1ok"/>
+                                    <action selector="searchForRecipe:" destination="0cZ-8z-chK" eventType="editingDidEnd" id="deg-Hr-y8J"/>
+                                    <action selector="searchRecipes:" destination="0cZ-8z-chK" eventType="primaryActionTriggered" id="jFZ-Jb-jbM"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJi-Fz-12z">
@@ -103,23 +104,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="572"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Some Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="OsL-sy-Tik">
-                                <rect key="frame" x="55" y="20" width="265" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="OsL-sy-Tik">
+                                <rect key="frame" x="87.5" y="35" width="200" height="54"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="izT-UH-SFB">
-                                <rect key="frame" x="16" y="82" width="343" height="490"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="izT-UH-SFB">
+                                <rect key="frame" x="16" y="97" width="343" height="475"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OsL-sy-Tik" firstAttribute="centerX" secondItem="A1w-eW-PeS" secondAttribute="centerX" id="5Ib-w8-9UW"/>
+                            <constraint firstItem="OsL-sy-Tik" firstAttribute="top" secondItem="50m-mm-KJy" secondAttribute="top" constant="15" id="6zd-ab-nGa"/>
+                            <constraint firstItem="izT-UH-SFB" firstAttribute="bottom" secondItem="50m-mm-KJy" secondAttribute="bottom" id="HUb-bO-N6K"/>
+                            <constraint firstItem="50m-mm-KJy" firstAttribute="trailing" secondItem="izT-UH-SFB" secondAttribute="trailing" constant="16" id="Qvi-xi-qDx"/>
+                            <constraint firstItem="izT-UH-SFB" firstAttribute="centerX" secondItem="A1w-eW-PeS" secondAttribute="centerX" id="UDR-Yp-9P8"/>
+                            <constraint firstItem="izT-UH-SFB" firstAttribute="leading" secondItem="50m-mm-KJy" secondAttribute="leading" constant="16" id="kyf-K7-XDj"/>
+                            <constraint firstItem="izT-UH-SFB" firstAttribute="top" secondItem="OsL-sy-Tik" secondAttribute="bottom" constant="8" id="mkB-C9-Te3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="50m-mm-KJy"/>
                     </view>
                     <connections>

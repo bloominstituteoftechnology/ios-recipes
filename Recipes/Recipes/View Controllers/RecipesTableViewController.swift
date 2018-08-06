@@ -12,13 +12,14 @@ class RecipesTableViewController: UITableViewController {
     
     var recipes: [Recipe] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,7 +29,6 @@ class RecipesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-        
         cell.textLabel?.text = recipes[indexPath.row].name
         
         return cell
@@ -37,14 +37,9 @@ class RecipesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRecipeDetailSegue" {
             let recipesDetailVC = segue.destination as! RecipeDetailViewController
-            if let tappedOnRecipe = sender as? Recipe {
-                recipesDetailVC.recipe = tappedOnRecipe
+            if let index = self.tableView.indexPathForSelectedRow {
+                recipesDetailVC.recipe = recipes[index.row]
             }
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let recipe = recipes[indexPath.row]
-        performSegue(withIdentifier: "ShowRecipeDetailSegue", sender: recipe)
     }
 }
