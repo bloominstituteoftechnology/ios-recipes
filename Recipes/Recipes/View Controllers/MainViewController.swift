@@ -12,12 +12,18 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkClient.fetchRecipes { (recipe, error) in
-            if let error = error {
-                NSLog("Error: \(error)")
+        
+        loadToPersistentStore()
+        if allRecipes.isEmpty {
+            print("fetching all recipes")
+            networkClient.fetchRecipes { (recipe, error) in
+                if let error = error {
+                    NSLog("Error: \(error)")
+                }
+                guard let recipe = recipe else {return}
+                self.allRecipes = recipe
+                self.saveToPersistentStore()
             }
-            guard let recipe = recipe else {return}
-            self.allRecipes = recipe
         }
     }
     
@@ -48,7 +54,35 @@ class MainViewController: UIViewController {
             
         }
     }
+    //MARK: - Persistence
     
+    func saveToPersistentStore(){
+        guard let fileURL = fileURL else {return}
+        let encoder = PropertyListEncoder()
+        
+        do{
+            let data = try encoder.encode(allRecipes)
+            try data.write(to: fileURL)
+        } catch {
+            NSLog("Error encountered while encoding")
+        }
+        
+    }
+    
+    func loadToPersistentStore(){
+        let fm = FileManager.default
+        guard let fileURL = fileURL,
+            fm.fileExists(atPath: fileURL.path),
+            let data = fm.contents(atPath: fileURL.path) else {return}
+        
+        let decoder = PropertyListDecoder()
+        do {
+            allRecipes = try decoder.decode([Recipe].self, from: data)
+        } catch  {
+            NSLog("Error encountered while decoding")
+        }
+        
+    }
     
     // MARK: - Properties
     @IBOutlet weak var searchLabel: UITextField!
@@ -66,8 +100,17 @@ class MainViewController: UIViewController {
     var filteredRecipes = [Recipe](){
         didSet{
             recipesTableViewController?.recipes = filteredRecipes
-            recipesTableViewController?.tableView.reloadData()
+            
         }
+    }
+    
+    private var fileURL:URL? {
+        let fm = FileManager.default
+        guard let documentDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else {fatalError("Error with document directory")}
+        
+        let filename = "recipes.plist"
+        
+        return documentDir.appendingPathComponent(filename)
     }
     
 }
