@@ -23,11 +23,14 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
-    @IBAction func searchRecipes(_ sender: Any) {
-        resignFirstResponder()
+    @IBAction func searchRecipeOnEdit(_ sender: Any) {
         filterRecipes()
     }
+    
+    @IBAction func searchRecipeOnReturn(_ sender: UITextField) {
+        filterRecipes()
+    }
+    
     
     func filterRecipes() {
         DispatchQueue.main.async {

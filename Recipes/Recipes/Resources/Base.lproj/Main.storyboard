@@ -26,7 +26,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="searchRecipes:" destination="qx0-BI-4fP" eventType="editingDidEnd" id="T8Q-2W-eYc"/>
+                                            <action selector="searchRecipeOnEdit:" destination="qx0-BI-4fP" eventType="editingChanged" id="4Ax-Yk-ExW"/>
+                                            <action selector="searchRecipeOnReturn:" destination="qx0-BI-4fP" eventType="primaryActionTriggered" id="ym4-5U-9c4"/>
                                         </connections>
                                     </textField>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAH-di-LNk">
