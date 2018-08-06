@@ -9,17 +9,24 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        networkClient.fetchRecipes { (recipes, error) in
-            if let error = error {
-                NSLog("Error loading recipes: \(error)")
+        loadFromPersistentStore()
+        if allRecipes.isEmpty {
+            networkClient.fetchRecipes { (recipes, error) in
+                if let error = error {
+                    NSLog("Error loading recipes: \(error)")
+                }
+                guard let recipe = recipes else { return }
+                self.allRecipes = recipe
+                self.saveToPersistentStore()
+
             }
-            guard let recipe = recipes else { return }
-            self.allRecipes = recipe
-        }
+        } /* else {
+            self.persistenceHelper.loadFromPersistentStore()
+            self.allRecipes = self.persistenceHelper.localRecipes
+        } */
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +61,39 @@ class MainViewController: UIViewController {
             recipesTableViewController = destVC
         }
     }
+    
+    // MARK: - Persistence
+    
+    func saveToPersistentStore() {
+        guard let url = persistentURL else { return }
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(allRecipes)
+            try data.write(to: url)
+        } catch {
+            NSLog("Error saving recipes: \(error)")
+        }
+    }
+    
+    func loadFromPersistentStore() {
+        let fm = FileManager.default
+        guard let url = persistentURL, fm.fileExists(atPath: url.path) else { return }
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            allRecipes = try decoder.decode([Recipe].self, from: data)
+        } catch {
+            NSLog("Error loading recipes: \(error)")
+        }
+    }
+    
+    // Persistent URL
+    var persistentURL: URL? {
+        let fm = FileManager.default
+        guard let docsDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        return docsDir.appendingPathComponent("recipes.plist")
+    }
+    
     
     // MARK: - Properties
     

@@ -101,9 +101,9 @@
 		F8CC4A9C2118DD44008E5EAA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F8CC4AA12118DFF5008E5EAA /* RecipeDetailViewController.swift */,
-				F8CC4A9F2118DEFA008E5EAA /* RecipesTableViewController.swift */,
 				F8CC4A9D2118DD94008E5EAA /* MainViewController.swift */,
+				F8CC4A9F2118DEFA008E5EAA /* RecipesTableViewController.swift */,
+				F8CC4AA12118DFF5008E5EAA /* RecipeDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
