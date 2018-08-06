@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class RecipeListVC:UIViewController, UITableViewDataSource, UITableViewDelegate
+class RecipeListVC:UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate
 {
 	var recipes:[Recipe] = [
 		Recipe(name:"TestRecipe A", instructions:"Eat it"),
@@ -46,8 +46,13 @@ class RecipeListVC:UIViewController, UITableViewDataSource, UITableViewDelegate
 		})
 		table.dataSource = self
 		table.delegate = self
+		filterField.delegate = self
 	}
 
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true
+	}
 
 	@IBAction func filterRecipesOnEnd(_ sender: Any)
 	{
