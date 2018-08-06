@@ -49,6 +49,7 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedRecipesTableView" {
             recipesTableViewController = segue.destination as? RecipesTableViewController
+            recipesTableViewController?.networkClient = networkClient
         }
     }
     

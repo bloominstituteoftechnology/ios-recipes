@@ -102,18 +102,18 @@
             <objects>
                 <viewController id="Aqh-t9-7hz" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gso-cR-dTX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="523"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="459"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qbu-EU-ufk">
-                                <rect key="frame" x="20" y="94" width="335" height="336"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qbu-EU-ufk">
+                                <rect key="frame" x="20" y="74" width="335" height="248"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrB-4x-Ghy">
-                                <rect key="frame" x="20" y="34" width="335" height="32.5"/>
+                                <rect key="frame" x="20" y="14" width="335" height="32.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -132,6 +132,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rJy-fT-6SS"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="9NC-Iv-A0T">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iGI-kf-P6V">
+                            <connections>
+                                <action selector="save:" destination="Aqh-t9-7hz" id="39V-gU-0wt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="recipeBodyTextView" destination="Qbu-EU-ufk" id="JeJ-yG-Rwu"/>
                         <outlet property="recipeTitleTextLabel" destination="YrB-4x-Ghy" id="9k3-rL-tGI"/>

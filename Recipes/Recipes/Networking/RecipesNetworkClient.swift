@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RecipesNetworkClient {
+class RecipesNetworkClient {
     
     static let recipesURL = URL(string: "https://cookbook.vapor.cloud/recipes")!
     
@@ -32,12 +32,22 @@ struct RecipesNetworkClient {
             do {
                 let recipes = try JSONDecoder().decode([Recipe].self, from: data)
                 self.saveToPersistence(for: recipes)
+                self.recipes = recipes
                 completion(recipes, nil)
             } catch {
                 completion(nil, error)
                 return
             }
         }.resume()
+    }
+    
+    func updateRecipes(for recipe: Recipe, instructions: String) {
+        guard let index = recipes.index(of: recipe) else { return }
+        var recipe = recipes[index]
+        recipe.instructions = instructions
+        recipes.remove(at: index)
+        recipes.insert(recipe, at: index)
+        saveToPersistence(for: recipes)
     }
     
     private func saveToPersistence(for recipes: [Recipe]) {
@@ -61,7 +71,9 @@ struct RecipesNetworkClient {
             
             do {
                 let data = try Data(contentsOf: url)
-                return try decoder.decode([Recipe].self, from: data)
+                let recipes = try decoder.decode([Recipe].self, from: data)
+                self.recipes = recipes
+                return recipes
             } catch {
                 NSLog("Error occured while loading recipes data from PropertyList: \(error)")
                 return nil
@@ -70,6 +82,7 @@ struct RecipesNetworkClient {
         return nil
     }
     
+    var recipes: [Recipe] = []
     let userDefaults = UserDefaults()
     
     var persistenceStoreURL: URL? {

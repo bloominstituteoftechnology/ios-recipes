@@ -9,10 +9,23 @@
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateViews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+    }
+    
+    @IBAction func save(_ sender: Any) {
+        guard let networkClient = networkClient,
+            let recipe = recipe,
+            let recipeBodyText = recipeBodyTextView.text else { return }
+        networkClient.updateRecipes(for: recipe, instructions: recipeBodyText)
+        navigationController?.popViewController(animated: true)
     }
     
     func updateViews() {
@@ -31,7 +44,10 @@ class RecipeDetailViewController: UIViewController {
         }
     }
     
+    
+    
     @IBOutlet weak var recipeTitleTextLabel: UILabel!
     @IBOutlet weak var recipeBodyTextView: UITextView!
     
+    var networkClient: RecipesNetworkClient?
 }

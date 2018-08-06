@@ -35,6 +35,7 @@ class RecipesTableViewController: UITableViewController {
             guard let detailVC = segue.destination as? RecipeDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             detailVC.recipe = recipes[indexPath.row]
+            detailVC.networkClient = networkClient
         }
     }
 
@@ -47,5 +48,7 @@ class RecipesTableViewController: UITableViewController {
             }
         }
     }
+    
+    var networkClient: RecipesNetworkClient?
     
 }
