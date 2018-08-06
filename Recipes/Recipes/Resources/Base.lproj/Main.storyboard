@@ -25,7 +25,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textFieldEndEditing:" destination="ze1-Mr-pKf" eventType="editingDidEnd" id="cFW-mL-cLV"/>
+                                    <action selector="textEndEditing:" destination="ze1-Mr-pKf" eventType="primaryActionTriggered" id="q2q-8h-ZAm"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWT-k5-5Tf">

@@ -22,7 +22,6 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeInstruction: UITextView!
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,9 +30,11 @@ class RecipeDetailViewController: UIViewController {
     }
     
     func updateViews() {
-        guard let name = recipeName.text, let instructions = recipeInstruction.text else { return }
-    
-        recipeName.text = name
-        recipeInstruction.text = instructions
+        if isViewLoaded {
+             guard let name = recipeName.text, let instructions = recipeInstruction.text else { return }
+            
+            recipeName.text = name
+            recipeInstruction.text = instructions
+        }
     }
 }

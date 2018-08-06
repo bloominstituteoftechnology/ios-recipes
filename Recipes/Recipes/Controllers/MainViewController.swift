@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
     
     private let networkClient = RecipesNetworkClient()
     
@@ -33,14 +33,17 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
     
-    @IBAction func textFieldEndEditing(_ sender: Any) {
+    @IBAction func textEndEditing(_ sender: Any) {
         resignFirstResponder()
         filterRecipes()
     }
     
+    
     func filterRecipes() {
         DispatchQueue.main.async {
-            if self.textField.text == nil {
+            if let searchText = self.textField.text, searchText != "" {
+                self.filteredRecipes = self.allRecipes.filter({$0.name.contains(searchText)})
+            } else {
                 self.filteredRecipes = self.allRecipes
             }
         }

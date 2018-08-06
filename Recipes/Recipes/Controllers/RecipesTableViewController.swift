@@ -18,12 +18,6 @@ class RecipesTableViewController: UITableViewController {
     
     private var recipeDetailViewController: RecipeDetailViewController?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
-    // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -42,7 +36,14 @@ class RecipesTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
+            
             let recipeDetailVC = segue.destination as! RecipeDetailViewController
+            
+             // Pass the recipe to the corresponding tapped cell
+            guard let index = tableView.indexPathForSelectedRow else { return }
+            
+            let recipe = recipes[index.row]
+            recipeDetailVC.recipe = recipe
             
             recipeDetailViewController = recipeDetailVC
         }
