@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="Zpp-au-f4o" customClass="MainViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Khp-rf-NhD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="157-t1-Mcr">
-                                <rect key="frame" x="16" y="67" width="343" height="30"/>
+                                <rect key="frame" x="16" y="3" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Zx2-Fr-R7A"/>
                                 </constraints>
@@ -31,7 +31,7 @@
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lft-GW-chB">
-                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                                <rect key="frame" x="0.0" y="35" width="375" height="568"/>
                                 <connections>
                                     <segue destination="SQs-PQ-fkQ" kind="embed" identifier="EmbedRecipeTableView" id="yDb-3F-82k"/>
                                 </connections>
@@ -49,6 +49,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vo7-uH-Aqw"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="hhv-oE-0F4"/>
                     <connections>
                         <outlet property="searchTextField" destination="157-t1-Mcr" id="ZRq-Vz-oTY"/>
@@ -107,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="J5s-bw-kKA">
-                                <rect key="frame" x="16" y="11" width="343" height="50"/>
+                                <rect key="frame" x="16" y="29" width="343" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="OsN-F3-fU9"/>
                                 </constraints>
@@ -116,7 +117,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EmO-bw-bF2">
-                                <rect key="frame" x="16" y="61" width="343" height="507"/>
+                                <rect key="frame" x="16" y="79" width="343" height="489"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -131,7 +132,7 @@
                             <constraint firstItem="J5s-bw-kKA" firstAttribute="leading" secondItem="kGm-Js-FyN" secondAttribute="leading" constant="16" id="vSY-xt-2Nl"/>
                             <constraint firstAttribute="bottom" secondItem="EmO-bw-bF2" secondAttribute="bottom" id="xIs-f8-hfe"/>
                             <constraint firstItem="kGm-Js-FyN" firstAttribute="trailing" secondItem="J5s-bw-kKA" secondAttribute="trailing" constant="16" id="y4F-jg-8So"/>
-                            <constraint firstItem="J5s-bw-kKA" firstAttribute="top" secondItem="J0y-Gu-poz" secondAttribute="top" constant="11" id="zGO-nk-Tbr"/>
+                            <constraint firstItem="J5s-bw-kKA" firstAttribute="top" secondItem="kGm-Js-FyN" secondAttribute="top" constant="9" id="zGO-nk-Tbr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kGm-Js-FyN"/>
                     </view>

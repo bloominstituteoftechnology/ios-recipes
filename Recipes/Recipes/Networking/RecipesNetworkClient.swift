@@ -31,6 +31,6 @@ struct RecipesNetworkClient {
                 completion(nil, error)
                 return
             }
-        }
+        }.resume()
     }
 }
