@@ -21,6 +21,14 @@ class RecipeDetailViewController: UIViewController {
         super.viewDidLoad()
         updateViews()
     }
+  
+    @IBAction func save(_ sender: Any) {
+        guard let recipe = recipe,
+        let instructions = textView.text else {return}
+        
+        mainViewController?.update(recipe: recipe, instructions: instructions)
+        navigationController?.popViewController(animated: true)
+    }
     
     //MARK: Properties
     var recipe:Recipe?{
@@ -32,4 +40,6 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var textView: UITextView!
+    
+    var mainViewController: MainViewController?
 }

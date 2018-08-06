@@ -28,6 +28,7 @@ class RecipesTableViewController: UITableViewController {
             guard let destinationVC = segue.destination as? RecipeDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else {return}
             destinationVC.recipe = recipes[indexPath.row]
+            destinationVC.mainViewController = mainViewController
             
         }
     }
@@ -37,4 +38,6 @@ class RecipesTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    
+    var mainViewController: MainViewController?
 }

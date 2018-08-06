@@ -97,7 +97,7 @@
             </objects>
             <point key="canvasLocation" x="1569" y="-211"/>
         </scene>
-        <!--Title-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="xbO-re-Y5t">
             <objects>
                 <viewController id="ROF-QX-QT0" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,7 +106,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AdG-FM-PbC">
-                                <rect key="frame" x="16" y="36" width="343" height="521"/>
+                                <rect key="frame" x="16" y="36" width="343" height="477"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jlw-ow-xmV">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="38.5"/>
@@ -114,8 +114,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Text view" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cOA-yw-J4x">
-                                        <rect key="frame" x="0.0" y="38.5" width="343" height="482.5"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text view" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cOA-yw-J4x">
+                                        <rect key="frame" x="0.0" y="38.5" width="343" height="438.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -132,7 +132,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qGk-OZ-ZPO"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="afN-jv-Rha"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="afN-jv-Rha">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vG8-8O-d6X">
+                            <connections>
+                                <action selector="save:" destination="ROF-QX-QT0" id="yXP-uc-P7v"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="textView" destination="cOA-yw-J4x" id="VXQ-f4-ePE"/>
                         <outlet property="titleLabel" destination="Jlw-ow-xmV" id="cjp-aT-WfY"/>

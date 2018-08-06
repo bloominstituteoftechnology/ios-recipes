@@ -50,8 +50,9 @@ class MainViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedTableVC"{
-            recipesTableViewController = segue.destination as! RecipesTableViewController
-            
+            let destinationVC = segue.destination as! RecipesTableViewController
+            recipesTableViewController = destinationVC
+            destinationVC.mainViewController = self
         }
     }
     //MARK: - Persistence
@@ -82,6 +83,13 @@ class MainViewController: UIViewController {
             NSLog("Error encountered while decoding")
         }
         
+    }
+    
+    // MARK: CRUD Properties
+    func update(recipe: Recipe, instructions: String){
+        guard let index = allRecipes.index(of:recipe) else {return}
+        allRecipes[index].instructions = instructions
+        saveToPersistentStore()
     }
     
     // MARK: - Properties
