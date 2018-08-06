@@ -37,14 +37,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9D59AF412117E637002FB7CD /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				9D59AF422117E647002FB7CD /* RecipesNetworkClient.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
 		9D59AF452117E652002FB7CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -54,14 +46,6 @@
 				9DA0F0882117E40100A99E97 /* Info.plist */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		9D59B52A2117F520002FB7CD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9D59B52B2117F533002FB7CD /* Recipe.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9DA0F0702117E3F800A99E97 = {
@@ -83,9 +67,9 @@
 		9DA0F07B2117E3F800A99E97 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				9D59B52B2117F533002FB7CD /* Recipe.swift */,
+				9D59AF422117E647002FB7CD /* RecipesNetworkClient.swift */,
 				9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */,
-				9D59AF412117E637002FB7CD /* Networking */,
-				9D59B52A2117F520002FB7CD /* Model */,
 				9D59AF452117E652002FB7CD /* Resources */,
 			);
 			path = Recipes;
