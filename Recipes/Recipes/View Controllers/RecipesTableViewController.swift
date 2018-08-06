@@ -12,13 +12,6 @@ class RecipesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        RecipesNetworkClient().fetchRecipes { (recipes, error) in
-            if let error = error {
-                NSLog("Error while fetching recipes: \(error)")
-            }
-            self.recipes = recipes ?? []
-        }
     }
 
     // MARK: - Table view data source
@@ -39,7 +32,9 @@ class RecipesTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRecipeDetail" {
-            
+            guard let detailVC = segue.destination as? RecipeDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            detailVC.recipe = recipes[indexPath.row]
         }
     }
 
@@ -47,7 +42,9 @@ class RecipesTableViewController: UITableViewController {
     
     var recipes: [Recipe] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
