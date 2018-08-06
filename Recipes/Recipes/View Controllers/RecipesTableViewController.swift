@@ -8,10 +8,21 @@
 
 import UIKit
 
-class RecipesTableViewController: UITableViewController {
+class RecipesTableViewController: UITableViewController, RecipeDetailViewControllerDelegate {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    // MARK: - Methods
+    
+    func updateRecipes(recipe: Recipe, instructions: String) {
+        guard let networkClient = networkClient else { return }
+        networkClient.updateRecipes(for: recipe, instructions: instructions)
+        if let recipes = networkClient.loadFromPersistence() {
+            self.recipes = recipes
+        }
     }
 
     // MARK: - Table view data source
@@ -36,6 +47,7 @@ class RecipesTableViewController: UITableViewController {
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             detailVC.recipe = recipes[indexPath.row]
             detailVC.networkClient = networkClient
+            detailVC.delegate = self
         }
     }
 

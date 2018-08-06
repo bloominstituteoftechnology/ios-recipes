@@ -12,7 +12,6 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         networkClient.fetchRecipes { (recipes, error) in
             if let error = error {
                 NSLog("Error while fetching recipes: \(error)")
@@ -23,6 +22,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
     @IBAction func searchRecipeOnEdit(_ sender: Any) {
         filterRecipes()
     }

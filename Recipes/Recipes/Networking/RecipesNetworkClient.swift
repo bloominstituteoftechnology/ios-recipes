@@ -64,7 +64,7 @@ class RecipesNetworkClient {
         
     }
     
-    private func loadFromPersistence() -> [Recipe]? {
+    func loadFromPersistence() -> [Recipe]? {
         if userDefaults.bool(forKey: "recipesHaveBeenCached") {
             let decoder = PropertyListDecoder()
             guard let url = persistenceStoreURL else { return nil }

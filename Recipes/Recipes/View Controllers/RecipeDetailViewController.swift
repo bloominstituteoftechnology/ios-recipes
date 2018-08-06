@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RecipeDetailViewControllerDelegate {
+    func updateRecipes(recipe: Recipe, instructions: String)
+}
+
 class RecipeDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
@@ -21,10 +25,9 @@ class RecipeDetailViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: Any) {
-        guard let networkClient = networkClient,
-            let recipe = recipe,
+        guard let recipe = recipe,
             let recipeBodyText = recipeBodyTextView.text else { return }
-        networkClient.updateRecipes(for: recipe, instructions: recipeBodyText)
+        delegate?.updateRecipes(recipe: recipe, instructions: recipeBodyText)
         navigationController?.popViewController(animated: true)
     }
     
@@ -45,9 +48,10 @@ class RecipeDetailViewController: UIViewController {
     }
     
     
+    var networkClient: RecipesNetworkClient?
+    var delegate: RecipesTableViewController?
     
     @IBOutlet weak var recipeTitleTextLabel: UILabel!
     @IBOutlet weak var recipeBodyTextView: UITextView!
     
-    var networkClient: RecipesNetworkClient?
 }
