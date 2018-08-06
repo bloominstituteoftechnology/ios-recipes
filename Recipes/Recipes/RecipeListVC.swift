@@ -1,11 +1,3 @@
-//
-//  RecipeViews.swift
-//  Recipes
-//
-//  Created by William Bundy on 8/6/18.
-//  Copyright © 2018 Lambda Inc. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -83,7 +75,6 @@ class RecipeListVC:UIViewController, UITableViewDataSource, UITableViewDelegate
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
-		print(recipes.count, filteredRecipes.count)
 		return filteredRecipes.count
 	}
 
@@ -97,15 +88,3 @@ class RecipeListVC:UIViewController, UITableViewDataSource, UITableViewDelegate
 
 }
 
-class RecipeDetailVC:UIViewController
-{
-	var recipe:Recipe!
-
-	@IBOutlet weak var nameLabel: UILabel!
-	@IBOutlet weak var contentLabel: UITextView!
-	override func viewWillAppear(_ animated: Bool)
-	{
-		nameLabel.text = recipe.name
-		contentLabel.text = recipe.instructions
-	}
-}
