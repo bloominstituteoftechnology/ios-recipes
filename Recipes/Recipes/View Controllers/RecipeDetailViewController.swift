@@ -12,6 +12,11 @@ class RecipeDetailViewController: UIViewController {
 
     // MARK: - Properties
     
+    var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
+    }
     
     // MARK: - Outlets
     
@@ -23,7 +28,19 @@ class RecipeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        updateViews()
     }
 
-
+    // MARK: - Methods
+    
+    func updateViews() {
+        // Check if the view is loaded
+        if isViewLoaded {
+            // Get the recipe
+            guard let recipe = recipe else { return }
+            
+            recipeLabel?.text = recipe.name
+            recipeTextView?.text = recipe.instructions
+        }
+    }
 }
