@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var searchTextField: UITextField!
+    var didSave:Bool?
     var recipesTableViewController: RecipesTableViewController?
     {
         didSet {
@@ -37,13 +38,26 @@ class MainViewController: UIViewController, UITextFieldDelegate
         
         searchTextField.delegate = self
         
-        networkClient.fetchRecipes { (recipes, error) in
-            if let error = error
-            {
-                NSLog("Error getting recipes: \(error)")
-                return
-            }
-            self.allRecipes = recipes ?? []
+//        let userDefaults = UserDefaults.standard
+//        userDefaults.bool(forKey: "DidSave")
+        
+//        if didSave == true
+//        {
+           loadFromPersistentStore()
+//        }
+//        else
+//        {
+            networkClient.fetchRecipes { (recipes, error) in
+                if let error = error
+                {
+                    NSLog("Error getting recipes: \(error)")
+                    return
+                }
+                self.allRecipes = recipes ?? []
+                self.saveToPersistentStore()
+//                self.didSave = true
+//                userDefaults.set(true, forKey: "DidSave")
+//            }
         }
     }
 
@@ -79,20 +93,6 @@ class MainViewController: UIViewController, UITextFieldDelegate
         view.endEditing(true)
     }
     
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
-//    {
-//        if let textFieldString = textField.text, let swtRange = Range(range, in: textFieldString) {
-//            
-//            let fullString = textFieldString.replacingCharacters(in: swtRange, with: string)
-//            
-//            print("FullString: \(fullString)")
-//        }
-//        
-//        return true
-//    }
-    
-
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -104,5 +104,50 @@ class MainViewController: UIViewController, UITextFieldDelegate
         }
     }
     
+    // MARK: - Persistent Store
+    
+    private var recipeListURL: URL?
+    {
+        let fileManager = FileManager.default
+        
+        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
+        return documentDirectory.appendingPathComponent("RecipeList.plist")
+    }
+    
+    func saveToPersistentStore()
+    {
+        guard let url = recipeListURL else {return}
+        
+        do
+        {
+            let encoder = PropertyListEncoder()
+            let recipesData = try encoder.encode(allRecipes)
+            try recipesData.write(to: url)
+            print("saved")
+        }
+        catch
+        {
+            NSLog("Error saving recipes data: \(error)")
+        }
+    }
+    
+    func loadFromPersistentStore()
+    {
+        let fileManager = FileManager.default
+        
+        do
+        {
+            guard let url = recipeListURL, fileManager.fileExists(atPath: url.path) else {return}
+            let recipesData = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            let decodedRecipes = try decoder.decode([Recipe].self, from: recipesData)
+            allRecipes = decodedRecipes
+            print("loaded")
+        }
+        catch
+        {
+            NSLog("Error saving recipes data: \(error)")
+        }
+    }
 
 }
