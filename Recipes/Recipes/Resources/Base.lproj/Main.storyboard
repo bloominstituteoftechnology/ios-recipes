@@ -95,7 +95,7 @@
             </objects>
             <point key="canvasLocation" x="1482" y="-163"/>
         </scene>
-        <!--Recipe Detail View Controller-->
+        <!--Title-->
         <scene sceneID="dv6-1N-91O">
             <objects>
                 <viewController id="n1E-ox-M6O" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
@@ -109,7 +109,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i1C-oW-mSQ">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i1C-oW-mSQ">
                                 <rect key="frame" x="8" y="78" width="343" height="431"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -129,6 +129,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dXI-Cu-Ttl"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="5kd-KY-Ukv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="uQ2-uQ-one">
+                            <connections>
+                                <action selector="save:" destination="n1E-ox-M6O" id="eBk-CB-A4M"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="recipeLabel" destination="m4Z-Ci-Kqq" id="hDw-JC-42l"/>
                         <outlet property="recipeTextView" destination="i1C-oW-mSQ" id="dhs-CE-xHh"/>

@@ -18,10 +18,20 @@ class RecipeDetailViewController: UIViewController {
         }
     }
     
-    // MARK: - Outlets
+    var recipeController: RecipeController?
+    
+    // MARK: - Outlets/Actions
     
     @IBOutlet var recipeLabel: UILabel!
     @IBOutlet var recipeTextView: UITextView!
+    
+    @IBAction func save(_ sender: Any) {
+        guard let instructions = recipeTextView.text, let recipe = recipe else { return }
+        
+        recipeController?.update(recipe: recipe, name: recipe.name, instructions: instructions)
+        
+        navigationController?.popViewController(animated: true)
+    }
     
     // MARK: - View Lifecycles
     

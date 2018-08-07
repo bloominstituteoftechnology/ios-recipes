@@ -12,25 +12,29 @@ class MainViewController: UIViewController {
 
     // MARK: - Properties
     
-    let networkClient = RecipesNetworkClient()
+//    let networkClient = RecipesNetworkClient()
     
-    var allRecipes: [Recipe] = [] {
-        didSet {
-            filterRecipes()
-        }
-    }
+//    var allRecipes: [Recipe] = [] {
+//        didSet {
+//            filterRecipes()
+//        }
+//    }
     
-    var recipesTableViewController: RecipesTableViewController? {
-        didSet {
-            recipesTableViewController?.recipes = filteredRecipes
-        }
-    }
+    let recipeController = RecipeController()
+        // This controller will take care of the networkClient, so don't need a property for it here
     
-    var filteredRecipes: [Recipe] = [] {
-        didSet {
-            recipesTableViewController?.recipes = filteredRecipes
-        }
-    }
+    var recipesTableViewController: RecipesTableViewController?
+//    {
+//        didSet {
+//            recipesTableViewController?.recipes = filteredRecipes
+//        }
+//    }
+    
+//    var filteredRecipes: [Recipe] = [] {
+//        didSet {
+//            recipesTableViewController?.recipes = filteredRecipes
+//        }
+//    }
     
     // MARK: - Outlets
     
@@ -42,49 +46,55 @@ class MainViewController: UIViewController {
         // Tells the textField to stop accepting keyboard input
         searchTextField.resignFirstResponder()
         
-        filterRecipes()
+        recipeController.filterRecipes(searchTerm: searchTextField.text ?? "")
     }
     
     // MARK: - Methods
     
-    func filterRecipes() {
-        DispatchQueue.main.async {
-            if let searchTerm = self.searchTextField.text, searchTerm.count > 0 {
-                self.filteredRecipes = self.allRecipes.filter({ (recipe) -> Bool in
-                    return recipe.name.contains(searchTerm) || recipe.instructions.contains(searchTerm)
-                })
-                // filteredRecipes = allRecipes.filter { $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm) }
-            } else {
-                // Display all recipes
-                self.filteredRecipes = self.allRecipes
-            }
-        }
-    }
+//    func filterRecipes() {
+//        
+//        if let searchTerm = self.searchTextField.text, searchTerm.count > 0 {
+//            filteredRecipes = allRecipes.filter({ (recipe) -> Bool in
+//                return recipe.name.contains(searchTerm) || recipe.instructions.contains(searchTerm)
+//            })
+//            // filteredRecipes = allRecipes.filter { $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm) }
+//        } else {
+//            // Display all recipes
+//            filteredRecipes = allRecipes
+//        }
+//    }
+    
+        //
     
     // MARK: - View Lifecycles
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        networkClient.fetchRecipes { (allRecipes, error) in
-            if let error = error {
-                NSLog("Error geting recipes: \(error)")
-                return
-            }
-            
-            // If there is no error, get the recipes
-            self.allRecipes = allRecipes ?? []
-        }
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//
+//        networkClient.fetchRecipes { (allRecipes, error) in
+//            DispatchQueue.main.async {
+//                if let error = error {
+//                    NSLog("Error geting recipes: \(error)")
+//                    return
+//                }
+//
+//                // If there is no error, get the recipes
+//                self.allRecipes = allRecipes ?? []
+//            }
+//        }
+//    }
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedRecipesTableView" {
             let recipesTableVC = segue.destination as! RecipesTableViewController
+            recipesTableVC.recipeController = recipeController
+            
+            // A reference to the childVC that is the table view controller
             recipesTableViewController = recipesTableVC
+            
         }
     }
-    
-
 }

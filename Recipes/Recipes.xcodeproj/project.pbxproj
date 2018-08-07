@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3967C9A5211903B100CFECE8 /* RecipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3967C9A4211903B100CFECE8 /* RecipeController.swift */; };
 		39B8FA222118E33700E0E474 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B8FA212118E33700E0E474 /* MainViewController.swift */; };
 		39B8FA252118E42800E0E474 /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B8FA242118E42800E0E474 /* RecipesTableViewController.swift */; };
 		39B8FA272118E54700E0E474 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B8FA262118E54700E0E474 /* RecipeDetailViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3967C9A4211903B100CFECE8 /* RecipeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeController.swift; sourceTree = "<group>"; };
 		39B8FA212118E33700E0E474 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		39B8FA242118E42800E0E474 /* RecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
 		39B8FA262118E54700E0E474 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3967C9A62119057100CFECE8 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3967C9A4211903B100CFECE8 /* RecipeController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
 		39B8FA232118E33A00E0E474 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,7 @@
 				9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */,
 				9D59AF412117E637002FB7CD /* Networking */,
 				9D59B52A2117F520002FB7CD /* Model */,
+				3967C9A62119057100CFECE8 /* Model Controller */,
 				39B8FA232118E33A00E0E474 /* View Controllers */,
 				9D59AF452117E652002FB7CD /* Resources */,
 			);
@@ -181,6 +192,7 @@
 			files = (
 				9D59AF432117E647002FB7CD /* RecipesNetworkClient.swift in Sources */,
 				9DA0F07D2117E3F800A99E97 /* AppDelegate.swift in Sources */,
+				3967C9A5211903B100CFECE8 /* RecipeController.swift in Sources */,
 				9D59B52C2117F533002FB7CD /* Recipe.swift in Sources */,
 				39B8FA222118E33700E0E474 /* MainViewController.swift in Sources */,
 				39B8FA272118E54700E0E474 /* RecipeDetailViewController.swift in Sources */,
