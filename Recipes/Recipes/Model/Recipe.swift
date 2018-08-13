@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Recipe: Codable {
+struct Recipe: Equatable, Codable {
     
     var name: String
     var instructions: String
