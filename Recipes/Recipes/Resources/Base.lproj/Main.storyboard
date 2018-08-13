@@ -24,7 +24,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="filterRecipes:" destination="Dzj-qo-hMn" eventType="editingDidEnd" id="qT7-WZ-Um2"/>
+                                    <action selector="filterRecipes:" destination="Dzj-qo-hMn" eventType="editingDidEndOnExit" id="6wS-m3-lrl"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvd-II-k4w">

@@ -63,6 +63,7 @@ class MainViewController: UIViewController {
     var filteredRecipes: [Recipe] = [] {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController?.tableView.reloadData()
         }
     }
     
