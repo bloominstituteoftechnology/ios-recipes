@@ -38,11 +38,20 @@ class MainViewController: UIViewController {
     }
     
     func filterRecipes(){
-        if (searchTextField.text?.isEmpty)!{
-            filteredRecipes = allRecipes
-        } else {
-            let textToSearch = searchTextField.text
-            filteredRecipes = allRecipes.filter({$0.name == textToSearch})
+        DispatchQueue.main.async {
+            // Make sure there is a search term, otherwise set the filtered recipes to all the recipes
+            guard let searchTerm = self.searchTextField.text, !searchTerm.isEmpty else {
+                self.filteredRecipes = self.allRecipes
+                return
+            }
+            
+            // Get the recipes who's names match
+            let namesMatch = self.allRecipes.filter { $0.name.range(of: searchTerm, options: .caseInsensitive) != nil }
+            // Get the recipes who's instructions match and aren't in the first group
+            let instructionsMatch = self.allRecipes.filter { $0.instructions.range(of: searchTerm, options: .caseInsensitive) != nil && namesMatch.index(of: $0) == nil }
+            
+            // Add them together and put them in the filtered array
+            self.filteredRecipes = namesMatch + instructionsMatch
         }
         
     }
