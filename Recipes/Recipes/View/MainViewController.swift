@@ -8,15 +8,12 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Properties
     let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = [] {
-        didSet {
-            filterRecipes()
-        }
-    }
+    let recipeController = RecipeController()
+
     var filteredRecipes: [Recipe] = [] {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
@@ -33,22 +30,44 @@ class MainViewController: UIViewController {
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        networkClient.fetchRecipes { (recipes, error) in
-            if let error = error {
-                NSLog("Error fetching recipes: \(error)")
+        
+        // Set the search text field's delegate to the view controller
+        searchTextField.delegate = self
+        
+        // Check if the user has previously loaded the recipes over the network
+        let hasPreviouslyLoadedRecipes = UserDefaults.standard.bool(forKey: "HasLoadedRecipesFromNetwork")
+        
+        // If not, load them
+        if !hasPreviouslyLoadedRecipes {
+            networkClient.fetchRecipes { (recipes, error) in
+                if let error = error {
+                    NSLog("Error fetching recipes: \(error)")
+                }
+                
+                guard let recipes = recipes else { return }
+                for recipe in recipes {
+                    self.recipeController.createRecipe(name: recipe.name, instructions: recipe.instructions)
+                }
+                
+                UserDefaults.standard.set(true, forKey: "HasLoadedRecipesFromNetwork")
+                self.filterRecipes()
             }
-            
-            self.allRecipes = recipes ?? []
         }
+        filterRecipes()
     }
     
     // MARK: - UI Methods
     @IBAction func searchRecipes(_ sender: Any) {
-        resignFirstResponder()
+        searchTextField.resignFirstResponder()
         filterRecipes()
     }
     
+    // MARK: - UI Text Field Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        filterRecipes()
+        return true
+    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,18 +77,21 @@ class MainViewController: UIViewController {
         }
     }
     
-    // MARK: - Private Utility Functions
+    // MARK: - Private Utility Methods
     private func filterRecipes() {
         DispatchQueue.main.async {
+            // Make sure there is a search term, otherwise set the filtered recipes to all the recipes
             guard let searchTerm = self.searchTextField.text, !searchTerm.isEmpty else {
-                self.filteredRecipes = self.allRecipes
+                self.filteredRecipes = self.recipeController.recipes
                 return
             }
             
+            // Get the recipes who's names match
+            let namesMatch = self.recipeController.recipes.filter { $0.name.range(of: searchTerm, options: .caseInsensitive) != nil }
+            // Get the recipes who's instructions match and aren't in the first group
+            let instructionsMatch = self.recipeController.recipes.filter { $0.instructions.range(of: searchTerm, options: .caseInsensitive) != nil && namesMatch.index(of: $0) == nil }
             
-            let namesMatch = self.allRecipes.filter { $0.name.range(of: searchTerm, options: .caseInsensitive) != nil }
-            let instructionsMatch = self.allRecipes.filter { $0.instructions.range(of: searchTerm, options: .caseInsensitive) != nil && namesMatch.index(of: $0) == nil }
-            
+            // Add them together and put them in the filtered array
             self.filteredRecipes = namesMatch + instructionsMatch
         }
     }

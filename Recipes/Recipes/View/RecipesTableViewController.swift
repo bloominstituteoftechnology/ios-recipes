@@ -10,6 +10,7 @@ import UIKit
 
 class RecipesTableViewController: UITableViewController {
     
+    // MARK: - Properties
     var recipes: [Recipe] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -18,6 +19,7 @@ class RecipesTableViewController: UITableViewController {
         }
     }
 
+    // MARK: - Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,7 +39,6 @@ class RecipesTableViewController: UITableViewController {
         return cell
     }
 
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRecipeSegue" {
