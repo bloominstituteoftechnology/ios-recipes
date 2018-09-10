@@ -16,12 +16,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
 
     var filteredRecipes: [Recipe] = [] {
         didSet {
-            recipesTableViewController?.recipes = filteredRecipes
+            updateRecipeTV()
         }
     }
     var recipesTableViewController: RecipesTableViewController? {
         didSet {
-            recipesTableViewController?.recipes = filteredRecipes
+            updateRecipeTV()
         }
     }
     
@@ -53,6 +53,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
                 self.filterRecipes()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         filterRecipes()
     }
     
@@ -94,6 +99,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             // Add them together and put them in the filtered array
             self.filteredRecipes = namesMatch + instructionsMatch
         }
+    }
+    
+    private func updateRecipeTV() {
+        recipesTableViewController?.recipes = filteredRecipes
+        recipesTableViewController?.recipeController = recipeController
     }
 
 }

@@ -29,6 +29,8 @@ class RecipeController {
         
         recipes[index].name = name
         recipes[index].instructions = instructions
+        
+        saveToPersistentStore()
     }
     
     // MARK: - Persistence

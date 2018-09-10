@@ -18,6 +18,7 @@ class RecipeDetailViewController: UIViewController {
             }
         }
     }
+    var recipeController: RecipeController?
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var recipeTextView: UITextView!
@@ -29,11 +30,22 @@ class RecipeDetailViewController: UIViewController {
         updateViews()
     }
     
+    @IBAction func saveRecipe(_ sender: Any) {
+        guard let recipe = recipe,
+            let name = titleLabel.text,
+            let instructions = recipeTextView.text, !instructions.isEmpty else { return }
+        
+        recipeController?.update(recipe, name: name, instructions: instructions)
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - Private Utility Methods
     func updateViews() {
         guard let recipe = recipe else { return }
         
         titleLabel.text = recipe.name
         recipeTextView.text = recipe.instructions
+        title = recipe.name
     }
 }

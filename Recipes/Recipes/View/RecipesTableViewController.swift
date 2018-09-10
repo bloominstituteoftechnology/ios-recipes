@@ -18,6 +18,7 @@ class RecipesTableViewController: UITableViewController {
             }
         }
     }
+    var recipeController: RecipeController?
 
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
@@ -47,6 +48,7 @@ class RecipesTableViewController: UITableViewController {
             let recipe = recipes[indexPath.row]
             
             destinationVC.recipe = recipe
+            destinationVC.recipeController = recipeController
         }
     }
 
