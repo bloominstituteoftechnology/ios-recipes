@@ -10,6 +10,12 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         networkClient.fetchRecipes { (recipes, error) in
@@ -32,18 +38,22 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func searchRecipes(_ sender: Any) {
-        resignFirstResponder()
+        self.resignFirstResponder()
         filterRecipes()
     }
     
     func filterRecipes() {
-        guard let recipeSearchTerm = recipeSearchTextField.text else { return }
+        guard let recipeSearchTerm = recipeSearchTextField.text else {
+            filteredRecipes = allRecipes
+            return
+        }
         if recipeSearchTerm == "" {
             filteredRecipes = allRecipes
         } else {
-            filteredRecipes = allRecipes.filter { (recipe) -> Bool in
-                recipeSearchTerm == recipe.name || recipeSearchTerm == recipe.instructions
-            }
+            filteredRecipes = allRecipes.filter({ (recipe) -> Bool in
+                recipe.name.contains(recipeSearchTerm) || recipe.instructions.contains(recipeSearchTerm)
+            })
+            
         }
         
     }
