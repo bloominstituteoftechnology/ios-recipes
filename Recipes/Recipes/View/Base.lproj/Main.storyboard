@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="78u-Jc-lUM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Recipes-->
         <scene sceneID="90X-EF-xM2">
             <objects>
                 <viewController id="oNG-yz-kmq" customClass="MainViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,7 +48,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T7o-qs-Ndt"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xmF-LB-CSE"/>
+                    <navigationItem key="navigationItem" title="Recipes" id="xmF-LB-CSE"/>
                     <connections>
                         <outlet property="searchTextField" destination="D7n-NB-vg1" id="QGl-KS-O69"/>
                     </connections>

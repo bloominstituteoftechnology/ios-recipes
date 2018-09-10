@@ -9,6 +9,14 @@
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
+    
+    var recipe: Recipe? {
+        didSet {
+            if isViewLoaded {
+                updateViews()
+            }
+        }
+    }
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var recipeTextView: UITextView!
@@ -17,7 +25,7 @@ class RecipeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
 
     
@@ -33,4 +41,11 @@ class RecipeDetailViewController: UIViewController {
     }
     */
 
+    
+    func updateViews() {
+        guard let recipe = recipe else { return }
+        
+        titleLabel.text = recipe.name
+        recipeTextView.text = recipe.instructions
+    }
 }
