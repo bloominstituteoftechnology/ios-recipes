@@ -81,7 +81,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="lbh-xp-O00" kind="show" id="ZVI-vX-qgi"/>
+                                    <segue destination="lbh-xp-O00" kind="show" identifier="ShowRecipe" id="ZVI-vX-qgi"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
