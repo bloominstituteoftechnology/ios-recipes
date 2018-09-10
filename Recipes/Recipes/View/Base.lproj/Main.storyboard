@@ -19,27 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="387-Sp-Ffb">
-                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Pgr-dd-EDL">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="D7n-NB-vg1">
-                                                <rect key="frame" x="37.5" y="0.0" width="300" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="300" id="EIZ-sx-7c9"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="searchRecipes:" destination="oNG-yz-kmq" eventType="editingDidEnd" id="Jhy-vH-e2L"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnV-fH-XmP">
-                                        <rect key="frame" x="0.0" y="38" width="375" height="557"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <connections>
                                             <segue destination="1tx-ek-Tph" kind="embed" identifier="EmbedRecipeTableView" id="xvq-yZ-MJn"/>
                                         </connections>
@@ -51,7 +34,7 @@
                         <constraints>
                             <constraint firstItem="T7o-qs-Ndt" firstAttribute="bottom" secondItem="387-Sp-Ffb" secondAttribute="bottom" id="IPS-47-sgX"/>
                             <constraint firstItem="T7o-qs-Ndt" firstAttribute="trailing" secondItem="387-Sp-Ffb" secondAttribute="trailing" id="hP9-zg-9Vv"/>
-                            <constraint firstItem="387-Sp-Ffb" firstAttribute="top" secondItem="T7o-qs-Ndt" secondAttribute="top" constant="8" id="pLQ-Ho-WJQ"/>
+                            <constraint firstItem="387-Sp-Ffb" firstAttribute="top" secondItem="T7o-qs-Ndt" secondAttribute="top" id="pLQ-Ho-WJQ"/>
                             <constraint firstItem="387-Sp-Ffb" firstAttribute="leading" secondItem="T7o-qs-Ndt" secondAttribute="leading" id="td4-sl-VqH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T7o-qs-Ndt"/>
@@ -63,9 +46,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="searchTextField" destination="D7n-NB-vg1" id="QGl-KS-O69"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llr-oB-Zoa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,7 +56,7 @@
             <objects>
                 <tableViewController id="1tx-ek-Tph" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pcv-Gv-eCC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>

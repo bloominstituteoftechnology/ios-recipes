@@ -8,11 +8,12 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate {
+class MainViewController: UIViewController, UITextFieldDelegate, UISearchResultsUpdating {
 
     // MARK: - Properties
     let networkClient = RecipesNetworkClient()
     let recipeController = RecipeController()
+    var searchController: UISearchController!
 
     var filteredRecipes: [Recipe] = [] {
         didSet {
@@ -25,14 +26,24 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var headerView: UIView!
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the search text field's delegate to the view controller
-        searchTextField.delegate = self
+        // Initializing with searchResultsController set to nil means that
+        // searchController will use this view controller to display the search results
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Recipes"
+        
+        navigationItem.searchController = searchController
+        
+        // Sets this view controller as presenting view controller for the search interface
+        definesPresentationContext = true
         
         // Set an observer to see if the tableView updates the model controller
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.filterRecipes), name: NSNotification.Name("updateTableView"), object: nil)
@@ -54,7 +65,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
                 
                 UserDefaults.standard.set(true, forKey: "HasLoadedRecipesFromNetwork")
                 print("I loaded these recipes from the network!")
-                self.filterRecipes()
+                self.filterRecipes(nil)
             }
         }
     }
@@ -62,20 +73,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        filterRecipes()
+        filterRecipes(nil)
     }
     
-    // MARK: - UI Methods
-    @IBAction func searchRecipes(_ sender: Any) {
-        searchTextField.resignFirstResponder()
-        filterRecipes()
-    }
-    
-    // MARK: - UI Text Field Delegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        filterRecipes()
-        return true
+    // MARK: - UI Search Results Updating
+    func updateSearchResults(for searchController: UISearchController) {
+        filterRecipes(searchController.searchBar.text)
     }
     
     // MARK: - Navigation
@@ -91,10 +94,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Private Utility Methods
-    @objc private func filterRecipes() {
+    @objc private func filterRecipes(_ searchText: String?) {
         DispatchQueue.main.async {
             // Make sure there is a search term, otherwise set the filtered recipes to all the recipes
-            guard let searchTerm = self.searchTextField.text, !searchTerm.isEmpty else {
+            guard let searchTerm = searchText, !searchTerm.isEmpty else {
                 self.filteredRecipes = self.recipeController.recipes
                 return
             }
