@@ -33,6 +33,14 @@ class RecipeController {
         saveToPersistentStore()
     }
     
+    //Method to delete an existing recipe
+    func delete(_ recipe: Recipe) {
+        guard let index = recipes.index(of: recipe) else { return }
+        
+        recipes.remove(at: index)
+        saveToPersistentStore()
+    }
+    
     // MARK: - Persistence
     // Computed variable that returns the URL for the persistent store
     private var persistentStoreURL: URL? {

@@ -25,9 +25,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="D7n-NB-vg1">
-                                                <rect key="frame" x="87.5" y="0.0" width="200" height="30"/>
+                                                <rect key="frame" x="37.5" y="0.0" width="300" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="EIZ-sx-7c9"/>
+                                                    <constraint firstAttribute="width" constant="300" id="EIZ-sx-7c9"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -56,7 +56,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T7o-qs-Ndt"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Recipes" id="xmF-LB-CSE"/>
+                    <navigationItem key="navigationItem" title="Recipes" id="xmF-LB-CSE">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="t4f-rf-zT8">
+                            <connections>
+                                <segue destination="Y6k-Ox-OWT" kind="show" identifier="AddRecipeSegue" id="fyN-9p-aD1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchTextField" destination="D7n-NB-vg1" id="QGl-KS-O69"/>
                     </connections>
@@ -103,29 +109,28 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y5g-HS-6z5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1556" y="161"/>
+            <point key="canvasLocation" x="1554" y="182"/>
         </scene>
         <!--Title-->
         <scene sceneID="rdb-NG-tzw">
             <objects>
                 <viewController id="Y6k-Ox-OWT" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jcI-AE-bC4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Qwp-LJ-BDu">
-                                <rect key="frame" x="16" y="36" width="343" height="505"/>
+                                <rect key="frame" x="16" y="72" width="343" height="579"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lq-8c-3jc">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="29"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Recipe Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dIE-H0-sBA">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                    </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hUc-tT-Gpo">
-                                        <rect key="frame" x="0.0" y="37" width="343" height="468"/>
+                                        <rect key="frame" x="0.0" y="38" width="343" height="541"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -135,7 +140,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IHu-xw-Uti" firstAttribute="trailing" secondItem="Qwp-LJ-BDu" secondAttribute="trailing" constant="16" id="CJ6-U2-qgS"/>
-                            <constraint firstItem="Qwp-LJ-BDu" firstAttribute="top" secondItem="IHu-xw-Uti" secondAttribute="top" constant="16" id="EWs-rf-MnJ"/>
+                            <constraint firstItem="Qwp-LJ-BDu" firstAttribute="top" secondItem="IHu-xw-Uti" secondAttribute="top" constant="8" id="EWs-rf-MnJ"/>
                             <constraint firstItem="Qwp-LJ-BDu" firstAttribute="leading" secondItem="IHu-xw-Uti" secondAttribute="leading" constant="16" id="aNo-vj-xBG"/>
                             <constraint firstItem="IHu-xw-Uti" firstAttribute="bottom" secondItem="Qwp-LJ-BDu" secondAttribute="bottom" constant="16" id="hUq-K9-7EU"/>
                         </constraints>
@@ -150,7 +155,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="recipeTextView" destination="hUc-tT-Gpo" id="9QV-ch-8pB"/>
-                        <outlet property="titleLabel" destination="8lq-8c-3jc" id="U0s-N4-53i"/>
+                        <outlet property="titleTextField" destination="dIE-H0-sBA" id="MrY-IW-ISF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Yp-zi-01Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -176,4 +181,7 @@
             <point key="canvasLocation" x="-210.40000000000001" y="161.46926536731635"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fyN-9p-aD1"/>
+    </inferredMetricsTieBreakers>
 </document>

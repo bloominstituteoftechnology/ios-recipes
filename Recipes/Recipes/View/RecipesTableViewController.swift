@@ -39,6 +39,16 @@ class RecipesTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let recipe = recipeController?.recipes[indexPath.row] else { return }
+            
+            recipeController?.delete(recipe)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateTableView"), object: nil)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

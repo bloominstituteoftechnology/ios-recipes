@@ -34,6 +34,9 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         // Set the search text field's delegate to the view controller
         searchTextField.delegate = self
         
+        // Set an observer to see if the tableView updates the model controller
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.filterRecipes), name: NSNotification.Name("updateTableView"), object: nil)
+        
         // Check if the user has previously loaded the recipes over the network
         let hasPreviouslyLoadedRecipes = UserDefaults.standard.bool(forKey: "HasLoadedRecipesFromNetwork")
         
@@ -50,6 +53,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
                 }
                 
                 UserDefaults.standard.set(true, forKey: "HasLoadedRecipesFromNetwork")
+                print("I loaded these recipes from the network!")
                 self.filterRecipes()
             }
         }
@@ -79,11 +83,15 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         if segue.identifier == "EmbedRecipeTableView" {
             let destinationVC = segue.destination as! RecipesTableViewController
             recipesTableViewController = destinationVC
+        } else if segue.identifier == "AddRecipeSegue" {
+            let destinationVC = segue.destination as! RecipeDetailViewController
+            
+            destinationVC.recipeController = recipeController
         }
     }
     
     // MARK: - Private Utility Methods
-    private func filterRecipes() {
+    @objc private func filterRecipes() {
         DispatchQueue.main.async {
             // Make sure there is a search term, otherwise set the filtered recipes to all the recipes
             guard let searchTerm = self.searchTextField.text, !searchTerm.isEmpty else {

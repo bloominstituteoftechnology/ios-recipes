@@ -20,7 +20,7 @@ class RecipeDetailViewController: UIViewController {
     }
     var recipeController: RecipeController?
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var recipeTextView: UITextView!
     
     // MARK - Lifecycle Methods
@@ -31,20 +31,25 @@ class RecipeDetailViewController: UIViewController {
     }
     
     @IBAction func saveRecipe(_ sender: Any) {
-        guard let recipe = recipe,
-            let name = titleLabel.text,
+        guard let name = titleTextField.text, !name.isEmpty,
             let instructions = recipeTextView.text, !instructions.isEmpty else { return }
         
-        recipeController?.update(recipe, name: name, instructions: instructions)
+        if let recipe = recipe {
+            recipeController?.update(recipe, name: name, instructions: instructions)
+        } else {
+            recipeController?.createRecipe(name: name, instructions: instructions)
+        }
         
         navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Private Utility Methods
     func updateViews() {
-        guard let recipe = recipe else { return }
+        guard let recipe = recipe else {
+            title = "Add recipe"
+            return }
         
-        titleLabel.text = recipe.name
+        titleTextField.text = recipe.name
         recipeTextView.text = recipe.instructions
         title = recipe.name
     }
