@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        recipeSearchTextField.delegate = self
         networkClient.fetchRecipes { (recipes, error) in
             if let error = error {
                 NSLog("There was an error with fetching the recipes: \(error)")
@@ -37,12 +38,24 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
+    
+    //textFieldShouldReturn works, but searchRecipes doesn't?
     @IBAction func searchRecipes(_ sender: Any) {
-        self.resignFirstResponder()
+        recipeSearchTextField.resignFirstResponder()
         filterRecipes()
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        recipeSearchTextField.resignFirstResponder()
+        filterRecipes()
+        return true
+    }
+    
+
+    
     func filterRecipes() {
+        
         guard let recipeSearchTerm = recipeSearchTextField.text else {
             filteredRecipes = allRecipes
             return
