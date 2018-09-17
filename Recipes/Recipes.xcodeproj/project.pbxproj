@@ -37,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		825E1C21215063D500FCA6EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9D59AF412117E637002FB7CD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -48,7 +56,7 @@
 		9D59AF452117E652002FB7CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
+				9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */,
 				9DA0F0832117E40100A99E97 /* Assets.xcassets */,
 				9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */,
 				9DA0F0882117E40100A99E97 /* Info.plist */,
@@ -83,9 +91,9 @@
 		9DA0F07B2117E3F800A99E97 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */,
-				9D59AF412117E637002FB7CD /* Networking */,
 				9D59B52A2117F520002FB7CD /* Model */,
+				825E1C21215063D500FCA6EE /* View */,
+				9D59AF412117E637002FB7CD /* Networking */,
 				9D59AF452117E652002FB7CD /* Resources */,
 			);
 			path = Recipes;
