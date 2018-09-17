@@ -48,7 +48,6 @@
 		9D59AF452117E652002FB7CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
 				9DA0F0832117E40100A99E97 /* Assets.xcassets */,
 				9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */,
 				9DA0F0882117E40100A99E97 /* Info.plist */,
@@ -67,6 +66,7 @@
 		9DA0F0702117E3F800A99E97 = {
 			isa = PBXGroup;
 			children = (
+				C37701D0215062DA00928892 /* StoryBoards */,
 				9DA0F07B2117E3F800A99E97 /* Recipes */,
 				9DA0F07A2117E3F800A99E97 /* Products */,
 			);
@@ -89,6 +89,14 @@
 				9D59AF452117E652002FB7CD /* Resources */,
 			);
 			path = Recipes;
+			sourceTree = "<group>";
+		};
+		C37701D0215062DA00928892 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
+			);
+			path = StoryBoards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,14 +319,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7JG93VFG2G;
 				INFOPLIST_FILE = "$(SRCROOT)/Recipes/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.Recipes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JerrickWarren.Recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -330,14 +338,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7JG93VFG2G;
 				INFOPLIST_FILE = "$(SRCROOT)/Recipes/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.Recipes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JerrickWarren.Recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
