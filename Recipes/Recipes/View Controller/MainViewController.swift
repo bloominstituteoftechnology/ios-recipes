@@ -13,24 +13,28 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        networkClient.fetchRecipes { (allRecipes, error) in
+        networkClient.fetchRecipes { (recipe, error) in
             if let error = error{
                 NSLog("Error ocured while fetching data: \(error)")
                 return
-            }else{
-                self.allRecipes = (allRecipes ?? nil)!
+            }
+            if let recipes = recipe{
+                self.allRecipes = recipes
             }
         }
     }
     @IBOutlet weak var textField: UITextField!
     
     @IBAction func textFieldAction(_ sender: Any) {
+        view.endEditing(true)
         resignFirstResponder()
         filterRecipe()
     }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            guard let _ = segue.destination as? RecipesTableViewController else {return}
+            guard let detialVC = segue.destination as? RecipesTableViewController else {return}
+            recipesTableViewController = detialVC
         }
     }
     func filterRecipe(){
