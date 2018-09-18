@@ -22,7 +22,6 @@ class RecipesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipes.count
     }
@@ -41,8 +40,7 @@ class RecipesTableViewController: UITableViewController {
         if segue.identifier == "RecipeDetail" {
             guard let destinationVC = segue.destination as? RecipeDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
-            let recipe = recipes[indexPath.row]
-            destinationVC.recipe = recipe
+            destinationVC.recipe = recipes[indexPath.row]
         }
     }
 

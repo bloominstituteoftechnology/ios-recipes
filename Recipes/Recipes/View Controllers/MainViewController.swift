@@ -61,8 +61,7 @@ class MainViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedRecipesTableView" {
-            let recipeTableVC = segue.destination as! RecipesTableViewController
-            recipesTableViewController = recipeTableVC
+            recipesTableViewController = (segue.destination as! RecipesTableViewController)
         }
     }
 
