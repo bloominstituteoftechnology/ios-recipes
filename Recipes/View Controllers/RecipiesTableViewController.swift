@@ -14,6 +14,7 @@ class RecipesTableViewController: UITableViewController {
         didSet{
             tableView.reloadData()
         }
+        
     }
     
     
@@ -41,7 +42,6 @@ class RecipesTableViewController: UITableViewController {
         if segue.identifier == "ShowDetailSegue" {
            guard let destinationVC = segue.destination as? RecipeDetailViewController,
             let index = tableView.indexPathForSelectedRow else {return}
-            
             destinationVC.recipe = recipes[index.row]
         }
     }

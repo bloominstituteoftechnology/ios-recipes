@@ -25,14 +25,17 @@ class MainViewController: UIViewController {
     }
     
     func filterRecipes() {
-        guard let search = searchTextField.text else {return}
-        
-        if search == "" {
-            filterdRecipes = allRecipes
-        }else{
-            filterdRecipes = allRecipes.filter {$0.name.contains(search) || $0.name.contains(search)}
+        DispatchQueue.main.async {
+            guard let search = self.searchTextField.text else {return}
+            
+            if search == "" {
+                self.filterdRecipes = self.allRecipes
+            }else{
+                self.filterdRecipes = self.allRecipes.filter {$0.name.contains(search) || $0.instructions.contains(search)}
+            }
         }
-    }
+        
+        }
     
     
     override func viewDidLoad() {
