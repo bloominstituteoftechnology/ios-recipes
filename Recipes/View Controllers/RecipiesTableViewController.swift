@@ -12,11 +12,17 @@ class RecipesTableViewController: UITableViewController {
 
     var recipes: [Recipe] = [] {
         didSet{
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                
+            }
         }
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

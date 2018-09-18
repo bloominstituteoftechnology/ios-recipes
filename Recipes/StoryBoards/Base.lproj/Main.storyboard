@@ -132,9 +132,8 @@
                         <viewLayoutGuide key="safeArea" id="gVg-Y6-b5H"/>
                     </view>
                     <connections>
-                        <outlet property="instructionsTextView" destination="cIV-gU-k5G" id="dcd-VH-LGF"/>
+                        <outlet property="instructionsTextView" destination="cIV-gU-k5G" id="Xa7-2U-05q"/>
                         <outlet property="recipeLabel" destination="feg-OI-9aI" id="Rj2-cG-iT2"/>
-                        <outlet property="recipeTextView" destination="cIV-gU-k5G" id="WNx-N3-DJ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROs-ch-3AD" userLabel="First Responder" sceneMemberID="firstResponder"/>
