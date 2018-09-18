@@ -13,12 +13,13 @@ class RecipeDetailViewController: UIViewController {
     var recipe: Recipe? {
         didSet{
             updateViews()
-            viewDidLoad()
+            
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
 
     }
     
