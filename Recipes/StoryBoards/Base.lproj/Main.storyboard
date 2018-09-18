@@ -30,7 +30,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="DidEndonExit:" destination="mo4-3a-R1O" eventType="editingDidEnd" id="LXJ-dI-kSd"/>
+                                    <action selector="DidEndonExit:" destination="mo4-3a-R1O" eventType="editingDidEndOnExit" id="Eic-GD-1zE"/>
                                 </connections>
                             </textField>
                         </subviews>

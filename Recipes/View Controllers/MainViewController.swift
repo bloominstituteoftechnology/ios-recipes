@@ -49,7 +49,10 @@ class MainViewController: UIViewController {
                 NSLog("error getting recipes: \(error)")
                 return
             }
-            self.allRecipes = recipes ?? []
+            DispatchQueue.main.async {
+                 self.allRecipes = recipes ?? []
+            }
+           
             
         }
         
@@ -75,6 +78,7 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeSegue" {
             recipesTableViewController = (segue.destination as! RecipesTableViewController)
+           
         }
     }
 }

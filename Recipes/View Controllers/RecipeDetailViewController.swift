@@ -27,8 +27,8 @@ class RecipeDetailViewController: UIViewController {
             guard let name = recipe?.name,
                 let instructions = recipe?.instructions else {return}
             
-        recipeLabel.text? = name
-        instructionsTextView.text? = instructions
+        recipeLabel.text = name
+        instructionsTextView.text = instructions
         }
     }
     
