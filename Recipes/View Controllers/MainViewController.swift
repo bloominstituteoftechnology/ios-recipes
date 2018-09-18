@@ -10,27 +10,66 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    let networkClient = RecipesNetworkClient()
+    
+    var allRecipes:[Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    
+    var filterdRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filterdRecipes
+        }
+    }
+    
+    func filterRecipes() {
+        guard let search = searchTextField.text else {return}
+        
+        if search == "" {
+            filterdRecipes = allRecipes
+        }else{
+            filterdRecipes = allRecipes.filter {$0.name.contains(search) || $0.name.contains(search)}
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        networkClient.fetchRecipes { (recipes, error) in
+            
+            if let error = error {
+                NSLog("error getting recipes: \(error)")
+                return
+            }
+            self.allRecipes = recipes ?? []
+            
+        }
+        
         // Do any additional setup after loading the view.
     }
     
     @IBOutlet weak var searchTextField: UITextField!
     
     @IBAction func DidEndonExit(_ sender: Any) {
+        resignFirstResponder()
+        filterRecipes()
     }
     
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet{
+            recipesTableViewController?.recipes = filterdRecipes
+        }
+    }
     
-    
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "RecipeSegue" {
+            recipesTableViewController = (segue.destination as! RecipesTableViewController)
+        }
     }
-    */
-
 }

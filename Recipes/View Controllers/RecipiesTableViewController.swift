@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecipiesTableViewController: UITableViewController {
+class RecipesTableViewController: UITableViewController {
 
     var recipes: [Recipe] = [] {
         didSet{
