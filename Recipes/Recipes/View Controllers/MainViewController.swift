@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainTextField: UITextField!
     
     let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = [] {
+    var allRecipes = [Recipe]() {
         didSet {
             filterRceipes()
         }
@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
             recipesTableViewController?.recipes = filteredRecipes
         }
     }
-    var filteredRecipes: [Recipe] = [] {
+    var filteredRecipes = [Recipe]() {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
         }
@@ -32,28 +32,32 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        networkClient.fetchRecipes { (allRecipes, error) in
+        networkClient.fetchRecipes { (recipes, error) in
             if let error = error {
                 NSLog("Error retrieving receipes \(error)")
                 return
             }
-            self.allRecipes = allRecipes ?? []
+            DispatchQueue.main.async {
+                self.allRecipes = recipes ?? []
+            }
+            
         }
     }
     
     
-    @IBAction func editTextField(_ sender: Any) {
+    @IBAction func searchTextField(_ sender: Any) {
         resignFirstResponder()
         filterRceipes()
+
     }
     
     func filterRceipes() {
-        DispatchQueue.main.async {
-            guard let searchTerm = self.mainTextField.text else {
-                self.filteredRecipes = self.allRecipes
-                return }
-            self.filteredRecipes = self.allRecipes.filter({ $0.name == searchTerm || $0.instructions == searchTerm })
-        }
+            guard let searchTerm = mainTextField.text else { return }
+            if searchTerm == "" {
+                filteredRecipes = allRecipes
+            } else {
+                filteredRecipes = allRecipes.filter({ $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm) })
+            }
     }
     
     
