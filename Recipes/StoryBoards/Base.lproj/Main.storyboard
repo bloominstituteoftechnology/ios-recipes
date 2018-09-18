@@ -53,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qfp-GG-fYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1204" y="118"/>
+            <point key="canvasLocation" x="874" y="117"/>
         </scene>
         <!--Recipies Table View Controller-->
         <scene sceneID="6DF-hm-Ict">
@@ -93,7 +93,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVd-J2-1e4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1871" y="119"/>
+            <point key="canvasLocation" x="1761" y="65"/>
         </scene>
         <!--Recipe Detail View Controller-->
         <scene sceneID="Zae-rR-zZH">
@@ -140,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROs-ch-3AD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2752.8000000000002" y="118.29085457271366"/>
+            <point key="canvasLocation" x="2609" y="210"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OuY-TE-ygj">
