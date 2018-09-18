@@ -20,10 +20,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Bzv-ic-RRJ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="f2e-Id-ulI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qfp-GG-fYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="36" y="118"/>
+            <point key="canvasLocation" x="975.20000000000005" y="118.29085457271366"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OuY-TE-ygj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pP1-3A-9MC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Nz-Uf-hHq">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mo4-3a-R1O" kind="relationship" relationship="rootViewController" id="Nhy-gk-3vw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2U6-j6-0H4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="117.39130434782609"/>
         </scene>
     </scenes>
 </document>
