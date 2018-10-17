@@ -115,6 +115,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="rag-An-J1f"/>
                     </view>
+                    <connections>
+                        <outlet property="recipeNameLabel" destination="OVf-b1-xIs" id="QGg-Pk-WoR"/>
+                        <outlet property="recipeText" destination="vRl-Gk-HTw" id="N5P-QP-fY7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1L-7R-V9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
