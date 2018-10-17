@@ -25,6 +25,8 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="recipeTapped:" destination="T10-3Z-u9Q" eventType="editingDidEnd" id="epu-Nk-w72"/>
+                                    <action selector="recipeTapped:" destination="T10-3Z-u9Q" eventType="primaryActionTriggered" id="u7O-h3-lPb"/>
+                                    <action selector="searchChanged:" destination="T10-3Z-u9Q" eventType="editingChanged" id="ViU-SB-jns"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3J-L9-7yz">

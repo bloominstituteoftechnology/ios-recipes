@@ -16,6 +16,11 @@ class MainViewController: UIViewController {
         filterRecipes()
     }
     
+    @IBAction func searchChanged(_ sender: Any) {
+        filterRecipes()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         networkClient.fetchRecipes { (success, error) in
@@ -44,9 +49,9 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async {
             if let text = self.recipe.text, !text.isEmpty {
                 self.filteredRecipes = self.allRecipes.filter({ (recipe) -> Bool in
-                    return recipe.name.contains(text) || recipe.instructions.contains(text)
+                    return recipe.name.lowercased().contains(text) || recipe.instructions.lowercased().contains(text)
                 })
-                    } else {
+            } else {
                 self.filteredRecipes = self.allRecipes
             }
         }
