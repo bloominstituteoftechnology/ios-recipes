@@ -1,10 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lZa-4Z-EJO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="DdG-Cr-1Ux">
+            <objects>
+                <viewController id="Uec-aL-lng" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ldp-FB-hmR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rv0-ai-K2d">
+                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XGt-dY-h5c">
+                                        <rect key="frame" x="8" y="0.0" width="359" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ajt-yp-hme"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AE8-g4-Uf3">
+                                        <rect key="frame" x="0.0" y="38" width="375" height="557"/>
+                                    </containerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XGt-dY-h5c" firstAttribute="leading" secondItem="Rv0-ai-K2d" secondAttribute="leading" constant="8" id="TcR-eR-HMK"/>
+                                    <constraint firstAttribute="trailing" secondItem="XGt-dY-h5c" secondAttribute="trailing" constant="8" id="hQ4-MV-7sP"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Rv0-ai-K2d" firstAttribute="top" secondItem="g4J-Rf-bfs" secondAttribute="top" constant="8" id="9tG-3W-pN9"/>
+                            <constraint firstItem="g4J-Rf-bfs" firstAttribute="trailing" secondItem="Rv0-ai-K2d" secondAttribute="trailing" id="OkU-fn-Qk9"/>
+                            <constraint firstItem="Rv0-ai-K2d" firstAttribute="leading" secondItem="g4J-Rf-bfs" secondAttribute="leading" id="auh-9q-9hA"/>
+                            <constraint firstItem="g4J-Rf-bfs" firstAttribute="bottom" secondItem="Rv0-ai-K2d" secondAttribute="bottom" id="tSh-oC-aP8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g4J-Rf-bfs"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YyU-p5-Zwx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dxg-1Z-fbw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="855" y="109"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eJm-BJ-dDr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lZa-4Z-EJO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mwT-16-NQI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Uec-aL-lng" kind="relationship" relationship="rootViewController" id="z3c-e9-qWB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qsg-yq-HRB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76" y="109.29535232383809"/>
+        </scene>
+    </scenes>
 </document>
