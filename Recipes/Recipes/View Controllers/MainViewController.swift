@@ -6,25 +6,25 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
     
-    var recipesTableViewController: RecipesTableViewController? {
+    var recipesTableViewController: RecipesTableViewController! {
         didSet {
-            recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController.recipes = filteredRecipes
         }
     }
-    var allRecipes: [Recipe] = [] {
+    var allRecipes = [Recipe]() {
         didSet {
             filterRecipes()
         }
     }
-    var filteredRecipes: [Recipe] = [] {
+    var filteredRecipes = [Recipe]() {
         didSet {
-            recipesTableViewController?.recipes = filteredRecipes
-            recipesTableViewController?.tableView.reloadData() //....needed
+            recipesTableViewController.recipes = filteredRecipes
+            recipesTableViewController.tableView.reloadData()
         }
     }
     
     @IBAction func editField(_ sender: Any) {
-        resignFirstResponder()
+        textField.resignFirstResponder()
         filterRecipes()
     }
     
@@ -35,26 +35,28 @@ class MainViewController: UIViewController {
                 NSLog("Error: \(error)")
                 return
             }
-            DispatchQueue.main.async {
-               self.allRecipes = recipes ?? []
-            }
+            self.allRecipes = recipes ?? []
+            //            DispatchQueue.main.async {
+            //               self.allRecipes = recipes ?? []
+            //            }
         }
     }
     
     func filterRecipes() {
-        guard let searchName = textField.text else { return }
-        if searchName == "" {
-            filteredRecipes = allRecipes
-        } else {
-            filteredRecipes = allRecipes.filter({ $0.name.contains(searchName) || $0.instructions.contains(searchName) })
+        DispatchQueue.main.async {
+            guard let searchName = self.textField.text else { return }
+            if searchName == "" {
+                self.filteredRecipes = self.allRecipes
+            } else {
+                self.filteredRecipes = self.allRecipes.filter({ $0.name.contains(searchName) || $0.instructions.contains(searchName) })
+            }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? RecipesTableViewController else { return }
         if segue.identifier == "cellSegue" {
-            recipesTableViewController = (segue.destination as? RecipesTableViewController)
+            recipesTableViewController = destination
         }
     }
-    
-    
 }

@@ -18,8 +18,8 @@ class RecipeDetailViewController: UIViewController {
     func updateViews() {
         if isViewLoaded {
             guard let recipe = recipe else { return }
-            recipeName.text = recipe.name
-            recipeView.text = recipe.instructions
+            recipeName.text = recipe.name  //lisa like ? after recipeName
+            recipeView.text = recipe.instructions  //? after recipeview?
         }
     }
 }

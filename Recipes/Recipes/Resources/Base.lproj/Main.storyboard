@@ -24,6 +24,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="editField:" destination="C2m-al-vrd" eventType="primaryActionTriggered" id="awh-9H-E1G"/>
                                     <action selector="editField:" destination="C2m-al-vrd" eventType="editingDidEnd" id="wy9-kE-DTD"/>
                                 </connections>
                             </textField>
@@ -55,10 +56,10 @@
             </objects>
             <point key="canvasLocation" x="-1887.2" y="-1658.3208395802101"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Recipes Table View Controller-->
         <scene sceneID="dvU-25-saF">
             <objects>
-                <tableViewController id="bNW-oE-vJn" sceneMemberID="viewController">
+                <tableViewController id="bNW-oE-vJn" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jgv-Ea-zXe">
                         <rect key="frame" x="0.0" y="0.0" width="359" height="537"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
