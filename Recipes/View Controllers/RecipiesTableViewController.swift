@@ -19,10 +19,10 @@ class RecipesTableViewController: UITableViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        tableView.reloadData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        tableView.reloadData()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
