@@ -20,6 +20,7 @@ class RecipeDetailViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         updateViews()
     }
     
