@@ -75,7 +75,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" textLabel="2hM-Ti-7c8" style="IBUITableViewCellStyleDefault" id="sBw-wn-ezg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" textLabel="2hM-Ti-7c8" style="IBUITableViewCellStyleDefault" id="sBw-wn-ezg">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sBw-wn-ezg" id="E0S-WT-0DO">
@@ -92,7 +92,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="AEE-4A-eHT" kind="show" identifier="showRecipe" trigger="accessoryAction" id="j5b-pe-3u1"/>
+                                    <segue destination="AEE-4A-eHT" kind="show" identifier="ShowRecipeSegue" trigger="accessoryAction" id="j5b-pe-3u1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
