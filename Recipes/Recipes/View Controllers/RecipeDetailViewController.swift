@@ -16,12 +16,10 @@ class RecipeDetailViewController: UIViewController {
     }
     
     func updateViews() {
-        recipeName.text = recipe?.name
-        recipeView.text = recipe?.instructions
+        if isViewLoaded {
+            guard let recipe = recipe else { return }
+            recipeName.text = recipe.name
+            recipeView.text = recipe.instructions
+        }
     }
-    
-    //isViewLoaded property???
-    
-    
-    
 }

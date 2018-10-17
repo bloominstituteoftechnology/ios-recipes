@@ -4,7 +4,9 @@ class RecipesTableViewController: UITableViewController {
     
     var recipes: [Recipe] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -16,16 +18,16 @@ class RecipesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let recipe = recipes[indexPath.row]
         cell.textLabel?.text = recipe.name
-        //cell.textView?.text = recipe.instructions
         
         return cell
     }
     
+    //fix segues later
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? RecipeDetailViewController else { return }
-        destination.recipe = Recipe
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        destination.recipe = recipes[indexPath.row]
+        if segue.identifier == "detailSegue" {
+            guard let destinationVC = segue.destination as? RecipeDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            destinationVC.recipe = recipes[indexPath.row]
+        }
     }
-    
 }

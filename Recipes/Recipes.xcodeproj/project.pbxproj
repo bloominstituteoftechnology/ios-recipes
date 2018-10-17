@@ -43,6 +43,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B91306A2177D3D400A4A063 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7B69C5072177B6B10031409B /* MainViewController.swift */,
+				7BB1EE992177B885009A2868 /* RecipesTableViewController.swift */,
+				7BB1EE9B2177C285009A2868 /* RecipeDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		9D59AF412117E637002FB7CD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,9 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */,
-				7B69C5072177B6B10031409B /* MainViewController.swift */,
-				7BB1EE992177B885009A2868 /* RecipesTableViewController.swift */,
-				7BB1EE9B2177C285009A2868 /* RecipeDetailViewController.swift */,
+				7B91306A2177D3D400A4A063 /* View Controllers */,
 				9D59AF412117E637002FB7CD /* Networking */,
 				9D59B52A2117F520002FB7CD /* Model */,
 				9D59AF452117E652002FB7CD /* Resources */,
