@@ -12,7 +12,13 @@ class MainViewController: UIViewController {
     
     let networkClient = RecipesNetworkClient()
     
-    var filteredRecipes: [Recipe] = []
+    var filteredRecipes: [Recipe] = [] {
+        
+        didSet{
+            recipesTableViewController?.recipes = filteredRecipes
+            
+        }
+    }
     
     
     
@@ -21,8 +27,28 @@ class MainViewController: UIViewController {
     
     
     
-    var recipesTableViewController: RecipesTableViewController?
+    var recipesTableViewController: RecipesTableViewController?{
+        didSet {
+          recipesTableViewController?.recipes = filteredRecipes
+            
+            
+        }
+        
+    }
     
+    
+    
+    
+    func filterRecipes(){
+        
+        if let search = self.textField.text {
+            if search == "" {
+                self.filteredRecipes = self.allRecipes
+            } else {
+                self.filteredRecipes = self.allRecipes.filter({$0.name.contains(search) || $0.instructions.contains(search)})
+            }
+        }
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,6 +80,9 @@ class MainViewController: UIViewController {
     
     
     @IBAction func editingDidEnd(_ sender: Any) {
+       
+        filterRecipes()
+        
     }
     
     
