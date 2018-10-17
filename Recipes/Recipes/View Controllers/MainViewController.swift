@@ -32,41 +32,31 @@ class MainViewController: UIViewController {
             recipesTableViewController?.recipes = filteredRecipes
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowRecipeSegue" {
-            guard let recipeTVC = segue.destination as? RecipesTableViewController else { return }
-            recipesTableViewController = recipeTVC
-        }
-    }
-    
+
     var filteredRecipes: [Recipe] = [] {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController?.tableView.reloadData()
         }
     }
     
     func filterRecipes() {
         DispatchQueue.main.async {
-            if let search = self.recipe.text, search.count > 0 {
+            if let text = self.recipe.text, !text.isEmpty {
                 self.filteredRecipes = self.allRecipes.filter({ (recipe) -> Bool in
-                    return recipe.name.contains(search) || recipe.instructions.contains(search)
+                    return recipe.name.contains(text) || recipe.instructions.contains(text)
                 })
-            } else {
+                    } else {
                 self.filteredRecipes = self.allRecipes
             }
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "recipe" {
+            guard let recipeTVC = segue.destination as? RecipesTableViewController else { return }
+            recipesTableViewController = recipeTVC
+        }
     }
-    */
 
 }
