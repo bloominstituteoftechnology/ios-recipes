@@ -44,11 +44,12 @@ class MainViewController: UIViewController {
     
     func filterRecipes() {
         DispatchQueue.main.async {
-            guard let searchName = self.textField.text else { return }
-            if searchName == "" {
-                self.filteredRecipes = self.allRecipes
+            if let text = self.textField.text, !text.isEmpty {
+                self.filteredRecipes = self.allRecipes.filter({ (recipe) -> Bool in
+                    return recipe.name.contains(text) || recipe.instructions.contains(text)
+                })
             } else {
-                self.filteredRecipes = self.allRecipes.filter({ $0.name.contains(searchName) || $0.instructions.contains(searchName) })
+                self.filteredRecipes = self.allRecipes
             }
         }
     }
