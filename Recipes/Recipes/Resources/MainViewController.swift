@@ -35,10 +35,15 @@ class MainViewController: UIViewController {
         
     }
     
+    @IBAction func changed(_ sender: Any) {
+        filterRecipes()
+    }
+    
+    
     func filterRecipes(){
         
         if let search = self.textField.text, search != "" {
-            self.filteredRecipes = self.allRecipes.filter({$0.name.contains(search) || $0.instructions.contains(search)})
+            self.filteredRecipes = self.allRecipes.filter({$0.name.lowercased().contains(search) || $0.instructions.lowercased().contains(search)})
         } else {
             self.filteredRecipes = self.allRecipes
         }
@@ -80,7 +85,7 @@ class MainViewController: UIViewController {
     
     
     @IBAction func editingDidEnd(_ sender: Any) {
-        
+        textField.resignFirstResponder()
         filterRecipes()
         
     }
