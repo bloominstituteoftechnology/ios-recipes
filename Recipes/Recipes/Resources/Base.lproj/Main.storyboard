@@ -30,11 +30,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
+                                            <action selector="filterTextChange:" destination="Qdm-9H-NhU" eventType="editingChanged" id="bbS-hT-0LT"/>
                                             <action selector="finishedEditingText:" destination="Qdm-9H-NhU" eventType="editingDidEnd" id="h7u-Vn-sae"/>
                                         </connections>
                                     </textField>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gG7-y2-gCt">
-                                        <rect key="frame" x="8" y="68" width="359" height="503"/>
+                                        <rect key="frame" x="8" y="80" width="359" height="503"/>
                                         <connections>
                                             <segue destination="7uh-w8-fpw" kind="embed" identifier="toTableView" id="Meq-xz-isk"/>
                                         </connections>

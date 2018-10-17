@@ -16,6 +16,10 @@ class MainViewController: UIViewController {
         filterRecipes()
     }
     
+    @IBAction func filterTextChange(_ sender: Any) {
+        filterRecipes()
+    }
+    
     let networkClient = RecipesNetworkClient()
     var allRecipes = [Recipe]() {
         didSet {
@@ -24,15 +28,15 @@ class MainViewController: UIViewController {
     }
     
     
-    var recipeTableViewController: RecipeTableViewController? {
+    var recipeTableViewController: RecipeTableViewController! {
         didSet {
-            recipeTableViewController?.recipes = filteredRecipes
+            recipeTableViewController.recipes = filteredRecipes
         }
     }
     
     var filteredRecipes = [Recipe]() {
         didSet {
-            recipeTableViewController?.recipes = filteredRecipes
+            recipeTableViewController.recipes = filteredRecipes
         }
     }
     
@@ -49,31 +53,30 @@ class MainViewController: UIViewController {
                 }
             }
         }
+        
     }
+    
     
     func filterRecipes() {
-        guard let text = textField.text else {return}
-        if text.isEmpty {
-            filteredRecipes = allRecipes
-        } else {
-            filteredRecipes = allRecipes.filter({ $0.name.contains(text) || $0.instructions.contains(text) })
+        DispatchQueue.main.async {
+            guard let text = self.textField.text?.lowercased(), !text.isEmpty else {
+                self.filteredRecipes = self.allRecipes
+                return
+            }
+            self.filteredRecipes = self.allRecipes.filter({ $0.name.contains(text) || $0.instructions.contains(text) })
         }
     }
     
     
-     // MARK: - Navigation
-     
-
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-        
+    
+    // MARK: - Navigation
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? RecipeTableViewController else {return}
         if segue.identifier == "toTableView" {
-            destination.recipes = allRecipes
+            // destination.recipes = allRecipes
+            recipeTableViewController = destination
         }
-        
-     }
-
-    
+    }
 }
