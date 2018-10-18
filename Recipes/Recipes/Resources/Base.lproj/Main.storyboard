@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jdg-Ja-baJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,25 +18,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IRd-me-dWm">
-                                <rect key="frame" x="0.0" y="151" width="375" height="516"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRd-me-dWm">
+                                <rect key="frame" x="0.0" y="154" width="375" height="513"/>
                                 <connections>
                                     <segue destination="Ujz-ti-hCf" kind="embed" identifier="containerViewSegue" id="G4Q-IQ-HMH"/>
                                 </connections>
                             </containerView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OIQ-dS-sXz">
-                                <rect key="frame" x="21" y="91" width="332" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OIQ-dS-sXz">
+                                <rect key="frame" x="20" y="84" width="335" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="textField:" destination="8lL-qK-X8a" eventType="primaryActionTriggered" id="0Ov-2J-026"/>
                                     <action selector="textField:" destination="qpS-yt-ZBn" eventType="editingDidEnd" id="AUB-ZN-zgO"/>
+                                    <action selector="textField:" destination="8lL-qK-X8a" eventType="editingDidEndOnExit" id="bjt-uG-RNF"/>
                                 </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BhQ-44-Ult" firstAttribute="trailing" secondItem="OIQ-dS-sXz" secondAttribute="trailing" constant="20" id="2Zk-df-ohV"/>
+                            <constraint firstItem="OIQ-dS-sXz" firstAttribute="leading" secondItem="BhQ-44-Ult" secondAttribute="leading" constant="20" id="Bgy-MP-w6e"/>
+                            <constraint firstItem="OIQ-dS-sXz" firstAttribute="top" secondItem="BhQ-44-Ult" secondAttribute="top" constant="20" id="NSh-XB-lRI"/>
+                            <constraint firstItem="IRd-me-dWm" firstAttribute="trailing" secondItem="BhQ-44-Ult" secondAttribute="trailing" id="U7z-w9-2d5"/>
+                            <constraint firstItem="IRd-me-dWm" firstAttribute="leading" secondItem="BhQ-44-Ult" secondAttribute="leading" id="Wm3-xO-ypr"/>
+                            <constraint firstItem="IRd-me-dWm" firstAttribute="top" secondItem="OIQ-dS-sXz" secondAttribute="bottom" constant="40" id="ct5-nJ-xdI"/>
+                            <constraint firstItem="IRd-me-dWm" firstAttribute="bottom" secondItem="BhQ-44-Ult" secondAttribute="bottom" id="cuN-hT-Joe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BhQ-44-Ult"/>
                     </view>
                     <navigationItem key="navigationItem" id="UrF-vt-LgW"/>
@@ -54,7 +63,7 @@
             <objects>
                 <tableViewController id="Ujz-ti-hCf" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wew-Oq-KNz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="516"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="513"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -94,25 +103,32 @@
             <objects>
                 <viewController id="Euq-bu-j3v" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jrv-wl-YZ7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="516"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="513"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="text view" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vRl-Gk-HTw">
-                                <rect key="frame" x="0.0" y="82" width="375" height="434"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="text view" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vRl-Gk-HTw">
+                                <rect key="frame" x="0.0" y="84" width="375" height="429"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name of recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVf-b1-xIs">
-                                <rect key="frame" x="123" y="36" width="129" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name of recipe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVf-b1-xIs">
+                                <rect key="frame" x="20" y="40" width="335" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vRl-Gk-HTw" firstAttribute="trailing" secondItem="rag-An-J1f" secondAttribute="trailing" id="V6o-cb-EL3"/>
+                            <constraint firstItem="OVf-b1-xIs" firstAttribute="top" secondItem="rag-An-J1f" secondAttribute="top" constant="20" id="Yev-Kg-SCt"/>
+                            <constraint firstItem="vRl-Gk-HTw" firstAttribute="top" secondItem="OVf-b1-xIs" secondAttribute="bottom" constant="20" id="aki-bU-7Kp"/>
+                            <constraint firstAttribute="bottom" secondItem="vRl-Gk-HTw" secondAttribute="bottom" id="cKp-qp-8FK"/>
+                            <constraint firstItem="vRl-Gk-HTw" firstAttribute="leading" secondItem="rag-An-J1f" secondAttribute="leading" id="gmE-9X-61n"/>
+                            <constraint firstItem="rag-An-J1f" firstAttribute="trailing" secondItem="OVf-b1-xIs" secondAttribute="trailing" constant="20" id="ugW-cp-pxh"/>
+                            <constraint firstItem="OVf-b1-xIs" firstAttribute="leading" secondItem="rag-An-J1f" secondAttribute="leading" constant="20" id="uuK-Fh-UYm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rag-An-J1f"/>
                     </view>
                     <connections>

@@ -3,7 +3,7 @@ import UIKit
 class RecipeDetailViewController: UIViewController {
     var recipe: Recipe? {
         didSet{
-            updateView()
+            updateViews()
         }
     }
     @IBOutlet weak var recipeNameLabel: UILabel!
@@ -12,9 +12,10 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
     }
     
-    func updateView(){
+    func updateViews(){
         guard let recipe = recipe else { return }
         recipeNameLabel.text = recipe.name
         recipeText.text = recipe.instructions
