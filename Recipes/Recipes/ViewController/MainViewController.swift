@@ -1,21 +1,21 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     let networkClient = RecipesNetworkClient()
     var allRecipes: [Recipe] = [] {
         didSet {
             filterRecipes()
         }
     }
-    var recipesTableViewController: RecipesTableViewController? {
+    var recipesTableViewController: RecipesTableViewController! {
         didSet {
-            recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController.recipes = filteredRecipes
         }
     }
     var filteredRecipes: [Recipe] = [] {
         didSet {
-           recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController.recipes = filteredRecipes
         }
     }
     
@@ -27,9 +27,7 @@ class MainViewController: UIViewController {
                 NSLog("error getting recipes: \(error)")
                 return
             }
-            DispatchQueue.main.async {
                 self.allRecipes = recipes ?? []
-            }
         }
     }
     
@@ -43,13 +41,19 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "tableViewSegue" {
             guard let destinationView = segue.destination as? RecipesTableViewController else { return }
-
+            
             recipesTableViewController = destinationView
         }
     }
     
     func filterRecipes() {
-    
+        DispatchQueue.main.async {
+            guard let searchTerm = self.textField.text?.lowercased() else { return }
+            if searchTerm.isEmpty {
+                self.filteredRecipes = self.allRecipes
+            } else {
+                self.filteredRecipes = self.allRecipes.filter {$0.name.lowercased().contains(searchTerm) || $0.instructions.lowercased().contains(searchTerm)}
+            }
+        }
     }
-
 }

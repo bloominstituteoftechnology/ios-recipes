@@ -30,7 +30,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="textFieldTapped:" destination="Uec-aL-lng" eventType="editingDidEnd" id="r3T-vm-Rn5"/>
+                                            <action selector="textFieldTapped:" destination="Uec-aL-lng" eventType="primaryActionTriggered" id="4rV-a1-Vkl"/>
+                                            <action selector="textFieldTapped:" destination="Uec-aL-lng" eventType="editingDidEnd" id="erc-CV-hdT"/>
                                         </connections>
                                     </textField>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AE8-g4-Uf3">
@@ -41,8 +42,11 @@
                                     </containerView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="AE8-g4-Uf3" secondAttribute="trailing" id="KfE-jx-vWh"/>
                                     <constraint firstItem="XGt-dY-h5c" firstAttribute="leading" secondItem="Rv0-ai-K2d" secondAttribute="leading" constant="8" id="TcR-eR-HMK"/>
                                     <constraint firstAttribute="trailing" secondItem="XGt-dY-h5c" secondAttribute="trailing" constant="8" id="hQ4-MV-7sP"/>
+                                    <constraint firstItem="AE8-g4-Uf3" firstAttribute="leading" secondItem="Rv0-ai-K2d" secondAttribute="leading" id="iMI-QU-mam"/>
+                                    <constraint firstAttribute="bottom" secondItem="AE8-g4-Uf3" secondAttribute="bottom" id="w6S-4x-Bu8"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -129,6 +133,11 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="bBI-g6-JeJ" secondAttribute="bottom" id="63j-hF-cMM"/>
+                                    <constraint firstAttribute="trailing" secondItem="bBI-g6-JeJ" secondAttribute="trailing" id="Nxa-N6-WB6"/>
+                                    <constraint firstItem="bBI-g6-JeJ" firstAttribute="leading" secondItem="mDN-aL-Fwa" secondAttribute="leading" id="vno-QU-uWF"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

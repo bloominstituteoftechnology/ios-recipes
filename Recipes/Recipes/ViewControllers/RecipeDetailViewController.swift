@@ -9,6 +9,7 @@ class RecipeDetailViewController: UIViewController {
         updateViews()
     }
     
+    
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     
