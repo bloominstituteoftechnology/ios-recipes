@@ -25,7 +25,6 @@ class RecipesTableViewController: UITableViewController {
         return cell
     }
     
-    //fix segues later
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "detailSegue" {
 //            guard let destination = segue.destination as? RecipeDetailViewController,

@@ -24,6 +24,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="editField:" destination="C2m-al-vrd" eventType="editingChanged" id="Kmv-IH-mpS"/>
                                     <action selector="editField:" destination="C2m-al-vrd" eventType="primaryActionTriggered" id="awh-9H-E1G"/>
                                     <action selector="editField:" destination="C2m-al-vrd" eventType="editingDidEnd" id="wy9-kE-DTD"/>
                                 </connections>
