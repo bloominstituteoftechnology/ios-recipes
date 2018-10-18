@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
             if search == "" {
                 self.filterdRecipes = self.allRecipes
             }else{
-                self.filterdRecipes = self.allRecipes.filter {$0.name.contains(search) || $0.instructions.contains(search)}
+                self.filterdRecipes = self.allRecipes.filter {$0.name.lowercased().contains(search) || $0.instructions.lowercased().contains(search)}
             }
         }
         
