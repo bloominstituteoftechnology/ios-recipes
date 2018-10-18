@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async {
             if let text = self.textField.text, !text.isEmpty {
                 self.filteredRecipes = self.allRecipes.filter({ (recipe) -> Bool in
-                    return recipe.name.contains(text) || recipe.instructions.contains(text)
+                    return recipe.name.lowercased().contains(text) || recipe.instructions.lowercased().contains(text)
                 })
             } else {
                 self.filteredRecipes = self.allRecipes
