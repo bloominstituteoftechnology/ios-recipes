@@ -3,9 +3,21 @@ import UIKit
 class MainViewController: UIViewController {
 
     let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = []
-    var recipesTableViewController: RecipesTableViewController?
-    var filteredRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+           recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +36,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     
     @IBAction func textFieldTapped(_ sender: Any) {
-        
+        textField.resignFirstResponder()
+        filterRecipes()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -35,8 +48,8 @@ class MainViewController: UIViewController {
         }
     }
     
+    func filterRecipes() {
     
-    
-    
-    
+    }
+
 }
