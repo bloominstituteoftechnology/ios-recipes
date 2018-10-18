@@ -4,6 +4,8 @@ class MainViewController: UIViewController {
 
     let networkClient = RecipesNetworkClient()
     var allRecipes: [Recipe] = []
+    var recipesTableViewController: RecipesTableViewController?
+    var filteredRecipes: [Recipe] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +25,18 @@ class MainViewController: UIViewController {
     
     @IBAction func textFieldTapped(_ sender: Any) {
         
-        
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tableViewSegue" {
+            guard let destinationView = segue.destination as? RecipesTableViewController else { return }
+
+            recipesTableViewController = destinationView
+        }
+    }
+    
+    
+    
     
     
 }
