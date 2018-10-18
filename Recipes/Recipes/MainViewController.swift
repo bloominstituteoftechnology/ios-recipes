@@ -37,11 +37,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        networkClient.fetchRecipes { (recipes, error) in
+        networkClient.fetchRecipes { (recipesFetched, error) in
             if let error = error {
                 NSLog("Error getting the recipes!...\(error)")
             }
-            guard let allRecipes = recipes else {return}
+            self.allRecipes = recipesFetched ?? []
         }
 
     }
