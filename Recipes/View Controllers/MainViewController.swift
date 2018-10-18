@@ -52,8 +52,7 @@ class MainViewController: UIViewController {
             DispatchQueue.main.async {
                  self.allRecipes = recipes ?? []
             }
-           
-            
+        
         }
         
     }
