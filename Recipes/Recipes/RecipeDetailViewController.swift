@@ -2,19 +2,27 @@ import UIKit
 
 class RecipeDetailViewController: UIViewController {
     
-    var recipe: Recipe?
-
+    var recipe: Recipe? {
+        didSet{
+            updateViews()
+        }
+    }
+    
     @IBOutlet weak var recipeName: UILabel!
     
     @IBOutlet weak var recipeDetails: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateViews()
 
     }
     
     func updateViews(){
-        guard let recipe = Recipe(name:String, instructions: String )
+        guard let recipe = recipe else {return}
+        recipeName.text = recipe.name
+        recipeDetails.text = recipe.instructions
         
     }
     /*
