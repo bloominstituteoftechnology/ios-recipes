@@ -66,9 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				9D59B52B2117F533002FB7CD /* Recipe.swift */,
-				775848D12177C63D00E6B37E /* MainViewController.swift */,
-				775848D32177C8A300E6B37E /* RecipesTableViewController.swift */,
-				775848D52177CB8B00E6B37E /* RecipeDetailViewController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -93,6 +90,9 @@
 			isa = PBXGroup;
 			children = (
 				9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */,
+				775848D12177C63D00E6B37E /* MainViewController.swift */,
+				775848D32177C8A300E6B37E /* RecipesTableViewController.swift */,
+				775848D52177CB8B00E6B37E /* RecipeDetailViewController.swift */,
 				9D59AF412117E637002FB7CD /* Networking */,
 				9D59B52A2117F520002FB7CD /* Model */,
 				9D59AF452117E652002FB7CD /* Resources */,
