@@ -2,7 +2,7 @@ import UIKit
 
 class RecipesTableViewController: UITableViewController {
 
-    var recipes: [Recipe] = []{
+    var recipes: [Recipe] = [] {
         didSet{
             DispatchQueue.main.async{
                 self.tableView.reloadData()
