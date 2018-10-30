@@ -20,10 +20,11 @@ class RecipeDetailViewController: UIViewController {
     }
     
     func updateViews(){
+        if isViewLoaded {
         guard let recipe = recipe else {return}
         recipeName.text = recipe.name
         recipeDetails.text = recipe.instructions
-        
+        }
     }
     /*
     // MARK: - Navigation
