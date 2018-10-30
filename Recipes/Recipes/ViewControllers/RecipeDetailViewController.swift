@@ -19,6 +19,9 @@ class RecipeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        guard let recipe = recipe else { return }
+        
+        title = recipe.name
     }
     
 }

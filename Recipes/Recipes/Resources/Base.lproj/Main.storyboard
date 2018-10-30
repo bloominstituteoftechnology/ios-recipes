@@ -24,7 +24,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textFieldTapped:" destination="2Xe-hu-kvD" eventType="editingDidEnd" id="W50-9h-xmU"/>
+                                    <action selector="textFieldTapped:" destination="2Xe-hu-kvD" eventType="editingDidEnd" id="5vg-Qv-dcR"/>
+                                    <action selector="textFieldTapped:" destination="2Xe-hu-kvD" eventType="primaryActionTriggered" id="6uV-fV-CAa"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CVp-aO-Ivb">

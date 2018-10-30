@@ -4,11 +4,13 @@ class RecipesTableViewController: UITableViewController {
     
     var recipes: [Recipe] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipes.count
     }
     
@@ -25,10 +27,10 @@ class RecipesTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             
-            guard let destinationView = segue.destination as? RecipeDetailViewController,
+            guard let destination = segue.destination as? RecipeDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             
-            destinationView.recipe = recipes[indexPath.row]
+            destination.recipe = recipes[indexPath.row]
     }
 }
 
