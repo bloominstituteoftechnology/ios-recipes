@@ -30,6 +30,8 @@ class MainViewController: UIViewController {
     
     var allRecipes: [Recipe] = []
     
+    var filteredRecipes: [Recipe]
+    
     @IBOutlet weak var textField: UITextField!
     
     @IBAction func didTapText(_ sender: Any) {
@@ -37,11 +39,9 @@ class MainViewController: UIViewController {
     
     func filterRecipes() {
         DispatchQueue.main.async {
-            var filteredRecipes: [Recipe]
-            filteredRecipes = self.allRecipes.sorted(by: { (recipe1, recipe2) -> Bool in
-                return recipe1.name < recipe2.name
-            })
-        }
+            guard let text = self.textField?.text, !text.isEmpty else {
+                
+            }
         }
     
         
@@ -49,3 +49,4 @@ class MainViewController: UIViewController {
     
     
 
+}
