@@ -10,21 +10,18 @@ import UIKit
 
 class RecipesTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     // MARK: - Properties
     private let reuseIdentifier = "tableViewCell"
     var recipes: [Recipe] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -39,7 +36,7 @@ class RecipesTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
 
-        cell.detailTextLabel?.text = recipes[indexPath.row].name
+        cell.textLabel?.text = recipes[indexPath.row].name
         // Configure the cell...
 
         return cell

@@ -10,19 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        networkClient.fetchRecipes { (allRecipes, error) in
-            if let error = error {
-                NSLog("Error getting students: \(error)")
-                return
-            }
-            
-            self.allRecipes = allRecipes ?? []
-        }
-
-        // Do any additional setup after loading the view.
-    }
+    // MARK: - Properties
     let networkClient = RecipesNetworkClient()
     var recipesTableViewController: RecipesTableViewController?{
         didSet {
@@ -41,9 +29,39 @@ class MainViewController: UIViewController {
     }
     
     @IBOutlet weak var textField: UITextField!
+    
+    // MARK: - Functions
     @IBAction func editingDidEnd(_ sender: Any) {
         resignFirstResponder()
         filterRecipes()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        networkClient.fetchRecipes { (allRecipes, error) in
+            if let error = error {
+                NSLog("Error getting recipes: \(error)")
+                return
+            }
+            print("did get through here")
+            self.allRecipes = allRecipes ?? []
+        }
+
+        // Do any additional setup after loading the view.
+    }
+   
+    func filterRecipes(){
+        
+        DispatchQueue.main.async {
+            guard let search = self.textField.text, search != "" else {self.filteredRecipes = self.allRecipes
+                return
+            }
+            
+            let text = self.allRecipes.filter{ $0.name.contains(search) || $0.instructions.contains(search)}
+            self.filteredRecipes = text
+            
+        }
+        
     }
     
     // MARK: - Navigation
@@ -58,16 +76,5 @@ class MainViewController: UIViewController {
         }
     }
     
-    private func filterRecipes(){
-        
-        DispatchQueue.main.async {
-        guard let search = self.textField.text, self.textField.text != nil else {self.filteredRecipes = self.allRecipes
-            return
-            }
-        
-            self.filteredRecipes = self.allRecipes.filter{ $0.name.contains(search)}
-        }
-        
-    }
 
 }
