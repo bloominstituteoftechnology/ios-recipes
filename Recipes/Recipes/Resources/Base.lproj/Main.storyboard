@@ -83,6 +83,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="7nq-fy-bgo" kind="show" id="GXZ-hN-4cK"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -94,6 +97,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lzH-hj-Z1s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1736.8" y="242.42878560719643"/>
+        </scene>
+        <!--Recipe Detail View Controller-->
+        <scene sceneID="oi7-sa-bdQ">
+            <objects>
+                <viewController id="7nq-fy-bgo" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nou-qA-GgD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="533"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n7e-wz-bmc">
+                                <rect key="frame" x="20" y="40" width="335" height="473"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6m-Zp-iOl">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V63-xY-2dW">
+                                        <rect key="frame" x="0.0" y="36" width="335" height="437"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Urb-CX-vso" firstAttribute="bottom" secondItem="n7e-wz-bmc" secondAttribute="bottom" constant="20" id="FNB-WS-O1y"/>
+                            <constraint firstItem="n7e-wz-bmc" firstAttribute="leading" secondItem="Urb-CX-vso" secondAttribute="leading" constant="20" id="HBw-6Y-QBw"/>
+                            <constraint firstItem="Urb-CX-vso" firstAttribute="trailing" secondItem="n7e-wz-bmc" secondAttribute="trailing" constant="20" id="ox7-x6-2Ro"/>
+                            <constraint firstItem="n7e-wz-bmc" firstAttribute="top" secondItem="Urb-CX-vso" secondAttribute="top" constant="20" id="sPi-HL-JTR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Urb-CX-vso"/>
+                    </view>
+                    <connections>
+                        <outlet property="recipeLabel" destination="e6m-Zp-iOl" id="tCr-zJ-dTP"/>
+                        <outlet property="recipeTextView" destination="V63-xY-2dW" id="QA5-sh-9SX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hbf-rK-azM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2574" y="303"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y8u-2r-NSo">
