@@ -11,14 +11,32 @@ import UIKit
 class RecipeDatailViewController: UIViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        super.viewDidLoad
+       updateViews()
+    }
+    
+    var recipe: Recipe? {
+        didSet {
+           updateViews()
+        }
     }
     
     @IBOutlet weak var label: UILabel!
     
     @IBOutlet weak var textView: UITextView!
+    
+    func updateViews() {
+        
+//        guard let recipe = recipe else { fatalError("no such recipe")
+//            return
+        let 
+        
+        let recipe?.name = label.text
+        let recipe?.instructions = textView.text
+        
+        
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -29,4 +47,5 @@ class RecipeDatailViewController: UIViewController {
     }
     */
 
-}
+
+
