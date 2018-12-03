@@ -5,9 +5,14 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
     }
     
-    var recipe: Recipe?
+    var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
+    }
     
     @IBOutlet weak var label: UILabel!
     
@@ -18,7 +23,7 @@ class RecipeDetailViewController: UIViewController {
             guard let recipe = recipe else { return }
             label.text = recipe.name
             recipeText.text = recipe.instructions
-        }        
+        }
     }
     
 }
