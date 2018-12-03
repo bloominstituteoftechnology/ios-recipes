@@ -24,17 +24,33 @@ class MainViewController: UIViewController {
         }
     }
     
-    private var recipesTableViewController: RecipesTableViewController?
+    private var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     private let networkClient = RecipesNetworkClient()
     
-    var allRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
     
-    var filteredRecipes: [Recipe]
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     @IBOutlet weak var textField: UITextField!
     
     @IBAction func didTapText(_ sender: Any) {
+        
+        textField.resignFirstResponder()
+        
+        filterRecipes()
     }
     
     func filterRecipes() {
@@ -57,3 +73,4 @@ class MainViewController: UIViewController {
     
 
 
+}
