@@ -15,6 +15,17 @@ class MainViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // If the segue identifier in our storyboard is "RecipeSegue"
+        // we're going to set the destination to the RecipesTableViewController
+        if segue.identifier == "RecipeSegue" {
+            let recipesTableVC = segue.destination as? RecipesTableViewController
+            recipesTableViewController = recipesTableVC
+        }
+    }
+    
+    private var recipesTableViewController: RecipesTableViewController?
+    
     private let networkClient = RecipesNetworkClient()
     
     var allRecipes: [Recipe] = []
@@ -24,5 +35,17 @@ class MainViewController: UIViewController {
     @IBAction func didTapText(_ sender: Any) {
     }
     
+    func filterRecipes() {
+        DispatchQueue.main.async {
+            var filteredRecipes: [Recipe]
+            filteredRecipes = self.allRecipes.sorted(by: { (recipe1, recipe2) -> Bool in
+                return recipe1.name < recipe2.name
+            })
+        }
+        }
     
-}
+        
+    }
+    
+    
+
