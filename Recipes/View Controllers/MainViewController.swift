@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
     
     private var recipesTableViewController: RecipesTableViewController? {
         didSet {
-            recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController?.recipes = self.filteredRecipes
         }
     }
     
@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
     
     var filteredRecipes: [Recipe] = [] {
         didSet {
-            recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController?.recipes = self.filteredRecipes
         }
     }
     
@@ -60,10 +60,7 @@ class MainViewController: UIViewController {
                 return
             }
             
-            self.filteredRecipes = self.allRecipes.filter({ (recipe) -> Bool in
-                recipe.name.contains(text) || recipe.instructions.contains(text)
-            })
-            
+            self.filteredRecipes = self.allRecipes.filter({ $0.name.contains(text) || $0.instructions.contains(text) })
             
         }
     
