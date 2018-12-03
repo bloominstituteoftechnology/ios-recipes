@@ -81,7 +81,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="DAc-Be-XK1" kind="show" id="yez-hi-Vfx"/>
+                                    <segue destination="DAc-Be-XK1" kind="show" identifier="recipeCellSegue" id="yez-hi-Vfx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
