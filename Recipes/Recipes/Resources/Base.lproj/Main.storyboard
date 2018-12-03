@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="nts-l0-BCL">
             <objects>
-                <viewController id="tnX-lE-l35" sceneMemberID="viewController">
+                <viewController id="tnX-lE-l35" customClass="MainViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BKA-jk-h7o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,6 +26,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editingDidEnd:" destination="tnX-lE-l35" eventType="editingDidEnd" id="hPe-BJ-1a7"/>
+                                </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSh-GS-5Bb">
                                 <rect key="frame" x="0.0" y="134" width="375" height="533"/>
@@ -47,6 +50,9 @@
                         <viewLayoutGuide key="safeArea" id="wHP-tf-Nai"/>
                     </view>
                     <navigationItem key="navigationItem" id="LeP-zV-zdB"/>
+                    <connections>
+                        <outlet property="textField" destination="oeP-lc-dsn" id="BoY-vW-8Xz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4k-fu-9fg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
