@@ -12,12 +12,24 @@ class RecipeDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Do any additional setup after loading the view.
+    }
+    
+    private var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
     }
     
     @IBOutlet weak var recipeLabel: UILabel!
     @IBOutlet weak var recipeTextView: UITextView!
+    
+    private func updateViews(){
+        guard let recipe = recipe, isViewLoaded else {fatalError("unable to get recipe variable")}
+        recipeLabel.text = recipe.name
+        recipeTextView.text = recipe.instructions
+    }
     
     /*
     // MARK: - Navigation
