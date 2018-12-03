@@ -4,6 +4,7 @@ class MainViewController: UIViewController {
 
     let networkClient = RecipesNetworkClient()
     var allRecipes: [Recipe] = []
+    var recipesTableViewController: RecipesTableViewController?
     
     @IBOutlet weak var searchField: UITextField!
     
