@@ -19,8 +19,6 @@ Please look at the screen recording below to know what the finished project shou
 
 ## Instructions
 
-Please fork and clone this repository. This repository has a starter project with the model and a network client already created for you.
-
 ### Part 1 - Storyboard Layout
 
 1. Using either the `UIViewController` scene provided in the Main.storyboard, or a new one if you already deleted it:
