@@ -22,7 +22,7 @@ class RecipesTableViewController: UITableViewController {
     
     // MARK: - Properties
     private let reuseIdentifier = "tableViewCell"
-    private var recipes: [Recipe] = [] {
+    var recipes: [Recipe] = [] {
         didSet {
             tableView.reloadData()
         }

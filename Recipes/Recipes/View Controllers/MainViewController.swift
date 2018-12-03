@@ -24,12 +24,18 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = []
     var recipesTableViewController: RecipesTableViewController?
     var filteredRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController.recipes = filteredRecipes
+        }
+    }
+    
     @IBOutlet weak var textField: UITextField!
     @IBAction func editingDidEnd(_ sender: Any) {
-        
+        resignFirstResponder()
+        filterRecipes()
     }
     
     // MARK: - Navigation
