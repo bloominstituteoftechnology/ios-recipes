@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="1777" y="116"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="e2f-GU-DUn">
             <objects>
-                <viewController id="DAc-Be-XK1" customClass="DetailViewController" customModule="recipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DAc-Be-XK1" customClass="RecipeDetailViewController" customModule="recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qd6-Fp-yJK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="533"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,6 +128,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kJt-Vf-Ltk"/>
                     </view>
+                    <connections>
+                        <outlet property="recipeLabel" destination="7Vn-bX-IIY" id="gKv-Hd-MvC"/>
+                        <outlet property="recipeView" destination="b4D-O8-7Mu" id="VlF-o9-dVI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ikf-n2-B1Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
