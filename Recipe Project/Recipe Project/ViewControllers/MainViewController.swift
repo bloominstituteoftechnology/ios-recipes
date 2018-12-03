@@ -5,6 +5,8 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
     @IBAction func textFieldSearch(_ sender: Any) {
+        resignFirstResponder()
+        filterRecipes()
     }
     
     override func viewDidLoad() {
@@ -29,12 +31,15 @@ class MainViewController: UIViewController {
     private var allRecipes: [Recipe] = [] 
     private let networkClient = RecipesNetworkClient()
     private var recipesTableViewController: RecipesTableViewController
-    private var filteredREcipes: [Recipe] = []
+    private var filteredRecipes: [Recipe] = []
     
     func filterRecipes() {
-        guard let text = textField.text, !text.isEmpty else { return }
+        didSet{
+            guard let text = textField.text, !text.isEmpty else { return }
+            let filteredRecipes: [Recipe]
         
-        
+            filteredRecipes = self.allRecipes.filter({ $0.first == textField.text.first})
+        }
     }
     
 }
