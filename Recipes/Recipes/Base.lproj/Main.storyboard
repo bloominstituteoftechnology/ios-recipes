@@ -23,6 +23,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="search:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="gbG-8i-Mjv"/>
+                                </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQu-vy-ZF3">
                                 <rect key="frame" x="0.0" y="134" width="375" height="533"/>
@@ -44,6 +47,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="NnH-9V-JJ2"/>
+                    <connections>
+                        <outlet property="searchField" destination="1uG-xc-sSc" id="heW-pm-gY2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
