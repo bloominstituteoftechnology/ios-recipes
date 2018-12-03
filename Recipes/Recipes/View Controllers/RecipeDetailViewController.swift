@@ -3,12 +3,20 @@ import UIKit
 
 class RecipeDetailViewController: UIViewController {
 
+    // Gives Detail View Controller a reference to to the model
+    var recipe: Recipe?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
+    func updateViews() {
+        recipeNameLabel.text = recipe?.name
+        
+        recipeInstructionsTextView.text = recipe?.instructions
+    }
 
     /*
     // MARK: - Navigation
@@ -20,6 +28,8 @@ class RecipeDetailViewController: UIViewController {
     }
     */
 
+
+    
     @IBOutlet weak var recipeNameLabel: UILabel!
     
     @IBOutlet weak var recipeInstructionsTextView: UITextView!
