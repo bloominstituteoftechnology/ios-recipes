@@ -16,7 +16,7 @@ class RecipeDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    private var recipe: Recipe? {
+    var recipe: Recipe? {
         didSet {
             updateViews()
         }
