@@ -40,8 +40,15 @@ class MainViewController: UIViewController {
     func filterRecipes() {
         DispatchQueue.main.async {
             guard let text = self.textField?.text, !text.isEmpty else {
-                
+                self.filteredRecipes = self.allRecipes
+                return
             }
+            
+            self.filteredRecipes = self.allRecipes.filter({ (recipe) -> Bool in
+                recipe.name.contains(text) || recipe.instructions.contains(text)
+            })
+            
+            
         }
     
         
@@ -49,4 +56,4 @@ class MainViewController: UIViewController {
     
     
 
-}
+
