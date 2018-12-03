@@ -3,22 +3,36 @@ import UIKit
 class MainViewController: UIViewController {
 
     let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = []
-    var filteredRecipes: [Recipe] = []
-    var recipesTableViewController: RecipesTableViewController! {
+    
+    var allRecipes: [Recipe] = [] {
         didSet {
             recipesTableViewController.recipes = filteredRecipes
             filterRecipes()
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController.recipes = filteredRecipes
+            recipesTableViewController.tableView.reloadData()
+        }
+    }
+    
+    var recipesTableViewController: RecipesTableViewController! {
+        didSet {
+            recipesTableViewController.recipes = filteredRecipes
         }
     }
     
     @IBOutlet weak var searchField: UITextField!
     
     @IBAction func search(_ sender: Any) {
+        searchField.resignFirstResponder()
+        filterRecipes()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         networkClient.fetchRecipes { (recipes, error) in
             if let error = error {
                 NSLog("Error getting recipes: \(error)")
@@ -40,10 +54,10 @@ class MainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      
-        guard let mainDestination = segue.destination as?
-            RecipeTableViewController else { return }
+       // if segue.identifier == "recipeSegue" {
+        guard let mainDestination = segue.destination as? RecipesTableViewController else { return }
         
         recipesTableViewController = mainDestination
+        
     }
 }

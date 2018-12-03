@@ -5,7 +5,9 @@ class RecipesTableViewController: UITableViewController {
     let reuseIdentifier = "recipeCell"
     var recipes: [Recipe] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+            self.tableView.reloadData()
+            }
         }
     }
     
