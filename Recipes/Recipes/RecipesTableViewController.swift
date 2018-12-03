@@ -3,7 +3,11 @@ import UIKit
 class RecipesTableViewController: UITableViewController {
     
     let reuseIdentifier = "recipeCell"
-    var recipes: [Recipe] = []
+    var recipes: [Recipe] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
