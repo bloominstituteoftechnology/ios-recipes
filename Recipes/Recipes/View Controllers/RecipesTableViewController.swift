@@ -51,13 +51,14 @@ class RecipesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        guard let indexPath = tableView.indexPathForSelectedRow else {return}
-        guard let destination = segue.destination as? RecipeDetailViewController else {return} // could put fatal errors
-        
-        let recipe = recipes[indexPath.row]
-        
-        destination.recipe = recipe
-        
+        if segue.identifier == "embededDetailViewSegue"{
+            guard let indexPath = tableView.indexPathForSelectedRow else {return}
+            guard let destination = segue.destination as? RecipeDetailViewController else {fatalError("segue not going to RecipeDetailVC")} // could put fatal errors
+            
+            let recipe = recipes[indexPath.row]
+            
+            destination.recipe = recipe
+        }
         
     }
 

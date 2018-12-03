@@ -84,7 +84,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="7nq-fy-bgo" kind="show" id="GXZ-hN-4cK"/>
+                                    <segue destination="7nq-fy-bgo" kind="show" identifier="embededDetailViewSegue" id="GXZ-hN-4cK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
