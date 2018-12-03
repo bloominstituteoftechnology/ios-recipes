@@ -4,23 +4,40 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkClient.fetchRecipes { (recipes, error) in
+            if let error = error {
+                NSLog("Error getting recipes: \(error)")
+                return
+            }
+            
+            self.allRecipes = recipes ?? []
+        }
 
-        // Do any additional setup after loading the view.
     }
+    
     @IBOutlet weak var searchBar: UITextField!
     
+    private var recipesTableViewController: RecipesTableViewController?
 
     @IBAction func search(_ sender: Any) {
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    private let networkClient = RecipesNetworkClient()
+    
+    private var allRecipes: [Recipe] = []
+    
+  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "EmbedTableView" {
+            let recipesTableVC = segue.destination as! RecipesTableViewController
+            recipesTableViewController = recipesTableVC
+        }
+         var filteredRecipes: [Recipe] = []
+        
+        filterRecipes() {
+            
+        }
     }
-    */
+    
 
 }
