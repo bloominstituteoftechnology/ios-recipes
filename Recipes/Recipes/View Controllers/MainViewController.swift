@@ -24,11 +24,19 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     let networkClient = RecipesNetworkClient()
-    var recipesTableViewController: RecipesTableViewController?
-    var filteredRecipes: [Recipe] = []
+    var recipesTableViewController: RecipesTableViewController?{
+        didSet {
+            recipesTableViewController!.recipes = filteredRecipes
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController!.recipes = filteredRecipes
+        }
+    }
     var allRecipes: [Recipe] = [] {
         didSet {
-            recipesTableViewController.recipes = filteredRecipes
+            filterRecipes()
         }
     }
     
