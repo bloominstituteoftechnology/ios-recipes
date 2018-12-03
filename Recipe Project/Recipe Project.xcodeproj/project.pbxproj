@@ -10,7 +10,6 @@
 		F33A59DD21B5C7BB00EA90DE /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33A59DC21B5C7BB00EA90DE /* RecipesTableViewController.swift */; };
 		F33A59DF21B5C86F00EA90DE /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33A59DE21B5C86F00EA90DE /* RecipeDetailViewController.swift */; };
 		F3410E2721B5C3920054C17A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3410E2621B5C3920054C17A /* AppDelegate.swift */; };
-		F3410E2921B5C3920054C17A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3410E2821B5C3920054C17A /* ViewController.swift */; };
 		F3410E2C21B5C3920054C17A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3410E2A21B5C3920054C17A /* Main.storyboard */; };
 		F3410E2E21B5C3930054C17A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3410E2D21B5C3930054C17A /* Assets.xcassets */; };
 		F3410E3121B5C3930054C17A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3410E2F21B5C3930054C17A /* LaunchScreen.storyboard */; };
@@ -22,7 +21,6 @@
 		F33A59DE21B5C86F00EA90DE /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		F3410E2321B5C3920054C17A /* Recipe Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipe Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3410E2621B5C3920054C17A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F3410E2821B5C3920054C17A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F3410E2B21B5C3920054C17A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F3410E2D21B5C3930054C17A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3410E3021B5C3930054C17A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				F3410E2621B5C3920054C17A /* AppDelegate.swift */,
-				F3410E2821B5C3920054C17A /* ViewController.swift */,
 				F3410E3821B5C5D10054C17A /* MainViewController.swift */,
 				F33A59DC21B5C7BB00EA90DE /* RecipesTableViewController.swift */,
 				F33A59DE21B5C86F00EA90DE /* RecipeDetailViewController.swift */,
@@ -145,7 +142,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3410E3921B5C5D10054C17A /* MainViewController.swift in Sources */,
-				F3410E2921B5C3920054C17A /* ViewController.swift in Sources */,
 				F33A59DF21B5C86F00EA90DE /* RecipeDetailViewController.swift in Sources */,
 				F33A59DD21B5C7BB00EA90DE /* RecipesTableViewController.swift in Sources */,
 				F3410E2721B5C3920054C17A /* AppDelegate.swift in Sources */,
