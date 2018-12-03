@@ -5,7 +5,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var recipeLabel: UITextView!
     
-    var: Recipe? {
+    var recipe: Recipe? {
         didSet {
             updateViews()
         }
@@ -16,8 +16,12 @@ class RecipeDetailViewController: UIViewController {
     }
     
     func updateViews() {
-        //nameLabel.text = recipe.name
-       //recipeLabel.text = recipe.instructions
+        if isViewLoaded {
+            if let recipe = recipe {
+                nameLabel.text = recipe.name
+                recipeLabel.text = recipe.instructions
+            }
+        }
     }
     
 }
