@@ -12,11 +12,13 @@ class RecipesTableTableViewController: UITableViewController {
 
     var recipe: Recipe?
     
-    private var recipes: [Recipe] = [] {
+    var recipes: [Recipe] = [] {
         
         // Whenever the property changes, call the reloadData function
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                 self.tableView.reloadData()
+            }
         }
     }
     
@@ -73,59 +75,6 @@ class RecipesTableTableViewController: UITableViewController {
             let recipe = recipes[indexPath.row]
             destination.recipe = recipe
             
-            /* I think this should be the segue from the Main View Controller to the Recipes Table View Controller
-             // Get the new view controller using segue.destination
-             let recipeDetailTableVC = segue.destination as! RecipeDetailViewController
-             
-             // Pass the selected object to the new view controller
-             recipeDetailTableViewController = recipeDetailTableVC
-             */
- 
         }
     }
-    
-
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-
-    */
-
 }
