@@ -2,7 +2,7 @@ import UIKit
 
 class MainViewController: UIViewController, UITextFieldDelegate {
     
-    let reuseIdentifier = "RecipeCell"
+    
     private var recipesTableViewController: RecipesTableViewController! {
         didSet {
             recipesTableViewController.recipes = filteredRecipes
@@ -22,7 +22,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var recipeSearchField: UITextField!
     
-    
+    //TextField return_key listener
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -35,8 +35,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // textField delegate
         recipeSearchField.delegate = self
-        // Do any additional setup after loading the view.
+        
+        // networking
         networkClient.fetchRecipes { (allRecipes, error) in
             if let error = error {
                 NSLog("Error retrieving recipes: \(error)")
@@ -54,7 +56,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         DispatchQueue.main.async {
             //unwrap search term and make sure its not empty string
             if let text = self.recipeSearchField.text, text != "" {
-                // TODO: if search term is not empty or nil, filter recipe.name and/or recipe.instructions contains search term
+                // if search term is not empty or nil, filter recipe.name and/or recipe.instructions contains search term
                 self.filteredRecipes = self.allRecipes.filter({ $0.name.lowercased().contains(text.lowercased()) || $0.instructions.lowercased().contains(text.lowercased())})
                 
                 //self.filteredRecipes = self.allRecipes //for testing
