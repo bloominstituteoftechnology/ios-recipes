@@ -10,6 +10,17 @@ import UIKit
 
 class RecipesTableTableViewController: UITableViewController {
 
+    var recipe: Recipe?
+    
+    private var recipes: [Recipe] = [] {
+        
+        // Whenever the property changes, call the reloadData function
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,25 +33,59 @@ class RecipesTableTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+    
+    // Number of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+
+        return recipes.count
     }
 
-    /*
+    
+    // Contents of cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
+        // Put the name in the cell
+        cell.textLabel?.text = recipes[indexPath.row].name
 
         return cell
     }
-    */
+    
+    
+    // Reference so that the Detail View Controller has access to the Detail Table View Controller
+    private var recipeDetailTableViewController: RecipeDetailViewController!
+    
+    
+    // Prepare for segue from Table View Controller to Detail View Controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Create a property that references the Detail View Controler
+        if segue.identifier == "ShowDetailView"  {
+            
+            // fetch index path and view controller
+            guard
+                let destination = segue.destination as? RecipeDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow
+                else { return }
+            
+            // Pass the recipe from the recipes array that corresponds with the indexPath (cell that was tapped)
+            let recipe = recipes[indexPath.row]
+            destination.recipe = recipe
+            
+            /* I think this should be the segue from the Main View Controller to the Recipes Table View Controller
+             // Get the new view controller using segue.destination
+             let recipeDetailTableVC = segue.destination as! RecipeDetailViewController
+             
+             // Pass the selected object to the new view controller
+             recipeDetailTableViewController = recipeDetailTableVC
+             */
+ 
+        }
+    }
+    
+
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -80,11 +125,7 @@ class RecipesTableTableViewController: UITableViewController {
     /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
+
     */
 
 }

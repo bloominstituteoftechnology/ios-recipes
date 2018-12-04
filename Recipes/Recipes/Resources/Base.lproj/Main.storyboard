@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKH-cN-pQ0">
-                                <rect key="frame" x="8" y="64" width="359" height="30"/>
+                                <rect key="frame" x="8" y="72" width="359" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -28,7 +28,7 @@
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCV-RV-yDu">
-                                <rect key="frame" x="0.0" y="102" width="375" height="565"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <connections>
                                     <segue destination="VnB-yY-5jw" kind="embed" identifier="EmbedRecipesTableView" id="RpB-p3-XFX"/>
                                 </connections>
@@ -42,7 +42,7 @@
                             <constraint firstItem="CKH-cN-pQ0" firstAttribute="leading" secondItem="jYU-r9-Obt" secondAttribute="leading" constant="8" id="OAV-jY-ftQ"/>
                             <constraint firstItem="YCV-RV-yDu" firstAttribute="leading" secondItem="jYU-r9-Obt" secondAttribute="leading" id="ZKJ-E7-IjA"/>
                             <constraint firstItem="jYU-r9-Obt" firstAttribute="bottom" secondItem="YCV-RV-yDu" secondAttribute="bottom" id="hKV-Hv-z8S"/>
-                            <constraint firstItem="CKH-cN-pQ0" firstAttribute="top" secondItem="jYU-r9-Obt" secondAttribute="top" id="llh-Ov-Tw6"/>
+                            <constraint firstItem="CKH-cN-pQ0" firstAttribute="top" secondItem="jYU-r9-Obt" secondAttribute="top" constant="8" id="llh-Ov-Tw6"/>
                             <constraint firstItem="YCV-RV-yDu" firstAttribute="top" secondItem="CKH-cN-pQ0" secondAttribute="bottom" constant="8" id="qkU-xz-Ysx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jYU-r9-Obt"/>
@@ -61,7 +61,7 @@
             <objects>
                 <tableViewController id="VnB-yY-5jw" customClass="RecipesTableTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AwS-xm-pD6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -101,7 +101,7 @@
             <objects>
                 <viewController id="Mvl-nf-lgO" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tTU-e4-qki">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3d5-FU-swX">
@@ -111,7 +111,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7nu-L3-7xP">
-                                <rect key="frame" x="8" y="84" width="359" height="473"/>
+                                <rect key="frame" x="8" y="84" width="359" height="465"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
