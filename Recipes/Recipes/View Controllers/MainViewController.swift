@@ -14,12 +14,12 @@ class MainViewController: UIViewController {
     let networkClient = RecipesNetworkClient()
     var recipesTableViewController: RecipesTableViewController?{
         didSet {
-            recipesTableViewController!.recipes = filteredRecipes
+            recipesTableViewController?.recipes = filteredRecipes
         }
     }
     var filteredRecipes: [Recipe] = [] {
         didSet {
-            recipesTableViewController!.recipes = filteredRecipes
+            recipesTableViewController?.recipes = filteredRecipes
         }
     }
     var allRecipes: [Recipe] = [] {
@@ -43,8 +43,9 @@ class MainViewController: UIViewController {
                 NSLog("Error getting recipes: \(error)")
                 return
             }
-            print("did get through here")
-            self.allRecipes = allRecipes ?? []
+            DispatchQueue.main.async {
+                self.allRecipes = allRecipes ?? []
+            }
         }
 
         // Do any additional setup after loading the view.
@@ -53,12 +54,13 @@ class MainViewController: UIViewController {
     func filterRecipes(){
         
         DispatchQueue.main.async {
-            guard let search = self.textField.text, search != "" else {self.filteredRecipes = self.allRecipes
-                return
-            }
+            guard let searchTerm = self.textField.text else { return }
             
-            let text = self.allRecipes.filter{ $0.name.contains(search) || $0.instructions.contains(search)}
-            self.filteredRecipes = text
+            if searchTerm == "" {
+                self.filteredRecipes = self.allRecipes
+            } else {
+                self.filteredRecipes = self.allRecipes.filter{ $0.name.lowercased().contains(searchTerm.lowercased()) || $0.instructions.lowercased().contains(searchTerm.lowercased()) }
+            }
             
         }
         
@@ -71,9 +73,11 @@ class MainViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "embededTableViewSegue"{
-            let recipesTableVC = segue.destination as! RecipesTableViewController
+            let recipesTableVC = segue.destination as? RecipesTableViewController
             recipesTableViewController = recipesTableVC
         }
+        
+        
     }
     
 

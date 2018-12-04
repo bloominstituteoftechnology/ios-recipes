@@ -25,8 +25,10 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeLabel: UILabel!
     @IBOutlet weak var recipeTextView: UITextView!
     
-    private func updateViews(){
-        guard let recipe = recipe, isViewLoaded else {fatalError("unable to get recipe variable")}
+    
+    func updateViews(){
+        guard let recipe = recipe else {fatalError("unable to get recipe variable")}
+        guard isViewLoaded else {return}
         recipeLabel.text = recipe.name
         recipeTextView.text = recipe.instructions
     }

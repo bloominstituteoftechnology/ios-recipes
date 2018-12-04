@@ -49,6 +49,7 @@ class RecipesTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "embededDetailViewSegue"{
+            
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
             guard let destination = segue.destination as? RecipeDetailViewController else {fatalError("segue not going to RecipeDetailVC")} // could put fatal errors
             
