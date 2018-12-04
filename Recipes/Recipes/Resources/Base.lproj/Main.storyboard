@@ -95,25 +95,43 @@
             </objects>
             <point key="canvasLocation" x="1820" y="111"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="pKK-YX-uqn">
             <objects>
-                <viewController id="R70-1S-psd" sceneMemberID="viewController">
+                <viewController id="R70-1S-psd" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gpH-hA-hbx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8Z-Bf-OnV">
-                                <rect key="frame" x="166" y="39" width="71" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8Z-Bf-OnV">
+                                <rect key="frame" x="166" y="40" width="71" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fhb-8N-0Ti">
+                                <rect key="frame" x="8" y="83" width="359" height="474"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="s8Z-Bf-OnV" firstAttribute="top" secondItem="eM3-u5-gK7" secondAttribute="top" constant="20" id="Add-3W-CkI"/>
+                            <constraint firstItem="s8Z-Bf-OnV" firstAttribute="leading" secondItem="eM3-u5-gK7" secondAttribute="leading" constant="166" id="Moh-L2-MFG"/>
+                            <constraint firstItem="eM3-u5-gK7" firstAttribute="trailing" secondItem="fhb-8N-0Ti" secondAttribute="trailing" constant="8" id="XjZ-sN-KBl"/>
+                            <constraint firstItem="eM3-u5-gK7" firstAttribute="bottom" secondItem="fhb-8N-0Ti" secondAttribute="bottom" constant="8" id="eGS-yg-jlA"/>
+                            <constraint firstItem="fhb-8N-0Ti" firstAttribute="top" secondItem="s8Z-Bf-OnV" secondAttribute="bottom" constant="7" id="k47-qi-i8g"/>
+                            <constraint firstItem="fhb-8N-0Ti" firstAttribute="leading" secondItem="eM3-u5-gK7" secondAttribute="leading" constant="8" id="ovs-iE-sFH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="eM3-u5-gK7"/>
                     </view>
+                    <connections>
+                        <outlet property="textLabel" destination="s8Z-Bf-OnV" id="SEe-uW-Wib"/>
+                        <outlet property="textView" destination="fhb-8N-0Ti" id="nf5-m0-IiT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imV-SA-odw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
