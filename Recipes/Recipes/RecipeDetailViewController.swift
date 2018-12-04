@@ -3,6 +3,7 @@ import UIKit
 class RecipeDetailViewController: UIViewController {
     
     var recipe: Recipe? {
+        //didSet gets called once recipe property is set
         didSet {
             updateViews()
         }
