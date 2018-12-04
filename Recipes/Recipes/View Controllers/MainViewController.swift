@@ -13,12 +13,12 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NetworkClient.fetchRecipes { (allRecipes, error) in
+        NetworkClient.fetchRecipes { (recipes, error) in
             if let error = error {
                 NSLog("Error geting recipes: \(error)")
                 return
         }
-            self.allRecipes = allRecipes ?? []
+            self.allRecipes = recipes ?? []
         }
     }
    private let NetworkClient = RecipesNetworkClient()
@@ -34,27 +34,28 @@ class MainViewController: UIViewController {
     }
   private  var recipesTableViewController: RecipesTableViewController? {
         didSet {
-            recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController?.recipes = self.filteredRecipes
         }
     }
-    
-    func filterRecipes() {
-        
-        // guard let textField.text == 
-    
-        // need func
-        
-    }
-    
-    
+  
     @IBOutlet weak var textField: UITextField!
     
     @IBAction func text(_ sender: Any) {
         resignFirstResponder()
         filterRecipes()
     }
-    
-    
+    func filterRecipes() {
+        
+        DispatchQueue.main.async {
+            guard let text = self.textField?.text, !text.isEmpty else {
+                self.filteredRecipes = self.allRecipes
+                return
+            }
+            
+            // need func
+            
+        }
+    }
     // MARK: - Navigation
 
  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,4 +64,5 @@ class MainViewController: UIViewController {
  recipesTableViewController = recipeTableVC
     }
 }
+
 }
