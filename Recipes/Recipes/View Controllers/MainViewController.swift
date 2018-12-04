@@ -16,13 +16,18 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
+        if allRecipes.count == 0 {
         networkClient.fetchRecipes{ (recipes, error) in
             if let error = error {
                 NSLog("Error getting students: \(error)")
                 return
             }
             self.allRecipes = recipes ?? []
+            self.saveData()
         }
+        }
+        
         
 
         // Do any additional setup after loading the view.
@@ -86,6 +91,19 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             }
 }
 }
+    //MARK: Data Persistence
+    let fileURL = URL(fileURLWithPath: NSHomeDirectory())
+        .appendingPathComponent("Library")
+        .appendingPathComponent("Recipes")
+        .appendingPathExtension("plist")
+    
+    func saveData() {
+        try! (filteredRecipes as NSArray).write(to: fileURL)
+    }
+    
+    func loadData() {
+        if let items = NSArray(contentsOf: fileURL) as? [Recipe] {
+            filteredRecipes = items
+        }
+    }
 }
-
-
