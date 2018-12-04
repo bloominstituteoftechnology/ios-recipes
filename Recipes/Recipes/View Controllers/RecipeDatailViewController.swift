@@ -1,18 +1,13 @@
-//
-//  RecipeDatailViewController.swift
-//  Recipes
-//
-//  Created by Sergey Osipyan on 12/3/18.
-//  Copyright © 2018 Lambda Inc. All rights reserved.
-//
 
 import UIKit
 
 class RecipeDatailViewController: UIViewController {
 
+    static let reuseIdentifier = "cell"
     override func viewDidLoad() {
-        super.viewDidLoad
+        super.viewDidLoad()
        updateViews()
+        
     }
     
     var recipe: Recipe? {
@@ -26,17 +21,16 @@ class RecipeDatailViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     func updateViews() {
+        if isViewLoaded == true {
+        guard let recipe = recipe else { fatalError("no such recipe")
+        }
         
-//        guard let recipe = recipe else { fatalError("no such recipe")
-//            return
-        let 
-        
-        let recipe?.name = label.text
-        let recipe?.instructions = textView.text
-        
+        label.text = recipe.name
+        textView.text = recipe.instructions
         
         }
-    }
+        }
+}
     /*
     // MARK: - Navigation
 
