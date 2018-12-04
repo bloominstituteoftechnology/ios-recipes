@@ -1,6 +1,6 @@
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
     
     let reuseIdentifier = "RecipeCell"
     private var recipesTableViewController: RecipesTableViewController! {
@@ -23,14 +23,19 @@ class MainViewController: UIViewController {
     @IBOutlet weak var recipeSearchField: UITextField!
     
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     @IBAction func search(_ sender: Any) {
-        recipeSearchField.resignFirstResponder()
         filterRecipes()
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        recipeSearchField.delegate = self
         // Do any additional setup after loading the view.
         networkClient.fetchRecipes { (allRecipes, error) in
             if let error = error {
@@ -45,13 +50,19 @@ class MainViewController: UIViewController {
     
     
     func filterRecipes() {
-        //unwrap search term and make sure its not empty string
-        if let text = recipeSearchField.text, !text.isEmpty {
-            // TODO: if search term is not empty or nil, filter recipe.name and/or recipe.instructions contains search term
-            filteredRecipes = allRecipes //for testing
-        }else {
-            //if empty or nil, filteredRecipes = allRecipes
-            filteredRecipes = allRecipes
+        
+        DispatchQueue.main.async {
+            //unwrap search term and make sure its not empty string
+            if let text = self.recipeSearchField.text, text != "" {
+                // TODO: if search term is not empty or nil, filter recipe.name and/or recipe.instructions contains search term
+                self.filteredRecipes = self.allRecipes.filter({ $0.name.lowercased().contains(text.lowercased()) || $0.instructions.lowercased().contains(text.lowercased())})
+                
+                //self.filteredRecipes = self.allRecipes //for testing
+           }else {
+                //if empty or nil, filteredRecipes = allRecipes
+                self.filteredRecipes = self.allRecipes
+            }
+            
         }
 
     }
