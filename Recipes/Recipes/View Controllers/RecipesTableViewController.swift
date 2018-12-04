@@ -1,10 +1,4 @@
-//
-//  RecipesTableViewController.swift
-//  Recipes
-//
-//  Created by Sergey Osipyan on 12/3/18.
-//  Copyright © 2018 Lambda Inc. All rights reserved.
-//
+
 
 import UIKit
 
@@ -46,9 +40,11 @@ class RecipesTableViewController: UITableViewController {
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detail" {
-            let recipeTableVC = segue.destination as! RecipeDatailViewController
-            recipeDatailViewController = recipeTableVC
-}
+        
+        guard let destination = segue.destination as? RecipeDatailViewController else {return}
+        if let cell = sender as? UITableViewCell {
+            guard let indexPath = tableView.indexPath(for: cell) else {return}
+            destination.recipe = recipes[indexPath.row]
+        }
 }
 }
