@@ -1,23 +1,31 @@
-
+//
+//  RecipesTableViewController.swift
+//  Recipes
+//
+//  Created by Sergey Osipyan on 12/3/18.
+//  Copyright © 2018 Lambda Inc. All rights reserved.
+//
 
 import UIKit
 
 class RecipesTableViewController: UITableViewController {
 
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
     }
+
     private var recipeDatailViewController: RecipeDatailViewController!
     
    var  recipes: [Recipe] = [] {
     didSet {
-    tableView.reloadData()
+        DispatchQueue.main.async {
+            
+    self.tableView.reloadData()
+        }
     }
     }
-
     // MARK: - Table view data source
 
    
@@ -45,6 +53,9 @@ class RecipesTableViewController: UITableViewController {
         if let cell = sender as? UITableViewCell {
             guard let indexPath = tableView.indexPath(for: cell) else {return}
             destination.recipe = recipes[indexPath.row]
-        }
+        
+        
+            
+}
 }
 }

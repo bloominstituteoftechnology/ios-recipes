@@ -1,10 +1,4 @@
-//
-//  MainViewController.swift
-//  Recipes
-//
-//  Created by Sergey Osipyan on 12/3/18.
-//  Copyright © 2018 Lambda Inc. All rights reserved.
-//
+
 
 import UIKit
 
@@ -30,6 +24,7 @@ class MainViewController: UIViewController {
    private var filteredRecipes: [Recipe] = [] {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
+           recipesTableViewController?.tableView.reloadData()
         }
     }
   private  var recipesTableViewController: RecipesTableViewController? {
@@ -41,8 +36,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     
     @IBAction func text(_ sender: Any) {
-        resignFirstResponder()
+        textField.resignFirstResponder()
         filterRecipes()
+        recipesTableViewController?.recipes = self.filteredRecipes
     }
     func filterRecipes() {
         
@@ -51,9 +47,11 @@ class MainViewController: UIViewController {
                 self.filteredRecipes = self.allRecipes
                 return
             }
-            
             // need func
-            
+            self.filteredRecipes  = self.allRecipes.filter({ (string) -> Bool in
+                return string.name.lowercased().contains(text) || string.instructions.lowercased().contains(text)
+            })
+            self.recipesTableViewController?.tableView.reloadData()
         }
     }
     // MARK: - Navigation
