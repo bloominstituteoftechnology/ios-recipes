@@ -25,6 +25,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="sortByUserString:" destination="k6V-a5-3Tv" eventType="editingDidEnd" id="5QQ-7V-akO"/>
+                                    <action selector="textFieldShouldReturn:" destination="k6V-a5-3Tv" eventType="editingDidEndOnExit" id="eLM-jT-I3v"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrP-Sf-2Y9">
@@ -103,14 +104,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8Z-Bf-OnV">
-                                <rect key="frame" x="166" y="40" width="71" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8Z-Bf-OnV">
+                                <rect key="frame" x="8" y="40" width="359" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fhb-8N-0Ti">
-                                <rect key="frame" x="8" y="83" width="359" height="474"/>
+                                <rect key="frame" x="8" y="96" width="359" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -119,12 +120,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="s8Z-Bf-OnV" firstAttribute="top" secondItem="eM3-u5-gK7" secondAttribute="top" constant="20" id="Add-3W-CkI"/>
-                            <constraint firstItem="s8Z-Bf-OnV" firstAttribute="leading" secondItem="eM3-u5-gK7" secondAttribute="leading" constant="166" id="Moh-L2-MFG"/>
-                            <constraint firstItem="eM3-u5-gK7" firstAttribute="trailing" secondItem="fhb-8N-0Ti" secondAttribute="trailing" constant="8" id="XjZ-sN-KBl"/>
-                            <constraint firstItem="eM3-u5-gK7" firstAttribute="bottom" secondItem="fhb-8N-0Ti" secondAttribute="bottom" constant="8" id="eGS-yg-jlA"/>
-                            <constraint firstItem="fhb-8N-0Ti" firstAttribute="top" secondItem="s8Z-Bf-OnV" secondAttribute="bottom" constant="7" id="k47-qi-i8g"/>
-                            <constraint firstItem="fhb-8N-0Ti" firstAttribute="leading" secondItem="eM3-u5-gK7" secondAttribute="leading" constant="8" id="ovs-iE-sFH"/>
+                            <constraint firstItem="eM3-u5-gK7" firstAttribute="trailing" secondItem="s8Z-Bf-OnV" secondAttribute="trailing" constant="8" id="9RK-5j-7OX"/>
+                            <constraint firstItem="s8Z-Bf-OnV" firstAttribute="top" secondItem="eM3-u5-gK7" secondAttribute="top" constant="20" id="BUE-qd-Ckz"/>
+                            <constraint firstItem="fhb-8N-0Ti" firstAttribute="top" secondItem="s8Z-Bf-OnV" secondAttribute="bottom" constant="20" id="CdR-3k-Nge"/>
+                            <constraint firstItem="s8Z-Bf-OnV" firstAttribute="centerX" secondItem="gpH-hA-hbx" secondAttribute="centerX" id="Ey3-YC-T1f"/>
+                            <constraint firstItem="fhb-8N-0Ti" firstAttribute="leading" secondItem="eM3-u5-gK7" secondAttribute="leading" constant="8" id="Ria-iQ-heU"/>
+                            <constraint firstItem="eM3-u5-gK7" firstAttribute="bottom" secondItem="fhb-8N-0Ti" secondAttribute="bottom" constant="8" id="Unc-7b-PiK"/>
+                            <constraint firstItem="eM3-u5-gK7" firstAttribute="trailing" secondItem="fhb-8N-0Ti" secondAttribute="trailing" constant="8" id="ZAq-hg-fRJ"/>
+                            <constraint firstItem="s8Z-Bf-OnV" firstAttribute="leading" secondItem="eM3-u5-gK7" secondAttribute="leading" constant="8" id="lAE-F2-DgB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eM3-u5-gK7"/>
                     </view>

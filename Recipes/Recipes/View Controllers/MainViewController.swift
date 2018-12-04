@@ -8,18 +8,22 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
-
+class MainViewController: UIViewController, UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkClient.fetchRecipes{ (allRecipes, error) in
+        networkClient.fetchRecipes{ (recipes, error) in
             if let error = error {
                 NSLog("Error getting students: \(error)")
                 return
             }
-            self.allRecipes = allRecipes ?? []
-            
+            self.allRecipes = recipes ?? []
         }
+        
 
         // Do any additional setup after loading the view.
     }
@@ -30,7 +34,7 @@ class MainViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetailViewControllerSegue" {
+        if segue.identifier == "EmbedRecipesViewSegue" {
             let recipesTableVC = segue.destination as! RecipesTableViewController
             recipesTableViewController = recipesTableVC
         }
@@ -52,6 +56,7 @@ class MainViewController: UIViewController {
     
     var filteredRecipes: [Recipe] = [] {
         didSet {
+            
             recipesTableViewController?.recipes = filteredRecipes
         }
     }
@@ -65,20 +70,22 @@ class MainViewController: UIViewController {
         
     }
     
+    
+    
     func filterRecipes() {
         
-        if textField.text == nil {filteredRecipes = allRecipes}
-        else {
-            let text = (self.textField?.text)
-            guard let greatText = text else {fatalError("Could not get text.")}
-            for recipe in self.allRecipes {
+        DispatchQueue.main.async {
+            if let text = self.textField.text, text != "" {
                 
-                self.filteredRecipes += self.allRecipes.filter{ (recipe) -> Bool in recipe.name.contains(Character(greatText) )}
+                self.filteredRecipes = self.allRecipes.filter{ recipe in recipe.name.contains(text)}
                 
-                self.filteredRecipes += self.allRecipes.filter{ (recipe) -> Bool in recipe.instructions.contains(Character(greatText))}
-                }
-        
-        
-            }
-        }
+                self.filteredRecipes += self.allRecipes.filter{ recipe in recipe.instructions.contains(text)}
 }
+            else {
+                self.filteredRecipes = self.allRecipes
+            }
+}
+}
+}
+
+
