@@ -42,8 +42,9 @@ class RecipesTableViewController: UITableViewController {
         
 
         return cell
+        
     }
-
+    
     // MARK: - Navigation
 
     

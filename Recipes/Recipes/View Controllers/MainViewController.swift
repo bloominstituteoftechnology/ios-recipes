@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
     @IBAction func text(_ sender: Any) {
         textField.resignFirstResponder()
         filterRecipes()
-        recipesTableViewController?.recipes = self.filteredRecipes
+    
     }
     func filterRecipes() {
         
@@ -51,9 +51,10 @@ class MainViewController: UIViewController {
             self.filteredRecipes  = self.allRecipes.filter({ (string) -> Bool in
                 return string.name.lowercased().contains(text) || string.instructions.lowercased().contains(text)
             })
-            self.recipesTableViewController?.tableView.reloadData()
+            
         }
     }
+    
     // MARK: - Navigation
 
  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

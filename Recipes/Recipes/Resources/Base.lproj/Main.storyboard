@@ -24,10 +24,10 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hT7-ow-H0b">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="text:" destination="vTB-rR-5dj" eventType="editingDidEnd" id="Eu5-nG-ef5"/>
+                                            <action selector="text:" destination="vTB-rR-5dj" eventType="editingDidEndOnExit" id="3rb-dv-hYb"/>
                                         </connections>
                                     </textField>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7O-rB-HBU">
@@ -50,7 +50,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZbG-TE-dSq"/>
                     <connections>
-                        <outlet property="textField" destination="hT7-ow-H0b" id="sGf-sa-AsJ"/>
+                        <outlet property="textField" destination="hT7-ow-H0b" id="h7u-U1-AAY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0T-50-5oZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -112,7 +112,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uIe-W2-6eV">
-                                <rect key="frame" x="0.0" y="56" width="375" height="509"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="517"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
