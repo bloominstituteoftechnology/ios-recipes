@@ -22,7 +22,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var recipeSearchField: UITextField!
     
-    //TextField return_key listener
+    //TextField listener
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -38,39 +38,40 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         // textField delegate
         recipeSearchField.delegate = self
         
-        // networking
+        // MARK: - networking
         
         //check to see if recipes.json exists
+        var loadedRecipes: [Recipe] = []
         let diskURL = networkClient.getCachesURL()
         let fileURL = diskURL.appendingPathComponent("recipes.json")
         let fileExists = FileManager().fileExists(atPath: fileURL.path)
-        let loadedRecipes = networkClient.getRecipesFromDisk()
-//        if fileExists == true {
-//            self.allRecipes = networkClient.getRecipesFromDisk()
-//            print(networkClient.getRecipesFromDisk())
-//            print(self.allRecipes)
-//        }else {
-//            //if it doesnt exist fetch data from the API
-//            networkClient.fetchRecipes { (allRecipes, error) in
-//                if let error = error {
-//                    NSLog("Error retrieving recipes: \(error)")
-//                    return
-//                }
-//
-//                self.allRecipes = allRecipes ?? []
-//            }
-//        }
-//        //if it doesnt exist fetch data from the API
-        networkClient.fetchRecipes { (allRecipes, error) in
-            if let error = error {
-                NSLog("Error retrieving recipes: \(error)")
-                return
-            }
+        //let loadedRecipes = networkClient.getRecipesFromDisk()
+        if fileExists {
+            loadedRecipes = networkClient.getRecipesFromDisk()
+            self.allRecipes = loadedRecipes
+        }else { loadedRecipes = [] } // <-- for data source test
+        
+        if self.allRecipes.isEmpty {
+            //if it doesnt exist fetch data from the API
+            networkClient.fetchRecipes { (allRecipes, error) in
+                if let error = error {
+                    NSLog("Error retrieving recipes: \(error)")
+                    return
+                }
 
-            self.allRecipes = allRecipes ?? []
+                self.allRecipes = allRecipes ?? []
+                //save the self.allRecipes to recipes.json in caches directory
+                self.networkClient.saveRecipesToDisk(recipes: self.allRecipes)
+            }
         }
-        //save the recipes.json to caches directory
-        networkClient.saveRecipesToDisk(recipes: self.allRecipes)
+        
+        //test for data source
+        if loadedRecipes.isEmpty {
+            print("Recipes Loaded from API")
+        }else {
+            print("Recipes Loaded from Caches Directory")
+        }
+        
     }
     
     

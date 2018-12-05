@@ -36,13 +36,13 @@ struct RecipesNetworkClient {
     }
     
     func saveRecipesToDisk(recipes: [Recipe]) {
-        // 1. Create a URL for documents-caches/posts.json
+        // create a URL for caches/recipes.json
         let url = getCachesURL().appendingPathComponent("recipes.json")
-        // 2. Endcode our [Recipe] data to JSON Data
+        // endcode our [Recipe] data to JSON Data
         let encoder = JSONEncoder()
         do {
             let data = try encoder.encode(recipes)
-            // 3. Write this data to the url specified in step 1
+            // write data to the specified url
             try data.write(to: url, options: [])
         } catch {
             fatalError(error.localizedDescription)
@@ -50,13 +50,13 @@ struct RecipesNetworkClient {
     }
     
     func getRecipesFromDisk() -> [Recipe] {
-        // 1. Create a url for documents-caches/posts.json
+        // create a url for caches/recipes.json
         let url = getCachesURL().appendingPathComponent("recipes.json")
         let decoder = JSONDecoder()
         do {
-            // 2. Retrieve the data on the file in this path (if there is any)
+            // retrieve the data on the file in this path (if there is any)
             let data = try Data(contentsOf: url, options: [])
-            // 3. Decode the array of Recipe from this Data
+            // decode the array of [Recipe] from this JSON Data
             let recipes = try decoder.decode([Recipe].self, from: data)
             return recipes
         } catch {
