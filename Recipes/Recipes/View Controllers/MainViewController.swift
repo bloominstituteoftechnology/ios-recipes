@@ -39,15 +39,38 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         recipeSearchField.delegate = self
         
         // networking
+        
+        //check to see if recipes.json exists
+        let diskURL = networkClient.getCachesURL()
+        let fileURL = diskURL.appendingPathComponent("recipes.json")
+        let fileExists = FileManager().fileExists(atPath: fileURL.path)
+        let loadedRecipes = networkClient.getRecipesFromDisk()
+//        if fileExists == true {
+//            self.allRecipes = networkClient.getRecipesFromDisk()
+//            print(networkClient.getRecipesFromDisk())
+//            print(self.allRecipes)
+//        }else {
+//            //if it doesnt exist fetch data from the API
+//            networkClient.fetchRecipes { (allRecipes, error) in
+//                if let error = error {
+//                    NSLog("Error retrieving recipes: \(error)")
+//                    return
+//                }
+//
+//                self.allRecipes = allRecipes ?? []
+//            }
+//        }
+//        //if it doesnt exist fetch data from the API
         networkClient.fetchRecipes { (allRecipes, error) in
             if let error = error {
                 NSLog("Error retrieving recipes: \(error)")
                 return
             }
-            
+
             self.allRecipes = allRecipes ?? []
         }
-        
+        //save the recipes.json to caches directory
+        networkClient.saveRecipesToDisk(recipes: self.allRecipes)
     }
     
     
