@@ -24,7 +24,7 @@ class MainViewController: UIViewController {
    private var filteredRecipes: [Recipe] = [] {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
-           recipesTableViewController?.tableView.reloadData()
+           
         }
     }
   private  var recipesTableViewController: RecipesTableViewController? {
