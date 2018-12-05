@@ -1,14 +1,6 @@
-//
-//  RecipeDetailViewController.swift
-//  Recipes
-//
-//  Created by Jaspal on 12/4/18.
-//  Copyright © 2018 Lambda Inc. All rights reserved.
-//
-
 import UIKit
 
-class RecipeDetailViewController: UIViewController {
+class RecipesDetailViewController: UIViewController {
     
     var recipe: Recipe? {
         didSet {
