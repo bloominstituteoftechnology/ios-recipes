@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L6i-Fb-TCA">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L6i-Fb-TCA">
                                 <rect key="frame" x="16" y="64" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -28,15 +27,24 @@
                                     <action selector="search:" destination="pDP-PC-JXB" eventType="editingDidEnd" id="yDs-si-31Y"/>
                                 </connections>
                             </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fga-go-b88">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fga-go-b88">
                                 <rect key="frame" x="0.0" y="102" width="375" height="565"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="J13-Ym-7Tw" kind="embed" identifier="EmbedTableView" id="S0G-l7-Yh6"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="poz-tC-XrO" firstAttribute="trailing" secondItem="L6i-Fb-TCA" secondAttribute="trailing" constant="16" id="SeA-1a-7Ll"/>
+                            <constraint firstItem="L6i-Fb-TCA" firstAttribute="leading" secondItem="poz-tC-XrO" secondAttribute="leading" constant="16" id="a6z-fo-tTz"/>
+                            <constraint firstItem="fga-go-b88" firstAttribute="leading" secondItem="poz-tC-XrO" secondAttribute="leading" id="pB6-Aw-j5v"/>
+                            <constraint firstItem="fga-go-b88" firstAttribute="bottom" secondItem="poz-tC-XrO" secondAttribute="bottom" id="rdU-ut-uNc"/>
+                            <constraint firstItem="fga-go-b88" firstAttribute="top" secondItem="L6i-Fb-TCA" secondAttribute="bottom" constant="8" id="sIx-Tg-kaL"/>
+                            <constraint firstItem="fga-go-b88" firstAttribute="trailing" secondItem="poz-tC-XrO" secondAttribute="trailing" id="uJs-Pc-rwh"/>
+                            <constraint firstItem="fga-go-b88" firstAttribute="top" secondItem="L6i-Fb-TCA" secondAttribute="bottom" constant="8" id="vyy-mB-bRG"/>
+                            <constraint firstItem="L6i-Fb-TCA" firstAttribute="top" secondItem="poz-tC-XrO" secondAttribute="top" id="y73-G6-zpW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="poz-tC-XrO"/>
                     </view>
                     <navigationItem key="navigationItem" id="WJW-B2-ujb"/>
@@ -96,23 +104,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lvs-q5-1xx">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lvs-q5-1xx">
                                 <rect key="frame" x="0.0" y="106" width="375" height="459"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiK-GU-gfl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiK-GU-gfl">
                                 <rect key="frame" x="152" y="37" width="71" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uiK-GU-gfl" firstAttribute="leading" secondItem="N2d-WF-YGd" secondAttribute="leading" constant="152" id="1or-1R-J0a"/>
+                            <constraint firstItem="uiK-GU-gfl" firstAttribute="top" secondItem="N2d-WF-YGd" secondAttribute="top" constant="17" id="548-jF-2pl"/>
+                            <constraint firstItem="lvs-q5-1xx" firstAttribute="top" secondItem="uiK-GU-gfl" secondAttribute="bottom" constant="33" id="OfL-Cs-Q9w"/>
+                            <constraint firstItem="lvs-q5-1xx" firstAttribute="trailing" secondItem="N2d-WF-YGd" secondAttribute="trailing" id="RBd-8f-ay3"/>
+                            <constraint firstItem="lvs-q5-1xx" firstAttribute="leading" secondItem="N2d-WF-YGd" secondAttribute="leading" id="bE6-1q-sjR"/>
+                            <constraint firstItem="lvs-q5-1xx" firstAttribute="bottom" secondItem="N2d-WF-YGd" secondAttribute="bottom" id="goW-kl-Z13"/>
+                            <constraint firstItem="N2d-WF-YGd" firstAttribute="trailing" secondItem="uiK-GU-gfl" secondAttribute="trailing" constant="152" id="p9h-Zj-dqP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="N2d-WF-YGd"/>
                     </view>
                     <connections>

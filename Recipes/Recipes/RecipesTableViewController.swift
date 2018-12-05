@@ -29,7 +29,11 @@ class RecipesTableViewController: UITableViewController {
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier = 
+        guard let destination = segue.destination as? RecipeDetailViewController else { return }
+        if let cell = sender as? UITableViewCell {
+            guard let indexpath = tableView.indexPath(for: cell) else { return }
+            destination.recipe = recipes[indexpath.row]
+        }
     }
 
 

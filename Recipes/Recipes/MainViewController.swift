@@ -9,11 +9,28 @@ class MainViewController: UIViewController {
                 NSLog("Error getting recipes: \(error)")
                 return
             }
-            
-            self.allRecipes = recipes ?? []
+            if let recipes = recipes {
+                self.allRecipes = recipes
+            }
         }
-
+    
     }
+    
+        var filteredRecipes: [Recipe] = []
+        
+        func filterRecipes() {
+            guard let searchTerm = self.searchBar.text, !searchTerm.isEmpty else {
+                self.filteredRecipes = self.allRecipes
+                
+                let searchRecipes = self.allRecipes.filter ({$0.name.contains(text) || $0.instructions.contains(text)})
+                self.filteredRecipes = searchRecipes
+
+                
+            }
+    }
+        
+
+
     
     @IBOutlet weak var searchBar: UITextField!
     
@@ -24,7 +41,7 @@ class MainViewController: UIViewController {
     
     private let networkClient = RecipesNetworkClient()
     
-    private var allRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = []
     
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -32,12 +49,7 @@ class MainViewController: UIViewController {
             let recipesTableVC = segue.destination as! RecipesTableViewController
             recipesTableViewController = recipesTableVC
         }
-         var filteredRecipes: [Recipe] = []
         
-        filterRecipes() {
-            
-        }
     }
-    
 
 }
