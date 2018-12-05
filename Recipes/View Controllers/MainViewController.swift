@@ -1,11 +1,3 @@
-//
-//  MainViewController.swift
-//  Recipes
-//
-//  Created by Jaspal on 12/4/18.
-//  Copyright © 2018 Lambda Inc. All rights reserved.
-//
-
 import UIKit
 
 class MainViewController: UIViewController {
@@ -16,18 +8,31 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        networkClient.fetchRecipes{ (allRecipes, error) in
+            if let error = error {
+                NSLog("Error getting recipes: \(error)")
+                return
+            }
+
+            self.allRecipes = allRecipes ?? []
+        }
     }
     
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "EmbedRecipesTableView" {
+            let recipesTableVC = segue.destination as! RecipesTableViewController
+            recipesTableViewController = recipesTableVC
+        }
     }
-    */
+    
+    // Constant for networkClient, set to a new instance of RecipesNetworkClient
+    private let networkClient = RecipesNetworkClient()
+    
+    private var allRecipes: [Recipe] = []
+    
+    private var recipesTableViewController: RecipesTableViewController?
 
 }
