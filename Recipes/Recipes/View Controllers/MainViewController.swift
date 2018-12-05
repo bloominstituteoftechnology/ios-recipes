@@ -8,7 +8,10 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate {
+class MainViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+    
+    
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true

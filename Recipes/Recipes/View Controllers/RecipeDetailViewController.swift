@@ -8,16 +8,26 @@
 
 import UIKit
 
-class RecipeDetailViewController: UIViewController {
+class RecipeDetailViewController: UIViewController, UITextViewDelegate {
+    
+     let mainVC = MainViewController()
 
     override func viewDidLoad() {
+        mainVC.loadData()
+        textView.delegate = self
         super.viewDidLoad()
-        updateViews()
+        if textLabel.text == "Label" {
+            updateViews()}
 
         // Do any additional setup after loading the view.
     }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        mainVC.saveData()
+    }
 
     func updateViews() {
+        mainVC.loadData()
         if isViewLoaded {
         textLabel.text = recipe?.name
         textView.text = recipe?.instructions
