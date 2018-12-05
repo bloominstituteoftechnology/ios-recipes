@@ -24,7 +24,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="mainViewTextAction:" destination="E8u-yh-UNt" eventType="editingDidEnd" id="nx2-6o-VSQ"/>
+                                    <action selector="mainVewTextAction:" destination="E8u-yh-UNt" eventType="editingChanged" id="312-ZB-jje"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3t-Nf-Flj">
@@ -122,36 +122,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Recipe Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlz-b6-Z3F">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="7sI-lo-ppW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="weV-fx-Cex">
-                                <rect key="frame" x="0.0" y="75" width="375" height="478"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ha9-y4-JeE">
+                                <rect key="frame" x="20" y="120" width="375" height="533"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Recipe Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlz-b6-Z3F">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="7sI-lo-ppW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="weV-fx-Cex">
+                                        <rect key="frame" x="0.0" y="75" width="375" height="458"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hlz-b6-Z3F" firstAttribute="leading" secondItem="gMz-Of-n2F" secondAttribute="leading" id="0NO-ev-saI"/>
-                            <constraint firstItem="weV-fx-Cex" firstAttribute="leading" secondItem="gMz-Of-n2F" secondAttribute="leading" id="6HI-57-rYU"/>
-                            <constraint firstItem="weV-fx-Cex" firstAttribute="centerX" secondItem="Tun-Zh-mKV" secondAttribute="centerX" id="CsT-jA-TMZ"/>
-                            <constraint firstItem="hlz-b6-Z3F" firstAttribute="leading" secondItem="gMz-Of-n2F" secondAttribute="leading" id="OkW-Cw-5U0"/>
-                            <constraint firstItem="hlz-b6-Z3F" firstAttribute="top" secondItem="Tun-Zh-mKV" secondAttribute="top" id="Rxr-Ep-2wc"/>
-                            <constraint firstItem="gMz-Of-n2F" firstAttribute="trailing" secondItem="hlz-b6-Z3F" secondAttribute="trailing" id="TgU-Wt-1rS"/>
-                            <constraint firstItem="hlz-b6-Z3F" firstAttribute="trailing" secondItem="gMz-Of-n2F" secondAttribute="trailing" id="YLB-re-34j"/>
-                            <constraint firstItem="gMz-Of-n2F" firstAttribute="trailing" secondItem="weV-fx-Cex" secondAttribute="trailing" id="YX2-Td-9KB"/>
-                            <constraint firstItem="hlz-b6-Z3F" firstAttribute="centerX" secondItem="Tun-Zh-mKV" secondAttribute="centerX" id="iiv-QW-tkZ"/>
-                            <constraint firstItem="gMz-Of-n2F" firstAttribute="bottom" secondItem="weV-fx-Cex" secondAttribute="bottom" id="rbr-gx-rcp"/>
-                            <constraint firstItem="weV-fx-Cex" firstAttribute="top" secondItem="hlz-b6-Z3F" secondAttribute="bottom" id="wR6-E3-tR9"/>
+                            <constraint firstItem="ha9-y4-JeE" firstAttribute="bottom" secondItem="gMz-Of-n2F" secondAttribute="bottom" constant="100" id="4Pb-du-pGX"/>
+                            <constraint firstItem="ha9-y4-JeE" firstAttribute="leading" secondItem="gMz-Of-n2F" secondAttribute="leading" constant="20" id="QAX-BA-6rb"/>
+                            <constraint firstItem="ha9-y4-JeE" firstAttribute="trailing" secondItem="gMz-Of-n2F" secondAttribute="trailing" constant="20" id="VuF-mU-qHe"/>
+                            <constraint firstItem="ha9-y4-JeE" firstAttribute="top" secondItem="gMz-Of-n2F" secondAttribute="top" constant="100" id="auo-Ou-r1q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gMz-Of-n2F"/>
                     </view>
