@@ -15,7 +15,7 @@
 		9DA0F0872117E40100A99E97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */; };
 		F87AEFD621B73C9200F2DD46 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AEFD521B73C9200F2DD46 /* MainViewController.swift */; };
 		F87AEFD821B73D8600F2DD46 /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AEFD721B73D8600F2DD46 /* RecipesTableViewController.swift */; };
-		F87AEFDA21B740A700F2DD46 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AEFD921B740A700F2DD46 /* RecipeDetailViewController.swift */; };
+		F87AEFDA21B740A700F2DD46 /* RecipesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AEFD921B740A700F2DD46 /* RecipesDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		9DA0F0882117E40100A99E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F87AEFD521B73C9200F2DD46 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F87AEFD721B73D8600F2DD46 /* RecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
-		F87AEFD921B740A700F2DD46 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
+		F87AEFD921B740A700F2DD46 /* RecipesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,7 @@
 			children = (
 				F87AEFD521B73C9200F2DD46 /* MainViewController.swift */,
 				F87AEFD721B73D8600F2DD46 /* RecipesTableViewController.swift */,
-				F87AEFD921B740A700F2DD46 /* RecipeDetailViewController.swift */,
+				F87AEFD921B740A700F2DD46 /* RecipesDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 				9DA0F07D2117E3F800A99E97 /* AppDelegate.swift in Sources */,
 				9D59B52C2117F533002FB7CD /* Recipe.swift in Sources */,
 				F87AEFD621B73C9200F2DD46 /* MainViewController.swift in Sources */,
-				F87AEFDA21B740A700F2DD46 /* RecipeDetailViewController.swift in Sources */,
+				F87AEFDA21B740A700F2DD46 /* RecipesDetailViewController.swift in Sources */,
 				F87AEFD821B73D8600F2DD46 /* RecipesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

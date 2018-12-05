@@ -30,7 +30,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfe-EY-qnl">
                                 <rect key="frame" x="0.0" y="94" width="375" height="573"/>
                                 <connections>
-                                    <segue destination="G2v-wu-78h" kind="embed" identifier="EmbedTableViewSegue" id="uWC-oX-oal"/>
+                                    <segue destination="G2v-wu-78h" kind="embed" identifier="EmbedRecipesTableView" id="uWC-oX-oal"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" textLabel="tsf-9Y-bPW" style="IBUITableViewCellStyleDefault" id="xWJ-pc-wPN">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" textLabel="tsf-9Y-bPW" style="IBUITableViewCellStyleDefault" id="xWJ-pc-wPN">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xWJ-pc-wPN" id="P4O-8R-4n6">
@@ -85,7 +85,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="t4D-BJ-bng" kind="show" id="ReW-CU-aEC"/>
+                                    <segue destination="t4D-BJ-bng" kind="show" identifier="ShowRecipesDetailView" id="ReW-CU-aEC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -117,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="237.59999999999999" y="-99.400299850074973"/>
         </scene>
-        <!--Recipe Detail View Controller-->
+        <!--Recipes Detail View Controller-->
         <scene sceneID="dKn-Sg-13I">
             <objects>
-                <viewController id="t4D-BJ-bng" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="t4D-BJ-bng" customClass="RecipesDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V4y-Vv-AcN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
