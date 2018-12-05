@@ -24,7 +24,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="searchTextField:" destination="pTH-QX-M7w" eventType="editingDidEnd" id="Nu9-zK-XKp"/>
+                                    <action selector="searchTextField:" destination="pTH-QX-M7w" eventType="editingDidEnd" id="bCb-g6-pH7"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfe-EY-qnl">
@@ -52,7 +52,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="czN-f9-A4m"/>
                     <connections>
-                        <outlet property="seachTextField" destination="VbT-AK-el2" id="U3G-LZ-VW0"/>
+                        <outlet property="searchTextField" destination="VbT-AK-el2" id="1V6-Hf-IK9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDc-G3-TIj" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -2,8 +2,9 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    @IBOutlet weak var seachTextField: UITextField!
+    @IBOutlet weak var searchTextField: UITextField!
     @IBAction func searchTextField(_ sender: Any) {
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +29,27 @@ class MainViewController: UIViewController {
         }
     }
     
+    func filterRecipes() {
+        DispatchQueue.main.async {
+            guard let query = self.searchTextField.text, !query.isEmpty
+                else {
+                    self.filteredRecipes = self.allRecipes
+                    return
+            }
+            
+            let recipeQuery = self.allRecipes.filter ({$0.name.contains(query) || $0.instructions.contains(query)})
+            self.filteredRecipes = recipeQuery
+            
+        }
+    }
+    
     // Constant for networkClient, set to a new instance of RecipesNetworkClient
     private let networkClient = RecipesNetworkClient()
     
     private var allRecipes: [Recipe] = []
     
     private var recipesTableViewController: RecipesTableViewController?
+    
+    private var filteredRecipes: [Recipe] = []
 
 }
