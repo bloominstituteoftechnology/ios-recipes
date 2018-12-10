@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     
     var filteredRecipes: [Recipe] = [] {
         didSet {
-            recipesTableViewController.recipes = filteredRecipes
+            recipesTableViewController?.recipes = filteredRecipes
         }
     }
     
@@ -42,16 +42,18 @@ class MainViewController: UIViewController {
     }
     
     func filterRecipes() {
-        if let search = searchField.text, search.count > 0 {
-            filteredRecipes = allRecipes.filter {
-                $0.name.contains(search) || $0.instructions.contains(search) }
+        DispatchQueue.main.async {
+            if let search = self.searchField.text, search.count > 0 {
+                self.filteredRecipes = self.allRecipes.filter {
+                $0.name.contains(search) || $0.instructions.contains(search)
+                }
         } else {
-            filteredRecipes = allRecipes
+            self.filteredRecipes = self.allRecipes
             }
         }
-
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detailSegue" {
+        if segue.identifier == "recipeSegue" {
             guard let mainDestination = segue.destination as? RecipesTableViewController else {return}
             
             recipesTableViewController = mainDestination

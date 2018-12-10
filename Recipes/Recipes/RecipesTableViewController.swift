@@ -27,7 +27,7 @@ class RecipesTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "recipeSegue" {
+        if segue.identifier == "detailSegue" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
             guard let recipeDestination = segue.destination as? RecipeDetailViewController else {return}
             
