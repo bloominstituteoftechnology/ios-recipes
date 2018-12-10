@@ -2,6 +2,13 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    var networkClient: RecipesNetworkClient
+    
+    var allRecipes: [Recipe] = []
+    
+    var recipesTableViewController: RecipesTableViewController?
+    
+    
     @IBOutlet weak var recipeText: UITextField!
     
     @IBAction func recipeTextAction(_ sender: Any) {
@@ -12,19 +19,25 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        networkClient.fetchRecipes { (allRecipes, error) in
+            if let error = error {
+                NSLog("Network Error 234423\(error)")
+                return
+            }
+            
+            self.allRecipes = allRecipes ?? []
+        }
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let destinationVC = segue.destination as? RecipesTableViewController {
+            recipesTableViewController = destinationVC
+        }
     }
-    */
 
 }
