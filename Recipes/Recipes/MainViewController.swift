@@ -4,9 +4,17 @@ class MainViewController: UIViewController {
     
     let networkClient = RecipesNetworkClient()
     
-    var allRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
     
-    var recipesTableViewController: RecipesTableViewController?
+    var recipesTableViewController: RecipesTableViewController! {
+        didSet {
+            recipesTableViewController.recipes = filteredRecipes
+        }
+    }
     
     var filteredRecipes: [Recipe] = [] {
         didSet {
