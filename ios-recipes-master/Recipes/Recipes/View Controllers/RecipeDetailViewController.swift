@@ -15,7 +15,7 @@ class RecipeDetailViewController: UIViewController {
         guard isViewLoaded else { return }
         if let recipe = recipe {
             recipeName.text = recipe.name
-            recipeDescription.text = recipe.instructions
+            recipeInstructions.text = recipe.instructions
         }
     }
     
