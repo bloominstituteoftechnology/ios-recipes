@@ -61,12 +61,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="XeI-rs-al4">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" textLabel="U0o-PB-cdl" style="IBUITableViewCellStyleDefault" id="XeI-rs-al4">
                                 <rect key="frame" x="0.0" y="28" width="335" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XeI-rs-al4" id="eVC-GV-paN">
                                     <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U0o-PB-cdl">
+                                            <rect key="frame" x="16" y="0.0" width="303" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -87,7 +96,30 @@
                     <view key="view" contentMode="scaleToFill" id="NAb-fS-TtG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJo-ZA-CHs">
+                                <rect key="frame" x="20" y="40" width="335" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Ve-R7-Q6n">
+                                <rect key="frame" x="20" y="90" width="335" height="557"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3Ve-R7-Q6n" firstAttribute="leading" secondItem="skI-6r-uOl" secondAttribute="leading" constant="20" id="KfX-0E-Va2"/>
+                            <constraint firstItem="KJo-ZA-CHs" firstAttribute="top" secondItem="skI-6r-uOl" secondAttribute="top" constant="20" id="L53-Px-EpZ"/>
+                            <constraint firstItem="KJo-ZA-CHs" firstAttribute="leading" secondItem="skI-6r-uOl" secondAttribute="leading" constant="20" id="MxQ-d1-T44"/>
+                            <constraint firstItem="skI-6r-uOl" firstAttribute="bottom" secondItem="3Ve-R7-Q6n" secondAttribute="bottom" constant="20" id="Ua9-Uh-2us"/>
+                            <constraint firstItem="3Ve-R7-Q6n" firstAttribute="top" secondItem="KJo-ZA-CHs" secondAttribute="bottom" constant="20" id="VSz-7J-Dny"/>
+                            <constraint firstItem="skI-6r-uOl" firstAttribute="trailing" secondItem="KJo-ZA-CHs" secondAttribute="trailing" constant="20" id="ncx-dU-Smv"/>
+                            <constraint firstItem="skI-6r-uOl" firstAttribute="trailing" secondItem="3Ve-R7-Q6n" secondAttribute="trailing" constant="20" id="vnu-ub-e0q"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="skI-6r-uOl"/>
                     </view>
                 </viewController>
