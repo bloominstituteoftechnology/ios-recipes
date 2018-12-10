@@ -8,10 +8,22 @@ class MainViewController: UIViewController {
     
     var recipesTableViewController: RecipesTableViewController?
     
+    var filteredRecipes: [Recipe] = []
+    
     
     @IBOutlet weak var recipeText: UITextField!
     
     @IBAction func recipeTextAction(_ sender: Any) {
+        
+    }
+    
+    func filterRecipes() {
+        
+        let sortedRecipes: [Recipe]
+        
+        if recipeText.selectedSegmentIndex == 0 {
+            sortedRecipes = recipe.sorted(by: )
+        }
         
     }
     
