@@ -4,14 +4,17 @@ import UIKit
 // Only job is to fill out the table view
 class RecipesTableViewController: UITableViewController {
 
-    
     // Array of Recipes
     var recipes: [Recipe] = [] {
         
         // Anytime this variable changes...
         didSet {
-            //...reload the table view
-            tableView.reloadData()
+            
+            // Reload UIKit on main queue
+            DispatchQueue.main.async {
+                //...reload the table view
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -55,9 +58,5 @@ class RecipesTableViewController: UITableViewController {
             destination.recipe = recipe
             
         }
-
-        
-
     }
-
 }

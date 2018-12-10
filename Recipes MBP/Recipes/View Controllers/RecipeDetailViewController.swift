@@ -3,10 +3,10 @@ import UIKit
 
 class RecipeDetailViewController: UIViewController {
 
-    
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var instructionsView: UITextView!
+    
     
     // Instance of our Model - Recipe
     var recipe: Recipe? {
