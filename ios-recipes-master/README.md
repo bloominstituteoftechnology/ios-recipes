@@ -83,3 +83,4 @@ Since this table view controller is embedded in the `MainViewController`, it wil
 
 - Add local persistence so that the recipes only have to be fetched from the API once.
 - Add the ability to update the recipes.
+- Use an actual search bar and adopt the SearchBarDelegate protocol instead of using a text field
