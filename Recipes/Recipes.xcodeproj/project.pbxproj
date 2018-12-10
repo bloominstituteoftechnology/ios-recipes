@@ -11,11 +11,11 @@
 		489BD87421B5C71200B46E6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 489BD87221B5C71200B46E6E /* Main.storyboard */; };
 		489BD87621B5C71300B46E6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 489BD87521B5C71300B46E6E /* Assets.xcassets */; };
 		489BD87921B5C71300B46E6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 489BD87721B5C71300B46E6E /* LaunchScreen.storyboard */; };
-		489BD88121B5CE7600B46E6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BD88021B5CE7600B46E6E /* MainViewController.swift */; };
-		489BD88321B5D0D100B46E6E /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BD88221B5D0D100B46E6E /* RecipesTableViewController.swift */; };
-		489BD88521B5D24E00B46E6E /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BD88421B5D24E00B46E6E /* RecipeDetailViewController.swift */; };
 		489BD88821B5DC0800B46E6E /* RecipesNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BD88721B5DBFA00B46E6E /* RecipesNetworkClient.swift */; };
 		489BD88B21B5DC1900B46E6E /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BD88A21B5DC1300B46E6E /* Recipe.swift */; };
+		48E242A721BF0F9B004AE94D /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E242A621BF0F9B004AE94D /* RecipesTableViewController.swift */; };
+		48E242A921BF0FB2004AE94D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E242A821BF0FB2004AE94D /* MainViewController.swift */; };
+		48E242AB21BF0FC3004AE94D /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E242AA21BF0FC3004AE94D /* RecipeDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,11 +25,11 @@
 		489BD87521B5C71300B46E6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		489BD87821B5C71300B46E6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		489BD87A21B5C71300B46E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		489BD88021B5CE7600B46E6E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		489BD88221B5D0D100B46E6E /* RecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
-		489BD88421B5D24E00B46E6E /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		489BD88721B5DBFA00B46E6E /* RecipesNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesNetworkClient.swift; sourceTree = "<group>"; };
 		489BD88A21B5DC1300B46E6E /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		48E242A621BF0F9B004AE94D /* RecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipesTableViewController.swift; path = Recipes/RecipesTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		48E242A821BF0FB2004AE94D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Recipes/MainViewController.swift; sourceTree = SOURCE_ROOT; };
+		48E242AA21BF0FC3004AE94D /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipeDetailViewController.swift; path = Recipes/RecipeDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +63,9 @@
 			isa = PBXGroup;
 			children = (
 				489BD86E21B5C71200B46E6E /* AppDelegate.swift */,
-				489BD88021B5CE7600B46E6E /* MainViewController.swift */,
-				489BD88221B5D0D100B46E6E /* RecipesTableViewController.swift */,
-				489BD88421B5D24E00B46E6E /* RecipeDetailViewController.swift */,
+				48E242A621BF0F9B004AE94D /* RecipesTableViewController.swift */,
+				48E242A821BF0FB2004AE94D /* MainViewController.swift */,
+				48E242AA21BF0FC3004AE94D /* RecipeDetailViewController.swift */,
 				489BD87221B5C71200B46E6E /* Main.storyboard */,
 				489BD88621B5DBFA00B46E6E /* Networking */,
 				489BD88921B5DC1300B46E6E /* Model */,
@@ -127,7 +127,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 489BD86621B5C71200B46E6E /* Build configuration list for PBXProject "recipes" */;
+			buildConfigurationList = 489BD86621B5C71200B46E6E /* Build configuration list for PBXProject "Recipes" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -163,12 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				489BD88121B5CE7600B46E6E /* MainViewController.swift in Sources */,
-				489BD88321B5D0D100B46E6E /* RecipesTableViewController.swift in Sources */,
 				489BD88821B5DC0800B46E6E /* RecipesNetworkClient.swift in Sources */,
 				489BD88B21B5DC1900B46E6E /* Recipe.swift in Sources */,
+				48E242A721BF0F9B004AE94D /* RecipesTableViewController.swift in Sources */,
 				489BD86F21B5C71200B46E6E /* AppDelegate.swift in Sources */,
-				489BD88521B5D24E00B46E6E /* RecipeDetailViewController.swift in Sources */,
+				48E242AB21BF0FC3004AE94D /* RecipeDetailViewController.swift in Sources */,
+				48E242A921BF0FB2004AE94D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +347,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		489BD86621B5C71200B46E6E /* Build configuration list for PBXProject "recipes" */ = {
+		489BD86621B5C71200B46E6E /* Build configuration list for PBXProject "Recipes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				489BD87B21B5C71300B46E6E /* Debug */,

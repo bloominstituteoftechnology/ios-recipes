@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="2Ud-hf-YNy">
             <objects>
-                <viewController id="XO1-CN-LW1" sceneMemberID="viewController">
+                <viewController id="XO1-CN-LW1" customClass="MainViewController" customModule="recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2PU-Fc-X5u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,6 +23,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="search:" destination="XO1-CN-LW1" eventType="editingDidEndOnExit" id="62z-dU-RPg"/>
+                                </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uip-5q-cFX">
                                 <rect key="frame" x="20" y="134" width="335" height="533"/>
@@ -49,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="2070" y="134"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Recipes Table View Controller-->
         <scene sceneID="7A4-zo-wHF">
             <objects>
-                <tableViewController id="mgb-sP-d3V" sceneMemberID="viewController">
+                <tableViewController id="mgb-sP-d3V" customClass="RecipesTableViewController" customModule="recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vbT-R4-oNy">
                         <rect key="frame" x="0.0" y="0.0" width="335" height="533"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="2808" y="127"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="9il-7L-YfZ">
             <objects>
-                <viewController id="bXj-LD-6n1" sceneMemberID="viewController">
+                <viewController id="bXj-LD-6n1" customClass="RecipeDetailViewController" customModule="recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NAb-fS-TtG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
