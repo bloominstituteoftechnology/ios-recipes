@@ -88,6 +88,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OQi-Nh-wzV"/>
                     </view>
+                    <connections>
+                        <outlet property="recipeDescription" destination="qWg-9e-9qU" id="Bva-bs-Av3"/>
+                        <outlet property="recipeName" destination="r9R-eV-JNV" id="JFW-WI-dp0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1N7-Xc-LHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,7 +106,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" textLabel="QTK-Hh-7EN" style="IBUITableViewCellStyleDefault" id="lQp-Xj-dAV">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="QTK-Hh-7EN" style="IBUITableViewCellStyleDefault" id="lQp-Xj-dAV">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lQp-Xj-dAV" id="utG-Xb-MAe">
@@ -119,7 +123,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="cDY-25-aS0" kind="show" identifier="RecipeDetails" id="Syc-aT-l2o"/>
+                                    <segue destination="cDY-25-aS0" kind="show" identifier="ShowDetailView" id="Syc-aT-l2o"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

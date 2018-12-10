@@ -47,7 +47,7 @@ Please fork and clone this repository. This repository has a starter project wit
 
 3. In the detail view controller scene:
     - Add a label to the top of the scene. This will display the name of the recipe. Set its text to be fairly large.
-    - Add a **text view** under the label, and have it fill the rest of the view controller. This will display the instructions for the recipe. Text views work fantastic for displaying large strings. They have built in support for selecting text and scrolling if the text is too large to be displayed all at once without you having to do any extra work. 
+    - Add a text view under the label, and have it fill the rest of the view controller. This will display the instructions for the recipe. Text views work fantastic for displaying large strings. They have built in support for selecting text and scrolling if the text is too large to be displayed all at once without you having to do any extra work. 
     - With the text view selected, uncheck the `Editable` box in Attributes Inspector. With it checked, the user would be able to edit the text view's text, so in order to make it more like a label we make the text view uneditable, but they're still able to scroll and select text.
     - Create a Cocoa Touch subclass of `UIViewController` called `RecipeDetailViewController`. 
     - Set this scene's class to `RecipeDetailViewController`.
@@ -61,7 +61,7 @@ We're going to start the view controller implementation backwards from the actua
 
 1. In the `RecipeDetailViewController`, add a variable `recipe: Recipe?`.
 2. Create a function called `updateViews()`. This should take the values of the `recipe` and place them in the corresponding outlets. The recipe's `name` should go in the label, and the `instructions` in the text view. Check that the view is loaded when unwrapping the `recipe` object by using the view controller's `isViewLoaded` property.
-3. Call `updateViews()` in the `viewDidLoad()`, and in the `didSet` of the `recipe` variable.
+3. Call `updateViews()` in `viewDidLoad()` and in `didSet` of the `recipe` variable.
 
 #### RecipesTableViewController
 
