@@ -29,7 +29,7 @@ Please fork and clone this repository. This repository has a starter project wit
     - Add a container view right below the text field, and have it fill the rest of the view controller.
     - Delete the view controller attached to the container view. Add a `UITableViewController` scene, and embed it in the container view. Give the embed segue an identifier.
     - Create a Cocoa Touch subclass of `UIViewController` called `MainViewController`. Set this scene's class to `MainViewController`.
-    - Add an outlet from the text field to the `MainViewController` class. Add an action from the text field as well, with the event as "Editing Did End". (It should be the default event)
+    - Add an outlet from the text field to the `MainViewController` class. Add an action from the text field as well, with the event as "Editing Did End on Exit". (It should be the default event (or the first one.))
 
 2. In the embedded `UITableViewController`:
     - Set the cell's style to "Basic" if it isn't already.
@@ -40,7 +40,7 @@ Please fork and clone this repository. This repository has a starter project wit
 
 3. In the detail view controller scene:
     - Add a label to the top of the scene. This will display the name of the recipe. Set its text to be fairly large.
-    - Add a text **view** under the label, and have it fill the rest of the view controller. This will display the instructions for the recipe. Text views work fantastic for displaying large strings. They have built in support for selecting text and scrolling if the text is too large to be displayed all at once without you having to do any extra work. 
+    - Add a **text view** under the label, and have it fill the rest of the view controller. This will display the instructions for the recipe. Text views work fantastic for displaying large strings. They have built in support for selecting text and scrolling if the text is too large to be displayed all at once without you having to do any extra work. 
     - With the text view selected, uncheck the `Editable` box in Attributes Inspector. With it checked, the user would be able to edit the text view's text, so in order to make it more like a label we make the text view uneditable, but they're still able to scroll and select text.
     - Create a Cocoa Touch subclass of `UIViewController` called `RecipeDetailViewController`. Set this scene's class to `RecipeDetailViewController`.
     - Add outlets from the label and text view to the `RecipeDetailViewController` class
