@@ -1,14 +1,23 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
+    let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = []
+    
     @IBAction func search(_ sender: Any) {
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        networkClient.fetchRecipes { (recipes, error) in
+            if let error = error {
+                NSLog("Error getting recipes: \(error)")
+                return
+            }
+            
+            self.allRecipes = recipes ?? []
+        }
     }
     
 
