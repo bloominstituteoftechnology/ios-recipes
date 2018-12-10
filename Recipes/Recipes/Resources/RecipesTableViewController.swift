@@ -9,19 +9,9 @@ class RecipesTableViewController: UITableViewController {
     var recipes: [Recipe] = [] {
         didSet {
             DispatchQueue.main.async {
-                // reload table coad
+                self.tableView.reloadData()
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -41,17 +31,15 @@ class RecipesTableViewController: UITableViewController {
         return cell
     }
     
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
-        if let destinationVC = segue.destination as? RecipeDetailViewController {
-            recipeDetailViewController = destinationVC
+        guard let destinationVC = segue.destination as? RecipeDetailViewController else { return }
+        if let cell = sender as? UITableViewCell {
+            guard let indexPath = tableView.indexPath(for: cell) else { return }
+            destinationVC.recipe = recipes[indexPath.row]
         }
-        // Pass the selected object to the new view controller.
     }
-    
-
 }

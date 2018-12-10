@@ -2,13 +2,26 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var networkClient: RecipesNetworkClient
+    let networkClient = RecipesNetworkClient()
     
-    var allRecipes: [Recipe] = []
+    var allRecipes = [Recipe]() {
+        didSet {
+            filterRecipes()
+        }
+    }
     
-    var recipesTableViewController: RecipesTableViewController?
+    var recipesTableViewController: RecipesTableViewController! {
+        didSet {
+            recipesTableViewController.recipes = filteredRecipes
+        }
+    }
     
-    var filteredRecipes: [Recipe] = []
+    var filteredRecipes = [Recipe]() {
+        didSet {
+            recipesTableViewController.recipes = filteredRecipes
+            recipesTableViewController.tableView.reloadData()
+        }
+    }
     
     
     @IBOutlet weak var recipeText: UITextField!
@@ -18,16 +31,15 @@ class MainViewController: UIViewController {
     }
     
     func filterRecipes() {
-        
-        let sortedRecipes: [Recipe]
-        
-        if recipeText.selectedSegmentIndex == 0 {
-            sortedRecipes = recipe.sorted(by: )
+        DispatchQueue.main.async {
+            if let text = self.recipeText.text, !text.isEmpty {
+                self.filteredRecipes = self.allRecipes.filter({ (recipe) -> Bool in
+                    return recipe.name.contains(text) || recipe.instructions.contains(text) } )
+            } else {
+                self.filteredRecipes = self.allRecipes
+            }
         }
-        
     }
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
