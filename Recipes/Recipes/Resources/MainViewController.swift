@@ -26,7 +26,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var recipeText: UITextField!
     
     @IBAction func recipeTextAction(_ sender: Any) {
-        
+        recipeText.resignFirstResponder()
+        filterRecipes()
     }
     
     func filterRecipes() {
