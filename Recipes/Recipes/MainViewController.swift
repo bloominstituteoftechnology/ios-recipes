@@ -8,11 +8,17 @@ class MainViewController: UIViewController {
     
     var recipesTableViewController: RecipesTableViewController?
     
-    var filteredRecipes: [Recipe] = []
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController.recipes = filteredRecipes
+        }
+    }
     
     @IBOutlet weak var searchField: UITextField!
     
     @IBAction func search(_ sender: Any) {
+        searchField.resignFirstResponder()
+        filterRecipes()
     }
     
     override func viewDidLoad() {
