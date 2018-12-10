@@ -23,9 +23,9 @@ class RecipesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-
-        let recipe = recipes[indexPath.row]
-        cell.textLabel?.text = recipe.name
+        cell.textLabel?.text = recipes[indexPath.row].name
+//        let recipe = recipes[indexPath.row]
+//        cell.textLabel?.text = recipe.name
        // cell.?.text = recipe.instructions
 
         return cell
@@ -33,13 +33,11 @@ class RecipesTableViewController: UITableViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        guard let destinationVC = segue.destination as? RecipeDetailViewController else { return }
+        guard let destination = segue.destination as? RecipeDetailViewController else {return}
         if let cell = sender as? UITableViewCell {
-            guard let indexPath = tableView.indexPath(for: cell) else { return }
-            destinationVC.recipe = recipes[indexPath.row]
+            guard let indexPath = tableView.indexPath(for: cell) else {return}
+            destination.recipe = recipes[indexPath.row]
         }
     }
 }

@@ -18,37 +18,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PdM-wl-kwr">
-                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ltv-iL-Lud">
-                                        <rect key="frame" x="8" y="0.0" width="359" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="recipeTextAction:" destination="GqO-bp-mIZ" eventType="editingDidEnd" id="aNd-bn-xC4"/>
-                                        </connections>
-                                    </textField>
-                                    <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="2ti-aN-GsA">
-                                        <rect key="frame" x="20" y="38" width="335" height="557"/>
-                                        <connections>
-                                            <segue destination="peO-Bb-7HE" kind="embed" identifier="ContainerSegue" id="I2p-0D-bwD"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Ltv-iL-Lud" secondAttribute="trailing" constant="8" id="XyZ-qP-Ftt"/>
-                                    <constraint firstItem="Ltv-iL-Lud" firstAttribute="leading" secondItem="PdM-wl-kwr" secondAttribute="leading" constant="8" id="bLJ-YX-vXw"/>
-                                </constraints>
-                            </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="247" horizontalCompressionResistancePriority="747" verticalCompressionResistancePriority="745" translatesAutoresizingMaskIntoConstraints="NO" id="2ti-aN-GsA">
+                                <rect key="frame" x="8" y="110" width="359" height="549"/>
+                                <connections>
+                                    <segue destination="peO-Bb-7HE" kind="embed" identifier="ContainerSegue" id="I2p-0D-bwD"/>
+                                </connections>
+                            </containerView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ltv-iL-Lud">
+                                <rect key="frame" x="8" y="72" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="recipeTextAction:" destination="GqO-bp-mIZ" eventType="editingDidEnd" id="aNd-bn-xC4"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="PdM-wl-kwr" firstAttribute="leading" secondItem="X4p-LQ-SkM" secondAttribute="leading" id="8UW-Pf-esf"/>
-                            <constraint firstItem="X4p-LQ-SkM" firstAttribute="bottom" secondItem="PdM-wl-kwr" secondAttribute="bottom" id="FHa-F8-frj"/>
-                            <constraint firstItem="X4p-LQ-SkM" firstAttribute="trailing" secondItem="PdM-wl-kwr" secondAttribute="trailing" id="n0N-Bc-8rb"/>
-                            <constraint firstItem="PdM-wl-kwr" firstAttribute="top" secondItem="X4p-LQ-SkM" secondAttribute="top" constant="8" id="ncY-7j-zyZ"/>
+                            <constraint firstItem="X4p-LQ-SkM" firstAttribute="trailing" secondItem="2ti-aN-GsA" secondAttribute="trailing" constant="8" id="7ey-MT-xgd"/>
+                            <constraint firstItem="2ti-aN-GsA" firstAttribute="top" secondItem="Ltv-iL-Lud" secondAttribute="bottom" constant="8" id="8Rf-Pc-chA"/>
+                            <constraint firstItem="Ltv-iL-Lud" firstAttribute="leading" secondItem="X4p-LQ-SkM" secondAttribute="leading" constant="8" id="HTY-NP-Ilm"/>
+                            <constraint firstItem="Ltv-iL-Lud" firstAttribute="top" secondItem="X4p-LQ-SkM" secondAttribute="top" constant="8" id="N5R-sV-K0A"/>
+                            <constraint firstItem="Ltv-iL-Lud" firstAttribute="trailing" secondItem="X4p-LQ-SkM" secondAttribute="trailing" constant="8" id="hcv-II-F2N"/>
+                            <constraint firstItem="X4p-LQ-SkM" firstAttribute="bottom" secondItem="2ti-aN-GsA" secondAttribute="bottom" constant="8" id="oVf-bj-ga6"/>
+                            <constraint firstItem="2ti-aN-GsA" firstAttribute="leading" secondItem="X4p-LQ-SkM" secondAttribute="leading" constant="8" id="vff-C6-cxs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X4p-LQ-SkM"/>
                     </view>
@@ -66,19 +60,19 @@
             <objects>
                 <tableViewController id="peO-Bb-7HE" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6hk-Wh-q1E">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="557"/>
+                        <rect key="frame" x="0.0" y="0.0" width="359" height="549"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" textLabel="GQJ-2v-1a1" style="IBUITableViewCellStyleDefault" id="jyS-GC-iIT">
-                                <rect key="frame" x="0.0" y="28" width="335" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jyS-GC-iIT" id="GXl-v8-rek">
-                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GQJ-2v-1a1">
-                                            <rect key="frame" x="16" y="0.0" width="303" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="327" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -87,7 +81,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="nva-fC-RYc" kind="show" identifier="showSecondViewSegue" trigger="accessoryAction" id="oj4-YS-aDu"/>
+                                    <segue destination="nva-fC-RYc" kind="show" id="bM1-K7-m4C"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -106,20 +100,20 @@
             <objects>
                 <viewController id="nva-fC-RYc" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yLE-Wd-Jr5">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="557"/>
+                        <rect key="frame" x="0.0" y="0.0" width="359" height="549"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YDU-7W-X5m">
-                                <rect key="frame" x="8" y="28" width="319" height="521"/>
+                                <rect key="frame" x="8" y="28" width="343" height="513"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAD-uN-fy0">
-                                        <rect key="frame" x="126.5" y="0.0" width="66.5" height="33.5"/>
+                                        <rect key="frame" x="138.5" y="0.0" width="66.5" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pXO-6u-wg5">
-                                        <rect key="frame" x="39.5" y="41.5" width="240" height="479.5"/>
+                                        <rect key="frame" x="51.5" y="41.5" width="240" height="471.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

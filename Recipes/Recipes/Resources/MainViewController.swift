@@ -23,7 +23,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    
     @IBOutlet weak var recipeText: UITextField!
     
     @IBAction func recipeTextAction(_ sender: Any) {
@@ -53,15 +52,13 @@ class MainViewController: UIViewController {
         }
     }
     
-
-    
     // MARK: - Navigation
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? RecipesTableViewController {
-            recipesTableViewController = destinationVC
+        guard let destination = segue.destination as? RecipesTableViewController else { return }
+        if segue.identifier == "ContainerSegue" {
+            recipesTableViewController = destination
         }
     }
-
 }
