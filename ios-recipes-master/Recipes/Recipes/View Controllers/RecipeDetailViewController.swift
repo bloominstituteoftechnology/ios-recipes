@@ -26,5 +26,7 @@ class RecipeDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBOutlet weak var recipeName: UILabel!
+    @IBOutlet weak var recipeDescription: UITextView!
+    
 }
