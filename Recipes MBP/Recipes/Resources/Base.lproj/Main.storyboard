@@ -96,16 +96,45 @@
             </objects>
             <point key="canvasLocation" x="2362" y="178"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="dlu-Oh-T9P">
             <objects>
-                <viewController id="evk-SX-a6D" sceneMemberID="viewController">
+                <viewController id="evk-SX-a6D" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="84A-Ck-DYm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwc-BX-gL2">
+                                <rect key="frame" x="8" y="28" width="359" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zEi-Pi-b5h">
+                                <rect key="frame" x="8" y="72" width="359" height="477"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zEi-Pi-b5h" firstAttribute="leading" secondItem="0R6-Go-AlI" secondAttribute="leading" constant="8" id="34T-ba-QX7"/>
+                            <constraint firstItem="0R6-Go-AlI" firstAttribute="bottom" secondItem="zEi-Pi-b5h" secondAttribute="bottom" constant="8" id="X2K-Vp-sDT"/>
+                            <constraint firstItem="zEi-Pi-b5h" firstAttribute="top" secondItem="vwc-BX-gL2" secondAttribute="bottom" constant="8" id="fl4-fp-pFr"/>
+                            <constraint firstItem="vwc-BX-gL2" firstAttribute="top" secondItem="0R6-Go-AlI" secondAttribute="top" constant="8" id="hA6-t7-snb"/>
+                            <constraint firstItem="0R6-Go-AlI" firstAttribute="trailing" secondItem="vwc-BX-gL2" secondAttribute="trailing" constant="8" id="lPS-67-Pnh"/>
+                            <constraint firstItem="vwc-BX-gL2" firstAttribute="leading" secondItem="0R6-Go-AlI" secondAttribute="leading" constant="8" id="olq-DE-tiH"/>
+                            <constraint firstItem="zEi-Pi-b5h" firstAttribute="top" secondItem="vwc-BX-gL2" secondAttribute="bottom" constant="8" id="qea-PO-52f"/>
+                            <constraint firstItem="0R6-Go-AlI" firstAttribute="trailing" secondItem="zEi-Pi-b5h" secondAttribute="trailing" constant="8" id="z2w-oH-xQH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0R6-Go-AlI"/>
                     </view>
+                    <connections>
+                        <outlet property="instructionsView" destination="zEi-Pi-b5h" id="qzl-lj-xdM"/>
+                        <outlet property="nameLabel" destination="vwc-BX-gL2" id="TuQ-zi-ISu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNh-Yx-TYW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

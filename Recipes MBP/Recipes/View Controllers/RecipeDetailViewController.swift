@@ -3,6 +3,12 @@ import UIKit
 
 class RecipeDetailViewController: UIViewController {
 
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var instructionsView: UITextView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
