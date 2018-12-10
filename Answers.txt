@@ -1,0 +1,6 @@
+understand and explain what a closure is and common scenarios for their use
+understand and use Swift’s closure syntax
+use Swift’s sort, filter, map, compactMap, and reduce functions
+understand and explain what concurrency is, and reasons why it is used
+use GCD APIs to dispatch work to another queue
+understand and explain the role of the main queue in iOS apps
