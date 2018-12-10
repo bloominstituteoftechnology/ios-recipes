@@ -30,7 +30,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="searchTextField:" destination="pTH-QX-M7w" eventType="editingDidEnd" id="bCb-g6-pH7"/>
+                                    <action selector="searchTextField:" destination="pTH-QX-M7w" eventType="editingDidEndOnExit" id="3Rh-hg-c0K"/>
                                 </connections>
                             </textField>
                         </subviews>

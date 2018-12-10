@@ -7,6 +7,7 @@ class MainViewController: UIViewController {
         searchTextField.resignFirstResponder()
         filterRecipes()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
