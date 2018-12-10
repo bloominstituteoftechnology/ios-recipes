@@ -1,7 +1,11 @@
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
-
+    @IBOutlet weak var recipeLabel: UILabel!
+    
+    @IBOutlet weak var instructionView: UITextView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

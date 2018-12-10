@@ -103,7 +103,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Ve-R7-Q6n">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Ve-R7-Q6n">
                                 <rect key="frame" x="20" y="90" width="335" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -122,6 +122,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="skI-6r-uOl"/>
                     </view>
+                    <connections>
+                        <outlet property="instructionView" destination="3Ve-R7-Q6n" id="sle-AC-fQe"/>
+                        <outlet property="recipeLabel" destination="KJo-ZA-CHs" id="sWe-Kj-1dw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Obu-MO-a0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
