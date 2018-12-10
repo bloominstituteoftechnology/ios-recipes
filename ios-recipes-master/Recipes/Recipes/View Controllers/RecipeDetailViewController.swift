@@ -3,7 +3,7 @@ import UIKit
 class RecipeDetailViewController: UIViewController {
 
     @IBOutlet weak var recipeName: UILabel!
-    @IBOutlet weak var recipeDescription: UITextView!
+    @IBOutlet weak var recipeInstructions: UITextView!
     
     var recipe: Recipe? {
         didSet {

@@ -66,14 +66,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9R-eV-JNV">
-                                <rect key="frame" x="8" y="28" width="359" height="36"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qWg-9e-9qU">
-                                <rect key="frame" x="48" y="206" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qWg-9e-9qU">
+                                <rect key="frame" x="0.0" y="64" width="375" height="509"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -82,14 +81,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="r9R-eV-JNV" firstAttribute="leading" secondItem="OQi-Nh-wzV" secondAttribute="leading" constant="8" id="CNO-o7-Cbw"/>
-                            <constraint firstItem="OQi-Nh-wzV" firstAttribute="trailing" secondItem="r9R-eV-JNV" secondAttribute="trailing" constant="8" id="E0j-PZ-N3a"/>
-                            <constraint firstItem="r9R-eV-JNV" firstAttribute="top" secondItem="OQi-Nh-wzV" secondAttribute="top" constant="8" id="EEd-qx-ccN"/>
+                            <constraint firstItem="qWg-9e-9qU" firstAttribute="leading" secondItem="OQi-Nh-wzV" secondAttribute="leading" id="2TB-Ng-bgj"/>
+                            <constraint firstItem="qWg-9e-9qU" firstAttribute="top" secondItem="r9R-eV-JNV" secondAttribute="bottom" constant="8" id="3LM-IL-jD0"/>
+                            <constraint firstItem="qWg-9e-9qU" firstAttribute="bottom" secondItem="OQi-Nh-wzV" secondAttribute="bottom" id="8So-wB-x61"/>
+                            <constraint firstItem="r9R-eV-JNV" firstAttribute="leading" secondItem="OQi-Nh-wzV" secondAttribute="leading" id="eF0-W5-G06"/>
+                            <constraint firstItem="r9R-eV-JNV" firstAttribute="top" secondItem="OQi-Nh-wzV" secondAttribute="top" id="jSa-6z-4KF"/>
+                            <constraint firstItem="qWg-9e-9qU" firstAttribute="trailing" secondItem="OQi-Nh-wzV" secondAttribute="trailing" id="o3T-e9-Qlv"/>
+                            <constraint firstItem="OQi-Nh-wzV" firstAttribute="trailing" secondItem="r9R-eV-JNV" secondAttribute="trailing" id="uZL-nN-gBv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OQi-Nh-wzV"/>
                     </view>
                     <connections>
-                        <outlet property="recipeDescription" destination="qWg-9e-9qU" id="Bva-bs-Av3"/>
+                        <outlet property="recipeInstructions" destination="qWg-9e-9qU" id="R0x-wc-Tlj"/>
                         <outlet property="recipeName" destination="r9R-eV-JNV" id="JFW-WI-dp0"/>
                     </connections>
                 </viewController>
