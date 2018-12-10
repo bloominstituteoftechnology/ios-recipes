@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="111" width="375" height="556"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="S0b-B3-kyL" kind="embed" identifier="embeddedTableView" id="Nwk-0s-oFG"/>
+                                    <segue destination="S0b-B3-kyL" kind="embed" identifier="EmbeddedTableView" id="Nwk-0s-oFG"/>
                                 </connections>
                             </containerView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RDJ-Cw-DPQ">

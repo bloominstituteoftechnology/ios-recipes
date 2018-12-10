@@ -9,17 +9,38 @@
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
-    
+    let recipe: Recipe?
     
     @IBOutlet weak var recipeName: UILabel!
     
     @IBOutlet weak var recipeTextView: UITextView!
     
+    var recipe: Recipe?
+    
+    func updateViews() {
+        
+        let recipeName.text = // ?? - How do we get this?
+        let recipeTextView.text =  // ??
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
     
     
     
     
     
+    override var isViewLoaded: Bool {
+        // ??
+        
+        
+    }
     
     
     
@@ -28,6 +49,8 @@ class RecipeDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateViews()
 
         // Do any additional setup after loading the view.
     }
