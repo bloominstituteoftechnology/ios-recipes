@@ -8,22 +8,38 @@ class RecipeDetailViewController: UIViewController {
     
     @IBOutlet weak var instructionsView: UITextView!
     
+    // Instance of our Model - Recipe
+    var recipe: Recipe? {
+        
+        // Anytime this property changes...
+        didSet {
+            
+            //...Update the label and view
+            updateViews()
+        }
+    }
+    
+
+    func updateViews() {
+        
+        // Check that the view is loaded
+        guard isViewLoaded else { return }
+        
+        // Ensure we have a recipe to present
+        if let recipe = recipe {
+            
+            // Populate label and view
+            nameLabel.text = recipe.name
+            instructionsView.text = recipe.instructions
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Update label and view with corresponding recipe
+        updateViews()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
