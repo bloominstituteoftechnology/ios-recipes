@@ -17,7 +17,9 @@ class RecipesTableViewController: UITableViewController {
 
     var recipes: [Recipe] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+            self.tableView.reloadData()
+            }
         }
     }
     
@@ -28,14 +30,13 @@ class RecipesTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(mainVC.filteredRecipes.count)
         return recipes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
-        cell.textLabel?.text = mainVC.allRecipes[indexPath.row].name
+        cell.textLabel?.text = recipes[indexPath.row].name
         
 
         return cell

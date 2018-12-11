@@ -18,39 +18,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XFg-A5-1ad">
-                                <rect key="frame" x="8" y="72" width="375" height="587"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="83W-YG-ttk">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="search:" destination="Lsy-1L-rgT" eventType="editingDidEnd" id="9bz-MK-wog"/>
-                                            <action selector="sortUserString:" destination="Lsy-1L-rgT" eventType="editingDidEnd" id="LpZ-gb-rsy"/>
-                                            <outlet property="delegate" destination="Lsy-1L-rgT" id="cqE-hL-ycu"/>
-                                        </connections>
-                                    </textField>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eoj-w8-NAu">
-                                        <rect key="frame" x="0.0" y="38" width="375" height="549"/>
-                                        <connections>
-                                            <segue destination="HdL-4D-6ax" kind="embed" identifier="EmbedRecipesViewSegue" id="ivr-Zc-Arr"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="83W-YG-ttk" firstAttribute="leading" secondItem="XFg-A5-1ad" secondAttribute="leading" id="cAd-zd-CYx"/>
-                                    <constraint firstAttribute="trailing" secondItem="83W-YG-ttk" secondAttribute="trailing" id="rVP-71-nBL"/>
-                                </constraints>
-                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="83W-YG-ttk">
+                                <rect key="frame" x="0.0" y="72" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="search:" destination="Lsy-1L-rgT" eventType="editingDidEnd" id="9bz-MK-wog"/>
+                                    <action selector="sortUserString:" destination="Lsy-1L-rgT" eventType="editingDidEnd" id="LpZ-gb-rsy"/>
+                                    <outlet property="delegate" destination="Lsy-1L-rgT" id="cqE-hL-ycu"/>
+                                </connections>
+                            </textField>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eoj-w8-NAu">
+                                <rect key="frame" x="0.0" y="102" width="375" height="565"/>
+                                <connections>
+                                    <segue destination="HdL-4D-6ax" kind="embed" identifier="EmbedRecipesViewSegue" id="ivr-Zc-Arr"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ODP-3U-ZWk" firstAttribute="bottom" secondItem="XFg-A5-1ad" secondAttribute="bottom" constant="8" id="3p0-D6-89n"/>
-                            <constraint firstItem="XFg-A5-1ad" firstAttribute="top" secondItem="ODP-3U-ZWk" secondAttribute="top" constant="8" id="DSZ-oF-2DY"/>
-                            <constraint firstItem="XFg-A5-1ad" firstAttribute="trailing" secondItem="ODP-3U-ZWk" secondAttribute="trailing" constant="8" id="Mhv-1d-cha"/>
-                            <constraint firstItem="XFg-A5-1ad" firstAttribute="leading" secondItem="ODP-3U-ZWk" secondAttribute="leading" constant="8" id="Pa3-Xs-Y4Q"/>
+                            <constraint firstItem="83W-YG-ttk" firstAttribute="trailing" secondItem="ODP-3U-ZWk" secondAttribute="trailing" id="12i-iO-7jG"/>
+                            <constraint firstItem="Eoj-w8-NAu" firstAttribute="leading" secondItem="ODP-3U-ZWk" secondAttribute="leading" id="TJC-AS-GEP"/>
+                            <constraint firstItem="Eoj-w8-NAu" firstAttribute="top" secondItem="83W-YG-ttk" secondAttribute="bottom" id="jL3-9Z-ej4"/>
+                            <constraint firstItem="83W-YG-ttk" firstAttribute="top" secondItem="ODP-3U-ZWk" secondAttribute="top" constant="8" id="n1u-J4-Wqa"/>
+                            <constraint firstAttribute="bottom" secondItem="Eoj-w8-NAu" secondAttribute="bottom" id="pbb-DL-wYl"/>
+                            <constraint firstItem="83W-YG-ttk" firstAttribute="leading" secondItem="ODP-3U-ZWk" secondAttribute="leading" id="uZo-LJ-Yde"/>
+                            <constraint firstItem="Eoj-w8-NAu" firstAttribute="trailing" secondItem="ODP-3U-ZWk" secondAttribute="trailing" id="we7-9Y-0m9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ODP-3U-ZWk"/>
                     </view>
@@ -68,7 +62,7 @@
             <objects>
                 <tableViewController id="HdL-4D-6ax" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8uP-JD-Zfi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -108,11 +102,11 @@
             <objects>
                 <viewController id="VUa-yb-xOd" customClass="RecipesDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bDu-vE-8Ch">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Iks-nq-yCg">
-                                <rect key="frame" x="8" y="28" width="359" height="513"/>
+                                <rect key="frame" x="8" y="28" width="359" height="529"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yce-bQ-0oq">
                                         <rect key="frame" x="144" y="0.0" width="71" height="36"/>
@@ -121,7 +115,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AwS-pk-ojS">
-                                        <rect key="frame" x="8" y="44" width="343" height="469"/>
+                                        <rect key="frame" x="8" y="44" width="343" height="485"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

@@ -25,6 +25,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     var filteredRecipes: [Recipe] = [] {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController?.tableView.reloadData()
         }
     }
     
@@ -33,14 +34,13 @@ class MainViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if allRecipes.count == 0 {
+        //if allRecipes.count == 0 {
             networkClient.fetchRecipes{ (recipes, error) in
                 if let error = error {
                     NSLog("Error getting students: \(error)")
                     return
                 }
                 self.allRecipes = recipes ?? []
-            }
         }
     }
     
@@ -49,13 +49,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         DispatchQueue.main.async {
             if let text = self.textField.text, text != "" {
                 
-                self.filteredRecipes = self.allRecipes.filter{ recipe in recipe.name.contains(text)}
-                
                 self.filteredRecipes += self.allRecipes.filter{ recipe in recipe.instructions.contains(text)}
             }
             else {
                 self.filteredRecipes = self.allRecipes
-                print(self.filteredRecipes)
             }
         }
     }
