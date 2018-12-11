@@ -88,7 +88,7 @@ class MainViewController: UIViewController {
             }
             
             // Filter allRecipes array to see if the name of the recipe or the instructions of the recipe contain the text entered by the user
-            let matchingRecipes = self.allRecipes.filter ({$0.name.contains(text.lowercased()) || $0.instructions.contains(text.lowercased())})
+            let matchingRecipes = self.allRecipes.filter ({ $0.name.contains(text.lowercased()) || $0.instructions.contains(text.lowercased()) })
             
             // Set the value of filteredRecipes to the results of the filter
             self.filteredRecipes = matchingRecipes
