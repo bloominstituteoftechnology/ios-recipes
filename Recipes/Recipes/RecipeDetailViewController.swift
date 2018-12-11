@@ -9,44 +9,29 @@
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
-    let recipe: Recipe?
+
     
     @IBOutlet weak var recipeName: UILabel!
     
     @IBOutlet weak var recipeTextView: UITextView!
     
-    var recipe: Recipe?
+    var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
+    }
     
     func updateViews() {
+        guard isViewLoaded else { fatalError("error: view did not load") }
+        guard let recipe = recipe else { return }
         
-        let recipeName.text = // ?? - How do we get this?
-        let recipeTextView.text =  // ??
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        recipeName.text = recipe.name
+        recipeTextView.text = recipe.instructions
+ 
     }
     
-    
-    
-    
-    
-    override var isViewLoaded: Bool {
-        // ??
-        
-        
-    }
-    
-    
-    
-    
-    
-
+   
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
