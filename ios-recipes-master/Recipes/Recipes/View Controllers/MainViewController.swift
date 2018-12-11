@@ -71,7 +71,23 @@ class MainViewController: UIViewController {
     // the filter should look through both the name and instructions provided to see if it contains the search term.
     // Plug the filter method into filteredRecipes
     func filterRecipes() {
-        
+        // Updates the UI on the main queue so that the user can see the changes
+        DispatchQueue.main.async {
+            // check if the textField text is nil
+            guard let searchTerm = self.textField.text
+                // return all the recipes if it is nil
+                else { return self.filteredRecipes = self.allRecipes }
+            // Check if searchTerm is empty
+            if searchTerm.isEmpty {
+                // return all recipes if it is empty
+                return self.filteredRecipes = self.allRecipes
+            } else {
+                // filter the allRecipes array and store those values into filteredRecipes[]
+                self.filteredRecipes = self.allRecipes.filter({
+                    $0.name.lowercased().contains(searchTerm.lowercased()) || $0.instructions.lowercased().contains(searchTerm.lowercased())
+                })
+            }
+        }
     }
     
     
