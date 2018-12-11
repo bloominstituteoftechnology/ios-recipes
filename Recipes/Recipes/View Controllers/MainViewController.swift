@@ -49,7 +49,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         DispatchQueue.main.async {
             if let text = self.textField.text, text != "" {
                 
-                self.filteredRecipes += self.allRecipes.filter{ recipe in recipe.instructions.contains(text)}
+                self.filteredRecipes = self.allRecipes.filter{ recipe in recipe.instructions.contains(text)}
             }
             else {
                 self.filteredRecipes = self.allRecipes
@@ -62,6 +62,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         filterRecipes()
     }
     
+    @IBAction func textFieldshouldReturn(_ sender: Any) {
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true

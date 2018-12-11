@@ -24,8 +24,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="search:" destination="Lsy-1L-rgT" eventType="editingDidEnd" id="9bz-MK-wog"/>
                                     <action selector="sortUserString:" destination="Lsy-1L-rgT" eventType="editingDidEnd" id="LpZ-gb-rsy"/>
+                                    <action selector="textFieldshouldReturn:" destination="Lsy-1L-rgT" eventType="editingDidEndOnExit" id="Yzi-hL-AbL"/>
                                     <outlet property="delegate" destination="Lsy-1L-rgT" id="cqE-hL-ycu"/>
                                 </connections>
                             </textField>
