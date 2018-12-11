@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8416B6B821BF0F2D001FB7D7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B6B721BF0F2D001FB7D7 /* MainViewController.swift */; };
+		8416B6BA21BF0F45001FB7D7 /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B6B921BF0F45001FB7D7 /* RecipesTableViewController.swift */; };
+		8416B6BC21BF0F5C001FB7D7 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B6BB21BF0F5C001FB7D7 /* RecipeDetailViewController.swift */; };
 		9D59AF432117E647002FB7CD /* RecipesNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D59AF422117E647002FB7CD /* RecipesNetworkClient.swift */; };
 		9D59B52C2117F533002FB7CD /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D59B52B2117F533002FB7CD /* Recipe.swift */; };
 		9DA0F07D2117E3F800A99E97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8416B6B721BF0F2D001FB7D7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		8416B6B921BF0F45001FB7D7 /* RecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
+		8416B6BB21BF0F5C001FB7D7 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		9D59AF422117E647002FB7CD /* RecipesNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesNetworkClient.swift; sourceTree = "<group>"; };
 		9D59B52B2117F533002FB7CD /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		9DA0F0792117E3F800A99E97 /* Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +43,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8416B6B621BF0F02001FB7D7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8416B6B721BF0F2D001FB7D7 /* MainViewController.swift */,
+				8416B6B921BF0F45001FB7D7 /* RecipesTableViewController.swift */,
+				8416B6BB21BF0F5C001FB7D7 /* RecipeDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		9D59AF412117E637002FB7CD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +101,7 @@
 			children = (
 				9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */,
 				9D59AF412117E637002FB7CD /* Networking */,
+				8416B6B621BF0F02001FB7D7 /* View Controllers */,
 				9D59B52A2117F520002FB7CD /* Model */,
 				9D59AF452117E652002FB7CD /* Resources */,
 			);
@@ -126,7 +143,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9DA0F0742117E3F800A99E97 /* Build configuration list for PBXProject "Recipes" */;
+			buildConfigurationList = 9DA0F0742117E3F800A99E97 /* Build configuration list for PBXProject "Recipes MBP" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -165,6 +182,9 @@
 				9D59AF432117E647002FB7CD /* RecipesNetworkClient.swift in Sources */,
 				9DA0F07D2117E3F800A99E97 /* AppDelegate.swift in Sources */,
 				9D59B52C2117F533002FB7CD /* Recipe.swift in Sources */,
+				8416B6B821BF0F2D001FB7D7 /* MainViewController.swift in Sources */,
+				8416B6BC21BF0F5C001FB7D7 /* RecipeDetailViewController.swift in Sources */,
+				8416B6BA21BF0F45001FB7D7 /* RecipesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +367,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9DA0F0742117E3F800A99E97 /* Build configuration list for PBXProject "Recipes" */ = {
+		9DA0F0742117E3F800A99E97 /* Build configuration list for PBXProject "Recipes MBP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9DA0F0892117E40100A99E97 /* Debug */,
