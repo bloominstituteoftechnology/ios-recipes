@@ -68,7 +68,7 @@ We're going to start the view controller implementation backwards from the actua
 Since this table view controller is embedded in the `MainViewController`, it will be relatively simple as its only job is to fill out the table view.
 
 1. Add a variable `recipes: [Recipe] = []`. 
-1a. Add a `didSet` property observer that reloads the table view.
+    - Add a `didSet` property observer that reloads the table view.
 2. Fill out the `numberOfRowsInSection`, and `cellForRowAt` methods. The cell should display the name of its corresponding `Recipe` object.
 3. In the `prepare(for segue: ...)`, check the segue's identifier. If the segue is going to the `RecipeDetailViewController` and triggered by tapping a cell on this table view controller, pass the `Recipe` that corresponds with the cell that was tapped.
 
