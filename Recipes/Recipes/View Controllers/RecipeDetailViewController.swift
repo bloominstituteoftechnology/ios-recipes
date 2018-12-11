@@ -13,10 +13,32 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeTitle: UILabel!
     @IBOutlet weak var receipeDetailTextView: UITextView!
     
+   // private var studentTableViewController: StudentTableViewController!
+    
+    var recipe: Recipe? {
+        didSet {
+            DispatchQueue.main.async {
+                self.updateViews()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateViews()
+    }
+    
+    func updateViews() {
+//        if viewController.viewIfLoaded?.window != nil {
+//            // viewController is visible
+//        }
+        if (self.isViewLoaded) {
+            recipeTitle.text = recipe?.name
+            receipeDetailTextView.text = recipe?.instructions
+        }
+        
 
-        // Do any additional setup after loading the view.
     }
     
 
