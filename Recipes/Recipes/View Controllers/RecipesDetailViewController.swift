@@ -10,6 +10,8 @@ import UIKit
 
 class RecipesDetailViewController: UIViewController {
     
+    private let mainVC = MainViewController()
+    
     var recipe: Recipe? {
         didSet {
             updateViews()
@@ -18,11 +20,6 @@ class RecipesDetailViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textView: UITextView!
-    
-    override func viewDidLoad() {
-    super.viewDidLoad()
-        updateViews()
-    }
     
     func updateViews() {
         

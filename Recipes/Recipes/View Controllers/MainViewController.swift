@@ -54,6 +54,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             else {
                 self.filteredRecipes = self.allRecipes
             }
+            self.textField.text = nil
         }
     }
     

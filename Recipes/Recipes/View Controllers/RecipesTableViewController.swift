@@ -23,10 +23,6 @@ class RecipesTableViewController: UITableViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,6 +45,5 @@ class RecipesTableViewController: UITableViewController {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         guard let destination = segue.destination as? RecipesDetailViewController else { return }
         destination.recipe = recipes[indexPath.row]
-        print(recipes[indexPath.row])
     }
 }
