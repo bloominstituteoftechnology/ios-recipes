@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1N7-Xc-LHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2358" y="-625"/>
+            <point key="canvasLocation" x="2436" y="-625"/>
         </scene>
         <!--Recipes Table View Controller-->
         <scene sceneID="hzp-Cg-ZPe">
@@ -138,7 +138,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5k-Wa-T3o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1674" y="-624"/>
+            <point key="canvasLocation" x="1695" y="-625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LqW-Ry-hmK">

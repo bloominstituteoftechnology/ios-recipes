@@ -104,9 +104,9 @@
 		F81A642B21BF128E005F5125 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F81A642E21BF1BC7005F5125 /* RecipeDetailViewController.swift */,
 				F81A642921BF1288005F5125 /* MainViewController.swift */,
 				F81A642C21BF12C4005F5125 /* RecipesTableViewController.swift */,
+				F81A642E21BF1BC7005F5125 /* RecipeDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

@@ -9,82 +9,53 @@
 import UIKit
 
 class RecipesTableViewController: UITableViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    
+    // Create recipes variable set to the Recipe type, but as an empty array.
+    var recipes: [Recipe] = [] {
+        didSet {
+            tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        // counts the amount of objects in the array to provide the amount of sections required, in this case, all the of the recipes provided by the network.
+        return recipes.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        // Set "cell" to the cell on the table and insert the correct identifier.
+        // It's typically best to use a string-type variable for the identifier.
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        // set the recipes array to a variable that will be used in the cell
+        let recipe = recipes[indexPath.row]
+        
+        // update the text in the cell to connect to the recipes array, of the name property.
+        cell.textLabel?.text = recipe.name
+        
+        // return the cell to comply with the function and actually appear.
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // Requirements:
+        // 1. Check if the segue with the right identifier exists.
+        // 2. Set the indexPath to the selected row
+        // 3. Set the destination (the detail VC) to the recipes array's corresponding row
+        // 4. Complete the destination setup by connecting it to the Recipe model.
+        
+        if segue.identifier == "ShowDetailView" {
+            
+            guard let indexPath = tableView.indexPathForSelectedRow else { fatalError("Could not originate from source.") }
+            
+            guard let destination = segue.destination as? RecipeDetailViewController else { fatalError("Could not reach destination.") }
+            
+            destination.recipe = recipes[indexPath.row]
+            
+        }
     }
-    */
 
 }
