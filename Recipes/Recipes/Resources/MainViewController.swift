@@ -28,13 +28,15 @@ class MainViewController: UIViewController {
     @IBAction func recipeTextAction(_ sender: Any) {
         recipeText.resignFirstResponder()
         filterRecipes()
+        
     }
     
     func filterRecipes() {
         DispatchQueue.main.async {
             if let text = self.recipeText.text, !text.isEmpty {
                 self.filteredRecipes = self.allRecipes.filter({ (recipe) -> Bool in
-                    return recipe.name.contains(text) || recipe.instructions.contains(text) } )
+                    return recipe.name.contains(text) || recipe.instructions.contains(text)
+                })
             } else {
                 self.filteredRecipes = self.allRecipes
             }

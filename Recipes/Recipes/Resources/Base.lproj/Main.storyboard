@@ -30,7 +30,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="recipeTextAction:" destination="GqO-bp-mIZ" eventType="editingDidEnd" id="aNd-bn-xC4"/>
+                                    <action selector="recipeTextAction:" destination="GqO-bp-mIZ" eventType="editingDidEndOnExit" id="Idb-06-8pM"/>
                                 </connections>
                             </textField>
                         </subviews>
