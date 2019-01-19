@@ -137,8 +137,8 @@
                         <viewLayoutGuide key="safeArea" id="rpt-Vr-0hq"/>
                     </view>
                     <connections>
-                        <outlet property="reccipeNameLabel" destination="oke-cS-iV7" id="L8U-Np-d5w"/>
-                        <outlet property="recipeTextView" destination="m3S-VT-MgE" id="3DT-fB-Ixg"/>
+                        <outlet property="instructionsTextView" destination="m3S-VT-MgE" id="3DT-fB-Ixg"/>
+                        <outlet property="recipeNameLabel" destination="oke-cS-iV7" id="L8U-Np-d5w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xm9-py-jtu" userLabel="First Responder" sceneMemberID="firstResponder"/>
