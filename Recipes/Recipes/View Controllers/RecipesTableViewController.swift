@@ -12,24 +12,25 @@ class RecipesTableViewController: UITableViewController {
     
     var recipes: [Recipe] = [] {
         didSet {
-           tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+           
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
        
     }
+   
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailVC" {
             let destinationVC = segue.destination as? RecipeDetailViewController
             guard let recipeIndex = tableView.indexPathForSelectedRow else {return}
             destinationVC?.recipe = recipes[recipeIndex.row]
-        } else if segue.identifier == "toTableVC" {
-            let destinationVC = segue.destination as? RecipesTableViewController
-        }
+        } 
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

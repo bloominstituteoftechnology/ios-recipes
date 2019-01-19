@@ -18,11 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oeq-TZ-l04">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oeq-TZ-l04">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="asm-S6-oti">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -30,17 +30,13 @@
                                             <action selector="searchTextExit:" destination="riM-mL-WEg" eventType="editingDidEndOnExit" id="qae-ST-1rd"/>
                                         </connections>
                                     </textField>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4Y-kS-wXf">
+                                    <containerView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="F4Y-kS-wXf">
                                         <rect key="frame" x="0.0" y="38" width="414" height="770"/>
                                         <connections>
                                             <segue destination="ioD-xI-LnZ" kind="embed" identifier="toTableVC" id="M2o-Ac-I3q"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="asm-S6-oti" firstAttribute="leading" secondItem="oeq-TZ-l04" secondAttribute="leading" constant="20" id="YKZ-dh-By1"/>
-                                    <constraint firstAttribute="trailing" secondItem="asm-S6-oti" secondAttribute="trailing" constant="20" id="cQF-g8-4It"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
