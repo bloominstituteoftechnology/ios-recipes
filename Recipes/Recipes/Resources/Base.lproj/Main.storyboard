@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="upS-sK-Y0d">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="upS-sK-Y0d">
                                 <rect key="frame" x="16" y="84" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -28,7 +28,7 @@
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FbE-XR-mNI">
-                                <rect key="frame" x="0.0" y="134" width="375" height="533"/>
+                                <rect key="frame" x="0.0" y="122" width="375" height="545"/>
                                 <connections>
                                     <segue destination="BYC-8B-Rbs" kind="embed" identifier="TableEmbed" id="bvC-O4-exs"/>
                                 </connections>
@@ -36,7 +36,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="FbE-XR-mNI" firstAttribute="top" secondItem="upS-sK-Y0d" secondAttribute="bottom" constant="20" id="5uk-OW-oYz"/>
+                            <constraint firstItem="FbE-XR-mNI" firstAttribute="top" secondItem="upS-sK-Y0d" secondAttribute="bottom" constant="8" id="5uk-OW-oYz"/>
                             <constraint firstItem="afn-nA-Ncc" firstAttribute="trailing" secondItem="upS-sK-Y0d" secondAttribute="trailing" constant="16" id="84k-UC-Qx6"/>
                             <constraint firstItem="FbE-XR-mNI" firstAttribute="leading" secondItem="afn-nA-Ncc" secondAttribute="leading" id="NIZ-aQ-zwz"/>
                             <constraint firstItem="upS-sK-Y0d" firstAttribute="top" secondItem="afn-nA-Ncc" secondAttribute="top" constant="20" id="VuJ-yG-VOC"/>
@@ -60,7 +60,7 @@
             <objects>
                 <tableViewController id="BYC-8B-Rbs" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OAV-mB-8mA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="533"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="545"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -100,7 +100,7 @@
             <objects>
                 <viewController id="4Xi-7S-wz9" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SFj-T7-EBM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="533"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="545"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPh-dw-WaR">
@@ -110,7 +110,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0zj-xr-ydS">
-                                <rect key="frame" x="16" y="87" width="343" height="430"/>
+                                <rect key="frame" x="16" y="87" width="343" height="442"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

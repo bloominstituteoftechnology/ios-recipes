@@ -15,26 +15,38 @@ class RecipesTableViewController: UITableViewController {
 
     }
 
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return recipes.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
+        
+        cell.textLabel?.text = recipes[indexPath.row].name
 
         return cell
     }
-
-   
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCell = indexPath
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RecipeDetails" {
+            let recipeDetailVC = segue.destination as! RecipeDetailViewController
+            if let selectedCell = selectedCell {
+                recipeDetailVC.recipe = recipes[selectedCell.row]
+            }
+        }
+    }
+    
+    var selectedCell: IndexPath?
+    
+    var recipes: [Recipe] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
 }
