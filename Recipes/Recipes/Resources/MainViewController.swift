@@ -58,15 +58,17 @@ class MainViewController: UIViewController {
   
     
     func filterRecipes() {
-        guard let searchText = searchTextField.text else {return}
-        
-        if !searchText.isEmpty {
-            let filteredRecipes = allRecipes.filter { (recipe) -> Bool in contains(searchText as! UIFocusEnvironment) }
-        } else {
-            filteredRecipes = allRecipes
+        DispatchQueue.main.async {
+            guard let searchText = self.searchTextField.text else {return}
+            
+            if !searchText.isEmpty {
+                self.filteredRecipes = self.allRecipes.filter { $0.name.contains(searchText) || $0.instructions.contains(searchText) } //(recipe) -> Bool in self.contains(searchText as! UIFocusEnvironment)
+                
+            } else {
+                self.filteredRecipes = self.allRecipes
+            }
+            self.recipesTableViewController!.recipes = self.filteredRecipes
         }
-        recipesTableViewController!.recipes = filteredRecipes
-        
     }
 
     
