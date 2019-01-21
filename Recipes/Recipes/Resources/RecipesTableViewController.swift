@@ -28,20 +28,14 @@ class RecipesTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCell = indexPath
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeDetails" {
             let recipeDetailVC = segue.destination as! RecipeDetailViewController
-            if let selectedCell = selectedCell {
+            if let selectedCell = tableView.indexPathForSelectedRow {
                 recipeDetailVC.recipe = recipes[selectedCell.row]
             }
         }
     }
-    
-    var selectedCell: IndexPath?
     
     var recipes: [Recipe] = [] {
         didSet {

@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func beginSearch(_ sender: UITextField) {
+    @IBAction func search(_ sender: UITextField) {
         resignFirstResponder()
         filterRecipes()
     }

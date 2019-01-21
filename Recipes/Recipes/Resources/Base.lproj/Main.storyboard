@@ -24,7 +24,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="beginSearch:" destination="mcx-uz-dzt" eventType="editingDidEndOnExit" id="8fI-IS-6HR"/>
+                                    <action selector="search:" destination="mcx-uz-dzt" eventType="editingDidEndOnExit" id="RZW-Wn-B8o"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FbE-XR-mNI">
@@ -110,16 +110,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0zj-xr-ydS">
-                                <rect key="frame" x="16" y="87" width="343" height="442"/>
+                                <rect key="frame" x="16" y="75" width="343" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="0zj-xr-ydS" firstAttribute="top" secondItem="wPh-dw-WaR" secondAttribute="bottom" constant="20" id="Fa2-HL-TLv"/>
+                            <constraint firstItem="0zj-xr-ydS" firstAttribute="top" secondItem="wPh-dw-WaR" secondAttribute="bottom" constant="8" id="Fa2-HL-TLv"/>
                             <constraint firstItem="pTk-zW-WBH" firstAttribute="trailing" secondItem="wPh-dw-WaR" secondAttribute="trailing" constant="16" id="HjG-l4-naY"/>
                             <constraint firstItem="wPh-dw-WaR" firstAttribute="leading" secondItem="pTk-zW-WBH" secondAttribute="leading" constant="16" id="Lbg-ws-ZSk"/>
                             <constraint firstItem="0zj-xr-ydS" firstAttribute="leading" secondItem="pTk-zW-WBH" secondAttribute="leading" constant="16" id="WII-0U-cvZ"/>
