@@ -8,24 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		1B3AE2F421F67ACB0071026C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AE2F321F67ACB0071026C /* AppDelegate.swift */; };
-		1B3AE2F621F67ACB0071026C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AE2F521F67ACB0071026C /* ViewController.swift */; };
 		1B3AE2F921F67ACB0071026C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3AE2F721F67ACB0071026C /* Main.storyboard */; };
 		1B3AE2FB21F67ACC0071026C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B3AE2FA21F67ACC0071026C /* Assets.xcassets */; };
 		1B3AE2FE21F67ACC0071026C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3AE2FC21F67ACC0071026C /* LaunchScreen.storyboard */; };
-		1B3AE30621F67AEA0071026C /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 1B3AE30521F67AEA0071026C /* Model */; };
-		1B3AE30821F67AF20071026C /* Networking in Resources */ = {isa = PBXBuildFile; fileRef = 1B3AE30721F67AF20071026C /* Networking */; };
+		1B3AE30A21F67BFD0071026C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AE30921F67BFD0071026C /* MainViewController.swift */; };
+		1B3AE30C21F67C820071026C /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AE30B21F67C820071026C /* RecipesTableViewController.swift */; };
+		1B3AE30E21F67D900071026C /* RecipesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AE30D21F67D900071026C /* RecipesDetailViewController.swift */; };
+		1B3AE31521F67F1B0071026C /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AE31421F67F1B0071026C /* Recipe.swift */; };
+		1B3AE31721F67F4E0071026C /* RecipesNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AE31621F67F4E0071026C /* RecipesNetworkClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B3AE2F021F67ACB0071026C /* TheRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3AE2F321F67ACB0071026C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1B3AE2F521F67ACB0071026C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1B3AE2F821F67ACB0071026C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B3AE2FA21F67ACC0071026C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B3AE2FD21F67ACC0071026C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B3AE2FF21F67ACC0071026C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1B3AE30521F67AEA0071026C /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Model; path = ../../Recipes/Model; sourceTree = "<group>"; };
-		1B3AE30721F67AF20071026C /* Networking */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Networking; path = ../../Recipes/Networking; sourceTree = "<group>"; };
+		1B3AE30921F67BFD0071026C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1B3AE30B21F67C820071026C /* RecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
+		1B3AE30D21F67D900071026C /* RecipesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesDetailViewController.swift; sourceTree = "<group>"; };
+		1B3AE31421F67F1B0071026C /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		1B3AE31621F67F4E0071026C /* RecipesNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesNetworkClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,66 @@
 		1B3AE2F221F67ACB0071026C /* TheRecipes */ = {
 			isa = PBXGroup;
 			children = (
-				1B3AE2F321F67ACB0071026C /* AppDelegate.swift */,
-				1B3AE2F521F67ACB0071026C /* ViewController.swift */,
-				1B3AE2F721F67ACB0071026C /* Main.storyboard */,
-				1B3AE2FA21F67ACC0071026C /* Assets.xcassets */,
-				1B3AE30721F67AF20071026C /* Networking */,
-				1B3AE2FC21F67ACC0071026C /* LaunchScreen.storyboard */,
-				1B3AE30521F67AEA0071026C /* Model */,
-				1B3AE2FF21F67ACC0071026C /* Info.plist */,
+				1B3AE31821F67F710071026C /* Networking */,
+				1B3AE31921F67F780071026C /* Model */,
+				1B3AE31021F67E210071026C /* Views */,
+				1B3AE31321F67E750071026C /* Resources */,
 			);
 			path = TheRecipes;
+			sourceTree = "<group>";
+		};
+		1B3AE31021F67E210071026C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B3AE2F721F67ACB0071026C /* Main.storyboard */,
+				1B3AE31121F67E2D0071026C /* Table Views */,
+				1B3AE31221F67E420071026C /* ViewControllers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1B3AE31121F67E2D0071026C /* Table Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B3AE30B21F67C820071026C /* RecipesTableViewController.swift */,
+			);
+			path = "Table Views";
+			sourceTree = "<group>";
+		};
+		1B3AE31221F67E420071026C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1B3AE30D21F67D900071026C /* RecipesDetailViewController.swift */,
+				1B3AE30921F67BFD0071026C /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1B3AE31321F67E750071026C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1B3AE2FA21F67ACC0071026C /* Assets.xcassets */,
+				1B3AE2F321F67ACB0071026C /* AppDelegate.swift */,
+				1B3AE2FC21F67ACC0071026C /* LaunchScreen.storyboard */,
+				1B3AE2FF21F67ACC0071026C /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1B3AE31821F67F710071026C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				1B3AE31621F67F4E0071026C /* RecipesNetworkClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		1B3AE31921F67F780071026C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B3AE31421F67F1B0071026C /* Recipe.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,8 +184,6 @@
 			files = (
 				1B3AE2FE21F67ACC0071026C /* LaunchScreen.storyboard in Resources */,
 				1B3AE2FB21F67ACC0071026C /* Assets.xcassets in Resources */,
-				1B3AE30621F67AEA0071026C /* Model in Resources */,
-				1B3AE30821F67AF20071026C /* Networking in Resources */,
 				1B3AE2F921F67ACB0071026C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,8 +195,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B3AE2F621F67ACB0071026C /* ViewController.swift in Sources */,
+				1B3AE30A21F67BFD0071026C /* MainViewController.swift in Sources */,
+				1B3AE30C21F67C820071026C /* RecipesTableViewController.swift in Sources */,
 				1B3AE2F421F67ACB0071026C /* AppDelegate.swift in Sources */,
+				1B3AE31721F67F4E0071026C /* RecipesNetworkClient.swift in Sources */,
+				1B3AE30E21F67D900071026C /* RecipesDetailViewController.swift in Sources */,
+				1B3AE31521F67F1B0071026C /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +348,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4W7EQ4E4R;
-				INFOPLIST_FILE = TheRecipes/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TheRecipes/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,7 +366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4W7EQ4E4R;
-				INFOPLIST_FILE = TheRecipes/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TheRecipes/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

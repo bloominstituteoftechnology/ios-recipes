@@ -1,9 +1,9 @@
 //
-//  RecipesNetworkClient.swift
-//  Recipes
+//  Networking.swift
+//  TheRecipes
 //
-//  Created by Andrew R Madsen on 8/5/18.
-//  Copyright © 2018 Lambda Inc. All rights reserved.
+//  Created by Michael Flowers on 1/21/19.
+//  Copyright © 2019 Michael Flowers. All rights reserved.
 //
 
 import Foundation
@@ -31,7 +31,7 @@ struct RecipesNetworkClient {
                 completion(nil, error)
                 return
             }
-        }.resume()
+            }.resume()
     }
     
 }
