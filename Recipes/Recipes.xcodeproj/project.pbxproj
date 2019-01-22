@@ -14,6 +14,8 @@
 		9DA0F0842117E40100A99E97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0F0832117E40100A99E97 /* Assets.xcassets */; };
 		9DA0F0872117E40100A99E97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */; };
 		A2F048DB21F6CE0800085C47 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F048DA21F6CE0800085C47 /* MainViewController.swift */; };
+		A2F048DD21F6CED600085C47 /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F048DC21F6CED600085C47 /* RecipesTableViewController.swift */; };
+		A2F048DF21F6D09400085C47 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F048DE21F6D09400085C47 /* RecipeDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		9DA0F0862117E40100A99E97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DA0F0882117E40100A99E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2F048DA21F6CE0800085C47 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A2F048DC21F6CED600085C47 /* RecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
+		A2F048DE21F6D09400085C47 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				A2F048DA21F6CE0800085C47 /* MainViewController.swift */,
+				A2F048DC21F6CED600085C47 /* RecipesTableViewController.swift */,
+				A2F048DE21F6D09400085C47 /* RecipeDetailViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +183,8 @@
 				9DA0F07D2117E3F800A99E97 /* AppDelegate.swift in Sources */,
 				9D59B52C2117F533002FB7CD /* Recipe.swift in Sources */,
 				A2F048DB21F6CE0800085C47 /* MainViewController.swift in Sources */,
+				A2F048DF21F6D09400085C47 /* RecipeDetailViewController.swift in Sources */,
+				A2F048DD21F6CED600085C47 /* RecipesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

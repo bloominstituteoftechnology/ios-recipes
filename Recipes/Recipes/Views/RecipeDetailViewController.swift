@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  RecipeDetailViewController.swift
 //  Recipes
 //
 //  Created by Angel Buenrostro on 1/21/19.
@@ -8,15 +8,30 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
-
-    @IBOutlet weak var textField: UITextField!
-    @IBAction func textFieldAction(_ sender: Any) {
+class RecipeDetailViewController: UIViewController {
+    
+    var recipe: Recipe? {
+        didSet{
+            updateViews()
+        }
     }
+
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var textView: UITextView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Do any additional setup after loading the view.
+    }
+    
+    func updateViews(){
+        if isViewLoaded{
+        guard let recipe = recipe else { return }
+        label.text = recipe.name
+        textView.text = recipe.instructions
+        }
     }
     
 
