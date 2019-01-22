@@ -12,6 +12,7 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Instructions"
         updateViews()
     }
     

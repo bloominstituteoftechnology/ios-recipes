@@ -39,6 +39,14 @@ class MainViewController: UIViewController {
         }
     }
     
+    private func updateViews() {
+        if filteredRecipes.count == 1 {
+            title = "Recipe"
+        } else if filteredRecipes.count == 0 {
+            title = "No Recipes Found"
+        }
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,6 +78,7 @@ class MainViewController: UIViewController {
     var filteredRecipes: [Recipe] = [] {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
+            updateViews()
         }
     }
     
