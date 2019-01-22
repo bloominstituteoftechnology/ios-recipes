@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
         if searchTerm.isEmpty {
             filteredRecipes = allRecipes
         } else {
-            filteredRecipes = allRecipes.filter { $0.name.contains(searchTerm.lowercased()) || $0.instructions.contains(searchTerm.lowercased())
+            filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchTerm) || $0.instructions.lowercased().contains(searchTerm)
             }
         }
     }
