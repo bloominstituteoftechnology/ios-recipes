@@ -44,6 +44,8 @@ class MainViewController: UIViewController {
             title = "Recipe"
         } else if filteredRecipes.count == 0 {
             title = "No Recipes Found"
+        } else {
+            title = "Recipes"
         }
     }
     
