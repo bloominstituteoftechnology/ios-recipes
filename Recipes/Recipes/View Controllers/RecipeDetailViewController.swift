@@ -9,18 +9,18 @@
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
     }
     
     private func updateViews() {
-       if isViewLoaded {
-        guard let recipe = recipe else {return}
-        
-        recipeLabel.text = recipe.name
-        recipeTextView.text = recipe.instructions
+        if isViewLoaded {
+            guard let recipe = recipe else {return}
+            
+            recipeLabel.text = recipe.name
+            recipeTextView.text = recipe.instructions
         }
     }
     

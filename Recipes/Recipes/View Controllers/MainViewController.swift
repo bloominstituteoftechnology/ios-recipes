@@ -9,7 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,22 +24,23 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func searchRecipe(_ sender: Any) {
-        
+        searchRecipesField.resignFirstResponder()
+        filterRecipes()
     }
     
     private func filterRecipes() {
-        guard let searchTerm = searchRecipesField.text?.lowercased(),
-            !searchTerm.isEmpty else { return }
+        guard let searchTerm = searchRecipesField.text?.lowercased() else { return }
         
         if searchTerm.isEmpty {
             filteredRecipes = allRecipes
         } else {
-            
+            filteredRecipes = allRecipes.filter { $0.name.contains(searchTerm.lowercased()) || $0.instructions.contains(searchTerm.lowercased())
+            }
         }
     }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedRecipesTableView" {
             guard let recipesTableVC = segue.destination as? RecipesTableViewController else { return }
@@ -52,11 +53,25 @@ class MainViewController: UIViewController {
     
     let networkClient = RecipesNetworkClient()
     
-    var allRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.filterRecipes()
+            }
+        }
+    }
     
-    var recipesTableViewController: RecipesTableViewController?
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
-    var filteredRecipes: [Recipe] = []
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     @IBOutlet weak var searchRecipesField: UITextField!
     
