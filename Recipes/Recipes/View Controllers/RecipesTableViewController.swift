@@ -36,4 +36,6 @@ class RecipesTableViewController: UITableViewController {
             let recipeDetailVC = segue.destination as! RecipeDetailViewController
         }
     }
+    
+    //MARK: - Properties
 }
