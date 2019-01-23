@@ -44,13 +44,15 @@ class MainViewController: UIViewController {
     func filterRecipes(){
         DispatchQueue.main.async {
             if(self.textField.text != nil && self.textField.text != ""){
-                self.filteredRecipes = self.allRecipes.filter { $0.name == self.textField.text}
+                self.filteredRecipes = self.allRecipes.filter { $0.name.contains("\(self.textField!.text ?? "")")  }
+            }else{
+                self.filteredRecipes = self.allRecipes
             }
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "TableViewSegue"){
-            recipesTableViewController = segue.destination as? RecipesTableViewController
+            recipesTableViewController = (segue.destination as! RecipesTableViewController)
         }
     }
     

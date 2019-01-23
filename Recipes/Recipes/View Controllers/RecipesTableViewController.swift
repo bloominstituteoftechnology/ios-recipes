@@ -34,7 +34,7 @@ class RecipesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "CellTappedSegue"){
             let newSender = sender as! UITableViewCell
-            let recipeDetailVC = RecipeDetailViewController()
+            let recipeDetailVC = (segue.destination as! RecipeDetailViewController)
             let indexPath = tableView.indexPath(for: newSender)
             recipeDetailVC.recipe = recipes[indexPath!.row]
             

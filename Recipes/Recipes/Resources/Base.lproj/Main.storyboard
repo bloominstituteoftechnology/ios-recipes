@@ -24,7 +24,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="EditingEnded:" destination="PzC-yg-jzH" eventType="editingDidEnd" id="UGS-ss-j5R"/>
+                                    <action selector="EditingEnded:" destination="PzC-yg-jzH" eventType="editingDidEndOnExit" id="UdD-Id-rBh"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASb-Xy-jX8">
@@ -90,18 +90,18 @@
                         <viewLayoutGuide key="safeArea" id="sOv-hX-FQi"/>
                     </view>
                     <connections>
-                        <outlet property="label" destination="Urb-y5-Iln" id="kei-Pv-hwN"/>
-                        <outlet property="textView" destination="VCc-pz-mha" id="MYV-gP-DVg"/>
+                        <outlet property="label" destination="Urb-y5-Iln" id="xEk-Ox-d5d"/>
+                        <outlet property="textView" destination="VCc-pz-mha" id="v9M-Cq-Ueg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j6i-VH-lf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2916" y="-233"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Recipes Table View Controller-->
         <scene sceneID="ZBw-g5-g4w">
             <objects>
-                <tableViewController id="gVe-IY-Hoi" sceneMemberID="viewController">
+                <tableViewController id="gVe-IY-Hoi" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="h0Q-ve-KFg">
                         <rect key="frame" x="0.0" y="0.0" width="335" height="557"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

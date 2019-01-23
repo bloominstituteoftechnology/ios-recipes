@@ -22,8 +22,10 @@ class RecipeDetailViewController: UIViewController {
     }
     
     func updateViews(){
+        let alert = UIAlertController(title: "Error", message: "You have an error", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         if(self.isViewLoaded){
-        guard let loadedRecipe = recipe else {return}
+        let loadedRecipe = recipe!
         label.text = loadedRecipe.name
         textView.text = loadedRecipe.instructions
         }
