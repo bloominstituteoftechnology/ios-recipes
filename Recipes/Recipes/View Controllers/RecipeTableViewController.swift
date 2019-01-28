@@ -24,11 +24,7 @@ class RecipeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
         
-        let indexPath = recipes.name[IndexPath.row]
-        
-        let recipeName = recipes.name[indexPath]
-
-        cell.textLabel.text = recipeName
+        cell.textLabel?.text = recipes[indexPath.row].name
         
 
         return cell
