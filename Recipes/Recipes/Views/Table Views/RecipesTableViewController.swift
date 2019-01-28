@@ -12,7 +12,9 @@ class RecipesTableViewController: UITableViewController {
     
     var recipes: [Recipe] = [] { //WHY ARE WE ADDING THIS ?????? -----------------------------------------------------------------------------------???????
         didSet {
-            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     override func viewDidLoad() {
@@ -50,6 +52,4 @@ class RecipesTableViewController: UITableViewController {
             toDestinationVC.recipe = passThisRecipe
         }
     }
-
-
 }
