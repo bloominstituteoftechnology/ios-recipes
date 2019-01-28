@@ -19,11 +19,13 @@ class MainViewController: UIViewController {
     }
     var allRecipes: [Recipe] = [] {
         didSet {
+            print("all recipes recipes: \(allRecipes)")
             filterRecipes()
         }
     }
     var filteredRecipes: [Recipe] = [] {
         didSet {
+            print("filtered recipes recipes: \(filteredRecipes)")
             //this will be set after the search is executed
             recipesTableViewController?.recipes = filteredRecipes
         }
@@ -47,8 +49,8 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func textFieldAction(_ sender: UITextField) {
-        resignFirstResponder()
         filterRecipes()
+        resignFirstResponder()
     }
     
     func filterRecipes(){ //this will take the text from the textField and filter the recipes with it.
@@ -69,8 +71,9 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "embeddSegue" {
-            guard let toDestinationVC = segue.destination as? RecipesTableViewController else { return }
-            toDestinationVC.recipes = allRecipes
+            
+            recipesTableViewController = (segue.destination as! RecipesTableViewController)
+            
         }
         
     }

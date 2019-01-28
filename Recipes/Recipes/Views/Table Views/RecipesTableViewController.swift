@@ -12,6 +12,7 @@ class RecipesTableViewController: UITableViewController {
     
     var recipes: [Recipe] = [] { //WHY ARE WE ADDING THIS ?????? -----------------------------------------------------------------------------------???????
         didSet {
+            print("table view recipes: \(recipes)")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -28,7 +29,6 @@ class RecipesTableViewController: UITableViewController {
         return recipes.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let recipe = recipes[indexPath.row].name
@@ -42,8 +42,6 @@ class RecipesTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
         
         //if the segues is from the cell, pass the recipe that corresponds with the cell that was tapped
         if segue.identifier == "cellSegue" {
