@@ -11,7 +11,9 @@ import UIKit
 class RecipesTableViewController: UITableViewController {
     var recipes: [Recipe] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 
@@ -26,7 +28,6 @@ class RecipesTableViewController: UITableViewController {
         return recipes.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
 
