@@ -56,8 +56,8 @@
 		1BB0DC2C21FFA97300E5230C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1BB0DC3021FFAAB900E5230C /* DetailViewController.swift */,
 				1BB0DC2A21FFA96600E5230C /* MainViewController.swift */,
+				1BB0DC3021FFAAB900E5230C /* DetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

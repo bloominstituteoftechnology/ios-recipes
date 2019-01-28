@@ -10,12 +10,22 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = []
+    
     @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+     //call the fetchRecipes method. if there is no error set the value of allRecipes to recipes returned in this completion closure. This way the tableView will populate with all recipes returned
+        networkClient.fetchRecipes { (recipes, error) in
+            if let error = error {
+                NSLog("Error fetching the recipes from the network call: \(error.localizedDescription)")
+            }
+            //no errors so set the value of allRecipes to the ones we've gotten back
+            self.allRecipes = recipes ?? []
+        }
     }
     
     @IBAction func textFieldAction(_ sender: UITextField) {

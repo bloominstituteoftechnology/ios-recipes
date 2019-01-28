@@ -27,9 +27,8 @@ class DetailViewController: UIViewController {
 
     func updateViews(){
         //This should take the values of the recipe and place them in the corresponding outlets.
-        
-        guard let passedInRecipe = recipe else { return }
         if isViewLoaded {
+        guard let passedInRecipe = recipe else { return }
             label.text = passedInRecipe.name
             textView.text = passedInRecipe.instructions
         }
