@@ -36,6 +36,9 @@ class MainViewController: UIViewController {
         filterRecipes()
     }
     
+    @IBAction func searchChanged(_ sender: Any) {
+        filterRecipes()
+    }
     
     
     var recipesTableViewController: RecipesTableViewController? {
