@@ -2,6 +2,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    let networkClient = RecipesNetworkClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         networkClient.fetchRecipes { (recipes, error) in
@@ -13,8 +15,6 @@ class MainViewController: UIViewController {
             self.allRecipes = recipes ?? []
         }
     }
-    
-    let networkClient = RecipesNetworkClient()
     
     var filteredRecipes = [Recipe] () {
         didSet {
@@ -46,14 +46,18 @@ class MainViewController: UIViewController {
             }
         }
     }
-
-    @IBOutlet weak var textField: UITextView!
     
+    @IBOutlet weak var textField: UITextField!
     
+    @IBAction func searchAction(_ sender: Any) {
+        textField.resignFirstResponder()
+            filterRecipes()
+        
+    }
     
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let destinationVC = segue.destination as?  RecipeTableViewController else { return }
         
