@@ -13,6 +13,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchField: UITextField!
     
     
+    let networkClient = RecipesNetworkClient()
+    
+    var allRecipes: [Recipe] = []
+    
+    
     @IBAction func searchCompleted(_ sender: UITextField) {
         
         
