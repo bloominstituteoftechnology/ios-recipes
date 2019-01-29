@@ -21,6 +21,7 @@ class RecipesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.reloadData()
 
     }
 
@@ -35,6 +36,8 @@ class RecipesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath)
+        
+ //       let recipe = recipes[indexPath.row].name
         
         cell.textLabel?.text = recipes[indexPath.row].name
 

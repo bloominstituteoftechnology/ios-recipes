@@ -44,8 +44,8 @@ class MainViewController: UIViewController {
                     return
             }
             
-            let matchingRecipes = self.allRecipes.filter ({ $0.name.contains(text.lowercased()) ||
-                $0.instructions.contains(text.lowercased()) })
+            let matchingRecipes = self.allRecipes.filter ({ $0.name.contains(String(text.lowercased())) ||
+                $0.instructions.contains(String(text.lowercased())) })
             
             self.filteredRecipes = matchingRecipes
             
@@ -55,12 +55,13 @@ class MainViewController: UIViewController {
         
     }
     
-    
     @IBAction func searchCompleted(_ sender: UITextField) {
+
+        filterRecipes()
         
         resignFirstResponder()
         
-        filterRecipes()
+ 
         
     }
     
@@ -70,12 +71,12 @@ class MainViewController: UIViewController {
             
             if let error = error {
                 NSLog("Error: \(error)")
-                return
+//                return
             }
-            
-            self.allRecipes = allRecipes ?? []
+            DispatchQueue.main.async {
+                self.allRecipes = allRecipes ?? []
         }
-        
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -83,18 +84,16 @@ class MainViewController: UIViewController {
 
  
     // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "tableViewSegue" {
             
-            let recipiesTVC = segue.destination as! RecipesTableViewController
+ //         let recipiesTVC = segue.destination as! RecipesTableViewController
             
-            recipesTableViewController = recipiesTVC
+            recipesTableViewController = (segue.destination as! RecipesTableViewController)
         }
+     }
         
-
-
-
-    }
  
+
 }
