@@ -34,7 +34,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Sn-PF-Oaj">
                                         <rect key="frame" x="0.0" y="137" width="359" height="398"/>
                                         <connections>
-                                            <segue destination="Ktz-76-H9c" kind="embed" identifier="TableViewEmbededSegue" id="TiV-5l-Dff"/>
+                                            <segue destination="Ktz-76-H9c" kind="embed" identifier="TableViewSegue" id="TiV-5l-Dff"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -96,7 +96,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L3B-bc-Ecz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1065" y="607"/>
+            <point key="canvasLocation" x="1982" y="-46"/>
         </scene>
         <!--Recipe Detail View Controller-->
         <scene sceneID="4Tp-EO-CjX">
@@ -141,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z1C-FP-iW2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1885.5999999999999" y="605.3973013493254"/>
+            <point key="canvasLocation" x="2858" y="-47"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="seQ-3f-3pB">

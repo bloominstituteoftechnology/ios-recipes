@@ -66,7 +66,6 @@
 			children = (
 				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
 				9DA0F0832117E40100A99E97 /* Assets.xcassets */,
-				9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */,
 				9DA0F0882117E40100A99E97 /* Info.plist */,
 			);
 			path = Resources;
@@ -75,6 +74,7 @@
 		9D59B52A2117F520002FB7CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */,
 				9D59B52B2117F533002FB7CD /* Recipe.swift */,
 			);
 			path = Model;

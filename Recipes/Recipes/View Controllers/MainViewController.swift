@@ -2,6 +2,18 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        networkClient.fetchRecipes { (recipes, error) in
+            if let error = error {
+                NSLog("Error:  \(error)")
+                return
+            }
+    
+            self.allRecipes = recipes ?? []
+        }
+    }
+    
     let networkClient = RecipesNetworkClient()
     
     var filteredRecipes = [Recipe] () {
@@ -39,27 +51,13 @@ class MainViewController: UIViewController {
     
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        networkClient.fetchRecipes { (recipes, error) in
-            if let error = error {
-                    NSLog(error)
-                }
-            } catch {
-                
-            }
-        
-        
-    }
-    
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let destinationVC = segue.destination as?  RecipeDetailViewController else { return }
+        guard let destinationVC = segue.destination as?  RecipeTableViewController else { return }
         
-        if segue.identifier == "DetailSegue" {
+        if segue.identifier == "TableViewSegue" {
             recipesTableViewController = destinationVC
         }
     }
