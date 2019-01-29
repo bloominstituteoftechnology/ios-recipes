@@ -15,16 +15,52 @@ class MainViewController: UIViewController {
     
     let networkClient = RecipesNetworkClient()
     
-    var allRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
     
-    var recipesTableViewController: RecipesTableViewController?
+    }
+    
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    
+    func filterRecipes() {
+        
+        DispatchQueue.main.async {
+            
+            guard let text = self.searchField.text,
+                text != "" else {
+                    self.filteredRecipes = self.allRecipes
+                    return
+            }
+            
+            let matchingRecipes = self.allRecipes.filter ({ $0.name.contains(text.lowercased()) ||
+                $0.instructions.contains(text.lowercased()) })
+            
+            self.filteredRecipes = matchingRecipes
+            
+        }
+        
+        
+        
+    }
     
     
     @IBAction func searchCompleted(_ sender: UITextField) {
         
+        resignFirstResponder()
         
-        
-        
+        filterRecipes()
         
     }
     

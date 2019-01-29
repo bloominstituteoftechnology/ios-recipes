@@ -12,8 +12,9 @@ class RecipesTableViewController: UITableViewController {
     
     var recipes: [Recipe] = [] {
         didSet {
-            
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -56,10 +57,6 @@ class RecipesTableViewController: UITableViewController {
             destination.recipe = recipe
             
         }
-        
-        
-        
-        
     }
 
 
