@@ -28,6 +28,16 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkClient.fetchRecipes { (allRecipes, error) in
+            
+            if let error = error {
+                NSLog("Error: \(error)")
+                return
+            }
+            
+            self.allRecipes = allRecipes ?? []
+        }
+        
 
         // Do any additional setup after loading the view.
     }
