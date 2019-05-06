@@ -1,5 +1,5 @@
 //
-//  RecipesTableViewController.swift
+//  RecipesDetailViewController.swift
 //  Recipes
 //
 //  Created by Victor  on 5/6/19.
@@ -9,7 +9,10 @@
 import Foundation
 import UIKit
 
-class RecipesTableViewController: UITableViewController {
+class RecipesDetailViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

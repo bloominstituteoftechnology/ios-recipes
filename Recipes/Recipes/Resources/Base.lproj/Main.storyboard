@@ -48,10 +48,10 @@
             </objects>
             <point key="canvasLocation" x="972.46376811594212" y="-158.03571428571428"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Recipes Table View Controller-->
         <scene sceneID="cgD-S8-yqT">
             <objects>
-                <tableViewController id="B8C-Gj-KRL" sceneMemberID="viewController">
+                <tableViewController id="B8C-Gj-KRL" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3yj-rd-yqa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="765"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,6 +73,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Ohl-ex-TJf" kind="show" identifier="ShowDetail" id="HgJ-Te-um7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -84,6 +87,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sP6-cd-p8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1704" y="-114"/>
+        </scene>
+        <!--Recipes Detail View Controller-->
+        <scene sceneID="ooY-fY-atL">
+            <objects>
+                <viewController id="Ohl-ex-TJf" customClass="RecipesDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vMc-Zw-R5D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="765"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FLa-Tv-RrW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="765"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpn-Co-abI">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ne3-PU-kX2">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="721"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="FLa-Tv-RrW" secondAttribute="bottom" id="6Qj-x1-8iD"/>
+                            <constraint firstItem="FLa-Tv-RrW" firstAttribute="top" secondItem="vMc-Zw-R5D" secondAttribute="top" id="Eyr-VC-Blu"/>
+                            <constraint firstItem="7ph-SV-rAL" firstAttribute="trailing" secondItem="FLa-Tv-RrW" secondAttribute="trailing" id="F5Q-A0-oXS"/>
+                            <constraint firstItem="FLa-Tv-RrW" firstAttribute="leading" secondItem="7ph-SV-rAL" secondAttribute="leading" id="jsC-PM-w1m"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7ph-SV-rAL"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="Ne3-PU-kX2" id="0Rt-MN-qgM"/>
+                        <outlet property="titleLabel" destination="Cpn-Co-abI" id="ejx-mm-9Gu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9o3-eQ-PA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2521.739130434783" y="-115.51339285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="p0V-GP-30Q">
