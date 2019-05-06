@@ -13,11 +13,13 @@ class RecipeTableViewController: UITableViewController {
     var recipes: [Recipe] = [] {
         didSet {
             tableView.reloadData()
+            print("Recipes array set in table view")
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tableView.reloadData()
     }
 
     // MARK: - Table view data source
