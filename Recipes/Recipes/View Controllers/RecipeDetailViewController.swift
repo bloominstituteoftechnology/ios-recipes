@@ -10,6 +10,8 @@ import UIKit
 
 class RecipeDetailViewController: UIViewController {
     
+    // MARK: - Properties and Outlets
+    
     @IBOutlet weak var recipeLabel: UILabel!
     @IBOutlet weak var recipeTextView: UITextView!
     
@@ -19,6 +21,8 @@ class RecipeDetailViewController: UIViewController {
         }
     }
 
+    // MARK: - View Loading Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
