@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="lSB-P5-ZYf">
             <objects>
-                <viewController id="xGv-w7-lMl" sceneMemberID="viewController">
+                <viewController id="xGv-w7-lMl" customClass="MainViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AtS-pv-OM4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,6 +24,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="recipeTextFieldEdited:" destination="xGv-w7-lMl" eventType="editingDidEndOnExit" id="IYR-IN-IXR"/>
+                                </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28p-U5-hCe">
                                 <rect key="frame" x="67" y="182" width="240" height="128"/>
@@ -37,15 +40,18 @@
                         <viewLayoutGuide key="safeArea" id="lIN-Ow-nha"/>
                     </view>
                     <navigationItem key="navigationItem" id="Cxo-FT-tTW"/>
+                    <connections>
+                        <outlet property="recipeTextField" destination="VJE-Ih-lKc" id="LbW-hD-NvT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5nk-Mc-4Bc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1284" y="215.44227886056973"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Recipes Table View Controller-->
         <scene sceneID="Nlf-Ua-zRj">
             <objects>
-                <tableViewController id="y3A-y3-qvF" sceneMemberID="viewController">
+                <tableViewController id="y3A-y3-qvF" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j88-d3-FND">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

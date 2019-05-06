@@ -21,4 +21,8 @@ class MainViewController: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
 	}
+
+	@IBAction func recipeTextFieldEdited(_ sender: UITextField) {
+		
+	}
 }
