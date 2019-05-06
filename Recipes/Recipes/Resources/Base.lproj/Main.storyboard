@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Recipes-->
         <scene sceneID="XWB-Dl-9CT">
             <objects>
                 <viewController id="0uI-Cx-gX0" customClass="MainViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,7 +49,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IAT-bt-4df"/>
                     </view>
-                    <navigationItem key="navigationItem" id="I1t-Ue-zKx"/>
+                    <navigationItem key="navigationItem" title="Recipes" id="I1t-Ue-zKx"/>
                     <connections>
                         <outlet property="searchTextField" destination="Cdb-RY-iAF" id="jse-sY-XWx"/>
                     </connections>
@@ -98,7 +98,7 @@
             </objects>
             <point key="canvasLocation" x="1884" y="137"/>
         </scene>
-        <!--Recipe Detail View Controller-->
+        <!--Recipe Name-->
         <scene sceneID="Old-QI-EtO">
             <objects>
                 <viewController id="FZW-QC-Wur" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
@@ -136,6 +136,7 @@ Step 2: Blah blah blah blah</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lwq-ye-WrB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Recipe Name" id="SCm-c2-NMp"/>
                     <connections>
                         <outlet property="recipeDirectionsTextView" destination="Tf7-uH-exN" id="Bzc-xQ-TR7"/>
                         <outlet property="recipeNameLabel" destination="keG-m7-YEU" id="ZOt-yS-qIy"/>
