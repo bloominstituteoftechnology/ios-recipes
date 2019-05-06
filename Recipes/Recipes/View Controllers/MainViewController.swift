@@ -17,14 +17,9 @@ class MainViewController: UIViewController {
 		if !loadFromPersistentStore() {
 				fetchData()
 		}
+		
 		print(allRecipes)
-		
-		
-		
-		
-	
     }
-	
 	
 	private func fetchData() {
 		networkClient.fetchRecipes { (recipes, error) in
@@ -55,9 +50,7 @@ class MainViewController: UIViewController {
 	}
 	
 	@IBOutlet var searchBar: UISearchBar!
-	
 	private var recipesTableViewController: RecipesTableViewController?
-	
 	let networkClient = RecipesNetworkClient()
 	
 	var allRecipes: [Recipe] = [] {
@@ -95,9 +88,7 @@ extension MainViewController {
 			let data = try Data(contentsOf: url)
 			let decoder = PropertyListDecoder()
 			let decodedrecipies = try decoder.decode([Recipe].self, from: data)
-			
-				self.allRecipes = decodedrecipies
-			
+			self.allRecipes = decodedrecipies
 		}catch {
 			NSLog("Error loading book data: \(error)")
 			fetchData()
@@ -117,8 +108,6 @@ extension MainViewController {
 			NSLog("Error saving book data: \(error)")
 		}
 	}
-	
-	
 }
 
 
@@ -134,7 +123,6 @@ extension MainViewController: UISearchBarDelegate {
 	}
 	
 	private func filterRecipes(searchText: String) {
-		
 		let searchText = searchText.lowercased()
 		var updateRecipe: [Recipe] = []
 		for recipe in allRecipes {
