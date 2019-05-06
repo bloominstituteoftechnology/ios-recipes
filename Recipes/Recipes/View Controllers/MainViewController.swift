@@ -70,13 +70,20 @@ class MainViewController: UIViewController {
 			filteredRecipes = allRecipes
 			return
 		}
-		switch scope {
-		case .name:
-			filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-		case .allContents:
-			filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchText.lowercased()) ||
-				$0.instructions.lowercased().contains(searchText.lowercased()) }
+
+		let searchTerms = searchText.split(separator: " ").map { String($0) }
+
+		var tempFilterRecipes = allRecipes
+		for term in searchTerms {
+			switch scope {
+			case .name:
+				tempFilterRecipes = tempFilterRecipes.filter { $0.name.lowercased().contains(term.lowercased()) }
+			case .allContents:
+				tempFilterRecipes = tempFilterRecipes.filter { $0.name.lowercased().contains(term.lowercased()) ||
+					$0.instructions.lowercased().contains(term.lowercased()) }
+			}
 		}
+		filteredRecipes = tempFilterRecipes
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
