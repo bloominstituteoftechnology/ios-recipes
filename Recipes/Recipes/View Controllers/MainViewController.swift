@@ -14,10 +14,11 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var receipeSearchBar: UISearchBar!
     
-    var recipesTableViewController: RecipeDetailViewController?
+    private var recipesTableViewController: RecipesTableViewController!
     
     private let networkClient = RecipesNetworkClient()
     private var allRecipes: [Recipe] = []
+    private var filteredRecipes: [Recipe] = []
     
     
     
@@ -38,14 +39,21 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-
+    
+    // MARK: - Data Manipulation
+    
+    func filterRecipes() {
+        
+    }
+    
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
+        if segue.identifier == "EmbedRecipeTableView" {
+            recipesTableViewController = (segue.destination as! RecipesTableViewController)
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
