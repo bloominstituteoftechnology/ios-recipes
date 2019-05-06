@@ -26,19 +26,14 @@ class RecipeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // updateViews()
+        updateViews()
 
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        updateViews()
-    }
-    
     private func updateViews() {
-        recipeTitleLabel.text = recipe?.name ?? "No title provided"
-       // recipeInstructionsTextView.text = recipe?.instructions ?? "Sorry, instructions are unavailable at this time."
+        guard let recipe = recipe, isViewLoaded else { return }
+        recipeTitleLabel.text = recipe.name
+       recipeInstructionsTextView.text = recipe.instructions
     }
 }
