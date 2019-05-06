@@ -10,5 +10,4 @@ import Foundation
 struct Recipe: Codable, Equatable {
     var name: String
     var instructions: String
-
 }

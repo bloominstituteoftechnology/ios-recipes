@@ -9,16 +9,12 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
-	
     override func viewDidLoad() {
         super.viewDidLoad()
 		searchBar.delegate = self
 		if !loadFromPersistentStore() {
 				fetchData()
 		}
-		
-		print(allRecipes)
     }
 	
 	private func fetchData() {
