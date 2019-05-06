@@ -30,7 +30,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hZ-ip-ts9">
                                 <rect key="frame" x="20" y="126" width="335" height="541"/>
                                 <connections>
-                                    <segue destination="S4M-LA-wS8" kind="embed" identifier="EmbededTableViewController" id="hhf-OP-v5p"/>
+                                    <segue destination="S4M-LA-wS8" kind="embed" identifier="EmbededTableViewController" id="S9z-le-1PI"/>
                                 </connections>
                             </containerView>
                         </subviews>

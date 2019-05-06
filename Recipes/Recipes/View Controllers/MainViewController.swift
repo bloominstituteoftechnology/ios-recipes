@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
 	
 	@IBAction func editingDidEndOnExit(_ sender: Any) {
 		
-		
+		print("edit")
 	}
 	
 	private func fetchData() {
@@ -30,7 +30,8 @@ class MainViewController: UIViewController {
 			}
 			
 			DispatchQueue.main.async {
-				self.recipes = recipes
+				self.recipesTableViewController?.recipes = recipes
+//				print(recipes)
 			}
 		}
 	}
@@ -42,7 +43,7 @@ class MainViewController: UIViewController {
 				print("error: prepare(for segue: ,EmbededTableViewController")
 				return
 			}
-			vc.recipes = recipes
+			recipesTableViewController = vc
 		}
 	}
 	
@@ -54,12 +55,15 @@ class MainViewController: UIViewController {
 	private var recipesTableViewController: RecipesTableViewController? {
 		didSet {
 			print("didSet RTV")
+			
 		}
 	}
 	
 	let networkClient = RecipesNetworkClient()
 	
 	var recipes: [Recipe] = []
+	
+	var filteredRecipes: [Recipe] = []
 }
 
 
