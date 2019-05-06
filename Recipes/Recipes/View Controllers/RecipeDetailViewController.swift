@@ -17,11 +17,16 @@ class RecipeDetailViewController: UIViewController {
     }
 	
 	func updateViews() {
-//		if let recipe = recipe {
-//			
-//		}
+		guard let recipe = recipe else { return }
+		
+		recipeNameLabel?.text = recipe.name
+		recipeTextView?.text = recipe.instructions
 	}
 
+	
+	@IBOutlet var recipeNameLabel: UILabel!
+	@IBOutlet var recipeTextView: UITextView!
+	
 	
 	var recipe: Recipe? {
 		didSet {

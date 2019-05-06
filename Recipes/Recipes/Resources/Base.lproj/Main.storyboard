@@ -113,21 +113,52 @@
             </objects>
             <point key="canvasLocation" x="1891" y="89"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="ktJ-76-4Dm">
             <objects>
-                <viewController id="GUt-ZA-rJV" sceneMemberID="viewController">
+                <viewController id="GUt-ZA-rJV" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J8B-gN-ngp">
                         <rect key="frame" x="0.0" y="0.0" width="335" height="541"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1f-bq-BqP">
+                                <rect key="frame" x="16" y="28" width="303" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="JvJ-cg-pSU"/>
+                                    <constraint firstAttribute="width" constant="303" id="t6x-mg-QM5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uvP-Fa-w80">
+                                <rect key="frame" x="16" y="68" width="303" height="453"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="V1f-bq-BqP" firstAttribute="top" secondItem="aJC-hd-5Ni" secondAttribute="top" constant="8" id="EXp-ox-naN"/>
+                            <constraint firstItem="aJC-hd-5Ni" firstAttribute="bottom" secondItem="uvP-Fa-w80" secondAttribute="bottom" constant="20" id="M6o-qX-LDt"/>
+                            <constraint firstItem="aJC-hd-5Ni" firstAttribute="trailing" secondItem="uvP-Fa-w80" secondAttribute="trailing" constant="16" id="OTc-kb-HBd"/>
+                            <constraint firstItem="aJC-hd-5Ni" firstAttribute="trailing" secondItem="V1f-bq-BqP" secondAttribute="trailing" constant="16" id="hd9-jF-o8t"/>
+                            <constraint firstItem="uvP-Fa-w80" firstAttribute="top" secondItem="V1f-bq-BqP" secondAttribute="bottom" constant="8" id="hzH-wJ-ZIl"/>
+                            <constraint firstItem="uvP-Fa-w80" firstAttribute="leading" secondItem="aJC-hd-5Ni" secondAttribute="leading" constant="16" id="l5a-ML-bPk"/>
+                            <constraint firstItem="V1f-bq-BqP" firstAttribute="leading" secondItem="aJC-hd-5Ni" secondAttribute="leading" constant="16" id="tdZ-Nm-TSe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aJC-hd-5Ni"/>
                     </view>
                     <navigationItem key="navigationItem" id="UNd-ug-Ob5"/>
+                    <connections>
+                        <outlet property="recipeNameLabel" destination="V1f-bq-BqP" id="wqy-h0-vux"/>
+                        <outlet property="recipeTextView" destination="uvP-Fa-w80" id="G53-pr-T36"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQu-5k-NM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="89"/>
+            <point key="canvasLocation" x="2780" y="88.605697151424295"/>
         </scene>
     </scenes>
 </document>
