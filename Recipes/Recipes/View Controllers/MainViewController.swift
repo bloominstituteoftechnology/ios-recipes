@@ -17,9 +17,16 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     private var recipesTableViewController: RecipesTableViewController!
     
     private let networkClient = RecipesNetworkClient()
-    private var allRecipes: [Recipe] = []
-    private var filteredRecipes: [Recipe] = []
-    
+    private var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    private var filteredRecipes: [Recipe] = [] {
+        didSet {
+           filterRecipes()
+        }
+    }
     
     
     // MARK: - View states
@@ -30,11 +37,14 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         receipeSearchBar.delegate = self
 
         // Fetch the recipes from the network
-        
         networkClient.fetchRecipes { (allRecipes, error) in
             if let error = error {
                 NSLog("Error loading recipes \(error)")
                 return
+            }
+        
+            DispatchQueue.main.async {
+                self.allRecipes = allRecipes ?? []
             }
         }
     }
@@ -43,7 +53,20 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     // MARK: - Data Manipulation
     
     func filterRecipes() {
+        recipesTableViewController.recipes = allRecipes
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        receipeSearchBar.resignFirstResponder()
+       // filterRecipes()
         
+        guard let findThisRecipe = receipeSearchBar.text, !findThisRecipe.isEmpty else {
+            return
+        }
+        
+//        searchBar.text = ""
+//        searchBar.placeholder = findThisRecipe
     }
     
 
@@ -54,8 +77,6 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         if segue.identifier == "EmbedRecipeTableView" {
             recipesTableViewController = (segue.destination as! RecipesTableViewController)
         }
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
 
 

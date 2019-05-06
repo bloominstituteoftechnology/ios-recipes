@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class RecipeDetailViewController: UIViewController {
     
     // MARK: - Properties
@@ -28,26 +26,19 @@ class RecipeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateViews()
+       // updateViews()
 
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateViews()
+    }
     
     private func updateViews() {
         recipeTitleLabel.text = recipe?.name ?? "No title provided"
-        recipeInstructionsTextView.text = recipe?.instructions ?? "Sorry, instructions are unavailable at this time."
+       // recipeInstructionsTextView.text = recipe?.instructions ?? "Sorry, instructions are unavailable at this time."
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
