@@ -23,9 +23,7 @@ class MainViewController: UIViewController {
     }
 	
 	
-	private func filterRecipes() {
-		
-	}
+	
 	
 	
 	
@@ -60,7 +58,11 @@ class MainViewController: UIViewController {
 	
 	let networkClient = RecipesNetworkClient()
 	var recipes: [Recipe] = []
-	var filteredRecipes: [Recipe] = []
+	var filteredRecipes: [Recipe] = [] {
+		didSet {
+			recipesTableViewController?.recipes = filteredRecipes
+		}
+	}
 	
 	private var readingListURL: URL? {
 		let fileManager = FileManager.default
@@ -114,7 +116,11 @@ extension MainViewController {
 
 extension MainViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		print(searchText)
+		
+		filterRecipes(searchText: searchText)
 	}
 	
+	private func filterRecipes(searchText: String) {
+		
+	}
 }
