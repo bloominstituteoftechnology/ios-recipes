@@ -10,6 +10,9 @@ import UIKit
 
 class RecipeDetailViewController: UIViewController {
 
+    @IBOutlet weak var recipeDetailNameLabel: UILabel!
+    @IBOutlet weak var recipeDetailTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
