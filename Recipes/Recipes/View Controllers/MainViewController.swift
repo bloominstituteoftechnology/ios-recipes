@@ -121,7 +121,7 @@ extension MainViewController: UISearchBarDelegate {
 		
 		
 		if searchText.isEmpty {
-			
+			filteredRecipes = recipes
 		}
 		filterRecipes(searchText: searchText)
 	}
