@@ -43,6 +43,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B00EA982280C4FF00F9C2FD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
+				1B00EA992280C52300F9C2FD /* View Controllers */,
+				1B00EA9A2280C53200F9C2FD /* Table View Controller */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1B00EA992280C52300F9C2FD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1B00EA922280C2A700F9C2FD /* MainViewController.swift */,
+				1B00EA962280C41500F9C2FD /* RecipeDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1B00EA9A2280C53200F9C2FD /* Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1B00EA942280C30C00F9C2FD /* RecipeTableViewController.swift */,
+			);
+			path = "Table View Controller";
+			sourceTree = "<group>";
+		};
 		9D59AF412117E637002FB7CD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -54,7 +81,6 @@
 		9D59AF452117E652002FB7CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
 				9DA0F0832117E40100A99E97 /* Assets.xcassets */,
 				9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */,
 				9DA0F0882117E40100A99E97 /* Info.plist */,
@@ -89,9 +115,7 @@
 		9DA0F07B2117E3F800A99E97 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				1B00EA922280C2A700F9C2FD /* MainViewController.swift */,
-				1B00EA942280C30C00F9C2FD /* RecipeTableViewController.swift */,
-				1B00EA962280C41500F9C2FD /* RecipeDetailViewController.swift */,
+				1B00EA982280C4FF00F9C2FD /* Views */,
 				9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */,
 				9D59AF412117E637002FB7CD /* Networking */,
 				9D59B52A2117F520002FB7CD /* Model */,
