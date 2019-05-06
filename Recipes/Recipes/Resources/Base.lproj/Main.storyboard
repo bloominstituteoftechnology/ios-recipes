@@ -22,18 +22,19 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cDV-KT-VgF">
                                 <rect key="frame" x="16" y="132" width="343" height="519"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VJE-Ih-lKc">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                    <searchBar contentMode="redraw" verticalHuggingPriority="251" searchBarStyle="minimal" placeholder="Filter Recipes" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zlk-vm-IYs">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <scopeButtonTitles>
+                                            <string>Name</string>
+                                            <string>All Contents</string>
+                                        </scopeButtonTitles>
                                         <connections>
-                                            <action selector="recipeTextFieldChanged:" destination="xGv-w7-lMl" eventType="editingChanged" id="ouT-j0-md7"/>
-                                            <action selector="recipeTextFieldEdited:" destination="xGv-w7-lMl" eventType="editingDidEndOnExit" id="IYR-IN-IXR"/>
+                                            <outlet property="delegate" destination="xGv-w7-lMl" id="cDr-xn-0c0"/>
                                         </connections>
-                                    </textField>
+                                    </searchBar>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28p-U5-hCe">
-                                        <rect key="frame" x="0.0" y="38" width="343" height="481"/>
+                                        <rect key="frame" x="0.0" y="100" width="343" height="419"/>
                                         <connections>
                                             <segue destination="y3A-y3-qvF" kind="embed" identifier="EmbedRecipesTableViewController" id="qF4-Ph-1dA"/>
                                         </connections>
@@ -52,7 +53,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="A Recipe List I Think?" id="Cxo-FT-tTW"/>
                     <connections>
-                        <outlet property="recipeTextField" destination="VJE-Ih-lKc" id="LbW-hD-NvT"/>
+                        <outlet property="searchBar" destination="zlk-vm-IYs" id="K5v-sL-jES"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5nk-Mc-4Bc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -64,11 +65,11 @@
             <objects>
                 <viewController id="7wB-qt-IUw" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtQ-vG-klr">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="481"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="419"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xhV-9h-YkO">
-                                <rect key="frame" x="0.0" y="20" width="343" height="461"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="419"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceipeDetailCell" id="iV5-Uy-E8Y" customClass="RecipeTableViewCell" customModule="Recipes" customModuleProvider="target">
@@ -126,7 +127,7 @@
             <objects>
                 <tableViewController id="y3A-y3-qvF" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j88-d3-FND">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="481"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="419"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>

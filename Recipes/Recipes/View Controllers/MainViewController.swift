@@ -13,7 +13,20 @@ class MainViewController: UIViewController {
 	let networkClient = RecipesNetworkClient()
 	var allRecipes: [Recipe] = [] {
 		didSet {
-			filterRecipes()
+			guard let searchText = searchBar.text else {
+				filterRecipes(with: nil, scope: nil)
+				return
+			}
+			let scope: FilterScope
+			switch searchBar.selectedScopeButtonIndex {
+			case 0:
+				scope = .name
+			case 1:
+				scope = .allContents
+			default:
+				scope = .name
+			}
+			filterRecipes(with: searchText, scope: scope)
 		}
 	}
 	var filteredRecipes: [Recipe] = [] {
@@ -27,7 +40,7 @@ class MainViewController: UIViewController {
 		}
 	}
 
-	@IBOutlet var recipeTextField: UITextField!
+	@IBOutlet var searchBar: UISearchBar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,13 +59,22 @@ class MainViewController: UIViewController {
 		}
 	}
 
-	func filterRecipes() {
-		guard let searchText = recipeTextField.text, !searchText.isEmpty else {
+	enum FilterScope {
+		case name
+		case allContents
+	}
+	func filterRecipes(with searchText: String?, scope: FilterScope?) {
+		guard let searchText = searchText, !searchText.isEmpty, let scope = scope else {
 			filteredRecipes = allRecipes
 			return
 		}
-		filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchText.lowercased()) ||
-			$0.instructions.lowercased().contains(searchText.lowercased()) }
+		switch scope {
+		case .name:
+			filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+		case .allContents:
+			filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchText.lowercased()) ||
+				$0.instructions.lowercased().contains(searchText.lowercased()) }
+		}
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,13 +83,47 @@ class MainViewController: UIViewController {
 			recipesTableViewController = dest
 		}
 	}
+}
 
-	@IBAction func recipeTextFieldChanged(_ sender: UITextField) {
-		filterRecipes()
+extension MainViewController: UISearchBarDelegate {
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		let scope: FilterScope
+		switch searchBar.selectedScopeButtonIndex {
+		case 0:
+			scope = .name
+		case 1:
+			scope = .allContents
+		default:
+			scope = .name
+		}
+
+		filterRecipes(with: searchText, scope: scope)
 	}
 
-	@IBAction func recipeTextFieldEdited(_ sender: UITextField) {
-		resignFirstResponder()
-		filterRecipes()
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.resignFirstResponder()
+		let scope: FilterScope
+		switch searchBar.selectedScopeButtonIndex {
+		case 0:
+			scope = .name
+		case 1:
+			scope = .allContents
+		default:
+			scope = .name
+		}
+		filterRecipes(with: searchBar.text, scope: scope)
+	}
+
+	func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+		let scope: FilterScope
+		switch selectedScope {
+		case 0:
+			scope = .name
+		case 1:
+			scope = .allContents
+		default:
+			scope = .name
+		}
+		filterRecipes(with: searchBar.text, scope: scope)
 	}
 }
