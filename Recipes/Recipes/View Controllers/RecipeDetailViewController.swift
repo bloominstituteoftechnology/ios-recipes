@@ -12,8 +12,7 @@ class RecipeDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-		
+		updateViews()
     }
 	
 	func updateViews() {
@@ -28,10 +27,6 @@ class RecipeDetailViewController: UIViewController {
 	@IBOutlet var recipeTextView: UITextView!
 	
 	
-	var recipe: Recipe? {
-		didSet {
-			updateViews()
-		}
-	}
+	var recipe: Recipe? 
 
 }
