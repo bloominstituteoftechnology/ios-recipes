@@ -26,4 +26,8 @@ class RecipesTableViewController: UITableViewController {
 		return cell
 	}
 
+	var recipes: [Recipe] = [] {
+		didSet { tableView.reloadData() }
+	}
+	
 }
