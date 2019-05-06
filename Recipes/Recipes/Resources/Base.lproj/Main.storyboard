@@ -22,8 +22,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cDV-KT-VgF">
                                 <rect key="frame" x="16" y="132" width="343" height="519"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" verticalHuggingPriority="251" searchBarStyle="minimal" placeholder="Filter Recipes" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zlk-vm-IYs">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
+                                    <searchBar contentMode="redraw" verticalHuggingPriority="251" searchBarStyle="minimal" placeholder="Filter Recipes" translatesAutoresizingMaskIntoConstraints="NO" id="zlk-vm-IYs">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="56"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                         <scopeButtonTitles>
                                             <string>Name</string>
@@ -34,7 +34,7 @@
                                         </connections>
                                     </searchBar>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28p-U5-hCe">
-                                        <rect key="frame" x="0.0" y="100" width="343" height="419"/>
+                                        <rect key="frame" x="0.0" y="56" width="343" height="463"/>
                                         <connections>
                                             <segue destination="y3A-y3-qvF" kind="embed" identifier="EmbedRecipesTableViewController" id="qF4-Ph-1dA"/>
                                         </connections>
@@ -65,11 +65,11 @@
             <objects>
                 <viewController id="7wB-qt-IUw" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtQ-vG-klr">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="419"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="463"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xhV-9h-YkO">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="419"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="463"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceipeDetailCell" id="iV5-Uy-E8Y" customClass="RecipeTableViewCell" customModule="Recipes" customModuleProvider="target">
@@ -127,7 +127,7 @@
             <objects>
                 <tableViewController id="y3A-y3-qvF" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j88-d3-FND">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="419"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="463"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>

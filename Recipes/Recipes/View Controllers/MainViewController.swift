@@ -100,14 +100,37 @@ extension MainViewController: UISearchBarDelegate {
 		filterRecipes(with: searchText, scope: scope)
 	}
 
+	func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+		let scope = FilterScope.getScopeForIndex(selectedScope)
+		filterRecipes(with: searchBar.text, scope: scope)
+	}
+
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		searchBar.resignFirstResponder()
 		let scope = FilterScope.getScopeForIndex(searchBar.selectedScopeButtonIndex)
 		filterRecipes(with: searchBar.text, scope: scope)
 	}
 
-	func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-		let scope = FilterScope.getScopeForIndex(selectedScope)
+	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.resignFirstResponder()
+		searchBar.text = ""
+		let scope = FilterScope.getScopeForIndex(searchBar.selectedScopeButtonIndex)
 		filterRecipes(with: searchBar.text, scope: scope)
+
+	}
+
+	func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+		searchBar.showsScopeBar = true
+		searchBar.sizeToFit()
+		searchBar.setShowsCancelButton(true, animated: true)
+		return true
+	}
+
+	func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+		searchBar.showsScopeBar = false
+		searchBar.sizeToFit()
+		searchBar.setShowsCancelButton(false, animated: true)
+		return true
+
 	}
 }
