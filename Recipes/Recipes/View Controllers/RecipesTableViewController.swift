@@ -48,7 +48,10 @@ class RecipesTableViewController: UITableViewController {
 	
 
 	var recipes: [Recipe] = [] {
-		didSet { tableView.reloadData() }
+		didSet {
+			tableView.reloadData()
+			print("didset TableVieW")
+		}
 	}
 	
 }
