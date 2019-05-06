@@ -21,10 +21,7 @@ class RecipeDetailViewController: UIViewController {
 		recipeTextView?.text = recipe.instructions
 	}
 
-	
 	@IBOutlet var recipeNameLabel: UILabel!
 	@IBOutlet var recipeTextView: UITextView!
-	
-	
 	var recipe: Recipe? 
 }

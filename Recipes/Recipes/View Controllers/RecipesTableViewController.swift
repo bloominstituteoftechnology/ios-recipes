@@ -8,12 +8,7 @@
 
 import UIKit
 
-class RecipesTableViewController: UITableViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-	}
-	
+class RecipesTableViewController: UITableViewController {	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return recipes.count
 	}
@@ -40,8 +35,6 @@ class RecipesTableViewController: UITableViewController {
 	}
 	
 	var recipes: [Recipe] = [] {
-		didSet {
-			tableView.reloadData()
-		}
+		didSet { tableView.reloadData() }
 	}
 }
