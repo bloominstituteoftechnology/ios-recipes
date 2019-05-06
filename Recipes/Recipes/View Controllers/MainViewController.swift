@@ -57,7 +57,15 @@ class MainViewController: UIViewController {
 	private var recipesTableViewController: RecipesTableViewController?
 	
 	let networkClient = RecipesNetworkClient()
-	var recipes: [Recipe] = []
+	var recipes: [Recipe] = [] {
+		didSet {
+			recipesTableViewController?.recipes = recipes
+		}
+	}
+	
+	
+	
+	
 	var filteredRecipes: [Recipe] = [] {
 		didSet {
 			recipesTableViewController?.recipes = filteredRecipes
@@ -117,10 +125,21 @@ extension MainViewController {
 extension MainViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		
+		
+		if searchText.isEmpty {
+			
+		}
 		filterRecipes(searchText: searchText)
 	}
 	
 	private func filterRecipes(searchText: String) {
+		var updateRecipe: [Recipe] = []
+		for recipe in recipes {
+			if recipe.name.contains(searchText) || recipe.instructions.contains(searchText) {
+				updateRecipe.append(recipe)
+			}
+		}
+		filteredRecipes = updateRecipe
 		
 	}
 }
