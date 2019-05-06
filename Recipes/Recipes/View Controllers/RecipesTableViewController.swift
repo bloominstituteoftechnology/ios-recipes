@@ -12,8 +12,6 @@ class RecipesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-	
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -22,10 +20,8 @@ class RecipesTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath)
-		
 		let recipe  = recipes[indexPath.row]
 		cell.textLabel?.text = recipe.name
-		
 		return cell
 	}
 	
@@ -35,23 +31,17 @@ class RecipesTableViewController: UITableViewController {
 			guard let vc = segue.destination as? RecipeDetailViewController,
 				let cell = sender as? UITableViewCell,
 				let indexPath = tableView.indexPath(for: cell)  else {
-					
 					print("error: prepare(for segue:")
 					return
 			}
 			
 			vc.recipe = recipes[indexPath.row]
-			
 		}
 	}
 	
-	
-
 	var recipes: [Recipe] = [] {
 		didSet {
 			tableView.reloadData()
-			print("didset TableVieW")
 		}
 	}
-	
 }

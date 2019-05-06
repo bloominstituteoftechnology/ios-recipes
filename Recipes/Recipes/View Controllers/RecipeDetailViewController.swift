@@ -17,7 +17,6 @@ class RecipeDetailViewController: UIViewController {
 	
 	func updateViews() {
 		guard let recipe = recipe else { return }
-		
 		recipeNameLabel?.text = recipe.name
 		recipeTextView?.text = recipe.instructions
 	}
@@ -28,5 +27,4 @@ class RecipeDetailViewController: UIViewController {
 	
 	
 	var recipe: Recipe? 
-
 }

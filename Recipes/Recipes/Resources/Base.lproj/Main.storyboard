@@ -18,37 +18,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C9q-sT-osh">
-                                <rect key="frame" x="16" y="80" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="editingDidEndOnExit:" destination="OkY-8S-M2d" eventType="editingDidEndOnExit" id="YaY-4e-PIW"/>
-                                </connections>
-                            </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hZ-ip-ts9">
-                                <rect key="frame" x="20" y="126" width="335" height="541"/>
+                                <rect key="frame" x="20" y="128" width="335" height="539"/>
                                 <connections>
                                     <segue destination="S4M-LA-wS8" kind="embed" identifier="EmbededTableViewController" id="S9z-le-1PI"/>
                                 </connections>
                             </containerView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="o60-ux-qwm">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="C9q-sT-osh" firstAttribute="top" secondItem="8OS-3F-ATD" secondAttribute="top" constant="16" id="3zH-TT-zzd"/>
                             <constraint firstItem="8hZ-ip-ts9" firstAttribute="leading" secondItem="8OS-3F-ATD" secondAttribute="leading" constant="20" id="AZy-wq-E8p"/>
+                            <constraint firstItem="o60-ux-qwm" firstAttribute="top" secondItem="8OS-3F-ATD" secondAttribute="top" id="B6c-Wa-sTh"/>
                             <constraint firstItem="8OS-3F-ATD" firstAttribute="bottom" secondItem="8hZ-ip-ts9" secondAttribute="bottom" id="Fib-AJ-8g5"/>
-                            <constraint firstItem="8OS-3F-ATD" firstAttribute="trailing" secondItem="C9q-sT-osh" secondAttribute="trailing" constant="16" id="GLu-83-Hj5"/>
-                            <constraint firstItem="8hZ-ip-ts9" firstAttribute="top" secondItem="C9q-sT-osh" secondAttribute="bottom" constant="16" id="GNj-UX-nsg"/>
+                            <constraint firstItem="o60-ux-qwm" firstAttribute="leading" secondItem="8OS-3F-ATD" secondAttribute="leading" id="Tg8-3P-qeb"/>
                             <constraint firstItem="8OS-3F-ATD" firstAttribute="trailing" secondItem="8hZ-ip-ts9" secondAttribute="trailing" constant="20" id="b3j-9R-SeL"/>
-                            <constraint firstItem="C9q-sT-osh" firstAttribute="leading" secondItem="8OS-3F-ATD" secondAttribute="leading" constant="16" id="b7E-9b-Yao"/>
+                            <constraint firstItem="8hZ-ip-ts9" firstAttribute="top" secondItem="o60-ux-qwm" secondAttribute="bottom" constant="8" id="e5n-SS-aXq"/>
+                            <constraint firstItem="o60-ux-qwm" firstAttribute="trailing" secondItem="8OS-3F-ATD" secondAttribute="trailing" id="okg-8w-ZS8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8OS-3F-ATD"/>
                     </view>
                     <navigationItem key="navigationItem" id="jjE-25-tCb"/>
                     <connections>
-                        <outlet property="editTextView" destination="C9q-sT-osh" id="5Dh-18-jFo"/>
+                        <outlet property="searchBar" destination="o60-ux-qwm" id="YlP-8X-tAV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IcT-wT-x7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,7 +73,7 @@
             <objects>
                 <tableViewController id="S4M-LA-wS8" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rqP-ky-efN">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="541"/>
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="539"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -118,7 +113,7 @@
             <objects>
                 <viewController id="GUt-ZA-rJV" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J8B-gN-ngp">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="541"/>
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="539"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1f-bq-BqP">
@@ -132,7 +127,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvP-Fa-w80">
-                                <rect key="frame" x="16" y="68" width="303" height="453"/>
+                                <rect key="frame" x="16" y="68" width="303" height="451"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

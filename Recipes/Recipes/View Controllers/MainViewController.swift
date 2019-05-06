@@ -10,17 +10,19 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+	private func filterRecipes() {
+		
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		fetchData()
-		
     }
 	
-	@IBAction func editingDidEndOnExit(_ sender: Any) {
-		
-		print("edit")
-	}
+	
+	
+	
 	
 	private func fetchData() {
 		networkClient.fetchRecipes { (recipes, error) in
@@ -31,7 +33,6 @@ class MainViewController: UIViewController {
 			
 			DispatchQueue.main.async {
 				self.recipesTableViewController?.recipes = recipes
-//				print(recipes)
 			}
 		}
 	}
@@ -47,23 +48,16 @@ class MainViewController: UIViewController {
 		}
 	}
 	
+	@IBOutlet var searchBar: UISearchBar!
 	
-	
-	
-	@IBOutlet var editTextView: UITextField!
-	
-	private var recipesTableViewController: RecipesTableViewController? {
-		didSet {
-			print("didSet RTV")
-			
-		}
-	}
+	private var recipesTableViewController: RecipesTableViewController?
 	
 	let networkClient = RecipesNetworkClient()
-	
 	var recipes: [Recipe] = []
-	
 	var filteredRecipes: [Recipe] = []
 }
 
 
+extension MainViewController: UISearchBarDelegate {
+	
+}
