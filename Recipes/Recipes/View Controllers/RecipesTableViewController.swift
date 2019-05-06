@@ -22,16 +22,26 @@ class RecipesTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath)
-		cell.textLabel?.text = "\(indexPath.row)"
+		
+		let recipe  = recipes[indexPath.row]
+		cell.textLabel?.text = recipe.name
+		
 		return cell
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "TableViewCellSegue" {
-			guard let vc = segue.destination as? RecipeDetailViewController else { return }
-			guard let cell = sender as? UITableViewCell,
-				let indexPath = tableView.indexPath(for: cell)  else { return }
+			
+			guard let vc = segue.destination as? RecipeDetailViewController,
+				let cell = sender as? UITableViewCell,
+				let indexPath = tableView.indexPath(for: cell)  else {
+					
+					print("error: prepare(for segue:")
+					return
+			}
+			
 			vc.recipe = recipes[indexPath.row]
+			
 		}
 	}
 	
