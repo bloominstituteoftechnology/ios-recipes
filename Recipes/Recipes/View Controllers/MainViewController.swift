@@ -35,7 +35,27 @@ class MainViewController: UIViewController {
 		}
 	}
 	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "EmbededTableViewController" {
+			
+			guard let vc = segue.destination as? RecipesTableViewController else {
+				print("error: prepare(for segue: ,EmbededTableViewController")
+				return
+			}
+			vc.recipes = recipes
+		}
+	}
+	
+	
+	
+	
 	@IBOutlet var editTextView: UITextField!
+	
+	private var recipesTableViewController: RecipesTableViewController? {
+		didSet {
+			print("didSet RTV")
+		}
+	}
 	
 	let networkClient = RecipesNetworkClient()
 	

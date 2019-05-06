@@ -48,7 +48,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="jjE-25-tCb"/>
                     <connections>
-                        <outlet property="TableViewControllercontainer" destination="8hZ-ip-ts9" id="5KI-Hn-df3"/>
                         <outlet property="editTextView" destination="C9q-sT-osh" id="5Dh-18-jFo"/>
                     </connections>
                 </viewController>
