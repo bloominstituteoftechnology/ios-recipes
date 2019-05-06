@@ -17,15 +17,7 @@ class MainViewController: UIViewController {
 				filterRecipes(with: nil, scope: nil)
 				return
 			}
-			let scope: FilterScope
-			switch searchBar.selectedScopeButtonIndex {
-			case 0:
-				scope = .name
-			case 1:
-				scope = .allContents
-			default:
-				scope = .name
-			}
+			let scope = FilterScope.getScopeForIndex(searchBar.selectedScopeButtonIndex)
 			filterRecipes(with: searchText, scope: scope)
 		}
 	}
@@ -62,6 +54,16 @@ class MainViewController: UIViewController {
 	enum FilterScope {
 		case name
 		case allContents
+		static func getScopeForIndex(_ index: Int) -> FilterScope {
+			switch index {
+			case 0:
+				return .name
+			case 1:
+				return .allContents
+			default:
+				return .allContents
+			}
+		}
 	}
 	func filterRecipes(with searchText: String?, scope: FilterScope?) {
 		guard let searchText = searchText, !searchText.isEmpty, let scope = scope else {
@@ -87,43 +89,18 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		let scope: FilterScope
-		switch searchBar.selectedScopeButtonIndex {
-		case 0:
-			scope = .name
-		case 1:
-			scope = .allContents
-		default:
-			scope = .name
-		}
-
+		let scope = FilterScope.getScopeForIndex(searchBar.selectedScopeButtonIndex)
 		filterRecipes(with: searchText, scope: scope)
 	}
 
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		searchBar.resignFirstResponder()
-		let scope: FilterScope
-		switch searchBar.selectedScopeButtonIndex {
-		case 0:
-			scope = .name
-		case 1:
-			scope = .allContents
-		default:
-			scope = .name
-		}
+		let scope = FilterScope.getScopeForIndex(searchBar.selectedScopeButtonIndex)
 		filterRecipes(with: searchBar.text, scope: scope)
 	}
 
 	func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-		let scope: FilterScope
-		switch selectedScope {
-		case 0:
-			scope = .name
-		case 1:
-			scope = .allContents
-		default:
-			scope = .name
-		}
+		let scope = FilterScope.getScopeForIndex(selectedScope)
 		filterRecipes(with: searchBar.text, scope: scope)
 	}
 }
