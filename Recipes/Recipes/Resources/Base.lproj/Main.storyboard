@@ -66,26 +66,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="343" height="481"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dLP-Q1-H3W">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xhV-9h-YkO">
                                 <rect key="frame" x="0.0" y="20" width="343" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceipeDetailCell" id="iV5-Uy-E8Y" customClass="RecipeTableViewCell" customModule="Recipes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iV5-Uy-E8Y" id="xzd-Lo-p6B">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diq-4a-4cs">
+                                                    <rect key="frame" x="15" y="11" width="313" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="diq-4a-4cs" firstAttribute="leading" secondItem="xzd-Lo-p6B" secondAttribute="leadingMargin" id="Mgh-S1-aNs"/>
+                                                <constraint firstItem="diq-4a-4cs" firstAttribute="top" secondItem="xzd-Lo-p6B" secondAttribute="topMargin" id="gN7-5S-BTH"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="diq-4a-4cs" secondAttribute="bottom" id="sVQ-ga-3vD"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="diq-4a-4cs" secondAttribute="trailing" id="zZh-2Q-CGE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="instructionTextLabel" destination="diq-4a-4cs" id="m6C-e2-KXW"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="7wB-qt-IUw" id="YfS-be-e9D"/>
+                                    <outlet property="delegate" destination="7wB-qt-IUw" id="3si-6a-2tX"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dLP-Q1-H3W" firstAttribute="leading" secondItem="4wd-jD-EXo" secondAttribute="leading" id="Gau-5l-1b6"/>
-                            <constraint firstItem="4wd-jD-EXo" firstAttribute="bottom" secondItem="dLP-Q1-H3W" secondAttribute="bottom" id="k6N-jm-Vkk"/>
-                            <constraint firstItem="dLP-Q1-H3W" firstAttribute="top" secondItem="4wd-jD-EXo" secondAttribute="top" id="vzq-NS-uKg"/>
-                            <constraint firstItem="4wd-jD-EXo" firstAttribute="trailing" secondItem="dLP-Q1-H3W" secondAttribute="trailing" id="w5V-Gf-YxU"/>
+                            <constraint firstItem="xhV-9h-YkO" firstAttribute="top" secondItem="4wd-jD-EXo" secondAttribute="top" id="0GN-Fb-Fqp"/>
+                            <constraint firstItem="4wd-jD-EXo" firstAttribute="trailing" secondItem="xhV-9h-YkO" secondAttribute="trailing" id="5lH-Jw-jzY"/>
+                            <constraint firstItem="xhV-9h-YkO" firstAttribute="leading" secondItem="4wd-jD-EXo" secondAttribute="leading" id="ZI8-Sj-FTD"/>
+                            <constraint firstItem="4wd-jD-EXo" firstAttribute="bottom" secondItem="xhV-9h-YkO" secondAttribute="bottom" id="lua-bZ-xIn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4wd-jD-EXo"/>
                     </view>
                     <navigationItem key="navigationItem" title="A Recipe" id="oad-dH-2FU"/>
                     <connections>
-                        <outlet property="instructionsTextView" destination="dLP-Q1-H3W" id="7hp-eC-5LL"/>
+                        <outlet property="tableView" destination="xhV-9h-YkO" id="4P5-lI-AW3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3E-Nq-NMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
