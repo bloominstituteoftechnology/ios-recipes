@@ -49,6 +49,20 @@ class MainViewController: UIViewController {
 				}
 			}
 		}
+//		styleScope()
+	}
+
+	func styleScope() {
+		for subview in searchBar.allSubviews() {
+			if let selector = subview as? UISegmentedControl {
+				selector.tintColor = .yellow
+				subview.backgroundColor = .clear
+			} else if let textField = subview as? UITextField {
+				textField.backgroundColor = .white
+			} else {
+				subview.backgroundColor = .clear
+			}
+		}
 	}
 
 	enum FilterScope {
@@ -122,6 +136,7 @@ extension MainViewController: UISearchBarDelegate {
 	func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
 		searchBar.showsScopeBar = true
 		searchBar.sizeToFit()
+		styleScope()
 		searchBar.setShowsCancelButton(true, animated: true)
 		return true
 	}

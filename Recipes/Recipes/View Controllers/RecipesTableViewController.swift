@@ -31,6 +31,8 @@ class RecipesTableViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
 
 		cell.textLabel?.text = recipes[indexPath.row].name
+		cell.textLabel?.textColor = .yellow
+		cell.backgroundColor = .clear
 		return cell
 	}
 

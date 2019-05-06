@@ -22,8 +22,9 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cDV-KT-VgF">
                                 <rect key="frame" x="16" y="132" width="343" height="519"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" verticalHuggingPriority="251" searchBarStyle="minimal" placeholder="Filter Recipes" translatesAutoresizingMaskIntoConstraints="NO" id="zlk-vm-IYs">
+                                    <searchBar contentMode="redraw" verticalHuggingPriority="251" searchBarStyle="prominent" placeholder="Filter Recipes" translatesAutoresizingMaskIntoConstraints="NO" id="zlk-vm-IYs">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="56"/>
+                                        <color key="barTintColor" red="1" green="0.0" blue="0.022732125530000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                         <scopeButtonTitles>
                                             <string>Name</string>
@@ -42,7 +43,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.022732125530000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lIN-Ow-nha" firstAttribute="bottom" secondItem="cDV-KT-VgF" secondAttribute="bottom" constant="16" id="G0J-1T-xgY"/>
                             <constraint firstItem="lIN-Ow-nha" firstAttribute="trailing" secondItem="cDV-KT-VgF" secondAttribute="trailing" constant="16" id="OvW-UA-Ts3"/>
@@ -70,7 +71,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xhV-9h-YkO">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="463"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceipeDetailCell" id="iV5-Uy-E8Y" customClass="RecipeTableViewCell" customModule="Recipes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
@@ -82,10 +83,11 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diq-4a-4cs">
                                                     <rect key="frame" x="15" y="11" width="313" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.93264615439999998" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="diq-4a-4cs" firstAttribute="leading" secondItem="xzd-Lo-p6B" secondAttribute="leadingMargin" id="Mgh-S1-aNs"/>
                                                 <constraint firstItem="diq-4a-4cs" firstAttribute="top" secondItem="xzd-Lo-p6B" secondAttribute="topMargin" id="gN7-5S-BTH"/>
@@ -93,6 +95,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="diq-4a-4cs" secondAttribute="trailing" id="zZh-2Q-CGE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="instructionTextLabel" destination="diq-4a-4cs" id="m6C-e2-KXW"/>
                                         </connections>
@@ -104,7 +107,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.022732125530000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xhV-9h-YkO" firstAttribute="top" secondItem="4wd-jD-EXo" secondAttribute="top" id="0GN-Fb-Fqp"/>
                             <constraint firstItem="4wd-jD-EXo" firstAttribute="trailing" secondItem="xhV-9h-YkO" secondAttribute="trailing" id="5lH-Jw-jzY"/>
@@ -129,7 +132,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j88-d3-FND">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="463"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" textLabel="YjE-XM-nnl" style="IBUITableViewCellStyleDefault" id="gA3-pZ-Nof">
                                 <rect key="frame" x="0.0" y="28" width="343" height="44"/>
