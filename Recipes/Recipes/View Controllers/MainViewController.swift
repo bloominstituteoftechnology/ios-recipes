@@ -29,7 +29,9 @@ class MainViewController: UIViewController {
 			}
 			
 			DispatchQueue.main.async {
-				self.recipes = recipes
+				self.recipes = recipes.sorted {
+					($0.name)  < ($1.name )
+				}
 				
 			}
 		}
@@ -144,7 +146,9 @@ extension MainViewController: UISearchBarDelegate {
 		
 		
 		}
-		filteredRecipes = updateRecipe
+		filteredRecipes = updateRecipe.sorted {
+			($0.name)  < ($1.name )
+		}
 		
 	}
 }
