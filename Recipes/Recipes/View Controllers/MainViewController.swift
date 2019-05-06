@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
     }
     var recipesTableViewController: RecipesTableViewController? {
         didSet {
-            self.allRecipes = filteredRecipes
+            self.recipesTableViewController?.recipes = filteredRecipes
         }
     }
     var filteredRecipes: [Recipe] = [] {
@@ -36,31 +36,31 @@ class MainViewController: UIViewController {
                 NSLog("Error getting data: \(error)")
                 return
             }
-            
             DispatchQueue.main.async {
                 self.allRecipes = recipes ?? []
             }
         }
+        
     }
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EmbedRecipesTableViewController" {
+        if segue.identifier == "TableView" {
             recipesTableViewController = (segue.destination as! RecipesTableViewController)
         }
     }
     
     func filterText() {
-        print("filteredText()")
-        print(allRecipes)
-        if let search = searchTextFiled.text {
-            filteredRecipes = allRecipes.filter {$0.name == search}
+        guard let search = searchTextFiled.text else { return }
+        
+        if search != "" {
+            filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(search.lowercased()) }
         } else {
             filteredRecipes = allRecipes
         }
         
-        recipesTableViewController?.recipes = allRecipes
+        
     }
  
 
