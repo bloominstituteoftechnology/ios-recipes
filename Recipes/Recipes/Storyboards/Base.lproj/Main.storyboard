@@ -22,7 +22,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Klo-kS-U1e">
                                 <rect key="frame" x="8" y="96" width="398" height="758"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ECF-OZ-T5s">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ECF-OZ-T5s">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -32,7 +32,7 @@
                                         </connections>
                                     </textField>
                                     <containerView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="p1W-a4-RUk">
-                                        <rect key="frame" x="0.0" y="209" width="437" height="720"/>
+                                        <rect key="frame" x="0.0" y="38" width="398" height="720"/>
                                         <connections>
                                             <segue destination="Ta8-M7-B0F" kind="embed" identifier="EmbedSegue" id="z3F-fv-rRM"/>
                                         </connections>
@@ -63,19 +63,19 @@
             <objects>
                 <tableViewController id="Ta8-M7-B0F" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DjA-MU-PAI">
-                        <rect key="frame" x="0.0" y="0.0" width="437" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="398" height="720"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" textLabel="Qiy-lW-NeI" style="IBUITableViewCellStyleDefault" id="WN3-uK-iHa">
-                                <rect key="frame" x="0.0" y="28" width="437" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="398" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WN3-uK-iHa" id="KtQ-ay-CR0">
-                                    <rect key="frame" x="0.0" y="0.0" width="437" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="398" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qiy-lW-NeI">
-                                            <rect key="frame" x="20" y="0.0" width="397" height="43.5"/>
+                                            <rect key="frame" x="20" y="0.0" width="358" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -103,20 +103,20 @@
             <objects>
                 <viewController id="akQ-sa-87H" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CkO-Q5-s89">
-                        <rect key="frame" x="0.0" y="0.0" width="437" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="398" height="720"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IWr-rt-acb">
-                                <rect key="frame" x="8" y="52" width="421" height="626"/>
+                                <rect key="frame" x="8" y="52" width="382" height="626"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfB-Ip-6pv">
-                                        <rect key="frame" x="0.0" y="0.0" width="421" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="44M-2U-LtC">
-                                        <rect key="frame" x="0.0" y="44" width="421" height="582"/>
+                                        <rect key="frame" x="0.0" y="44" width="382" height="582"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
