@@ -114,6 +114,7 @@ extension MainViewController {
 
 extension MainViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		print("didChange")
+		print(searchText)
 	}
+	
 }
