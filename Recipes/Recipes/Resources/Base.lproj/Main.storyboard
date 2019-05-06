@@ -28,6 +28,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
+                                            <action selector="recipeTextFieldChanged:" destination="xGv-w7-lMl" eventType="editingChanged" id="ouT-j0-md7"/>
                                             <action selector="recipeTextFieldEdited:" destination="xGv-w7-lMl" eventType="editingDidEndOnExit" id="IYR-IN-IXR"/>
                                         </connections>
                                     </textField>

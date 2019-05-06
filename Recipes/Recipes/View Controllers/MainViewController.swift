@@ -51,7 +51,8 @@ class MainViewController: UIViewController {
 			filteredRecipes = allRecipes
 			return
 		}
-		filteredRecipes = allRecipes.filter { $0.name.contains(searchText) || $0.instructions.contains(searchText) }
+		filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchText.lowercased()) ||
+			$0.instructions.lowercased().contains(searchText.lowercased()) }
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -59,6 +60,10 @@ class MainViewController: UIViewController {
 			let dest = segue.destination as? RecipesTableViewController
 			recipesTableViewController = dest
 		}
+	}
+
+	@IBAction func recipeTextFieldChanged(_ sender: UITextField) {
+		filterRecipes()
 	}
 
 	@IBAction func recipeTextFieldEdited(_ sender: UITextField) {
