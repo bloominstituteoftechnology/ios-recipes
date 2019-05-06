@@ -11,19 +11,26 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    //passing data
     let networkClient = RecipesNetworkClient()
+    
+    //creating array to hold recipes
     var allRecipes: [Recipe] = [] {
         didSet {
             filterRecipes()
         }
     }
+    
+    //array to hold filtered recipes
     var filteredRecipes: [Recipe] = [] {
         didSet {
+            //updates table view
             recipesTableViewController?.recipes = filteredRecipes
             recipesTableViewController?.tableView.reloadData()
         }
     }
     
+    //checking for table view
     var recipesTableViewController: RecipesTableViewController?
     
     @IBOutlet weak var textField: UITextField!
@@ -34,7 +41,9 @@ class MainViewController: UIViewController {
     }
     
     func filterRecipes() {
+        //main thread ui
         DispatchQueue.main.async {
+            //logic to unwrap text and filter search
             guard let searchText = self.textField.text, searchText != "" else {
                 self.filteredRecipes = self.allRecipes
                 return
@@ -44,7 +53,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    
+    //api request
     func fetch() {
         networkClient.fetchRecipes { (recipes, error) in
             if let error = error {
@@ -55,19 +64,22 @@ class MainViewController: UIViewController {
         }
     }
     
-    
+    //filters data when user is done editing
     @IBAction func textFieldDidEnd(_ sender: Any) {
         resignFirstResponder()
         filterRecipes()
     }
     
+    //navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedTableView" {
-            guard let destinationVC = segue.destination as? RecipesTableViewController else {
-                print("No destination")
-                return}
-            
+            guard let destinationVC = segue.destination as? RecipesTableViewController else {return}
             recipesTableViewController = destinationVC
         }
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
+        navigationItem.backBarButtonItem?.tintColor = .white
     }
 }

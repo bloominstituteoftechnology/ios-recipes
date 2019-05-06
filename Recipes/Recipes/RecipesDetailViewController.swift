@@ -10,9 +10,11 @@ import Foundation
 import UIKit
 
 class RecipesDetailViewController: UIViewController {
+    //connecting outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     
+    //checking for data transferred
     var recipe: Recipe? {
         didSet {
             updateViews()
@@ -24,10 +26,9 @@ class RecipesDetailViewController: UIViewController {
         updateViews()
     }
     
-    
+    //updates outlets
     func updateViews() {
         guard let recipe = recipe, isViewLoaded else {return}
-        
         titleLabel.text = recipe.name
         textView.text = recipe.instructions
         
