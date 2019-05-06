@@ -15,6 +15,7 @@ class RecipesTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -33,9 +34,14 @@ class RecipesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue" {
             if let destinationVC = segue.destination as? RecipesDetailViewController {
-                guard let indexPath = tableView.indexPathForSelectedRow?.row else { return }
+                guard let indexPath = tableView.indexPathForSelectedRow?.row else {
+                    print("No index")
+                    return }
                 destinationVC.recipe = recipes[indexPath]
+                print("Sent")
             }
+        } else {
+            print("no segue")
         }
     }
     

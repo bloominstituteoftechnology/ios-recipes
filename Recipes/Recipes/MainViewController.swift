@@ -20,9 +20,12 @@ class MainViewController: UIViewController {
     var filteredRecipes: [Recipe] = [] {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController?.tableView.reloadData()
         }
     }
+    
     var recipesTableViewController: RecipesTableViewController?
+    
     @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
@@ -37,7 +40,7 @@ class MainViewController: UIViewController {
                 return
             }
             
-            self.filteredRecipes = self.allRecipes.filter { $0.name.lowercased().contains(searchText) || $0.instructions.lowercased().contains(searchText) }
+            self.filteredRecipes = self.allRecipes.filter { $0.name.lowercased().contains(searchText.lowercased()) || $0.instructions.lowercased().contains(searchText.lowercased()) }
         }
     }
     
@@ -60,7 +63,9 @@ class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedTableView" {
-            guard let destinationVC = segue.destination as? RecipesTableViewController else {return}
+            guard let destinationVC = segue.destination as? RecipesTableViewController else {
+                print("No destination")
+                return}
             
             recipesTableViewController = destinationVC
         }
