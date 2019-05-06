@@ -10,17 +10,22 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-	private func filterRecipes() {
-		
-	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		
+		searchBar.delegate = self
 		fetchData()
+		
+		
+		
     }
 	
 	
+	private func filterRecipes() {
+		
+	}
 	
 	
 	
@@ -33,6 +38,7 @@ class MainViewController: UIViewController {
 			
 			DispatchQueue.main.async {
 				self.recipesTableViewController?.recipes = recipes
+				
 			}
 		}
 	}
@@ -66,6 +72,30 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController {
+	func loadFromPersistentStore() -> Bool{
+		let fileManager = FileManager.default
+		
+		guard let url = readingListURL,
+			fileManager.fileExists(atPath: url.path) else {
+				print("error: loadFromPersistentStore()")
+				return false
+		}
+		
+		do {
+			let data = try Data(contentsOf: url)
+			let decoder = PropertyListDecoder()
+			let decodedrecipies = try decoder.decode([Recipe].self, from: data)
+			DispatchQueue.main.async {
+				self.recipesTableViewController?.recipes = decodedrecipies
+			}
+		}catch {
+			NSLog("Error loading book data: \(error)")
+			fetchData()
+		}
+		
+		return true
+	}
+	
 	func saveToPersistentStore() {
 		guard let url = readingListURL else { return }
 		
@@ -78,28 +108,12 @@ extension MainViewController {
 		}
 	}
 	
-	func loadFromPersistentStore() {
-		let fileManager = FileManager.default
-		
-		guard let url = readingListURL,
-			fileManager.fileExists(atPath: url.path) else {
-				print("error: loadFromPersistentStore()")
-				return
-		}
-		
-		do {
-			let data = try Data(contentsOf: url)
-			let decoder = PropertyListDecoder()
-			let decodedrecipies = try decoder.decode([Recipe].self, from: data)
-			recipes = decodedrecipies
-		}catch {
-			NSLog("Error loading book data: \(error)")
-		}
-	}
 	
 }
 
 
 extension MainViewController: UISearchBarDelegate {
-	
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		print("didChange")
+	}
 }
