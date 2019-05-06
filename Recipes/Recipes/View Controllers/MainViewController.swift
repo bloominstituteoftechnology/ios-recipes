@@ -13,10 +13,15 @@ class MainViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		
 		searchBar.delegate = self
-		fetchData()
+		if !loadFromPersistentStore() {
+				fetchData()
+		}
+		print(allRecipes)
+		
+		
+		
+		
 	
     }
 	
@@ -32,6 +37,7 @@ class MainViewController: UIViewController {
 				self.allRecipes = recipes.sorted {
 					($0.name)  < ($1.name )
 				}
+				self.saveToPersistentStore()
 				
 			}
 		}
@@ -54,7 +60,6 @@ class MainViewController: UIViewController {
 	
 	let networkClient = RecipesNetworkClient()
 	
-	
 	var allRecipes: [Recipe] = [] {
 		didSet {
 			recipesTableViewController?.recipes = allRecipes
@@ -70,7 +75,7 @@ class MainViewController: UIViewController {
 	private var readingListURL: URL? {
 		let fileManager = FileManager.default
 		guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-		let fileName = "Recipes.plist"
+		let fileName = "AllRecipes.plist"
 		let document = documents.appendingPathComponent(fileName)
 		return document
 	}
@@ -90,9 +95,9 @@ extension MainViewController {
 			let data = try Data(contentsOf: url)
 			let decoder = PropertyListDecoder()
 			let decodedrecipies = try decoder.decode([Recipe].self, from: data)
-			DispatchQueue.main.async {
-				self.recipesTableViewController?.recipes = decodedrecipies
-			}
+			
+				self.allRecipes = decodedrecipies
+			
 		}catch {
 			NSLog("Error loading book data: \(error)")
 			fetchData()
@@ -140,14 +145,10 @@ extension MainViewController: UISearchBarDelegate {
 			if name.contains(searchText) || instructions.contains(searchText) {
 				updateRecipe.append(recipe)
 			}
-		
-		
-		
-		
 		}
+		
 		filteredRecipes = updateRecipe.sorted {
 			($0.name)  < ($1.name )
 		}
-		
 	}
 }
