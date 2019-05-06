@@ -17,14 +17,8 @@ class MainViewController: UIViewController {
 		
 		searchBar.delegate = self
 		fetchData()
-		
-		
-		
+	
     }
-	
-	
-	
-	
 	
 	
 	private func fetchData() {
@@ -35,7 +29,7 @@ class MainViewController: UIViewController {
 			}
 			
 			DispatchQueue.main.async {
-				self.recipesTableViewController?.recipes = recipes
+				self.recipes = recipes
 				
 			}
 		}
