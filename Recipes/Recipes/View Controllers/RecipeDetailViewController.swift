@@ -8,12 +8,35 @@
 
 import UIKit
 
-class RecipeDetailViewController: UIViewController {
 
+
+class RecipeDetailViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    @IBOutlet weak var recipeTitleLabel: UILabel!
+    @IBOutlet weak var recipeInstructionsTextView: UITextView!
+    
+    var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
+    }
+
+    // MARK: - View states
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateViews()
 
         // Do any additional setup after loading the view.
+    }
+    
+    
+    private func updateViews() {
+        recipeTitleLabel.text = recipe?.name ?? "No title provided"
+        recipeInstructionsTextView.text = recipe?.instructions ?? "Sorry, instructions are unavailable at this time."
     }
     
 
