@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
 			}
 			
 			DispatchQueue.main.async {
-				self.recipes = recipes.sorted {
+				self.allRecipes = recipes.sorted {
 					($0.name)  < ($1.name )
 				}
 				
@@ -53,15 +53,14 @@ class MainViewController: UIViewController {
 	private var recipesTableViewController: RecipesTableViewController?
 	
 	let networkClient = RecipesNetworkClient()
-	var recipes: [Recipe] = [] {
+	
+	
+	var allRecipes: [Recipe] = [] {
 		didSet {
-			recipesTableViewController?.recipes = recipes
+			recipesTableViewController?.recipes = allRecipes
 		}
 	}
-	
-	
-	
-	
+
 	var filteredRecipes: [Recipe] = [] {
 		didSet {
 			recipesTableViewController?.recipes = filteredRecipes
@@ -107,7 +106,7 @@ extension MainViewController {
 		
 		do {
 			let encoder = PropertyListEncoder()
-			let data = try encoder.encode(recipes)
+			let data = try encoder.encode(allRecipes)
 			try data.write(to: url)
 		} catch {
 			NSLog("Error saving book data: \(error)")
@@ -125,7 +124,7 @@ extension MainViewController: UISearchBarDelegate {
 		if !searchText.isEmpty {
 			filterRecipes(searchText: searchText)
 		} else {
-			filteredRecipes = recipes
+			filteredRecipes = allRecipes
 		}
 	}
 	
@@ -133,7 +132,7 @@ extension MainViewController: UISearchBarDelegate {
 		
 		let searchText = searchText.lowercased()
 		var updateRecipe: [Recipe] = []
-		for recipe in recipes {
+		for recipe in allRecipes {
 		
 			let name = recipe.name.lowercased()
 			let instructions = recipe.instructions.lowercased()
