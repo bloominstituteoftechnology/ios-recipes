@@ -25,6 +25,17 @@ class RecipesTableViewController: UITableViewController {
 		cell.textLabel?.text = "\(indexPath.row)"
 		return cell
 	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "TableViewCellSegue" {
+			guard let vc = segue.destination as? RecipeDetailViewController else { return }
+			guard let cell = sender as? UITableViewCell,
+				let indexPath = tableView.indexPath(for: cell)  else { return }
+			vc.recipe = recipes[indexPath.row]
+		}
+	}
+	
+	
 
 	var recipes: [Recipe] = [] {
 		didSet { tableView.reloadData() }
