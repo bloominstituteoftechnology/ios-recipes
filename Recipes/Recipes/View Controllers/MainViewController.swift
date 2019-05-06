@@ -120,18 +120,29 @@ extension MainViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		
 		
-		if searchText.isEmpty {
+		if !searchText.isEmpty {
+			filterRecipes(searchText: searchText)
+		} else {
 			filteredRecipes = recipes
 		}
-		filterRecipes(searchText: searchText)
 	}
 	
 	private func filterRecipes(searchText: String) {
+		
+		let searchText = searchText.lowercased()
 		var updateRecipe: [Recipe] = []
 		for recipe in recipes {
-			if recipe.name.contains(searchText) || recipe.instructions.contains(searchText) {
+		
+			let name = recipe.name.lowercased()
+			let instructions = recipe.instructions.lowercased()
+			
+			if name.contains(searchText) || instructions.contains(searchText) {
 				updateRecipe.append(recipe)
 			}
+		
+		
+		
+		
 		}
 		filteredRecipes = updateRecipe
 		
