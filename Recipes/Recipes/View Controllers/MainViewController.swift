@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UISearchBarDelegate {
+class MainViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -17,24 +17,25 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     private var recipesTableViewController: RecipesTableViewController!
     
     private let networkClient = RecipesNetworkClient()
+    
     private var allRecipes: [Recipe] = [] {
         didSet {
             filterRecipes()
         }
     }
     private var filteredRecipes: [Recipe] = [] {
+        
         didSet {
            filterRecipes()
         }
     }
-    
-    
+  
+    private var isSearching: Bool = false
     // MARK: - View states
     
     override func viewDidLoad() {
-        super.viewDidLoad() 
+        super.viewDidLoad()
         
-        receipeSearchBar.delegate = self
 
         // Fetch the recipes from the network
         networkClient.fetchRecipes { (allRecipes, error) in
@@ -47,28 +48,28 @@ class MainViewController: UIViewController, UISearchBarDelegate {
                 self.allRecipes = allRecipes ?? []
             }
         }
+        
+        // Set up searhbar
+        implementSearchBar()
+     //  navigationItem.searchController = searchController
     }
     
-    
-    // MARK: - Data Manipulation
+    func implementSearchBar() {
+   //     lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search for yummy recipes"
+        definesPresentationContext = true
+        searchController.searchBar.delegate = self
+    }
+
     
     func filterRecipes() {
-        recipesTableViewController.recipes = allRecipes
+        // If we did a search only display the search results
+        recipesTableViewController.recipes = isSearching ? filteredRecipes : allRecipes
     }
-    
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        receipeSearchBar.resignFirstResponder()
-       // filterRecipes()
-        
-        guard let findThisRecipe = receipeSearchBar.text, !findThisRecipe.isEmpty else {
-            return
-        }
-        
-//        searchBar.text = ""
-//        searchBar.placeholder = findThisRecipe
-    }
-    
 
     // MARK: - Navigation
 
@@ -78,6 +79,21 @@ class MainViewController: UIViewController, UISearchBarDelegate {
             recipesTableViewController = (segue.destination as! RecipesTableViewController)
         }
     }
-
-
 }
+
+extension MainViewController: UISearchBarDelegate {
+    
+    // Filter the recipes
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if !searchText.isEmpty {
+            isSearching = true
+            filteredRecipes = allRecipes.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
+           // self.navigationController?.navigationBar.backItem?.backBarButtonItem?.isEnabled = true
+        }
+        
+        filterRecipes()
+    }
+}
+

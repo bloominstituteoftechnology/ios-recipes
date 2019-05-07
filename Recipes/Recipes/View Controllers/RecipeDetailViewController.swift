@@ -35,5 +35,7 @@ class RecipeDetailViewController: UIViewController {
         guard let recipe = recipe, isViewLoaded else { return }
         recipeTitleLabel.text = recipe.name
        recipeInstructionsTextView.text = recipe.instructions
+        self.navigationController?.navigationBar.backItem?.backBarButtonItem?.isEnabled = true
+    //     _ = navigationController?.view.snapshotView(afterScreenUpdates: true)
     }
 }
