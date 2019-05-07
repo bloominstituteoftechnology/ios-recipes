@@ -30,7 +30,11 @@ class MainViewController: UIViewController {
         }
     }
   
+    let searchController = UISearchController(searchResultsController: nil)
+    
     private var isSearching: Bool = false
+    
+    
     // MARK: - View states
     
     override func viewDidLoad() {
@@ -51,23 +55,31 @@ class MainViewController: UIViewController {
         
         // Set up searhbar
         implementSearchBar()
-     //  navigationItem.searchController = searchController
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Set / reset searchbar
+        isSearching = false
+        searchController.searchBar.text = ""
+        recipesTableViewController.recipes = allRecipes
+    }
+    
+    // Create the searchbar
     func implementSearchBar() {
-   //     lazy var searchController: UISearchController = {
-        let searchController = UISearchController(searchResultsController: nil)
+       // let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search for yummy recipes"
+        searchController.searchBar.placeholder = "What is the name of the yummy recipe?"
         definesPresentationContext = true
         searchController.searchBar.delegate = self
     }
 
-    
     func filterRecipes() {
         // If we did a search only display the search results
+        
         recipesTableViewController.recipes = isSearching ? filteredRecipes : allRecipes
     }
 
@@ -90,7 +102,6 @@ extension MainViewController: UISearchBarDelegate {
         if !searchText.isEmpty {
             isSearching = true
             filteredRecipes = allRecipes.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
-           // self.navigationController?.navigationBar.backItem?.backBarButtonItem?.isEnabled = true
         }
         
         filterRecipes()
