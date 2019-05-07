@@ -72,7 +72,7 @@ class MainViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "What is the name of the yummy recipe?"
+        searchController.searchBar.placeholder = "Search for a yummy recipe!"
         definesPresentationContext = true
         searchController.searchBar.delegate = self
     }
