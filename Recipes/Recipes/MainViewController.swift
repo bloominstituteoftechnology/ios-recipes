@@ -11,8 +11,16 @@ import UIKit
 class MainViewController: UIViewController {
 
     let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = []
-    var filteredRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,26 +29,26 @@ class MainViewController: UIViewController {
                 NSLog("Error gathering recipes: \(error)")
                 return
             }
-            if let recipes = recipes {
-                self.allRecipes = recipes
+            DispatchQueue.main.async {
+                self.allRecipes = recipes ?? []
             }
         }
     } // end of view did load
     
-    func filterRecipes() {
-        guard let searchTerm = self.searchTextField.text, !searchTerm.isEmpty else {
-            self.filteredRecipes = self.allRecipes
-            let searchRecipes = self.allRecipes.filter ( { $0.name != nil || $0.instructions != nil } )
-            self.filteredRecipes = searchRecipes
-            return
-        }
-    } // end of filter recipes
-    
     @IBOutlet weak var searchTextField: UITextField!
-    
     @IBAction func searchTextFieldEdited(_ sender: Any) {
-        
+        resignFirstResponder()
+        filterRecipes()
     }
+    
+    func filterRecipes() {
+        guard let searchTerm = searchTextField.text?.lowercased(), !searchTerm.isEmpty else {
+            filteredRecipes = allRecipes
+            return }
+            let searchRecipes = allRecipes.filter ( { $0.name.lowercased().contains(searchTerm) || $0.instructions.lowercased().contains(searchTerm) } )
+            filteredRecipes = searchRecipes
+            return
+    } // end of filter recipes
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TableSegue" {
@@ -49,5 +57,14 @@ class MainViewController: UIViewController {
         }
     } // end of prepare for segue
 
-    var recipesTableViewController: RecipesTableViewController?
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
 }
+
+
+
+
+
