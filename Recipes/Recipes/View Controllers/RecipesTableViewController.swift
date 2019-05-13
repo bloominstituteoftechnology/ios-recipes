@@ -12,7 +12,7 @@ class RecipesTableViewController: UITableViewController {
 
     var recipes: [Recipe] = [] {
         didSet {
-            self.tableView.reloadData()
+            tableView.reloadData()
         }
     }
     
