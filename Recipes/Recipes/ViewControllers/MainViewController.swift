@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        networkClient?.fetchRecipes(completion: <#T##([Recipe]?, Error?) -> Void#>)
     }
     
     @IBAction func searchTextFieldExitted(_ sender: Any) {
@@ -32,5 +32,7 @@ class MainViewController: UIViewController {
     */
     
     @IBOutlet var searchTextField: UITextField!
+    let networkClient: RecipesNetworkClient?
+    var allRecipes: [Recipe] = []
     
 }
