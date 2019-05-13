@@ -18,9 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3vZ-2j-1q4">
-                                <rect key="frame" x="16" y="64" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X6T-d2-KXQ">
+                                <rect key="frame" x="0.0" y="118" width="375" height="549"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="I2d-LV-2tc" kind="embed" identifier="RecipeSegue" id="vUX-G3-wEc"/>
+                                </connections>
+                            </containerView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3vZ-2j-1q4">
+                                <rect key="frame" x="16" y="80" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -28,15 +34,13 @@
                                     <action selector="mainTextFieldDidEnd:" destination="Gu5-ZF-qWN" eventType="editingDidEndOnExit" id="1NQ-qD-Xuc"/>
                                 </connections>
                             </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X6T-d2-KXQ">
-                                <rect key="frame" x="0.0" y="102" width="375" height="565"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="I2d-LV-2tc" kind="embed" identifier="RecipeSegue" id="vUX-G3-wEc"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3vZ-2j-1q4" firstAttribute="leading" secondItem="nf3-Y7-5xz" secondAttribute="leading" constant="16" id="XvY-lo-r3F"/>
+                            <constraint firstItem="nf3-Y7-5xz" firstAttribute="trailing" secondItem="3vZ-2j-1q4" secondAttribute="trailing" constant="16" id="jnH-Qx-bAS"/>
+                            <constraint firstItem="3vZ-2j-1q4" firstAttribute="top" secondItem="nf3-Y7-5xz" secondAttribute="top" constant="16" id="qHe-ZO-fQS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nf3-Y7-5xz"/>
                     </view>
                     <navigationItem key="navigationItem" id="t6P-61-rQ9"/>
@@ -53,7 +57,7 @@
             <objects>
                 <tableViewController id="I2d-LV-2tc" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kSl-MZ-kWs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -93,7 +97,7 @@
             <objects>
                 <viewController id="0xf-Hz-oi0" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YyH-bQ-ZoF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg4-5U-EtE">

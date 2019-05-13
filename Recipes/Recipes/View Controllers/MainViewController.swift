@@ -9,9 +9,22 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    var allRecipes: [Recipe] = []
-    var recipesTableViewController: RecipesTableViewController?
-    var filteredRecipes: [Recipe] = []
+    private var allRecipes = [Recipe]() {
+        didSet {
+            filterRecipes()
+        }
+    }
+    private var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    
+    private var filteredRecipes = [Recipe]() {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     private let networkClient = RecipesNetworkClient()
    
     @IBOutlet weak var maintTextField: UITextField!
@@ -30,20 +43,35 @@ class MainViewController: UIViewController {
         }
     }
             
-    
+  
+    private func filterRecipes() {
+        DispatchQueue.main.async {
+            guard let search = self.maintTextField.text?.lowercased(), !search.isEmpty
+            else {
+                self.filteredRecipes = self.allRecipes
+                return
+        }
+            self.filteredRecipes = self.allRecipes.filter { $0.name.lowercased().contains(search) || $0.instructions.lowercased().contains(search) }
+    }
+}
 
- 
 
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "RecipeSegue"
+        if segue.identifier == "RecipeSegue" {
+            recipesTableViewController = segue.destination as? RecipesTableViewController
+        }
     }
+    
+    
     
 
     @IBAction func mainTextFieldDidEnd(_ sender: Any) {
+        resignFirstResponder()
+        filterRecipes()
     }
     
 }

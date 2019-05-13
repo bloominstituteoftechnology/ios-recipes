@@ -9,12 +9,17 @@
 import UIKit
 
 class RecipesTableViewController: UITableViewController {
-    var recipies: [Recipe] = [] {
+    
+    
+    
+    var recipes: [Recipe] = [] {
+        
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
-    
+    }
     
     
     override func viewDidLoad() {
@@ -36,14 +41,14 @@ class RecipesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return recipies.count
+        return recipes.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-        let recipes = recipies[indexPath.row]
-        cell.textLabel?.text = recipes.name
+        let recipes1 = recipes[indexPath.row]
+        cell.textLabel?.text = recipes1.name
         return cell
     }
 
@@ -53,19 +58,12 @@ class RecipesTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeDetail" {
-            guard let destinationVC = segue.destination as? RecipeDetailViewController else { return }
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            
-            destinationVC.recipeLabel.text = recipies[indexPath.row].instructions
-            destinationVC.recipeTextView.text = recipies[indexPath.row].name
-        }
-        
-        
            
+            guard let destinationVC = segue.destination as? RecipeDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow
+                else { return }
+            
+            destinationVC.recipe = recipes[indexPath.row]
         }
-        
-        
     }
-    
-
-
+}
