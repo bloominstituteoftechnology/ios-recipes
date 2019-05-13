@@ -19,6 +19,8 @@ class RecipeDetailViewController: UIViewController {
     func updateViews() {
         recipeDetailLabel.text = recipe?.name
         recipeDetailTextView.text = recipe?.instructions
+        guard let _ = recipe,
+            isViewLoaded else { return }
     }
 
     override func viewDidLoad() {
