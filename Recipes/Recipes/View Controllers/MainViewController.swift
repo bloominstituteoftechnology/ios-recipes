@@ -16,9 +16,7 @@ class MainViewController: UIViewController {
     
     var allRecipes: [Recipe] = [] {
         didSet {
-            DispatchQueue.main.async {
-                self.filterRecipes()
-            }
+            self.filterRecipes()
             
         }
     }
@@ -59,9 +57,12 @@ class MainViewController: UIViewController {
                     return
                 }
                 guard let recipes = recipes else { return }
-                self.allRecipes = recipes
-                self.recipeController.allRecipes = recipes
-                self.recipeController.saveToPersistentStore()
+                DispatchQueue.main.async {
+                    self.allRecipes = recipes
+                    self.recipeController.allRecipes = recipes
+                    self.recipeController.saveToPersistentStore()
+                }
+                
             }
             userDefaults.set(true, forKey: appHasBeenRun)
         }
