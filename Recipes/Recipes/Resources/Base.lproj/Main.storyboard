@@ -40,6 +40,9 @@
                         <viewLayoutGuide key="safeArea" id="Eoe-UB-aw1"/>
                     </view>
                     <navigationItem key="navigationItem" id="sDS-41-ZpO"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="uf5-G0-OHH" id="o0R-sr-8Of"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2Q-8T-2SP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

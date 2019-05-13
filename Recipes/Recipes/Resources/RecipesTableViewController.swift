@@ -33,12 +33,8 @@ class RecipesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-        
         let recipe = recipes[indexPath.row]
-
         cell.textLabel?.text = recipe.name
-
-
         return cell
     }
 
@@ -85,7 +81,8 @@ class RecipesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRecipe" {
             guard let destinationVC = segue.destination as? RecipeDetailViewController else { return }
-            destinationVC.recipe = recipes.
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            destinationVC.recipe = recipes[indexPath.row]
         }
     }
 
