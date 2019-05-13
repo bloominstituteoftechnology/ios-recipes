@@ -54,14 +54,17 @@ class MainViewController: UIViewController {
     }
 
     func filterRecipes() {
-        
-        guard let searchTextFieldText = searchTextField.text, !searchTextFieldText.isEmpty else  {
-            filteredRecipes = allRecipes
-            return
-        }
-        filteredRecipes = allRecipes.filter { ($0.name.contains(searchTextFieldText) || $0.instructions.contains(searchTextFieldText))}
-    }
+        DispatchQueue.main.async {
 
+            guard let searchTextFieldText = self.searchTextField.text, !searchTextFieldText.isEmpty else  {
+            self.filteredRecipes = self.allRecipes
+            return
+
+
+        }
+            self.filteredRecipes = self.allRecipes.filter { ($0.name.contains(searchTextFieldText) || $0.instructions.contains(searchTextFieldText))}
+    }
+    }
     @IBAction func search(_ sender: UITextField) {
         searchTextField.resignFirstResponder()
         filterRecipes()
