@@ -11,9 +11,21 @@ import UIKit
 class MainViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     var networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = []
-    var filteredRecipes: [Recipe] = []
-    var recipesTableViewController: RecipesTableViewController?
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = self.filteredRecipes
+        }
+    }
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = self.filteredRecipes
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -37,16 +49,22 @@ class MainViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TableView" {
-            guard let destinationVC = segue.destination as? recipesTableViewController else { return }
+            recipesTableViewController = segue.destination as? RecipesTableViewController
         }
     }
 
     func filterRecipes() {
-        guard let searchTextFieldText = searchTextField.text, !searchTextFieldText.isEmpty else  { filteredRecipes = allRecipes }
-        filteredRecipes = allRecipes.filter()
+        
+        guard let searchTextFieldText = searchTextField.text, !searchTextFieldText.isEmpty else  {
+            filteredRecipes = allRecipes
+            return
+        }
+        filteredRecipes = allRecipes.filter { ($0.name.contains(searchTextFieldText) || $0.instructions.contains(searchTextFieldText))}
     }
 
     @IBAction func search(_ sender: UITextField) {
+        searchTextField.resignFirstResponder()
+        filterRecipes()
     }
 
     
