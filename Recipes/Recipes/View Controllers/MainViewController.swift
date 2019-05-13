@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     let networkClient = RecipesNetworkClient()
+    let recipeController = RecipeController()
     
     var allRecipes: [Recipe] = [] {
         didSet {
@@ -36,16 +37,36 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        networkClient.fetchRecipes { (recipes, error) in
-            if let error = error {
-                NSLog("Error fetching recipes: \(error)")
-            }
+        
+        // Check if it is the first run of the app
+        checkFirstRun()
+        recipeController.loadFromPersistentStore()
+        allRecipes = recipeController.allRecipes
+    }
+    
+    func checkFirstRun() {
+        let userDefaults = UserDefaults.standard
+        let appHasBeenRunKey = userDefaults.bool(forKey: appHasBeenRun)
+        
+        if appHasBeenRunKey == false {
+            print(appHasBeenRunKey)
             
-            guard let recipes = recipes else { return }
-            self.allRecipes = recipes
+            //First time running the app
+            
+            networkClient.fetchRecipes { (recipes, error) in
+                if let error = error {
+                    NSLog("Error fetching recipe data: \(error)")
+                    return
+                }
+                guard let recipes = recipes else { return }
+                self.allRecipes = recipes
+                self.recipeController.allRecipes = recipes
+                self.recipeController.saveToPersistentStore()
+            }
+            userDefaults.set(true, forKey: appHasBeenRun)
         }
     }
+        
     
     func filterRecipes() {
         if let text = searchTextField.text, text != "" {
