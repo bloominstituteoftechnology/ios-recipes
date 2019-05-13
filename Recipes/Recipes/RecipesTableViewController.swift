@@ -40,7 +40,7 @@ class RecipesTableViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "RecipeDetailSeuge" {
+        if segue.identifier == "RecipeDetailSegue" {
             guard let recipeDetailVC = segue.destination as? RecipeDetailViewController else { return }
             
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
