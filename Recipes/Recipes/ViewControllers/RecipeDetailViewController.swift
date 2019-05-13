@@ -17,11 +17,12 @@ class RecipeDetailViewController: UIViewController {
     }
     
     func updateViews() {
+        if isViewLoaded == true {
         guard let chosenRecipe = recipe else { return }
         detailLabel.text = chosenRecipe.name
         detailTextView.text = chosenRecipe.instructions
+        }
     }
-
     
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var detailTextView: UITextView!
