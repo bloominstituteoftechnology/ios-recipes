@@ -17,7 +17,7 @@ class RecipeDetailViewController: UIViewController {
 	}
 	
 	
-	func updateViews() {
+	private func updateViews() {
 		if isViewLoaded {
 		guard let name = recipe?.name,
 		let instruct = recipe?.instructions
