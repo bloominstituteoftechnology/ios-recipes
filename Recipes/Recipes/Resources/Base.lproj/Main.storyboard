@@ -24,7 +24,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="searchTextFieldEdited:" destination="oJV-Wg-NUY" eventType="editingDidEnd" id="fHL-6F-i7g"/>
+                                    <action selector="searchTextFieldEntered:" destination="oJV-Wg-NUY" eventType="editingDidEndOnExit" id="M31-7f-QSe"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PML-93-hKc">

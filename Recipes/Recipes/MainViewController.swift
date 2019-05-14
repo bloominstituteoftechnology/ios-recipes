@@ -36,10 +36,11 @@ class MainViewController: UIViewController {
     } // end of view did load
     
     @IBOutlet weak var searchTextField: UITextField!
-    @IBAction func searchTextFieldEdited(_ sender: Any) {
+    @IBAction func searchTextFieldEntered(_ sender: Any) {
         resignFirstResponder()
         filterRecipes()
     }
+    
     
     func filterRecipes() {
         guard let searchTerm = searchTextField.text?.lowercased(), !searchTerm.isEmpty else {
