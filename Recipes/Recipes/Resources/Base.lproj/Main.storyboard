@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uf5-G0-OHH">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uf5-G0-OHH">
                                 <rect key="frame" x="20" y="88" width="374" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -28,15 +27,23 @@
                                     <action selector="search:" destination="jX8-ES-Ph3" eventType="editingDidEndOnExit" id="e9M-RR-HeA"/>
                                 </connections>
                             </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2nD-fM-gN9">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2nD-fM-gN9">
                                 <rect key="frame" x="0.0" y="126" width="414" height="770"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="khL-yi-HPZ" kind="embed" identifier="TableView" id="TeX-Qz-Qvt"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Eoe-UB-aw1" firstAttribute="trailing" secondItem="uf5-G0-OHH" secondAttribute="trailing" constant="20" id="2RW-qb-14H"/>
+                            <constraint firstItem="2nD-fM-gN9" firstAttribute="top" secondItem="Eoe-UB-aw1" secondAttribute="top" constant="38" id="HHU-8U-jOk"/>
+                            <constraint firstItem="2nD-fM-gN9" firstAttribute="top" secondItem="uf5-G0-OHH" secondAttribute="bottom" constant="8" id="Jta-Ru-JjV"/>
+                            <constraint firstItem="Eoe-UB-aw1" firstAttribute="trailing" secondItem="2nD-fM-gN9" secondAttribute="trailing" id="O3B-ZV-Vvd"/>
+                            <constraint firstItem="uf5-G0-OHH" firstAttribute="leading" secondItem="Eoe-UB-aw1" secondAttribute="leading" constant="20" id="OWw-Y2-ynh"/>
+                            <constraint firstItem="2nD-fM-gN9" firstAttribute="leading" secondItem="Eoe-UB-aw1" secondAttribute="leading" id="fS9-x2-u4B"/>
+                            <constraint firstItem="2nD-fM-gN9" firstAttribute="bottom" secondItem="Eoe-UB-aw1" secondAttribute="bottom" constant="34" id="zNP-6S-W9z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Eoe-UB-aw1"/>
                     </view>
                     <navigationItem key="navigationItem" id="sDS-41-ZpO"/>
@@ -46,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2Q-8T-2SP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="60"/>
+            <point key="canvasLocation" x="1115.9420289855072" y="59.598214285714285"/>
         </scene>
         <!--Recipes Table View Controller-->
         <scene sceneID="ny9-ji-sy7">
