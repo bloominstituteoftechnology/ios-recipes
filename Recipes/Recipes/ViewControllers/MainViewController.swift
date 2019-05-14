@@ -14,27 +14,38 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         networkClient.fetchRecipes { (recipes, error) in
-            self.allRecipes = recipes!
+            if let error = error {
+                NSLog("Error: \(error)")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.allRecipes = recipes ?? []
+
+            }
+        
+
         }
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeSegue" {
             let recipesTVC = segue.destination as? RecipesTableViewController
+            recipesTableViewController = recipesTVC
         }
     }
-    
+    // NOT WORKING
     func filterRecipes() {
-        guard let searchTerm = mainTextField.text else { return }
-        if searchTerm.isEmpty == true  {
-            filteredRecipes = allRecipes
-        } else {
-            filteredRecipes = allRecipes.filter { $0.name == searchTerm || $0.instructions == searchTerm }
-            
+        DispatchQueue.main.async {
+            guard let searchTerm = self.mainTextField.text else { return }
+        if searchTerm.isEmpty == true {
+            self.filteredRecipes = self.allRecipes
+        }  else {
+            self.filteredRecipes = self.allRecipes.filter { $0.name.lowercased().contains(searchTerm) || $0.instructions.lowercased().contains(searchTerm) }
         }
-        
+        }
     }
-
     @IBAction func mainTextFieldAction(_ sender: Any) {
         resignFirstResponder()
         filterRecipes()
@@ -45,8 +56,14 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var mainTextField: UITextField!
     
-    var allRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    
     var recipesTableViewController: RecipesTableViewController?
+    
     var filteredRecipes: [Recipe] = [] {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes

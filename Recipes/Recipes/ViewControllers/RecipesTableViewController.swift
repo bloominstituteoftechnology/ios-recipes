@@ -20,8 +20,10 @@ class RecipesTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue" {
+            guard let index = tableView.indexPathForSelectedRow else { return }
             let detailVC = segue.destination as? RecipeDetailViewController
-            detailVC?.recipe = sender as? Recipe
+            let recipe = recipes[index.row]
+            detailVC?.recipe = recipe
         }
     }
     
@@ -40,11 +42,11 @@ class RecipesTableViewController: UITableViewController {
 
         return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let recipe = recipes[indexPath.row]
-        performSegue(withIdentifier: "DetailSegue", sender: recipe)
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        let recipe = recipes[indexPath.row]
+//        performSegue(withIdentifier: "DetailSegue", sender: recipe)
+//    }
 
     
     var recipes: [Recipe] = [] {
