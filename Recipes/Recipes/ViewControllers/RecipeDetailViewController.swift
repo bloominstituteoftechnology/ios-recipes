@@ -12,8 +12,10 @@ class RecipeDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        updateViews()
+        
+        DispatchQueue.main.async {
+            self.updateViews()
+        }
       
     }
     
@@ -30,7 +32,9 @@ class RecipeDetailViewController: UIViewController {
     
     var recipe: Recipe? {
         didSet {
-            updateViews()
+            DispatchQueue.main.async {
+                self.updateViews()
+            }
         }
     }
     
