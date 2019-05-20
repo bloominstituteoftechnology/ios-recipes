@@ -32,6 +32,7 @@ class MainViewController: UIViewController {
             } else {
                 self.filteredRecipes = self.allRecipes.filter( {$0.name.contains(searchTerm) || $0.instructions.contains(searchTerm) })
             }
+            self.mainTextField.text = ""
         }
     }
     
