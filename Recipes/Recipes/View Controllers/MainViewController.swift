@@ -17,6 +17,21 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+           recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     //
     // MARK: - View Lifecyles
@@ -25,25 +40,44 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        networkClient.fetchRecipes { allRecipes, error in
+            if let error = error {
+                print("Error loading recipes \(error)")
+                return
+            }
+            self.allRecipes = allRecipes ?? []
+        }
     }
     
     //
-    // MARK: - Methods
+    // MARK: - IBActions and Methods
     //
     
     @IBAction func editingDidEndOnExit(_ sender: Any) {
+        searchTextField.resignFirstResponder()
+        filterRecipes()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func filterRecipes() {
+        if let userSearch = searchTextField.text {
+            filteredRecipes = allRecipes.filter { $0.name == userSearch || $0.instructions == userSearch}
+        }else {
+            filteredRecipes = allRecipes
+        }
+        
     }
-    */
 
+    //
+    // MARK: - Navigation
+    //
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "EmbededSegue":
+            recipesTableViewController = segue.destination as? RecipesTableViewController
+            
+        default:
+            print("error loading embeded segue")
+        }
+    }
 }

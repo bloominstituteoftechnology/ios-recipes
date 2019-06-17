@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Msv-zz-8Cn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -33,7 +33,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOV-dz-EOj">
                                         <rect key="frame" x="0.0" y="38" width="375" height="557"/>
                                         <connections>
-                                            <segue destination="swH-cv-bv9" kind="embed" id="oYe-Cw-Lvz"/>
+                                            <segue destination="swH-cv-bv9" kind="embed" identifier="EmbededSegue" id="oYe-Cw-Lvz"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -50,7 +50,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="JQU-cq-uBQ"/>
                     <connections>
-                        <outlet property="searchTextFiels" destination="xWt-ok-umk" id="pTX-Ty-pOE"/>
+                        <outlet property="searchTextField" destination="xWt-ok-umk" id="QJ3-aY-aJ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5V-TW-crF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -159,7 +159,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wcg-NZ-uql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912.79999999999995" y="250.52473763118442"/>
+            <point key="canvasLocation" x="1071" y="251"/>
         </scene>
     </scenes>
 </document>

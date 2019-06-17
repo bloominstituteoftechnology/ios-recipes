@@ -39,8 +39,6 @@ class RecipesTableViewController: UITableViewController {
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
 
-        // Configure the cell...
-
         return cell
     }
     
@@ -55,7 +53,7 @@ class RecipesTableViewController: UITableViewController {
             case "ShowDetailSegue":
                 let detailVC = segue.destination as! RecipeDetailViewController
                 let indexPath = tableView.indexPathForSelectedRow!
-                detailVC.recipe = recipes[indexPath.row]
+                detailVC.recipe = self.recipes[indexPath.row]
             default:
                 print("error loading segue")
             
