@@ -105,20 +105,20 @@
             <objects>
                 <viewController id="yVh-Fb-dOO" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q22-Vr-WY5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="493"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="24b-Mp-SgH">
-                                <rect key="frame" x="0.0" y="40" width="375" height="627"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="24b-Mp-SgH">
+                                <rect key="frame" x="0.0" y="40" width="375" height="453"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iv9-Di-wWr">
-                                        <rect key="frame" x="0.0" y="0.0" width="220" height="43"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-hM-bL3">
-                                        <rect key="frame" x="0.0" y="51" width="359" height="576"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-hM-bL3">
+                                        <rect key="frame" x="0.0" y="51" width="375" height="402"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -136,15 +136,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Azq-7b-3Eg"/>
                     </view>
-                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="recipeLabel" destination="iv9-Di-wWr" id="kJG-bW-hOR"/>
-                        <outlet property="textView" destination="ecK-hM-bL3" id="5Dc-mC-cF8"/>
+                        <outlet property="textView" destination="ecK-hM-bL3" id="exj-zE-lNr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="is8-dA-gsf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2676" y="158.77061469265368"/>
+            <point key="canvasLocation" x="2673" y="229"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rj5-Ai-Fef">

@@ -11,9 +11,23 @@ import UIKit
 class MainViewController: UIViewController {
     
     let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = []
-    var recipesTableViewController: RecipesTableViewController?
-    var filteredRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            print("RecipesTableVC didSet Triggered")
+            self.recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            print("\(filteredRecipes)")
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     @IBOutlet weak var textFieldOutlet: UITextField!
 
@@ -24,16 +38,22 @@ class MainViewController: UIViewController {
             if let error = error {
                 print("Error loading Recipes: \(error)")
                 return
-            } else {
-                return self.allRecipes = recipes ?? [Recipe(name: "No Recipe", instructions: "No Instructions")]
+            }
+            
+            if let recipes = recipes {
+                DispatchQueue.main.async {
+                    self.allRecipes = recipes
+                }
             }
         }
     }
     
     func filterRecipes() {
-        guard let searchTerm = textFieldOutlet.text else { return filteredRecipes = allRecipes }
-        filteredRecipes += allRecipes.filter { $0.name == searchTerm }
-        filteredRecipes += allRecipes.filter { $0.instructions == searchTerm }
+        if let searchTerm = textFieldOutlet.text, !searchTerm.isEmpty { // If you're working with textFields, you need to always check if they're empty or not
+            filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchTerm) || $0.instructions.lowercased().contains(searchTerm) }
+        } else {
+            filteredRecipes = allRecipes
+        }
     }
     
     @IBAction func textFieldAction () {
@@ -50,6 +70,7 @@ class MainViewController: UIViewController {
         switch segue.identifier {
         case "TableViewSegue":
             guard let destinationVC = segue.destination as? RecipesTableViewController else { return }
+            recipesTableViewController = destinationVC
         default:
             print("Error loading segue")
         }

@@ -27,7 +27,14 @@ class RecipeDetailViewController: UIViewController {
     
     // MARK: - Navigation
     func updateViews() {
-        recipeLabel.text = recipe?.name
-        textView.text = recipe?.instructions
+        if self.isViewLoaded {
+            guard let unwrappedRecipe = recipe else { return }
+            textView.text = unwrappedRecipe.instructions
+            print(unwrappedRecipe.instructions)
+            recipeLabel?.text = unwrappedRecipe.name // WHERE CODE IS BREAKING
+            
+        } else {
+            print("Nothingness")
+        }
     }
 }
