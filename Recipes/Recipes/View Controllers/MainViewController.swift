@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     let networkClient = RecipesNetworkClient()
+    
     var allRecipes: [Recipe] = [] {
         didSet {
             filterRecipes()
@@ -45,7 +46,9 @@ class MainViewController: UIViewController {
                 print("Error loading recipes \(error)")
                 return
             }
-            self.allRecipes = allRecipes ?? []
+            DispatchQueue.main.async {
+                self.allRecipes = allRecipes ?? []
+            }
         }
     }
     
@@ -55,15 +58,20 @@ class MainViewController: UIViewController {
     
     @IBAction func editingDidEndOnExit(_ sender: Any) {
         searchTextField.resignFirstResponder()
-        filterRecipes()
+        
+             self.filterRecipes()
     }
     
     func filterRecipes() {
-        if let userSearch = searchTextField.text {
-            filteredRecipes = allRecipes.filter { $0.name == userSearch || $0.instructions == userSearch}
-        }else {
-            filteredRecipes = allRecipes
-        }
+        //DispatchQueue.main.async {
+            if let userSearch = self.searchTextField.text {
+                self.filteredRecipes += self.allRecipes.filter { $0.name == userSearch }
+                self.filteredRecipes += self.allRecipes.filter { $0.instructions == userSearch}
+            }else {
+                self.filteredRecipes = self.allRecipes
+            }
+        //}
+
         
     }
 
@@ -74,7 +82,7 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "EmbededSegue":
-            recipesTableViewController = segue.destination as? RecipesTableViewController
+            recipesTableViewController = segue.destination as! RecipesTableViewController
             
         default:
             print("error loading embeded segue")
