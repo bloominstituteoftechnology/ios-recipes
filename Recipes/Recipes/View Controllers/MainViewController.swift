@@ -10,27 +10,50 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = []
+    var recipesTableViewController: RecipesTableViewController?
+    var filteredRecipes: [Recipe] = []
+    
     @IBOutlet weak var textFieldOutlet: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        networkClient.fetchRecipes { recipes, error in
+            if let error = error {
+                print("Error loading Recipes: \(error)")
+                return
+            } else {
+                return self.allRecipes = recipes ?? [Recipe(name: "No Recipe", instructions: "No Instructions")]
+            }
+        }
+    }
+    
+    func filterRecipes() {
+        guard let searchTerm = textFieldOutlet.text else { return filteredRecipes = allRecipes }
+        filteredRecipes += allRecipes.filter { $0.name == searchTerm }
+        filteredRecipes += allRecipes.filter { $0.instructions == searchTerm }
     }
     
     @IBAction func textFieldAction () {
-        
+        resignFirstResponder()
+        filterRecipes()
     }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        switch segue.identifier {
+        case "TableViewSegue":
+            guard let destinationVC = segue.destination as? RecipesTableViewController else { return }
+        default:
+            print("Error loading segue")
+        }
     }
-    */
+
 
 }
