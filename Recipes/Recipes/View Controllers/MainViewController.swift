@@ -10,13 +10,28 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    //
+    // MARK: - Outlets and Properties
+    //
+    
     @IBOutlet weak var searchTextField: UITextField!
+    
+    let networkClient = RecipesNetworkClient()
+    
+    //
+    // MARK: - View Lifecyles
+    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    //
+    // MARK: - Methods
+    //
+    
     @IBAction func editingDidEndOnExit(_ sender: Any) {
     }
     
