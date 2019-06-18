@@ -11,8 +11,10 @@ import UIKit
 class RecipesTableViewController: UITableViewController {
     
     //
-    // MARK: - Properties
+    // MARK: - Outlets and Properties
     //
+    
+    @IBOutlet weak var recipeLabel: UILabel!
     
     var recipes: [Recipe] = [] {
         didSet {
@@ -37,10 +39,8 @@ class RecipesTableViewController: UITableViewController {
 
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-            cell.detailTextLabel!.text = recipes[indexPath.row].name
-                
-            
-            
+            cell.textLabel!.text = recipes[indexPath.row].name
+    
         return cell
     }
     
@@ -51,16 +51,12 @@ class RecipesTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        switch segue.identifier {
-            case "ShowDetailSegue":
+        if segue.identifier == "ShowDetailSegue" {
                 let detailVC = segue.destination as! RecipeDetailViewController
                 let indexPath = tableView.indexPathForSelectedRow!
                 detailVC.recipe = self.recipes[indexPath.row]
-            default:
+        } else {
                 print("error loading segue")
-            
         }
     }
-    
-
 }

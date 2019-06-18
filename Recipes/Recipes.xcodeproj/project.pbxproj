@@ -46,8 +46,8 @@
 		3226657222B8242A004CBFA2 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3226657322B825A5004CBFA2 /* RecipesTableViewController.swift */,
 				3226657522B82620004CBFA2 /* MainViewController.swift */,
+				3226657322B825A5004CBFA2 /* RecipesTableViewController.swift */,
 				3226657722B8278B004CBFA2 /* RecipeDetailViewController.swift */,
 			);
 			path = "View Controllers";

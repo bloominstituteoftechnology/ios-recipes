@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        filteredRecipes = allRecipes
         networkClient.fetchRecipes { allRecipes, error in
             if let error = error {
                 print("Error loading recipes \(error)")
@@ -64,11 +64,11 @@ class MainViewController: UIViewController {
     
     func filterRecipes() {
         //DispatchQueue.main.async {
-            if let userSearch = self.searchTextField.text {
-                self.filteredRecipes += self.allRecipes.filter { $0.name == userSearch }
-                self.filteredRecipes += self.allRecipes.filter { $0.instructions == userSearch}
+        if let userSearch = self.searchTextField.text, !userSearch.isEmpty {
+                filteredRecipes += allRecipes.filter { $0.name.lowercased().contains(userSearch)}
+                filteredRecipes += allRecipes.filter { $0.instructions.lowercased().contains(userSearch)}
             }else {
-                self.filteredRecipes = self.allRecipes
+                filteredRecipes = allRecipes
             }
         //}
 
@@ -80,11 +80,9 @@ class MainViewController: UIViewController {
     //
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "EmbededSegue":
-            recipesTableViewController = segue.destination as! RecipesTableViewController
-            
-        default:
+        if segue.identifier == "EmbededSegue"{
+            recipesTableViewController = (segue.destination as! RecipesTableViewController)
+        }else {
             print("error loading embeded segue")
         }
     }
