@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agQ-IY-ZsJ">
-                                <rect key="frame" x="139" y="72" width="97" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agQ-IY-ZsJ">
+                                <rect key="frame" x="8" y="72" width="359" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -40,6 +40,8 @@
                             <constraint firstItem="csG-Go-GCU" firstAttribute="top" secondItem="agQ-IY-ZsJ" secondAttribute="bottom" constant="16" id="Kzm-GQ-nhc"/>
                             <constraint firstItem="0Cx-D6-d4b" firstAttribute="trailing" secondItem="csG-Go-GCU" secondAttribute="trailing" id="Mu1-en-hGJ"/>
                             <constraint firstItem="agQ-IY-ZsJ" firstAttribute="top" secondItem="0Cx-D6-d4b" secondAttribute="top" constant="8" id="UHo-ee-eLG"/>
+                            <constraint firstItem="agQ-IY-ZsJ" firstAttribute="leading" secondItem="0Cx-D6-d4b" secondAttribute="leading" constant="8" id="ppr-yd-Tcr"/>
+                            <constraint firstItem="0Cx-D6-d4b" firstAttribute="trailing" secondItem="agQ-IY-ZsJ" secondAttribute="trailing" constant="8" id="rVA-zG-sup"/>
                             <constraint firstItem="csG-Go-GCU" firstAttribute="leading" secondItem="0Cx-D6-d4b" secondAttribute="leading" id="zkG-TG-ZDm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Cx-D6-d4b"/>

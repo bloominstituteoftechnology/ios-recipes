@@ -12,16 +12,62 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
     
+    let networkClient = RecipesNetworkClient()
+    
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipeTableViewController?.recipes = filteredRecipes
+        }
+    }
+    
+    var recipeTableViewController: RecipesTableViewController? {
+        didSet {
+            recipeTableViewController?.recipes = filteredRecipes
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        networkClient.fetchRecipes { (recipes, error) in
+            if let error = error {
+                NSLog("Error loading recipes: \(error)")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.allRecipes = recipes ?? []
+            }
+        }
     }
     
-    @IBAction func editTextField(_ sender: Any) {
+    @IBAction func editTextField(_ sender: UITextField) {
+        sender.resignFirstResponder()
+        filterRecipes()
     }
     
+    private func filterRecipes() {
+        guard let searchText = textField.text, !searchText.isEmpty else {
+            filteredRecipes = allRecipes
+            return
+        }
+        
+        filteredRecipes = allRecipes.filter{
+            $0.name.contains(searchText) || $0.instructions.contains(searchText)
+        }
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RecipeTable" {
+            recipeTableViewController = (segue.destination as! RecipesTableViewController)
+        }
+    }
 
     /*
     // MARK: - Navigation
