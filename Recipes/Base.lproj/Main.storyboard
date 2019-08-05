@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="102" width="375" height="536"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="bEj-bN-YwE" kind="embed" identifier="ContainerViewSegue" id="gBu-QS-c18"/>
+                                    <segue destination="bEj-bN-YwE" kind="embed" identifier="TableViewSegue" id="gBu-QS-c18"/>
                                 </connections>
                             </containerView>
                         </subviews>
