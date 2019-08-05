@@ -19,7 +19,11 @@ class MainViewController: UIViewController {
         
         didSet {
             
-            filterRecipes() 
+            DispatchQueue.main.async {
+                
+                self.filterRecipes()
+                
+            }
             
         }
         
@@ -30,9 +34,7 @@ class MainViewController: UIViewController {
         
         didSet {
             
-            DispatchQueue.main.async {
                 self.recipesTableViewController?.recipes = self.filteredRecipes
-            }
             
         }
         
@@ -57,7 +59,7 @@ class MainViewController: UIViewController {
                 self.allRecipes = fetchedRecipes
             }
         }
-
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func search(_ sender: Any) {
@@ -71,7 +73,7 @@ class MainViewController: UIViewController {
         
         guard let searchTerm = searchTextField.text else {return}
         
-        if searchTerm == " " {
+        if searchTerm == "" {
             
             filteredRecipes = allRecipes
             
@@ -82,10 +84,10 @@ class MainViewController: UIViewController {
         
     }
     
-
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -100,5 +102,5 @@ class MainViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     
-
+    
 }

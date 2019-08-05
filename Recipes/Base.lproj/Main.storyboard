@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2j4-BA-oby">
-                                <rect key="frame" x="139" y="64" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2j4-BA-oby">
+                                <rect key="frame" x="20" y="72" width="335" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -28,15 +27,24 @@
                                     <action selector="search:" destination="xe4-A9-cso" eventType="editingDidEndOnExit" id="A5Y-PO-xzS"/>
                                 </connections>
                             </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z8F-Qg-h05">
-                                <rect key="frame" x="0.0" y="102" width="375" height="536"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8F-Qg-h05">
+                                <rect key="frame" x="0.0" y="110" width="375" height="527"/>
                                 <connections>
                                     <segue destination="bEj-bN-YwE" kind="embed" identifier="TableViewSegue" id="gBu-QS-c18"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2j4-BA-oby" firstAttribute="leading" secondItem="Kcr-Pq-4yZ" secondAttribute="leading" constant="20" id="2Xv-Ko-pka"/>
+                            <constraint firstItem="Kcr-Pq-4yZ" firstAttribute="bottom" secondItem="z8F-Qg-h05" secondAttribute="bottom" constant="30" id="6sR-IG-Amo"/>
+                            <constraint firstItem="z8F-Qg-h05" firstAttribute="top" secondItem="2j4-BA-oby" secondAttribute="bottom" constant="8" id="BGF-Yf-TQL"/>
+                            <constraint firstItem="z8F-Qg-h05" firstAttribute="leading" secondItem="Kcr-Pq-4yZ" secondAttribute="leading" id="Kra-Is-1SH"/>
+                            <constraint firstItem="2j4-BA-oby" firstAttribute="top" secondItem="Kcr-Pq-4yZ" secondAttribute="top" constant="8" id="MVx-DM-5n4"/>
+                            <constraint firstItem="z8F-Qg-h05" firstAttribute="top" secondItem="2j4-BA-oby" secondAttribute="bottom" constant="8" id="Nzh-o1-gUE"/>
+                            <constraint firstItem="z8F-Qg-h05" firstAttribute="trailing" secondItem="Kcr-Pq-4yZ" secondAttribute="trailing" id="hFo-uh-F1B"/>
+                            <constraint firstItem="Kcr-Pq-4yZ" firstAttribute="trailing" secondItem="2j4-BA-oby" secondAttribute="trailing" constant="20" id="r0C-te-CGS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Kcr-Pq-4yZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="brg-7m-2FD"/>
@@ -53,7 +61,7 @@
             <objects>
                 <tableViewController id="bEj-bN-YwE" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GUW-ZX-i3u">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -96,7 +104,7 @@
             <objects>
                 <viewController id="bWf-eq-Cgg" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K1k-Ia-qOd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQh-0p-XdR">
