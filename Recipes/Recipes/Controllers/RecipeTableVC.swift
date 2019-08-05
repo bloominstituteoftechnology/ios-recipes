@@ -12,22 +12,33 @@ class RecipeTableVC: UITableViewController {
 
 	@IBOutlet weak var searchTextField: UITextField!
 	
+	private var recipes = [Recipe]()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		RecipesNetworkClient().fetchRecipes { (recipes, error) in
+			if let error = error {
+				NSLog("Fatal error: \(error)")
+			} else if let recipes = recipes {
+				self.recipes = recipes
+				DispatchQueue.main.async {
+					self.tableView.reloadData()
+				}
+			}
+		}
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return recipes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = recipes[indexPath.row].name
 
         return cell
 	}
