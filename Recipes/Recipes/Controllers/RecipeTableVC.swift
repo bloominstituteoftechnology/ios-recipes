@@ -28,6 +28,13 @@ class RecipeTableVC: UITableViewController {
 			}
 		}
     }
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let insructionsVC = segue.destination as? InstructionsVC,
+			let indexPath = tableView.indexPathForSelectedRow {
+			insructionsVC.recipe = recipes[indexPath.row]
+		}
+	}
 
     // MARK: - Table view data source
 

@@ -13,6 +13,7 @@
 		9DA0F0822117E3F800A99E97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0F0802117E3F800A99E97 /* Main.storyboard */; };
 		9DA0F0842117E40100A99E97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0F0832117E40100A99E97 /* Assets.xcassets */; };
 		9DA0F0872117E40100A99E97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */; };
+		B543D1CC22F8C860001C3EE6 /* InstructionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B543D1CB22F8C860001C3EE6 /* InstructionsVC.swift */; };
 		B5485BAB22F8C2E3000966F7 /* RecipeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5485BAA22F8C2E3000966F7 /* RecipeTableVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		9DA0F0832117E40100A99E97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DA0F0862117E40100A99E97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DA0F0882117E40100A99E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B543D1CB22F8C860001C3EE6 /* InstructionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsVC.swift; sourceTree = "<group>"; };
 		B5485BAA22F8C2E3000966F7 /* RecipeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				B5485BAA22F8C2E3000966F7 /* RecipeTableVC.swift */,
+				B543D1CB22F8C860001C3EE6 /* InstructionsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				9D59AF432117E647002FB7CD /* RecipesNetworkClient.swift in Sources */,
 				9DA0F07D2117E3F800A99E97 /* AppDelegate.swift in Sources */,
 				9D59B52C2117F533002FB7CD /* Recipe.swift in Sources */,
+				B543D1CC22F8C860001C3EE6 /* InstructionsVC.swift in Sources */,
 				B5485BAB22F8C2E3000966F7 /* RecipeTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
