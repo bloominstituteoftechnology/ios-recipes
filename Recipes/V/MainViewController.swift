@@ -13,10 +13,30 @@ class MainViewController: UIViewController {
     //Properties
     @IBOutlet weak var searchTextField: UITextField!
     let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = []
     var recipesTableViewController: RecipesTableViewController?
     
-    var filteredRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        
+        didSet {
+            
+            filterRecipes() 
+            
+        }
+        
+    }
+    
+    
+    var filteredRecipes: [Recipe] = [] {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+                self.recipesTableViewController?.recipes = self.filteredRecipes
+            }
+            
+        }
+        
+    }
     
     override func viewDidLoad() {
         
@@ -41,6 +61,25 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func search(_ sender: Any) {
+        
+        searchTextField.resignFirstResponder()
+        filterRecipes()
+        
+    }
+    
+    func filterRecipes() {
+        
+        guard let searchTerm = searchTextField.text else {return}
+        
+        if searchTerm == " " {
+            
+            filteredRecipes = allRecipes
+            
+        } else {
+            
+            filteredRecipes = allRecipes.filter({ $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm)})
+        }
+        
     }
     
 
