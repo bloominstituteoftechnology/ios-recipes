@@ -18,25 +18,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ww-sB-IDG">
-                                <rect key="frame" x="16" y="81" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ww-sB-IDG">
+                                <rect key="frame" x="16" y="81" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textFieldPressed:" destination="qDq-7c-lot" eventType="editingDidEndOnExit" id="u4X-h0-yXe"/>
+                                    <action selector="textFieldAction:" destination="qDq-7c-lot" eventType="editingDidEndOnExit" id="nO9-91-hvh"/>
                                 </connections>
                             </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NAH-26-OWn">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAH-26-OWn">
                                 <rect key="frame" x="0.0" y="133" width="375" height="534"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="Rc0-bJ-kQh" kind="show" identifier="TableViewSegue" id="moX-Sp-aF5"/>
+                                    <segue destination="Rc0-bJ-kQh" kind="embed" identifier="TableViewSegue" id="V58-j7-F7K"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7ww-sB-IDG" firstAttribute="leading" secondItem="wBv-gh-AHi" secondAttribute="leading" constant="16" id="5mO-6W-RrD"/>
+                            <constraint firstItem="wBv-gh-AHi" firstAttribute="trailing" secondItem="7ww-sB-IDG" secondAttribute="trailing" constant="16" id="7nT-wI-8SR"/>
+                            <constraint firstItem="NAH-26-OWn" firstAttribute="top" secondItem="7ww-sB-IDG" secondAttribute="bottom" constant="22" id="B5y-vU-4Dx"/>
+                            <constraint firstItem="NAH-26-OWn" firstAttribute="bottom" secondItem="wBv-gh-AHi" secondAttribute="bottom" id="Eax-ly-06x"/>
+                            <constraint firstItem="7ww-sB-IDG" firstAttribute="top" secondItem="wBv-gh-AHi" secondAttribute="top" constant="17" id="FoO-e2-yAl"/>
+                            <constraint firstItem="NAH-26-OWn" firstAttribute="leading" secondItem="wBv-gh-AHi" secondAttribute="leading" id="NTD-OO-eCG"/>
+                            <constraint firstItem="7ww-sB-IDG" firstAttribute="centerX" secondItem="PqY-s4-fk3" secondAttribute="centerX" id="bLU-6b-XTw"/>
+                            <constraint firstItem="NAH-26-OWn" firstAttribute="trailing" secondItem="wBv-gh-AHi" secondAttribute="trailing" id="cV6-Zo-J4o"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wBv-gh-AHi"/>
                     </view>
                     <navigationItem key="navigationItem" id="1u7-Vn-bMl"/>
@@ -48,12 +56,12 @@
             </objects>
             <point key="canvasLocation" x="1596" y="-65.217391304347828"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Recipes Table View Controller-->
         <scene sceneID="K4U-A3-7rG">
             <objects>
-                <tableViewController id="Rc0-bJ-kQh" sceneMemberID="viewController">
+                <tableViewController id="Rc0-bJ-kQh" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xk6-be-E4V">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="534"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -74,7 +82,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Vyu-kk-dlU" kind="show" id="KkP-39-gCr"/>
+                                    <segue destination="Vyu-kk-dlU" kind="show" identifier="RecipeDetailSegue" id="KkP-39-gCr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -93,20 +101,20 @@
             <objects>
                 <viewController id="Vyu-kk-dlU" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HXl-XP-64W">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="534"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xV-A0-ERe">
-                                <rect key="frame" x="144" y="86" width="87" height="39"/>
+                                <rect key="frame" x="144" y="42" width="87" height="39"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sp6-kI-cap">
-                                <rect key="frame" x="16" y="143" width="343" height="504"/>
+                                <rect key="frame" x="16" y="99" width="343" height="415"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zWt-O5-Ywg">
-                                        <rect key="frame" x="5" y="5" width="333" height="494"/>
+                                        <rect key="frame" x="5" y="5" width="333" height="405"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -135,8 +143,8 @@
                         <viewLayoutGuide key="safeArea" id="bdk-GD-q0u"/>
                     </view>
                     <connections>
+                        <outlet property="instructionsTextView" destination="zWt-O5-Ywg" id="8PP-sw-SoE"/>
                         <outlet property="recipeNameLabel" destination="7xV-A0-ERe" id="2Pg-lI-I6X"/>
-                        <outlet property="recipeTextView" destination="zWt-O5-Ywg" id="8PP-sw-SoE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7r-YK-uYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
