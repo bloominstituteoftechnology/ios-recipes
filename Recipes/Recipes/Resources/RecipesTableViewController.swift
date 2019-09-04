@@ -55,8 +55,6 @@ class RecipesTableViewController: UITableViewController {
             
             let recipe = recipes[indexPath.row]
             recipeDetailVC.recipe = recipe
-            recipeDetailVC.recipeNameLabel.text = recipe.name
-            recipeDetailVC.instructionsTextView.text = recipe.instructions
         }
         } else {
             print("Error")
