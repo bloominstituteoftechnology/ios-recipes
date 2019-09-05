@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: Properties
+    let networkClient = RecipesNetworkClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
