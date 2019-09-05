@@ -18,37 +18,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mht-zu-sqq">
-                                <rect key="frame" x="12" y="108" width="351" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldEnded:" destination="ap1-fT-0S8" eventType="editingDidEndOnExit" id="0oZ-Vc-PRJ"/>
-                                </connections>
-                            </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="og6-UA-RnI">
-                                <rect key="frame" x="0.0" y="158" width="375" height="620"/>
+                                <rect key="frame" x="0.0" y="144" width="375" height="634"/>
                                 <connections>
                                     <segue destination="dBg-58-6Br" kind="embed" identifier="TableViewSegue" id="hBf-JM-K8q"/>
                                 </connections>
                             </containerView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tvt-W8-Edx">
+                                <rect key="frame" x="0.0" y="88" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="og6-UA-RnI" firstAttribute="leading" secondItem="CtX-VF-FmI" secondAttribute="leading" id="5yI-vP-Bm1"/>
-                            <constraint firstItem="mht-zu-sqq" firstAttribute="leading" secondItem="CtX-VF-FmI" secondAttribute="leading" constant="12" id="87l-bi-Fl7"/>
-                            <constraint firstItem="mht-zu-sqq" firstAttribute="top" secondItem="CtX-VF-FmI" secondAttribute="top" constant="20" id="Nkz-Cu-weH"/>
-                            <constraint firstItem="og6-UA-RnI" firstAttribute="top" secondItem="mht-zu-sqq" secondAttribute="bottom" constant="20" id="TKe-ZK-TZb"/>
+                            <constraint firstItem="tvt-W8-Edx" firstAttribute="leading" secondItem="CtX-VF-FmI" secondAttribute="leading" id="LDl-xI-Gyp"/>
+                            <constraint firstItem="tvt-W8-Edx" firstAttribute="trailing" secondItem="CtX-VF-FmI" secondAttribute="trailing" id="R9T-K9-SAz"/>
                             <constraint firstItem="og6-UA-RnI" firstAttribute="bottom" secondItem="CtX-VF-FmI" secondAttribute="bottom" id="b5h-uo-Hz6"/>
+                            <constraint firstItem="og6-UA-RnI" firstAttribute="top" secondItem="tvt-W8-Edx" secondAttribute="bottom" id="dDu-qa-JQF"/>
+                            <constraint firstItem="tvt-W8-Edx" firstAttribute="top" secondItem="CtX-VF-FmI" secondAttribute="top" id="ppm-4w-hJi"/>
                             <constraint firstItem="og6-UA-RnI" firstAttribute="trailing" secondItem="CtX-VF-FmI" secondAttribute="trailing" id="sEp-wX-78z"/>
-                            <constraint firstItem="CtX-VF-FmI" firstAttribute="trailing" secondItem="mht-zu-sqq" secondAttribute="trailing" constant="12" id="xSx-T9-rYl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CtX-VF-FmI"/>
                     </view>
                     <navigationItem key="navigationItem" id="L4l-dA-ZpD"/>
                     <connections>
-                        <outlet property="searchTextField" destination="mht-zu-sqq" id="fML-tp-YKP"/>
+                        <outlet property="recipeSearchBar" destination="tvt-W8-Edx" id="Wq1-5g-7pA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VBi-tK-h5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -60,11 +55,11 @@
             <objects>
                 <viewController id="hdR-4H-xEh" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FFW-e6-880">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="634"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QV5-DF-w9Y">
-                                <rect key="frame" x="12" y="138.33333333333334" width="351" height="469.66666666666663"/>
+                                <rect key="frame" x="12" y="138.33333333333334" width="351" height="483.66666666666663"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -104,7 +99,7 @@
             <objects>
                 <tableViewController id="dBg-58-6Br" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zoX-N1-VdW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="634"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>

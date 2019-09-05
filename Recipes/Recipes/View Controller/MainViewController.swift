@@ -11,7 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet var searchTextField: UITextField!
+    @IBOutlet weak var recipeSearchBar: UISearchBar!
     
     // MARK: - Properties
     let networkClient = RecipesNetworkClient()
@@ -45,6 +45,8 @@ class MainViewController: UIViewController {
                 self.allRecipes = recipes
             }
         }
+        
+        recipeSearchBar.delegate = self
     }
     
     // MARK: - Navigation
@@ -63,14 +65,29 @@ class MainViewController: UIViewController {
     // MARK: - Functions
     private func filterRecipes() {
         DispatchQueue.main.async {
-            guard let searchText = self.searchTextField.text else { return }
+            guard let searchText = self.recipeSearchBar.text else { return }
             
             if searchText.isEmpty {
                 self.filteredRecipes = self.allRecipes
             } else {
-                self.filteredRecipes = self.allRecipes.filter { $0.name.contains(searchText) || $0.instructions.contains(searchText) }
+                self.filteredRecipes = self.allRecipes.filter { $0.name.lowercased().contains(searchText.lowercased()) || $0.instructions.lowercased().contains(searchText.lowercased()) }
             }
         }
     }
     
+}
+
+extension MainViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterRecipes()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        filterRecipes()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
