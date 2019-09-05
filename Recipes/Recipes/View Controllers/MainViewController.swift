@@ -13,28 +13,82 @@ class MainViewController: UIViewController {
     // MARK: IBOutlets
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var searchTextField: UITextField!
+    
     // MARK: Properties
     let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    
+    var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        networkClient.fetchRecipes { (allRecipes, error) in
+            if let error = error {
+                print("Error loading recipes: \(error)")
+                return
+            }
+            DispatchQueue.main.async {
+                self.allRecipes = allRecipes ?? []
+            }
+        }
+    }
+    
+    // MARK: Processing - Filtering and sorting
+    private func filterRecipes() {
+        guard let searchItem = searchTextField.text, !searchItem.isEmpty else { return }
+        if searchItem.isEmpty {
+            filteredRecipes = allRecipes
+        } else {
+            filteredRecipes = allRecipes.filter { $0.name == searchItem || $0.instructions.contains(searchItem)}
+        }
+//        guard let searchItem = searchBar.text, !searchItem.isEmpty else { return }
+//        if searchItem.isEmpty {
+//            filteredRecipes = allRecipes
+//        } else {
+//            filteredRecipes = allRecipes.filter { $0.name == searchItem || $0.instructions.contains(searchItem)}
+//        }
+    }
+    
+    // MARK: Actions
+    @IBAction func searchTextEntered(_ sender: Any) {
+        resignFirstResponder()
+        filterRecipes()
     }
     
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "EmbededTableViewSegue" {
+            guard let recipesTableVC = segue.destination as? RecipesTableViewController else { return }
+            recipesTableVC.recipesTableViewController = recipesTableViewController
+        }
     }
-    */
-
 }
 
-extension MainViewController: UISearchBarDelegate {
-    
-}
+//extension MainViewController: UISearchBarDelegate {
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchBar.text == nil || searchBar.text == "" {
+//            isSearching = false
+//            view.endEditing(true)
+//            filterRecipes()
+//        }
+//    }
+//}
