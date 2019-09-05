@@ -67,7 +67,7 @@ class MainViewController: UIViewController {
             if searchText.isEmpty || searchText == "" {
                 self.filteredRecipes = self.allRecipes
             } else {
-                self.filteredRecipes = self.allRecipes.filter { $0.name.contains(searchText) }
+                self.filteredRecipes = self.allRecipes.filter { $0.name.contains(searchText) || $0.instructions.contains(searchText) }
             }
         }
     }
