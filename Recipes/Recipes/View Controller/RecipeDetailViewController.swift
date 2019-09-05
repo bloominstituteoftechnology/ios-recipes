@@ -27,6 +27,10 @@ class RecipeDetailViewController: UIViewController {
         title = "Recipe"
         updateViews()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
 
     // MARK: - Private Functions
     private func updateViews() {

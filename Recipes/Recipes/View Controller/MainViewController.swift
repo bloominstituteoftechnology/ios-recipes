@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Properties
     let networkClient = RecipesNetworkClient()
+    let recipeController = RecipeController()
     
     var allRecipes: [Recipe] = [] {
         didSet {
@@ -34,19 +35,32 @@ class MainViewController: UIViewController {
         }
     }
     
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        networkClient.fetchRecipes { recipe, error in
-            if let error = error {
-                print("Could not load Recipes: \(error)")
-            } else {
-                guard let recipes = recipe else { return }
-                self.allRecipes = recipes
+        if recipeController.recipes.count > 0 {
+            allRecipes = recipeController.recipes
+            print("Array has Recipes.")
+        } else {
+            print("Array has no Recipes.")
+            networkClient.fetchRecipes { recipe, error in
+                if let error = error {
+                    print("Could not load Recipes: \(error)")
+                } else {
+                    guard let recipes = recipe else { return }
+                    self.allRecipes = recipes
+                    self.recipeController.saveOnlineRecipes(recipesToSave: self.allRecipes)
+                    self.recipeController.saveToPersistentStore()
+                }
             }
         }
-        
         recipeSearchBar.delegate = self
+    }
+    
+    // MARK: - viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     // MARK: - Navigation
