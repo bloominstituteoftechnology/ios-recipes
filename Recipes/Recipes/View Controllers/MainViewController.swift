@@ -10,9 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    // MARK: IBOutlets
-    @IBOutlet weak var searchBar: UISearchBar!
-    
+    // MARK: IBOutlets    
     @IBOutlet weak var searchTextField: UITextField!
     
     // MARK: Properties
@@ -59,12 +57,6 @@ class MainViewController: UIViewController {
         } else {
             filteredRecipes = allRecipes.filter { $0.name == searchItem || $0.instructions.contains(searchItem)}
         }
-//        guard let searchItem = searchBar.text, !searchItem.isEmpty else { return }
-//        if searchItem.isEmpty {
-//            filteredRecipes = allRecipes
-//        } else {
-//            filteredRecipes = allRecipes.filter { $0.name == searchItem || $0.instructions.contains(searchItem)}
-//        }
     }
     
     // MARK: Actions
@@ -73,7 +65,6 @@ class MainViewController: UIViewController {
         filterRecipes()
     }
     
-
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbededTableViewSegue" {
@@ -82,13 +73,3 @@ class MainViewController: UIViewController {
         }
     }
 }
-
-//extension MainViewController: UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchBar.text == nil || searchBar.text == "" {
-//            isSearching = false
-//            view.endEditing(true)
-//            filterRecipes()
-//        }
-//    }
-//}
