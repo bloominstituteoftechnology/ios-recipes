@@ -58,6 +58,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="reloadButton" destination="LZy-TS-eZd" id="vOI-hX-1GX"/>
                         <outlet property="textField" destination="Vq7-vG-RC2" id="MCr-Bj-RHR"/>
                     </connections>
                 </viewController>

@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate {
+class MainViewController: UIViewController {
     
+    var searchCounter: Int = 0
     var recipesTableViewController:
         RecipesTableViewController? {
         didSet {
@@ -30,14 +31,16 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBOutlet weak var textField: UITextField!
-    
+    @IBOutlet weak var reloadButton: UIBarButtonItem!
     
     override func viewDidLoad() {
+        reloadButtonVisibility()
+
         super.viewDidLoad()
         //if allRecipes.count == 0 {
         networkClient.fetchRecipes{ (recipes, error) in
             if let error = error {
-                NSLog("Error getting students: \(error)")
+                NSLog("Error getting recipes: \(error)")
                 return
             }
             self.recipeList = recipes ?? []
@@ -48,7 +51,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
         DispatchQueue.main.async {
             if let text = self.textField.text, text != "" {
-                
                 self.filteredRecipes = self.recipeList.filter{ recipe in recipe.name.contains(text) || recipe.instructions.contains(text)}
             }
             else {
@@ -69,10 +71,20 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @IBAction func refreshButtonTapped(_ sender: Any) {
         self.filteredRecipes = self.recipeList
         self.textField.text = nil
+        reloadButton.isEnabled = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
+    }
+    func reloadButtonVisibility() {
+        
+        if self.textField.text == "" {
+            reloadButton.isEnabled = false
+        } else {
+            reloadButton.isEnabled = true
+            
+        }
     }
     
     // MARK: - Navigation
