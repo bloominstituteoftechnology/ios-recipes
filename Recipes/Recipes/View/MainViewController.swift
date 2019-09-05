@@ -10,27 +10,47 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    
     @IBOutlet weak var txtFilter: UITextField!
+    
+    let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = [] { didSet { filterRecipes() } }
+    var filteredRecipes: [Recipe] = [] { didSet { recipesTableViewController?.recipes = filteredRecipes } }
+    var recipesTableViewController: RecipesTableViewController? { didSet { recipesTableViewController?.recipes = filteredRecipes } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        networkClient.fetchRecipes { (recipes, error) in
+            if let error = error {
+                NSLog("Error fetching recipes: \(error)")
+            } else {
+                self.allRecipes = recipes ?? []
+            }
+        }
     }
     
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "segueEmbedTableView" {
+            if let vc = segue.destination as? RecipesTableViewController {
+                recipesTableViewController = vc
+            }
+        }
     }
-    */
+    
+    func filterRecipes() {
+        guard let filter = txtFilter.text, !filter.isEmpty else {
+            filteredRecipes = allRecipes
+            return
+        }
+        filteredRecipes = allRecipes.filter({ $0.name.contains(filter) || $0.instructions.contains(filter) })
+    }
+
 
     @IBAction func filterEditingDidEnd(_ sender: Any) {
-        
+        txtFilter.resignFirstResponder()
+        filterRecipes()
     }
 }

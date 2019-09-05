@@ -27,9 +27,8 @@
                                     <action selector="filterEditingDidEnd:" destination="li6-xV-A3d" eventType="editingDidEndOnExit" id="bPf-a6-QYB"/>
                                 </connections>
                             </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fm-eY-ByI">
-                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fm-eY-ByI">
+                                <rect key="frame" x="0.0" y="118" width="375" height="549"/>
                                 <connections>
                                     <segue destination="W5y-y2-kiE" kind="embed" identifier="segueEmbedTableView" id="E33-nl-Dhw"/>
                                 </connections>
@@ -37,6 +36,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="8fm-eY-ByI" firstAttribute="bottom" secondItem="imq-5v-Z3p" secondAttribute="bottom" id="E5C-rX-nTT"/>
+                            <constraint firstItem="8fm-eY-ByI" firstAttribute="leading" secondItem="imq-5v-Z3p" secondAttribute="leading" id="K7B-fC-UhA"/>
+                            <constraint firstItem="8fm-eY-ByI" firstAttribute="top" secondItem="xxv-gj-gST" secondAttribute="bottom" constant="16" id="TaW-mf-vj6"/>
+                            <constraint firstItem="8fm-eY-ByI" firstAttribute="trailing" secondItem="imq-5v-Z3p" secondAttribute="trailing" id="itt-QA-bfh"/>
                             <constraint firstItem="imq-5v-Z3p" firstAttribute="trailing" secondItem="xxv-gj-gST" secondAttribute="trailing" constant="16" id="jDs-JQ-psh"/>
                             <constraint firstItem="xxv-gj-gST" firstAttribute="leading" secondItem="imq-5v-Z3p" secondAttribute="leading" constant="16" id="wjO-mS-Qmd"/>
                             <constraint firstItem="xxv-gj-gST" firstAttribute="top" secondItem="imq-5v-Z3p" secondAttribute="top" constant="8" id="yNW-6G-lgR"/>
@@ -57,7 +60,7 @@
             <objects>
                 <tableViewController id="W5y-y2-kiE" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5dr-b8-AN0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -97,7 +100,7 @@
             <objects>
                 <viewController id="VhI-S6-NYi" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YsS-iL-OAP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mah-Q9-93u">
@@ -107,7 +110,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lPF-eB-MHE">
-                                <rect key="frame" x="16" y="91" width="343" height="450"/>
+                                <rect key="frame" x="16" y="91" width="343" height="442"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
