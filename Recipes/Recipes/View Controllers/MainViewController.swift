@@ -10,7 +10,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var searchCounter: Int = 0
     var recipesTableViewController:
         RecipesTableViewController? {
         didSet {
@@ -34,8 +33,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var reloadButton: UIBarButtonItem!
     
     override func viewDidLoad() {
-        reloadButtonVisibility()
-
         super.viewDidLoad()
         //if allRecipes.count == 0 {
         networkClient.fetchRecipes{ (recipes, error) in
@@ -51,11 +48,12 @@ class MainViewController: UIViewController {
         
         DispatchQueue.main.async {
             if let text = self.textField.text, text != "" {
-                self.filteredRecipes = self.recipeList.filter{ recipe in recipe.name.contains(text) || recipe.instructions.contains(text)}
+                self.filteredRecipes = self.recipeList.filter{ recipe in recipe.name.contains(text) || recipe.instructions.contains(text) || recipe.difficulty.contains(text) || recipe.mealTime.contains(text)}
             }
             else {
                 self.filteredRecipes = self.recipeList
             }
+            self.reloadButtonVisibility()
            
         }
     }
@@ -88,8 +86,6 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "RecipesViewSegue" {

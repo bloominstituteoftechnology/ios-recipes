@@ -9,9 +9,22 @@
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
-    
-    @IBOutlet weak var recipeTitle: UILabel!
+
     @IBOutlet weak var recipeInstructions: UITextView!
+    
+    @IBOutlet weak var ingredientsTextView: UITextView!
+    
+    @IBOutlet weak var difficultyLabel: UILabel!
+    
+    @IBOutlet weak var totalTimeLabel: UILabel!
+    
+    @IBOutlet weak var prepTimeLabel: UILabel!
+    
+    @IBOutlet weak var cookTimeLabel: UILabel!
+    
+    @IBOutlet weak var servingsLabel: UILabel!
+    
+    @IBOutlet weak var mealTimeLabel: UILabel!
     
     var recipe: Recipe? {
         didSet {
@@ -28,9 +41,15 @@ class RecipeDetailViewController: UIViewController {
     private func updateViews() {
         if isViewLoaded {
             guard let recipe = recipe else { return }
-            recipeTitle.text = recipe.name
             recipeInstructions.text = recipe.instructions
-            title = "Recipe - \(recipe.name)"
+            ingredientsTextView.text = "Ingredients: \(recipe.ingredients)"
+            difficultyLabel.text = "Level: \(recipe.difficulty)"
+            totalTimeLabel.text = "Total: \(recipe.totalTime)"
+            prepTimeLabel.text = "Prep: \(recipe.prepTime)"
+            cookTimeLabel.text = "Cook: \(recipe.cookTime)"
+            servingsLabel.text = "Servings: \(recipe.servings)"
+            mealTimeLabel.text = "Meal: \(recipe.mealTime)"
+            title = recipe.name
         }
     }
     
