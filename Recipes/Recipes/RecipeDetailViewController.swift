@@ -41,14 +41,23 @@ class RecipeDetailViewController: UIViewController {
     private func updateViews() {
         if isViewLoaded {
             guard let recipe = recipe else { return }
+            
+            if recipe.difficulty == "Easy" {
+                difficultyLabel.textColor = .green
+            } else if recipe.difficulty == "Medium" {
+                difficultyLabel.textColor = .yellow
+            } else {
+                difficultyLabel.textColor = .red
+            }
+            
             recipeInstructions.text = recipe.instructions
-            ingredientsTextView.text = "Ingredients: \(recipe.ingredients)"
-            difficultyLabel.text = "Level: \(recipe.difficulty)"
-            totalTimeLabel.text = "Total: \(recipe.totalTime)"
-            prepTimeLabel.text = "Prep: \(recipe.prepTime)"
-            cookTimeLabel.text = "Cook: \(recipe.cookTime)"
-            servingsLabel.text = "Servings: \(recipe.servings)"
-            mealTimeLabel.text = "Meal: \(recipe.mealTime)"
+            ingredientsTextView.text = recipe.ingredients
+            difficultyLabel.text = recipe.difficulty
+            totalTimeLabel.text = recipe.totalTime
+            prepTimeLabel.text = recipe.prepTime
+            cookTimeLabel.text = recipe.cookTime
+            servingsLabel.text = recipe.servings
+            mealTimeLabel.text = recipe.mealTime
             title = recipe.name
         }
     }
