@@ -9,7 +9,6 @@
 import UIKit
 
 class RecipesTableViewController: UITableViewController {
-
     
     // MARK: Properties
     var recipes: [Recipe] = [] {
@@ -17,32 +16,30 @@ class RecipesTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    var recipesTableViewController: RecipesTableViewController?
+    
+    let networkClient = RecipesNetworkClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        searchBar.delegate = self
-//        searchBar.returnKeyType = UIReturnKeyType.done
+        networkClient.fetchRecipes { (recipes, error) in
+            if let error1 = error {
+                print("Error loading recipes: \(error1)")
+                return
+            }
+            DispatchQueue.main.async {
+                self.recipes = recipes ?? []
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if isSearching {
-//            return filteredRecipes.count
-//        }
         return recipes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-       // let recipe: Recipe?
-        
-//        if isSearching {
-//            recipe = filteredRecipes[indexPath.row]
-//        } else {
-//            recipe = recipes[indexPath.row]
-//        }
         
         let recipe = recipes[indexPath.row]
         cell.textLabel?.text = recipe.name

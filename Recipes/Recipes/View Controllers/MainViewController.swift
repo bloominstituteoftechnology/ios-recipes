@@ -14,11 +14,14 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     // MARK: Properties
-    let networkClient = RecipesNetworkClient()
     var allRecipes: [Recipe] = [] {
         didSet {
             filterRecipes()
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     var recipesTableViewController: RecipesTableViewController? {
@@ -32,30 +35,16 @@ class MainViewController: UIViewController {
             recipesTableViewController?.recipes = filteredRecipes
         }
     }
-    
-    var isSearching = false
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
-        networkClient.fetchRecipes { (allRecipes, error) in
-            if let error = error {
-                print("Error loading recipes: \(error)")
-                return
-            }
-            DispatchQueue.main.async {
-                self.allRecipes = allRecipes ?? []
-            }
-        }
-    }
-    
     // MARK: Processing - Filtering and sorting
-    private func filterRecipes() {
+    func filterRecipes() {
         guard let searchItem = searchTextField.text, !searchItem.isEmpty else { return }
         if searchItem.isEmpty {
             filteredRecipes = allRecipes
         } else {
-            filteredRecipes = allRecipes.filter { $0.name == searchItem || $0.instructions.contains(searchItem)}
+            let result = recipesTableViewController?.recipes.filter { $0.name.contains(searchItem) || $0.instructions.contains(searchItem)}
+            guard let results = result else { return }
+            filteredRecipes = results
         }
     }
     
@@ -69,7 +58,7 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbededTableViewSegue" {
             guard let recipesTableVC = segue.destination as? RecipesTableViewController else { return }
-            recipesTableVC.recipesTableViewController = recipesTableViewController
+            recipesTableViewController = recipesTableVC
         }
     }
 }
