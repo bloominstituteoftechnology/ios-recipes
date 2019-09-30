@@ -50,9 +50,9 @@ class MainViewController: UIViewController {
         }
         
         filteredRecipes = allRecipes.filter({ (recipe) -> Bool in
-            if let _ = recipe.name.range(of: search) {
+            if let _ = recipe.name.range(of: search, options: .caseInsensitive) {
                 return true
-            } else if let _ = recipe.instructions.range(of: search) {
+            } else if let _ = recipe.instructions.range(of: search, options: .caseInsensitive) {
                 return true
             } else {
                 return false
