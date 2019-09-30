@@ -56,6 +56,7 @@ class MainViewController: UIViewController {
         if let recipe = searchTextField.text,
             !recipe.isEmpty {
             filteredRecipes = allRecipes.filter({ $0.name == recipe })
+            
         }
             
             else {
