@@ -18,8 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlz-Wj-MZx">
-                                <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nn-Nc-1f1">
+                                <rect key="frame" x="16" y="110" width="343" height="557"/>
+                                <connections>
+                                    <segue destination="j8Z-CN-VE5" kind="embed" identifier="displayTableView" id="4OC-pf-Cwl"/>
+                                </connections>
+                            </containerView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlz-Wj-MZx">
+                                <rect key="frame" x="16" y="72" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -27,21 +33,15 @@
                                     <action selector="actionTextField:" destination="HWE-1O-VwS" eventType="editingDidEndOnExit" id="Niq-YB-yJc"/>
                                 </connections>
                             </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nn-Nc-1f1">
-                                <rect key="frame" x="0.0" y="94" width="375" height="573"/>
-                                <connections>
-                                    <segue destination="j8Z-CN-VE5" kind="embed" identifier="displayTableView" id="4OC-pf-Cwl"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tlz-Wj-MZx" firstAttribute="top" secondItem="Rxb-ia-67X" secondAttribute="top" id="7hK-te-awM"/>
-                            <constraint firstItem="tlz-Wj-MZx" firstAttribute="trailing" secondItem="Rxb-ia-67X" secondAttribute="trailing" id="I2P-Ue-TkU"/>
-                            <constraint firstItem="3nn-Nc-1f1" firstAttribute="top" secondItem="tlz-Wj-MZx" secondAttribute="bottom" id="SnD-cE-1eI"/>
-                            <constraint firstItem="tlz-Wj-MZx" firstAttribute="leading" secondItem="Rxb-ia-67X" secondAttribute="leading" id="Xk1-BV-yQE"/>
-                            <constraint firstItem="3nn-Nc-1f1" firstAttribute="trailing" secondItem="Rxb-ia-67X" secondAttribute="trailing" id="bE3-CF-L3j"/>
-                            <constraint firstItem="3nn-Nc-1f1" firstAttribute="leading" secondItem="Rxb-ia-67X" secondAttribute="leading" id="bZD-pb-bLh"/>
+                            <constraint firstItem="tlz-Wj-MZx" firstAttribute="top" secondItem="Rxb-ia-67X" secondAttribute="top" constant="8" id="3ib-1C-Rge"/>
+                            <constraint firstItem="tlz-Wj-MZx" firstAttribute="trailing" secondItem="Rxb-ia-67X" secondAttribute="trailing" constant="-16" id="I2P-Ue-TkU"/>
+                            <constraint firstItem="3nn-Nc-1f1" firstAttribute="top" secondItem="tlz-Wj-MZx" secondAttribute="bottom" constant="8" id="SnD-cE-1eI"/>
+                            <constraint firstItem="tlz-Wj-MZx" firstAttribute="leading" secondItem="Rxb-ia-67X" secondAttribute="leading" constant="16" id="Xk1-BV-yQE"/>
+                            <constraint firstItem="3nn-Nc-1f1" firstAttribute="trailing" secondItem="Rxb-ia-67X" secondAttribute="trailing" constant="-16" id="bE3-CF-L3j"/>
+                            <constraint firstItem="3nn-Nc-1f1" firstAttribute="leading" secondItem="Rxb-ia-67X" secondAttribute="leading" constant="16" id="bZD-pb-bLh"/>
                             <constraint firstItem="3nn-Nc-1f1" firstAttribute="bottom" secondItem="Rxb-ia-67X" secondAttribute="bottom" id="lU7-wn-hdc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rxb-ia-67X"/>
@@ -60,19 +60,19 @@
             <objects>
                 <tableViewController id="j8Z-CN-VE5" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jzl-p6-Cpg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="557"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeDisplay" textLabel="IVT-ew-dQj" style="IBUITableViewCellStyleDefault" id="msK-Dj-ZbP">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="msK-Dj-ZbP" id="qQc-gw-Mgz">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IVT-ew-dQj">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="311" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -100,25 +100,25 @@
             <objects>
                 <viewController id="fpU-LG-HDs" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GlU-th-pKZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="557"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEv-qi-LMb">
-                                <rect key="frame" x="20" y="40" width="335" height="36"/>
+                                <rect key="frame" x="20" y="40" width="226.5" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aVj-UG-KpF">
-                                <rect key="frame" x="20" y="84" width="335" height="489"/>
+                                <rect key="frame" x="20" y="84" width="226.5" height="473"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nU7-FO-9oW">
-                                <rect key="frame" x="20" y="73" width="335" height="3"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="20" y="73" width="226.5" height="3"/>
+                                <color key="backgroundColor" red="0.3411764706" green="0.70980392160000005" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="335" id="aPd-eN-dte"/>
                                     <constraint firstAttribute="height" constant="3" id="udb-4W-zQ3"/>
