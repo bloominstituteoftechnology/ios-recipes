@@ -25,13 +25,15 @@ class MainViewController: UIViewController {
     
     var recipesTableViewController: RecipesTableViewController? {
         didSet {
-            filteredRecipes =
+            guard let recipes = recipesTableViewController?.recipes else { return }
+            filteredRecipes = recipes
         }
     }
     
     var filteredRecipes: [Recipe] = [] {
         didSet {
-            recipesTableViewController?.recipes
+            guard let recipes = recipesTableViewController?.recipes else { return }
+            filteredRecipes = recipes
         }
     }
     
@@ -40,8 +42,14 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        networkClient.fetchRecipes { (<#[Recipe]?#>, <#Error?#>) in
-            <#code#>
+        networkClient.fetchRecipes { (allRecipes, error) in
+            if let error = error {
+                NSLog("Error while loggin \(error)")
+                return
+            }
+            DispatchQueue.main.async {
+                self.allRecipes = allRecipes ?? []
+            }
         }
     }
     
@@ -73,6 +81,7 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TableViewEmbeded" {
             recipesTableViewController = segue.destination as? RecipesTableViewController
+            
         }
     }
     
