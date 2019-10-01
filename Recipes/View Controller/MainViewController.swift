@@ -15,14 +15,12 @@ class MainViewController: UIViewController {
     let networkClient = RecipesNetworkClient()
     
     var allRecipes: [Recipe] = [] {
-        
         didSet {
             filterRecipes()
         }
     }
     
     var recipesTableViewController: RecipesTableViewController? {
-        
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
         }
@@ -49,6 +47,7 @@ class MainViewController: UIViewController {
                 guard let allRecipes = allRecipes else { return }
                 DispatchQueue.main.async {
                     self.allRecipes = allRecipes
+                    print(self.allRecipes)
                 }
             }
         }
@@ -59,7 +58,9 @@ class MainViewController: UIViewController {
     func filterRecipes() {
         
         // TODO: What does "if there is no search term" mean?
-        guard let searchText = searchTextField.text
+        // Answer: It means !searchText.isEmpty. So there's a difference between an empty text field and a nil text field. And you can apparently use guard let to check for Booleans. That's so weird. Because intuitively I think of nil and empty as being the same. It's not.
+        // Source: https://stackoverflow.com/a/37066435/1291940
+        guard let searchText = searchTextField.text, !searchText.isEmpty == true
             else {
                 filteredRecipes = allRecipes
                 return
@@ -71,9 +72,7 @@ class MainViewController: UIViewController {
     
     
     @IBAction func textFieldAction(_ sender: Any) {
-        
-        // TODO: Not sure if correct. Is it resignFirstResponder() or searchTextField.resignFirstResponder()?
-        searchTextField.resignFirstResponder()
+        resignFirstResponder()
         filterRecipes()
     }
     

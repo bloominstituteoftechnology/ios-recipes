@@ -16,24 +16,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3sW-0l-Ai0">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3sW-0l-Ai0">
                                 <rect key="frame" x="16" y="81" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="textFieldAction:" destination="O2Z-dm-nI6" eventType="editingDidEnd" id="Mny-jw-HqP"/>
                                 </connections>
                             </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d3x-NU-NY5">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3x-NU-NY5">
                                 <rect key="frame" x="0.0" y="123" width="375" height="544"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="YRE-Eo-zFa" kind="embed" identifier="showTable" id="5L5-mK-d6R"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3sW-0l-Ai0" firstAttribute="leading" secondItem="gjB-hu-7RA" secondAttribute="leadingMargin" id="4mq-F3-jtp"/>
+                            <constraint firstItem="d3x-NU-NY5" firstAttribute="bottom" secondItem="dRR-Kd-mR6" secondAttribute="bottom" id="Bm1-h3-Wvr"/>
+                            <constraint firstItem="d3x-NU-NY5" firstAttribute="leading" secondItem="dRR-Kd-mR6" secondAttribute="leading" id="D87-Ub-wIO"/>
+                            <constraint firstItem="3sW-0l-Ai0" firstAttribute="centerX" secondItem="d3x-NU-NY5" secondAttribute="centerX" id="Psm-7q-sh3"/>
+                            <constraint firstItem="3sW-0l-Ai0" firstAttribute="trailing" secondItem="gjB-hu-7RA" secondAttribute="trailingMargin" id="fWE-zW-Uip"/>
+                            <constraint firstItem="3sW-0l-Ai0" firstAttribute="top" secondItem="dRR-Kd-mR6" secondAttribute="top" constant="37" id="wXQ-bk-FGy"/>
+                            <constraint firstItem="d3x-NU-NY5" firstAttribute="top" secondItem="3sW-0l-Ai0" secondAttribute="bottom" constant="8" id="zuX-ih-qvf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dRR-Kd-mR6"/>
                     </view>
                     <navigationItem key="navigationItem" id="BF0-5w-BgJ"/>
@@ -93,16 +100,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4H-ya-8cz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4H-ya-8cz">
                                 <rect key="frame" x="138" y="38" width="99" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4sN-d3-oF2">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4sN-d3-oF2">
                                 <rect key="frame" x="16" y="165" width="343" height="339"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -111,6 +116,14 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="iTI-7R-rqm" firstAttribute="bottom" secondItem="4sN-d3-oF2" secondAttribute="bottom" constant="20" id="7jS-ip-fN3"/>
+                            <constraint firstItem="4sN-d3-oF2" firstAttribute="leading" secondItem="Bmi-K8-jWt" secondAttribute="leadingMargin" id="Jgp-A7-rm9"/>
+                            <constraint firstItem="x4H-ya-8cz" firstAttribute="centerX" secondItem="4sN-d3-oF2" secondAttribute="centerX" id="K00-Wk-W8v"/>
+                            <constraint firstItem="x4H-ya-8cz" firstAttribute="top" secondItem="iTI-7R-rqm" secondAttribute="top" constant="38" id="Uyy-ge-Zoi"/>
+                            <constraint firstItem="4sN-d3-oF2" firstAttribute="top" secondItem="x4H-ya-8cz" secondAttribute="bottom" constant="76" id="dTR-fM-rN6"/>
+                            <constraint firstItem="4sN-d3-oF2" firstAttribute="trailing" secondItem="Bmi-K8-jWt" secondAttribute="trailingMargin" id="h3k-F8-qiy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iTI-7R-rqm"/>
                     </view>
                     <navigationItem key="navigationItem" id="cOy-9E-XHo"/>
