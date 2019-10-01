@@ -37,7 +37,9 @@ class MainViewController: UIViewController {
                 NSLog("\(error)")
                 return
             } else if let recipes = recipes {
-                self.allRecipes = recipes
+                DispatchQueue.main.async {
+                    self.allRecipes = recipes
+                }
             }
         }
     }
