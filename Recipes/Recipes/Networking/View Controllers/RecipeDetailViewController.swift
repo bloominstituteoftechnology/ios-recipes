@@ -13,9 +13,10 @@ class RecipeDetailViewController: UIViewController {
     // MARK: Properties
     var recipe: Recipe? {
     didSet {
-        updateViews() // call update views in the didSet or the recipe variable
+        updateViews() // call update views in the didSet of the recipe variable
         }
     }
+    
     // MARK: Outlets
     
     @IBOutlet var recipeLabel: UILabel!
@@ -28,6 +29,7 @@ class RecipeDetailViewController: UIViewController {
     }
     
     //MARK: Methods
+    
     // update views function: take in the values of the 'recipe' and place them in the corresponding outlets
     // check that the view is loaded when unwrapping the 'recipe' object
     func updateViews() {

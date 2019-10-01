@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     //MARK: Properties
+    
     let networkClient = RecipesNetworkClient()
     
     var allRecipes: [Recipe] = [] { // add a didSet property
@@ -21,18 +22,19 @@ class MainViewController: UIViewController {
     
     var recipesTableViewController: RecipesTableViewController? { // add a didSet property
         didSet {
-            self.recipesTableViewController?.recipes = filteredRecipes // set to filterRecipes
+            self.recipesTableViewController?.recipes = filteredRecipes // set the recipeTableViewController to filteredRecipes
         }
     }
     
     var filteredRecipes: [Recipe] = [] { // add a didSet property
         didSet {
-            filterRecipes() // set the recipesTableViewController's recipes to the filterered recipes
+            self.recipesTableViewController?.recipes = filteredRecipes // set the recipesTableViewController's to the filteredRecipes
         }
     }
-    //MARK: Outlets
-    @IBOutlet var textField: UITextField!
     
+    //MARK: Outlets
+    
+    @IBOutlet var textField: UITextField!
     
     /* In the `viewDidLoad`, call the `networkClient`'s `fetchRecipes` method. In its completion closure, if there is an error, NSLog it, and return from the function. If there is no error, set the value of `allRecipes` to recipes returned in this completion closure. */
     override func viewDidLoad() {
@@ -49,12 +51,14 @@ class MainViewController: UIViewController {
     }
     
     //MARK: Actions
+    
     @IBAction func searchTextField(_ sender: UITextField) {
         resignFirstResponder()
         filterRecipes()
     }
      
     //MARK: Methods
+   
     // this function will take the text from the text field and filter the recipes with it
     func filterRecipes() {
         if let userSearch =
@@ -77,5 +81,4 @@ class MainViewController: UIViewController {
             print("Error. Could not load table view controller")
         }
     }
-
 }

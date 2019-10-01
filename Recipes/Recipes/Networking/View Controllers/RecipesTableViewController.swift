@@ -11,7 +11,8 @@ import UIKit
 class RecipesTableViewController: UITableViewController {
 
     //MARK: Properties
-     var recipes: [Recipe] = [] { // add a variable with a 'didSet' property observer that reloads the table view
+     
+    var recipes: [Recipe] = [] { // add a variable with a 'didSet' property observer that reloads the table view
         didSet {
             tableView.reloadData() // this reloads the table view
         }
