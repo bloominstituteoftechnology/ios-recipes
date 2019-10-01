@@ -14,11 +14,28 @@ class MainViewController: UIViewController {
     
     let networkClient = RecipesNetworkClient()
     
-    var allRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        
+        didSet {
+            filterRecipes()
+        }
+    }
     
-    var recipesTableViewController: RecipesTableViewController?
+    var recipesTableViewController: RecipesTableViewController? {
+        
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
-    var filteredRecipes: [Recipe] = []
+    var filteredRecipes: [Recipe] = [] {
+        
+        didSet {
+            
+            // Question: How come filteredRecipes didn't autocomplete? Probably a bug.
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -41,20 +58,23 @@ class MainViewController: UIViewController {
     
     func filterRecipes() {
         
-        // What does "if there is no search term" mean?
+        // TODO: What does "if there is no search term" mean?
         guard let searchText = searchTextField.text
             else {
                 filteredRecipes = allRecipes
                 return
         }
         
-        // If there is a non-empty search term in the text field, using the filter higher-order function to filter the allRecipes array. It should filter by checking if the recipe's name or instructions contains the search term. Set the value of the filteredRecipes to the result of the filter method.
-        
+        // TODO: Not sure if correct
         filteredRecipes = allRecipes.filter({ $0.name == searchText || $0.instructions == searchText })
     }
     
     
     @IBAction func textFieldAction(_ sender: Any) {
+        
+        // TODO: Not sure if correct. Is it resignFirstResponder() or searchTextField.resignFirstResponder()?
+        searchTextField.resignFirstResponder()
+        filterRecipes()
     }
     
     // MARK: - Navigation
