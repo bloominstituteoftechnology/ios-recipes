@@ -129,8 +129,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="R8a-NI-bue"/>
                     <connections>
+                        <outlet property="recipeDesciption" destination="Tqw-Z1-Yfg" id="jYb-yK-8z8"/>
                         <outlet property="recipeDesciptionLabel" destination="Tqw-Z1-Yfg" id="5EB-d4-xLn"/>
-                        <outlet property="recipeNameLabel" destination="LjN-pQ-WDu" id="TvW-tY-Pzp"/>
+                        <outlet property="recipeNameLabel" destination="DKD-k3-7m3" id="RLy-6R-hb6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ee-zt-hcz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
