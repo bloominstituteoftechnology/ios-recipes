@@ -128,6 +128,10 @@
                         <viewLayoutGuide key="safeArea" id="cMC-3D-lPq"/>
                     </view>
                     <navigationItem key="navigationItem" id="xw8-MH-Opg"/>
+                    <connections>
+                        <outlet property="recipeDetail" destination="OsX-OC-pHe" id="28b-UD-q0A"/>
+                        <outlet property="recipeLabel" destination="lLl-Fz-WmW" id="5wK-Yy-M1C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6v-nY-KlH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
