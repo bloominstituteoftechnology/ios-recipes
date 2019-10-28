@@ -43,17 +43,10 @@ class MainViewController: UIViewController {
             
             DispatchQueue.main.async {
                 if let recipes = recipes {
-                    print("Main: \(recipes)")
                     self.allRecipes = recipes
                     self.recipesTableViewController?.reloadInputViews()
                 }
             }
-            
-//            DispatchQueue.main.async {
-//                if let recipes = recipes {
-//                    self.allRecipes = recipes
-//                }
-//            }
         }
     }
     
@@ -61,6 +54,8 @@ class MainViewController: UIViewController {
         resignFirstResponder()
         filterRecipes()
     }
+    
+    
     
     func filterRecipes() {
         guard let searchTerm = textField.text, !searchTerm.isEmpty else {
@@ -74,14 +69,9 @@ class MainViewController: UIViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == PropertyKeys.embedSegue {
-            recipesTableViewController = segue.destination as? RecipesTableViewController// else { return }
+            recipesTableViewController = segue.destination as? RecipesTableViewController
         }
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    
-
 }

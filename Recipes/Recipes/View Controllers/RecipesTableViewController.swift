@@ -17,7 +17,6 @@ class RecipesTableViewController: UITableViewController {
     
     var recipes: [Recipe] = [] {
         didSet {
-            print("Here: \(recipes)")
             tableView.reloadData()
         }
     }
