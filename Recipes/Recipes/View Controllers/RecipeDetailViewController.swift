@@ -30,7 +30,7 @@ class RecipeDetailViewController: UIViewController {
     
     private func updateViews() {
         if let recipe = recipe,
-            viewController.isViewLoaded {
+            self.isViewLoaded {
             recipeNameLabel.text = recipe.name
             recipeDetailTextView.text = recipe.instructions
         }
