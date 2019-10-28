@@ -9,7 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     struct PropertyKeys {
         static let embedSegue = "TableViewEmbedSegue"
@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     let networkClient = RecipesNetworkClient()
     var allRecipes: [Recipe] = [] {
         didSet {
-            filterRecipes()
+            filterRecipes(on: "")
         }
     }
     var recipesTableViewController: RecipesTableViewController? {
@@ -35,6 +35,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        searchBar.delegate = self
         networkClient.fetchRecipes { (recipes, error) in
             if let error = error {
                 NSLog("Error fetching recipe array: \(error)")
@@ -50,20 +51,20 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func editingEnded(_ sender: Any) {
-        resignFirstResponder()
-        filterRecipes()
-    }
+//    @IBAction func editingEnded(_ sender: Any) {
+//        resignFirstResponder()
+//        filterRecipes()
+//    }
     
-    
-    
-    func filterRecipes() {
-        guard let searchTerm = textField.text, !searchTerm.isEmpty else {
+    func filterRecipes(on searchTerm: String) {
+        
+        if searchTerm == "" {
+            print("Hello")
             filteredRecipes = allRecipes
-            return
+        } else {
+            filteredRecipes = allRecipes.filter({ $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm)
+            })
         }
-        filteredRecipes = allRecipes.filter({ $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm)
-        })
     }
     
     
@@ -74,4 +75,13 @@ class MainViewController: UIViewController {
             recipesTableViewController = segue.destination as? RecipesTableViewController
         }
     }
+}
+
+extension MainViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else { return }
+        filterRecipes(on: searchText)
+    }
+    
+    
 }
