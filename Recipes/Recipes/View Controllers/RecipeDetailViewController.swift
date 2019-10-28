@@ -9,6 +9,12 @@
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
+    
+    var recipe: Recipe? {
+        didSet {
+           updateViews()
+        }
+    }
 
     @IBOutlet weak var RecipeNameLabel: UILabel!
     @IBOutlet weak var RecipeDetailText: UITextView!
@@ -16,7 +22,7 @@ class RecipeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
 
@@ -29,5 +35,16 @@ class RecipeDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func updateViews() {
+        
+        if isViewLoaded {
+            if let recipe = recipe {
+                RecipeNameLabel.text =  recipe.name
+                RecipeDetailText.text = recipe.instructions
+            }
+        }
+        
+    }
 
 }
