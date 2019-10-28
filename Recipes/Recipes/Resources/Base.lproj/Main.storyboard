@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="0Tv-Xt-LGz">
             <objects>
-                <viewController id="KD9-Sl-j41" sceneMemberID="viewController">
+                <viewController id="KD9-Sl-j41" customClass="MainViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X7R-99-41h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,6 +20,9 @@
                                 <rect key="frame" x="20" y="103" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="search:" destination="KD9-Sl-j41" eventType="editingDidEnd" id="3dL-dD-aOq"/>
+                                </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjY-hK-MXd">
                                 <rect key="frame" x="0.0" y="152" width="414" height="710"/>
@@ -41,6 +44,9 @@
                         <viewLayoutGuide key="safeArea" id="CKf-iU-3DC"/>
                     </view>
                     <navigationItem key="navigationItem" id="qAs-GQ-Jkb"/>
+                    <connections>
+                        <outlet property="searchField" destination="lWO-5w-R2C" id="CPw-X2-fdq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPz-me-QSE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
