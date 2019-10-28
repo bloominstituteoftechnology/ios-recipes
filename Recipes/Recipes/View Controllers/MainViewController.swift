@@ -11,6 +11,8 @@ import UIKit
 class MainViewController: UIViewController {
     
     let networkClient = RecipesNetworkClient()
+    let localStoreController = LocalRecipesStoreController.shared
+    
     var allRecipes: [Recipe] = [] {
         didSet {
             filterRecipes()
@@ -32,13 +34,20 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        networkClient.fetchRecipes { (recipes, error) in
-            if let error = error {
-                print("Error fetching recipes: \(error)")
-                return
-            } else if let recipes = recipes {
-                self.allRecipes = recipes
+        
+        let didLoadLocalRecipes = localStoreController.didLoadRecipesFromLocalStore()
+        if didLoadLocalRecipes {
+            allRecipes = localStoreController.recipes
+        } else {
+            networkClient.fetchRecipes { (recipes, error) in
+                if let error = error {
+                    print("Error fetching recipes: \(error)")
+                    return
+                } else if let recipes = recipes {
+                    self.allRecipes = recipes
+                    self.localStoreController.recipes = self.allRecipes
+                    self.localStoreController.saveRecipesToLocalStore()
+                }
             }
         }
     }
@@ -49,13 +58,15 @@ class MainViewController: UIViewController {
     }
     
     func filterRecipes() {
-        guard let searchTerm = searchField.text, !searchTerm.isEmpty else {
-            filteredRecipes = allRecipes
-            return
-        }
-        
-        filteredRecipes = allRecipes.filter {
-            $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm)
+        DispatchQueue.main.async {
+            guard let searchTerm = self.searchField.text, !searchTerm.isEmpty else {
+                self.filteredRecipes = self.allRecipes
+                return
+            }
+            
+            self.filteredRecipes = self.allRecipes.filter {
+                $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm)
+            }
         }
     }
 
