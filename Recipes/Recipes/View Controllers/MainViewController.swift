@@ -11,9 +11,22 @@ import UIKit
 class MainViewController: UIViewController {
     
     let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
-    var recipesTableViewController: RecipesTableViewController?
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
 
     @IBOutlet weak var searchField: UITextField!
     
@@ -31,6 +44,19 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func search(_ sender: UITextField) {
+        searchField.resignFirstResponder()
+        filterRecipes()
+    }
+    
+    func filterRecipes() {
+        guard let searchTerm = searchField.text, !searchTerm.isEmpty else {
+            filteredRecipes = allRecipes
+            return
+        }
+        
+        filteredRecipes = allRecipes.filter {
+            $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm)
+        }
     }
 
     // MARK: - Navigation
