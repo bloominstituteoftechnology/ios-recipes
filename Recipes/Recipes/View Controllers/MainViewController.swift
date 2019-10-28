@@ -9,13 +9,23 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = []
 
     @IBOutlet weak var searchField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        networkClient.fetchRecipes { (recipes, error) in
+            if let error = error {
+                print("Error fetching recipes: \(error)")
+                return
+            } else if let recipes = recipes {
+                self.allRecipes = recipes
+            }
+        }
     }
     
     @IBAction func search(_ sender: UITextField) {

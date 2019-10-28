@@ -46,9 +46,9 @@
 		9984B5C023677B9100AD53C4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9984B5C323677DA000AD53C4 /* RecipeDetailViewController.swift */,
-				9984B5C123677CA900AD53C4 /* RecipesTableViewController.swift */,
 				9984B5BE23677B8D00AD53C4 /* MainViewController.swift */,
+				9984B5C123677CA900AD53C4 /* RecipesTableViewController.swift */,
+				9984B5C323677DA000AD53C4 /* RecipeDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
