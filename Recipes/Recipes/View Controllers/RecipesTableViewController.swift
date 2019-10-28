@@ -81,14 +81,19 @@ class RecipesTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowRecipeDetailSegue" {
+            guard let recipeDetailVC = segue.destination as? RecipeDetailViewController,
+                let indexRow = tableView.indexPathForSelectedRow?.row
+                else { return }
+            
+            recipeDetailVC.recipe = recipes[indexRow]
+        }
     }
-    */
 
 }
