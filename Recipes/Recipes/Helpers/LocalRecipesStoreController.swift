@@ -26,6 +26,15 @@ class LocalRecipesStoreController {
         }
     }
     
+    func update(_ oldRecipe: Recipe, to newRecipe: Recipe) {
+        guard let index = recipes.firstIndex(where: {
+            $0.name == oldRecipe.name && $0.instructions == oldRecipe.instructions
+        }) else { return }
+        
+        recipes[index] = newRecipe
+        saveRecipesToLocalStore()
+    }
+    
     // MARK: - Persistence
     
     private var localRecipesURL: URL? {

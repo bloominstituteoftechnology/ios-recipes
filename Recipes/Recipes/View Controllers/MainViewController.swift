@@ -77,6 +77,9 @@ class MainViewController: UIViewController {
             let recipesTableVC = segue.destination as? RecipesTableViewController {
             
             recipesTableViewController = recipesTableVC
+            recipesTableViewController?.parentVC = self
         }
     }
 }
+
+extension MainViewController: RecipeDetailVCDelegate {}

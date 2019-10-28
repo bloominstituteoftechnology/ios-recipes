@@ -10,6 +10,8 @@ import UIKit
 
 class RecipesTableViewController: UITableViewController {
     
+    var parentVC: MainViewController?
+    
     var recipes: [Recipe] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -95,6 +97,7 @@ class RecipesTableViewController: UITableViewController {
                 else { return }
             
             recipeDetailVC.recipe = recipes[indexRow]
+            recipeDetailVC.delegate = parentVC
         }
     }
 
