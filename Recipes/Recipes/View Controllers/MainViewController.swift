@@ -40,8 +40,20 @@ class MainViewController: UIViewController {
                 NSLog("Error fetching recipe array: \(error)")
                 return
             }
-            guard let allRecipes = recipes else { return }
             
+            DispatchQueue.main.async {
+                if let recipes = recipes {
+                    print("Main: \(recipes)")
+                    self.allRecipes = recipes
+                    self.recipesTableViewController?.reloadInputViews()
+                }
+            }
+            
+//            DispatchQueue.main.async {
+//                if let recipes = recipes {
+//                    self.allRecipes = recipes
+//                }
+//            }
         }
     }
     
@@ -65,8 +77,7 @@ class MainViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == PropertyKeys.embedSegue {
-            guard let recipesTableVC = segue.destination as? RecipesTableViewController else { return }
-            recipesTableVC.recipes = allRecipes
+            recipesTableViewController = segue.destination as? RecipesTableViewController// else { return }
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
