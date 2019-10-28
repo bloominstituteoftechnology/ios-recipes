@@ -23,20 +23,15 @@ class RecipesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        recipes = Recipe.loadFromFile()
     }
 
     // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -87,7 +82,7 @@ class RecipesTableViewController: UITableViewController {
         return true
     }
     */
-
+    
     
     // MARK: - Navigation
 
@@ -96,6 +91,7 @@ class RecipesTableViewController: UITableViewController {
         if segue.identifier == PropertyKeys.detailSegue, let indexPath = tableView.indexPathForSelectedRow {
             guard let recipeDetialVC = segue.destination as? RecipeDetailViewController else { return }
             recipeDetialVC.recipe = recipes[indexPath.row]
+            recipeDetialVC.recipes = recipes
         }
     }
     

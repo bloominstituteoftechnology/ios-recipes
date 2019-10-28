@@ -17,6 +17,8 @@ class RecipeDetailViewController: UIViewController {
             updateViews()
         }
     }
+    
+    var recipes: [Recipe]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,22 @@ class RecipeDetailViewController: UIViewController {
             textView.text = recipe.instructions
         }
         
+    }
+    
+    // MARK: - Update Data
+    
+    @IBAction func updateRecipes(_ sender: Any) {
+        guard let name = recipeLabel.text,
+            let instructions = textView.text,
+            let recipe = recipe,
+            let index = recipes?.firstIndex(of: recipe) else { return }
+        
+        let editedRecipe = Recipe(name: name, instructions: instructions)
+        
+        recipes?[index] = editedRecipe
+        guard let recipes = recipes else { return }
+        Recipe.saveToFile(recipes: recipes)
+        navigationController?.popViewController(animated: true)
     }
     
 

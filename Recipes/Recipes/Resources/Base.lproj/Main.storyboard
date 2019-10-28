@@ -108,14 +108,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IED-sW-LtY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="642"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IED-sW-LtY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="582"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mvu-VJ-4M0">
+                                <rect key="frame" x="0.0" y="626" width="414" height="60"/>
+                                <state key="normal" title="Save Changes"/>
+                                <connections>
+                                    <action selector="updateRecipes:" destination="Sa2-2g-LUo" eventType="touchUpInside" id="JcW-pF-5iu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -123,9 +130,13 @@
                             <constraint firstItem="q87-oZ-hcU" firstAttribute="top" secondItem="2qL-I9-ype" secondAttribute="top" constant="8" id="Fwx-1l-5g8"/>
                             <constraint firstItem="2qL-I9-ype" firstAttribute="trailing" secondItem="q87-oZ-hcU" secondAttribute="trailing" constant="8" id="Ob3-ZN-w69"/>
                             <constraint firstItem="q87-oZ-hcU" firstAttribute="leading" secondItem="2qL-I9-ype" secondAttribute="leading" constant="8" id="Tnd-a5-2V0"/>
+                            <constraint firstItem="Mvu-VJ-4M0" firstAttribute="top" secondItem="IED-sW-LtY" secondAttribute="bottom" id="UEU-Aj-ZFo"/>
                             <constraint firstItem="IED-sW-LtY" firstAttribute="top" secondItem="q87-oZ-hcU" secondAttribute="bottom" id="VQ9-Z9-NYV"/>
+                            <constraint firstItem="2qL-I9-ype" firstAttribute="bottom" secondItem="Mvu-VJ-4M0" secondAttribute="bottom" id="Yh9-EF-7kX"/>
                             <constraint firstItem="2qL-I9-ype" firstAttribute="trailing" secondItem="IED-sW-LtY" secondAttribute="trailing" id="eLE-Hl-SAH"/>
-                            <constraint firstItem="2qL-I9-ype" firstAttribute="bottom" secondItem="IED-sW-LtY" secondAttribute="bottom" id="s5x-oY-Zjo"/>
+                            <constraint firstItem="Mvu-VJ-4M0" firstAttribute="leading" secondItem="2qL-I9-ype" secondAttribute="leading" id="rAC-WO-xGm"/>
+                            <constraint firstItem="2qL-I9-ype" firstAttribute="bottom" secondItem="IED-sW-LtY" secondAttribute="bottom" constant="60" id="s5x-oY-Zjo"/>
+                            <constraint firstItem="2qL-I9-ype" firstAttribute="trailing" secondItem="Mvu-VJ-4M0" secondAttribute="trailing" id="zYU-rk-xct"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2qL-I9-ype"/>
                     </view>
