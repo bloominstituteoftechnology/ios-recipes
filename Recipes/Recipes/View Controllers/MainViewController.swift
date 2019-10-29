@@ -51,19 +51,13 @@ class MainViewController: UIViewController {
         }
     }
     
-    //    @IBAction func editingEnded(_ sender: Any) {
-    //        resignFirstResponder()
-    //        filterRecipes()
-    //    }
-    
     func filterRecipes(on searchTerm: String) {
         
         if searchTerm == "" {
             filteredRecipes = allRecipes
         } else {
             filteredRecipes = allRecipes.filter({
-                fuzzySearch(if: searchTerm, isIn: $0.name) ||
-                $0.instructions.contains(searchTerm)
+                fuzzySearch(if: searchTerm, isIn: $0.name) || $0.instructions.lowercased().contains(searchTerm.lowercased())
                 
             })
         }
@@ -108,9 +102,6 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard !searchText.isEmpty else { return }
         filterRecipes(on: searchText)
     }
-    
-    
 }
