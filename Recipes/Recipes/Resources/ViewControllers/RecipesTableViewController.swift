@@ -100,6 +100,4 @@ class RecipesTableViewController: UITableViewController {
             }
         } else {print("Something didnt work")}
     }
-
-
 }

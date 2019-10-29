@@ -33,9 +33,9 @@ class RecipeDetailViewController: UIViewController {
 
     
     // MARK:  Function
+    
     func updateViews(){
 
-        
         if isViewLoaded {
             if let recipe = recipe {
             recipeNameLabel.text = recipe.name

@@ -52,7 +52,7 @@ class MainViewController: UIViewController {
     
     
     @IBAction func searchComplete(_ sender: UITextField) {
-        resignFirstResponder()
+        searchTextField.resignFirstResponder()
         filterRecipes()
         
     }
@@ -66,7 +66,7 @@ class MainViewController: UIViewController {
             return
         }
         self.filteredRecipes = self.allRecipes.filter {
-            ($0.name.range(of: userInput, options: .caseInsensitive) != nil) || ($0.instructions.range(of: userInput, options: .caseInsensitive) != nil)
+            ($0.name.contains(userInput) ) || ($0.instructions.contains(userInput))
             
         }
         }
