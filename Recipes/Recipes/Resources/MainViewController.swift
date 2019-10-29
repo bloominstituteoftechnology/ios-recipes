@@ -9,25 +9,82 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    var networkClient = RecipesNetworkClient()
+    
+    
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController?.tableView.reloadData()
+            
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController?.tableView.reloadData()
+        }
 
+    }
+    
     @IBOutlet weak var searchTextField: UITextField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        networkClient.fetchRecipes {  (allRecipes, error) in
+            if let error = error {
+                NSLog("Oops, \(error)")
+                return
+            }
+            self.allRecipes = allRecipes ?? []
+        }
     }
+    
     
     @IBAction func searchComplete(_ sender: UITextField) {
+        resignFirstResponder()
+        filterRecipes()
+        
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func filterRecipes(){
+        
+        DispatchQueue.main.async {
+        
+        guard let userInput = self.searchTextField.text, !userInput.isEmpty else {
+            self.filteredRecipes = self.allRecipes
+            return
+        }
+        self.filteredRecipes = self.allRecipes.filter {
+            ($0.name.range(of: userInput, options: .caseInsensitive) != nil) || ($0.instructions.range(of: userInput, options: .caseInsensitive) != nil)
+            
+        }
+        }
+        
     }
-    */
 
+    // MARK: - Navigation
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        if segue.identifier == "embedTableViewSegue" {
+            guard let recipesTableVC = segue.destination as? RecipesTableViewController else {return}
+            recipesTableViewController = recipesTableVC
+            
+        }
+        
+    }
+    
+    
 }

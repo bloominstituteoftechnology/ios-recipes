@@ -31,10 +31,6 @@ class RecipesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -102,7 +98,7 @@ class RecipesTableViewController: UITableViewController {
                 let recipe = recipes[index.row]
                 recipeDetailVC.recipe = recipe
             }
-        } else {return}
+        } else {print("Something didnt work")}
     }
 
 
