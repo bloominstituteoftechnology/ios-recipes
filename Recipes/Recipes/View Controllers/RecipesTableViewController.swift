@@ -15,8 +15,6 @@ class RecipesTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

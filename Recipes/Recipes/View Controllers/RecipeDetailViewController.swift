@@ -37,8 +37,6 @@ class RecipeDetailViewController: UIViewController {
         if self.isViewLoaded {
         recipeLabel.text = recipe.name
         recipeDetail.text = recipe.instructions
-        } else {
-            return
         }
     }
 
