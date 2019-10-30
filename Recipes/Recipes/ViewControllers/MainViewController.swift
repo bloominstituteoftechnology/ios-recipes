@@ -9,6 +9,29 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    @IBOutlet var searchTextField: UITextField!
+    
+    let networkClient = RecipesNetworkClient()
+    
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    // i was told to make filteredRecipes = [] or i did that on my own?
+    
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +69,6 @@ class MainViewController: UIViewController {
     }
     
 
-
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,27 +84,5 @@ class MainViewController: UIViewController {
     }
 
     
-    @IBOutlet var searchTextField: UITextField!
-    
-    let networkClient = RecipesNetworkClient()
-    
-    var allRecipes: [Recipe] = [] {
-        didSet {
-            filterRecipes()
-        }
-    }
-    // i was told to make filteredRecipes = [] or i did that on my own?
-    
-    var filteredRecipes: [Recipe] = [] {
-        didSet {
-            recipesTableViewController?.recipes = filteredRecipes
-        }
-    } 
-    
-    var recipesTableViewController: RecipesTableViewController? {
-        didSet {
-            recipesTableViewController?.recipes = filteredRecipes
-        }
-    }
     
 }
