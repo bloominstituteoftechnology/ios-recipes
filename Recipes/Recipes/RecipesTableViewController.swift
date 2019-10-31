@@ -48,7 +48,6 @@ class RecipesTableViewController: UITableViewController {
             let indexPath = tableView.indexPathForSelectedRow else {return}
             
             dvc.recipe = recipes[indexPath.row]
-            print("\(String(describing: dvc.recipe))")
         }
     }
 

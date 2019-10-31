@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
 
     let networkClient = RecipesNetworkClient()
+    let recipePersistenceController = RecipePersistanceController()
     
     var allRecipes: [Recipe] = [] {
         didSet {
@@ -34,6 +35,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if recipePersistenceController.recipe.count > 0 {
+            allRecipes = recipePersistenceController.recipe
+        } else {
         networkClient.fetchRecipes(completion: { recipes , error in
             if let error = error {
                 print("Error loading recipe: \(error)")
@@ -42,10 +47,13 @@ class MainViewController: UIViewController {
             DispatchQueue.main.async {
                 if let recipes = recipes {
                     self.allRecipes = recipes
+                        self.recipePersistenceController.recipe = self.allRecipes
+                            self.recipePersistenceController.saveToPersistentStore()
                 }
             }
         })
     }
+}
     
     @IBAction func searchAction(_ sender: UITextField) {
         searchTextField.resignFirstResponder()
