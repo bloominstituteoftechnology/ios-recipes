@@ -10,6 +10,12 @@ import UIKit
 
 class RecipesTableViewController: UITableViewController {
 
+    var recipes: [Recipe] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,14 +83,18 @@ class RecipesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowRecipeDetailSegue" {
+            guard let recipeDetailVC = segue.destination as? RecipeDetailViewController,
+            let indexPath = tableView.indexPathForSelectedRow else { return }
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

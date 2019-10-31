@@ -45,7 +45,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zgQ-HL-We1"/>
                     <connections>
-                        <outlet property="recipedSearchTextField" destination="qLa-Ol-oPJ" id="e93-bD-kVd"/>
+                        <outlet property="recipeSearchTextField" destination="qLa-Ol-oPJ" id="e93-bD-kVd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8A-Bb-4ub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

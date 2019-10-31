@@ -10,9 +10,11 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    
+    
     // MARK: - IBOutlets
     
-    @IBOutlet weak var recipedSearchTextField: UITextField!
+    @IBOutlet weak var recipeSearchTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +29,17 @@ class MainViewController: UIViewController {
     }
     
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowRecipeCellSegue" {
+            recipesTableViewController = segue.destination as? RecipesTableViewController
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
