@@ -27,7 +27,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rEW-Nr-1Lz">
                                 <rect key="frame" x="0.0" y="162" width="373" height="616"/>
                                 <connections>
-                                    <segue destination="i0T-fY-fgj" kind="show" identifier="ShowRecipeDetailSegue" id="fDO-hH-ImV"/>
+                                    <segue destination="i0T-fY-fgj" kind="show" identifier="ShowRecipeCellSegue" id="fDO-hH-ImV"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -52,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="916" y="149"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Recipes Table View Controller-->
         <scene sceneID="Qi8-Il-762">
             <objects>
-                <tableViewController id="i0T-fY-fgj" sceneMemberID="viewController">
+                <tableViewController id="i0T-fY-fgj" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bfP-9u-FeK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,6 +77,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="uzD-pB-vWF" kind="show" identifier="ShowRecipeDetailSegue" id="KPK-Es-OKR"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -89,6 +92,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yA3-fA-ou6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1754" y="149"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5hI-eM-5Rf">
+            <objects>
+                <viewController id="uzD-pB-vWF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GPR-Vj-4AH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="q29-Iz-8I6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="a6l-Jd-63R"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cel-7S-2Ur" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2529" y="149"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fiB-D8-bF6">
