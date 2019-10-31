@@ -45,7 +45,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zgQ-HL-We1"/>
                     <connections>
-                        <outlet property="recipedSearchTextFiedl" destination="qLa-Ol-oPJ" id="e93-bD-kVd"/>
+                        <outlet property="recipedSearchTextField" destination="qLa-Ol-oPJ" id="e93-bD-kVd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8A-Bb-4ub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -93,17 +93,46 @@
             </objects>
             <point key="canvasLocation" x="1754" y="149"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="5hI-eM-5Rf">
             <objects>
-                <viewController id="uzD-pB-vWF" sceneMemberID="viewController">
+                <viewController id="uzD-pB-vWF" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GPR-Vj-4AH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ei-RI-16E">
+                                <rect key="frame" x="20" y="98" width="335" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5E7-JS-ndT">
+                                <rect key="frame" x="20" y="159" width="335" height="599"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="q29-Iz-8I6" firstAttribute="trailing" secondItem="2ei-RI-16E" secondAttribute="trailing" constant="20" id="3AY-2T-SdS"/>
+                            <constraint firstItem="q29-Iz-8I6" firstAttribute="bottom" secondItem="5E7-JS-ndT" secondAttribute="bottom" constant="20" id="DQn-xC-MB2"/>
+                            <constraint firstItem="5E7-JS-ndT" firstAttribute="leading" secondItem="q29-Iz-8I6" secondAttribute="leading" constant="20" id="JMO-hr-N7a"/>
+                            <constraint firstItem="q29-Iz-8I6" firstAttribute="trailing" secondItem="5E7-JS-ndT" secondAttribute="trailing" constant="20" id="ZkA-ML-rAI"/>
+                            <constraint firstItem="2ei-RI-16E" firstAttribute="leading" secondItem="q29-Iz-8I6" secondAttribute="leading" constant="20" id="eBL-nR-OMa"/>
+                            <constraint firstItem="5E7-JS-ndT" firstAttribute="top" secondItem="2ei-RI-16E" secondAttribute="bottom" constant="20" id="eJ5-EG-osh"/>
+                            <constraint firstItem="2ei-RI-16E" firstAttribute="top" secondItem="q29-Iz-8I6" secondAttribute="top" constant="10" id="qb3-7S-Ysq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="q29-Iz-8I6"/>
                     </view>
                     <navigationItem key="navigationItem" id="a6l-Jd-63R"/>
+                    <connections>
+                        <outlet property="recipeInstructionsText" destination="5E7-JS-ndT" id="blO-Df-g0S"/>
+                        <outlet property="recipeTitleLabel" destination="2ei-RI-16E" id="wkh-Ly-ohq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cel-7S-2Ur" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

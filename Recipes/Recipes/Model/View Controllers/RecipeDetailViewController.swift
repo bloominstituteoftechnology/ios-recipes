@@ -1,18 +1,19 @@
 //
-//  MainViewController.swift
+//  RecipeDetailViewController.swift
 //  Recipes
 //
-//  Created by Gavin Murphy on 10/29/19.
+//  Created by Gavin Murphy on 10/30/19.
 //  Copyright © 2019 Lambda Inc. All rights reserved.
 //
 
 import UIKit
 
-class MainViewController: UIViewController {
+class RecipeDetailViewController: UIViewController {
 
     // MARK: - IBOutlets
     
-    @IBOutlet weak var recipedSearchTextField: UITextField!
+    @IBOutlet weak var recipeTitleLabel: UILabel!
+    @IBOutlet weak var recipeInstructionsText: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +22,6 @@ class MainViewController: UIViewController {
     }
     
 
-    // MARK: - Action Handlers
-
-    @IBAction func recipeSearched(_ sender: Any) {
-    }
-    
-    
     /*
     // MARK: - Navigation
 
