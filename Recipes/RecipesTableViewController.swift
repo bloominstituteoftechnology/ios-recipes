@@ -12,13 +12,16 @@ class RecipesTableViewController: UITableViewController {
     
     var recipes: [Recipe] = [] {
         didSet {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData()
+            }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = self
+        tableView.dataSource = self
        
     }
 
@@ -37,9 +40,9 @@ class RecipesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
 
-        let aRecipe = recipes[indexPath.row]
-        cell.textLabel?.text = aRecipe.name
-        cell.detailTextLabel?.text = aRecipe.instructions
+        let recipe = recipes[indexPath.row]
+        cell.textLabel?.text = recipe.name
+        cell.detailTextLabel?.text = recipe.instructions
         
        
         return cell
