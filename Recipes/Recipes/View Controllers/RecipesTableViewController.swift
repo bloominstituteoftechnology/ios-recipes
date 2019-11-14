@@ -13,7 +13,9 @@ class RecipesTableViewController: UITableViewController {
     // MARK: - Properties
     var recipes: [Recipe] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+            self.tableView.reloadData()
+            }
         }
     }
     

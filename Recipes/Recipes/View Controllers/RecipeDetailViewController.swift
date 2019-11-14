@@ -36,6 +36,33 @@ class RecipeDetailViewController: UIViewController {
         recipeText.text = recipe.instructions
     }
     
-
-
+    // MARK: - State Restoration
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        
+        // Recipe -> Data -> Encode in coder
+        
+        defer { super.encodeRestorableState(with: coder) }
+        
+        var recipeData: Data?
+        
+        do {
+            recipeData = try PropertyListEncoder().encode(recipe)
+        } catch {
+            NSLog("Error encoding recipe: \(error)")
+        }
+        
+        guard let recipe = recipeData else { return }
+        
+        coder.encode(recipe, forKey: "recipeData")
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        defer { super.decodeRestorableState(with: coder) }
+        
+        // Data -> Recipe -> Put in the Recipe var
+        guard let recipeData = coder.decodeObject(forKey: "recipeData") as? Data else { return }
+        
+        self.recipe = try? PropertyListDecoder().decode(Recipe.self, from: recipeData)
+    }
 }

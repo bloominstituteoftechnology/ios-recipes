@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var textField: UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         networkClient.fetchRecipes { (recipes, error) in
@@ -57,16 +57,17 @@ class MainViewController: UIViewController {
     }
     
     func filterRecipes() {
-        guard let text = textField.text else { return }
-        if text.isEmpty {
-            filteredRecipes = allRecipes
-        } else {
-            filteredRecipes = allRecipes.filter({ $0.name == text || $0.instructions == text})
+        DispatchQueue.main.async {
+            guard let text = self.textField.text else { return }
+            if text.isEmpty {
+                self.filteredRecipes = self.allRecipes
+            } else {
+                self.filteredRecipes = self.allRecipes.filter({ $0.name == text || $0.instructions == text})
+            }
         }
     }
     
     
     
     
-
 }
