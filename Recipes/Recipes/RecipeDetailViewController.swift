@@ -33,6 +33,39 @@ class RecipeDetailViewController: UIViewController {
         recipeTextView.text = recipe.instructions
     }
     
+    override func encodeRestorableState(with coder: NSCoder) {
+        
+        // Planet -> Data -> Encode in coder
+        
+        defer { super.encodeRestorableState(with: coder) }
+        
+        var recipeData: Data?
+        
+        do {
+            recipeData = try PropertyListEncoder().encode(recipe)
+        } catch {
+            NSLog("Error encoding planet: \(error)")
+        }
+        
+        guard let recipe = recipeData else { return }
+        
+        coder.encode(recipe, forKey: "recipeData")
+        
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        
+        defer {
+            super.decodeRestorableState(with: coder)
+        }
+        
+        // Data -> Planet -> put in planet var -> pdate views
+        
+        guard let recipeData = coder.decodeObject(forKey: "recipeData") as? Data else { return }
+        
+        self.recipe = try? PropertyListDecoder().decode(Recipe.self, from: recipeData)
+    }
+    
 
     /*
     // MARK: - Navigation
