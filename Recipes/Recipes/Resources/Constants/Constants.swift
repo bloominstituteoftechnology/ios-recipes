@@ -16,3 +16,7 @@ struct Segues {
     static let recipeEmbed = "RecipeEmbed"
     static let showRecipeDetail = "ShowRecipeDetail"
 }
+
+struct UserDefaultsKeys {
+    static let recipesLoaded = "RecipesLoaded"
+}

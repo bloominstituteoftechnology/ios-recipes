@@ -16,6 +16,8 @@ class MainViewController: UIViewController {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
+    let defaults = UserDefaults.standard
+    let recipeController = RecipeController()
     let networkClient = RecipesNetworkClient()
     var allRecipes = [Recipe]() {
         didSet {
@@ -37,26 +39,41 @@ class MainViewController: UIViewController {
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkClient.fetchRecipes { [weak self] recipes, error in
-            if let error = error {
-                NSLog("\(error)")
-                return
-            }
-            
-            guard let recipes = recipes, let self = self else { return }
-            self.allRecipes = recipes
-        }
+        fetchRecipes()
     }
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Private
+    
+    private func fetchRecipes() {
+        if defaults.bool(forKey: UserDefaultsKeys.recipesLoaded) {
+            self.allRecipes = recipeController.recipes
+        } else {
+            networkClient.fetchRecipes { [weak self] recipes, error in
+                if let error = error {
+                    NSLog("\(error)")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    guard let recipes = recipes, let self = self else { return }
+                    self.allRecipes = recipes
+                    self.recipeController.recipes = recipes
+                    self.defaults.set(true, forKey: UserDefaultsKeys.recipesLoaded)
+                    self.recipeController.saveToPersistentStore()
+                }
+            }
+            
+        }
+    }
+    
     private func filterRecipes() {
         guard let term = titleTextField.text, !term.isEmpty else {
             filteredRecipes = allRecipes
             return
         }
         
-        filteredRecipes = allRecipes.filter { $0.name == term }
+        filteredRecipes = allRecipes.filter { $0.name.contains(term.capitalized) }
     }
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
