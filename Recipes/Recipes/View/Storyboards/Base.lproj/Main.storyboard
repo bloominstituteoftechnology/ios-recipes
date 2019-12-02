@@ -17,35 +17,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4JL-BN-yzi">
-                                <rect key="frame" x="0.0" y="150" width="414" height="746"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="752"/>
                                 <connections>
                                     <segue destination="bIc-dv-sbo" kind="embed" identifier="RecipeEmbed" id="Obu-B3-qdX"/>
                                 </connections>
                             </containerView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xup-ez-dwh">
-                                <rect key="frame" x="20" y="108" width="374" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="w8B-er-SZw">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldEditingEnded:" destination="uj5-Ds-jjg" eventType="editingDidEndOnExit" id="Aje-CC-T6S"/>
-                                </connections>
-                            </textField>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ele-Ed-ko3" firstAttribute="trailing" secondItem="Xup-ez-dwh" secondAttribute="trailing" constant="20" id="3b8-NL-aMT"/>
                             <constraint firstAttribute="bottom" secondItem="4JL-BN-yzi" secondAttribute="bottom" id="5n7-2q-5w2"/>
-                            <constraint firstItem="4JL-BN-yzi" firstAttribute="top" secondItem="Xup-ez-dwh" secondAttribute="bottom" constant="8" id="83B-DN-Okl"/>
-                            <constraint firstItem="Xup-ez-dwh" firstAttribute="leading" secondItem="ele-Ed-ko3" secondAttribute="leading" constant="20" id="A4L-26-2No"/>
+                            <constraint firstItem="w8B-er-SZw" firstAttribute="trailing" secondItem="ele-Ed-ko3" secondAttribute="trailing" id="DqP-SO-hYd"/>
                             <constraint firstItem="4JL-BN-yzi" firstAttribute="trailing" secondItem="ele-Ed-ko3" secondAttribute="trailing" id="QJb-dt-3Sp"/>
-                            <constraint firstItem="Xup-ez-dwh" firstAttribute="top" secondItem="ele-Ed-ko3" secondAttribute="top" constant="20" id="cQe-np-qWe"/>
+                            <constraint firstItem="w8B-er-SZw" firstAttribute="leading" secondItem="ele-Ed-ko3" secondAttribute="leading" id="eS4-5C-Zcj"/>
+                            <constraint firstItem="4JL-BN-yzi" firstAttribute="top" secondItem="w8B-er-SZw" secondAttribute="bottom" id="gmb-Jn-jLn"/>
                             <constraint firstItem="4JL-BN-yzi" firstAttribute="leading" secondItem="ele-Ed-ko3" secondAttribute="leading" id="mOe-ga-22k"/>
+                            <constraint firstItem="w8B-er-SZw" firstAttribute="top" secondItem="ele-Ed-ko3" secondAttribute="top" id="wpe-zP-Rge"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ele-Ed-ko3"/>
                     </view>
                     <navigationItem key="navigationItem" id="sHQ-zs-FjF"/>
                     <connections>
-                        <outlet property="titleTextField" destination="Xup-ez-dwh" id="jU6-xt-rdk"/>
+                        <outlet property="searchBar" destination="w8B-er-SZw" id="KaW-H7-NOU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBz-N1-PMw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

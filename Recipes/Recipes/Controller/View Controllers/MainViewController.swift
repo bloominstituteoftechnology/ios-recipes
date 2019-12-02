@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Outlets
-    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
@@ -39,6 +39,7 @@ class MainViewController: UIViewController {
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         fetchRecipes()
     }
     
@@ -68,7 +69,7 @@ class MainViewController: UIViewController {
     }
     
     private func filterRecipes() {
-        guard let term = titleTextField.text, !term.isEmpty else {
+        guard let term = searchBar.text, !term.isEmpty else {
             filteredRecipes = allRecipes
             return
         }
@@ -87,11 +88,11 @@ class MainViewController: UIViewController {
             break
         }
     }
-    
-    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-    // MARK: - Actions
-    @IBAction func textFieldEditingEnded(_ sender: UITextField) {
-        sender.resignFirstResponder()
+}
+
+extension MainViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
         filterRecipes()
     }
 }
