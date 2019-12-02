@@ -21,9 +21,15 @@ class RecipeDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    var recipe: Recipe?
+    var recipe: Recipe? {
+        didSet{
+            updateViews()
+        }
+    }
+    
+    
     func updateViews() {
-        recipeName.text = re
+        recipeName.text = recipe?.name
         
     }
     

@@ -30,7 +30,7 @@ class RecipesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,9 +43,9 @@ class RecipesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeField", for: indexPath)
         
-        let aRecipe = recipes[indexPath.row]
-        cell.textLabel?.text = aRecipe.name
-        cell.detailTextLabel?.text = aRecipe.instructions
+//        let aRecipe = recipes[indexPath.row]
+        cell.textLabel?.text = recipes[indexPath.row].name
+//        cell.detailTextLabel?.text = aRecipe.instructions
 
         return cell
     }
@@ -92,7 +92,9 @@ class RecipesTableViewController: UITableViewController {
 //     In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "recipeDetails" {
-            guard let indexPath = indexPath
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let detailVC = segue.destination as! RecipeDetailViewController
+            detailVC.recipe = recipes[indexPath.row]
         }
         
 //         Get the new view controller using segue.destination.
