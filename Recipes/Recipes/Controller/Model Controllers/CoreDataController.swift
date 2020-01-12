@@ -19,7 +19,6 @@ class CoreDataController {
     /**
        Automatically load data from disk or make an API call, assigning the result to the MainViewController when the delegate is assigned
     */
-    //Delegate
     weak var delegate: MainViewController? {
         didSet {
             createRecipeArray()
@@ -34,7 +33,6 @@ class CoreDataController {
         didSet {
             saveToPersistenStore()
             updateDelegate()
-            print("set")
         }
     }
     
@@ -55,13 +53,14 @@ class CoreDataController {
                 }
                 guard let recipeArray = recipeArray else {return}
                 self.recipes = recipeArray
-                
             }
-            
         }
     }
     
     //MARK: Read
+    /**
+        Helper Function for Loading from disk - decodes data and attempts to return [Recipe]
+     */
     private func decodeRecipeData() throws -> [Recipe] { //throwing to use in do/let/try
         guard let fileData = dataFromFileUrl(fileName: recipeFile) else { return [] }
         do {
@@ -72,6 +71,9 @@ class CoreDataController {
         return []
     }
     
+    /**
+        Load the Recipes from disk and assign them to the master recipes Array
+     */
     private func loadRecipesFromPersistentStore() {
         do {
             let recipeArray = try decodeRecipeData()
@@ -125,6 +127,9 @@ class CoreDataController {
     
     
     //MARK: Helper Methods
+    /**
+        Constructs a fileUrl for use in Encoding/Decoding
+     */
     private func fileUrl(fromFileName file: String, inDirectory directory: FileManager.SearchPathDirectory) -> URL? {
         let fileManager = FileManager.default
         guard let directory = fileManager.urls(for: directory, in: .userDomainMask).first else {print("directory invalid"); return nil}
@@ -132,6 +137,9 @@ class CoreDataController {
         return fileUrl
     }
     
+    /**
+        Attempts to return Data from a fileUrl which is contructed given the filename Parameter
+     */
     private func dataFromFileUrl(fileName file: String) -> Data? {
         guard let fileUrl = fileUrl(fromFileName: file, inDirectory: .documentDirectory) else {
             print("returning empty data, couldn't construct fileURL")

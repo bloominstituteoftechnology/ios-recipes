@@ -31,7 +31,7 @@ class RecipesDetailViewController: UIViewController {
         guard let nameTextView = nameTextView,
             let recipeTextView = instructionsTextView
         else {return}
-        nameTextView.textContainer.maximumNumberOfLines = 1
+        nameTextView.textContainer.maximumNumberOfLines = 2
         nameTextView.allowsEditingTextAttributes = false
         nameTextView.text = recipe?.name
         recipeTextView.text = recipe?.instructions
