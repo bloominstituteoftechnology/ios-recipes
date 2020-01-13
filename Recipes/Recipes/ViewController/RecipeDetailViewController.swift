@@ -11,12 +11,26 @@ import UIKit
 class RecipeDetailViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var textView: UITextView!
+    
+    var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    func updateViews() {
+        // change isViewLoaded later?
+        if self.isViewLoaded {
+            guard let name = recipe?.name, let instructions = recipe?.instructions else {return}
+            titleLabel.text = name
+            textView.text = instructions
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Do any additional setup after loading the view.
     }
     
