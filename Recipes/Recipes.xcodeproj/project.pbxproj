@@ -55,9 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
-				D5D724DA2395B23000B97A5A /* RecipeDetailViewController.swift */,
-				D5D724D62395ABDA00B97A5A /* MainViewController.swift */,
-				D5D724D82395ADB100B97A5A /* RecipesTableViewController.swift */,
+				D5715D1123CD0B1E002234B0 /* View Controller */,
 				9DA0F0832117E40100A99E97 /* Assets.xcassets */,
 				9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */,
 				9DA0F0882117E40100A99E97 /* Info.plist */,
@@ -98,6 +96,16 @@
 				9D59AF452117E652002FB7CD /* Resources */,
 			);
 			path = Recipes;
+			sourceTree = "<group>";
+		};
+		D5715D1123CD0B1E002234B0 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D5D724D82395ADB100B97A5A /* RecipesTableViewController.swift */,
+				D5D724D62395ABDA00B97A5A /* MainViewController.swift */,
+				D5D724DA2395B23000B97A5A /* RecipeDetailViewController.swift */,
+			);
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
