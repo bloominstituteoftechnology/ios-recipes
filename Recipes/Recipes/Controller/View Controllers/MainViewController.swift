@@ -54,12 +54,12 @@ class MainViewController: UIViewController {
     //MARK: Helper Methods
     func filterRecipes() {
         DispatchQueue.main.async {
-            guard let recipeName = self.textField.text,
-                      recipeName != "" else {
+            guard let searchTerms = self.textField.text,
+                      searchTerms != "" else {
                         self.filteredRecipes = self.allRecipes
                 return
             }
-            self.filteredRecipes = self.allRecipes.filter {$0.name.uppercased().contains(recipeName.uppercased())}
+            self.filteredRecipes = self.allRecipes.filter {$0.name.uppercased().contains(searchTerms.uppercased()) || $0.instructions.uppercased().contains(searchTerms.uppercased())}
         }
     }
 }
