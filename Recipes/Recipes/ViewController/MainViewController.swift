@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
         }
          
     filteredRecipes = allRecipes.filter {
-        $0.name.uppercased().contains(term.uppercased())
+        $0.name.uppercased().contains(term.uppercased()) || $0.instructions.uppercased().contains(term.uppercased())
         }
         
     }
