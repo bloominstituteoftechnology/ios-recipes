@@ -27,7 +27,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BIG-FO-3Ed">
                                 <rect key="frame" x="0.0" y="150" width="375" height="628"/>
                                 <connections>
-                                    <segue destination="ZA0-sJ-WIb" kind="embed" identifier="tableViewSegue" id="NzN-Af-4Ov"/>
+                                    <segue destination="ZA0-sJ-WIb" kind="embed" identifier="TableViewSegue" id="NzN-Af-4Ov"/>
                                 </connections>
                             </containerView>
                         </subviews>
