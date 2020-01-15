@@ -15,10 +15,28 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeTextView: UITextView!
     
     //MARK: - Properties
+    var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
+    }
     
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
+    }
+    
+    //MARK: Private Functions
+    private func updateViews() {
+        guard let recipe = recipe,
+        isViewLoaded else {
+            print("No recipe item found!")
+            return
+        }
+        
+        recipeNameLabel.text = recipe.name
+        recipeTextView.text = recipe.instructions
     }
 
 }
