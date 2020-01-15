@@ -10,8 +10,10 @@ import Foundation
 
 struct RecipesNetworkClient {
     
+    // MARK: - Variables
     static let recipesURL = URL(string: "https://lambdacookbook.vapor.cloud/recipes")!
     
+    // MARK: - Fetching
     func fetchRecipes(completion: @escaping ([Recipe]?, Error?) -> Void) {
         URLSession.shared.dataTask(with: RecipesNetworkClient.recipesURL) { (data, _, error) in
             if let error = error {
