@@ -16,10 +16,12 @@ class MainViewController: UIViewController {
             let recipes = recipes
             let thereIsAnError = error == nil ? false : true
             if thereIsAnError{
-                print("Error")
+                NSLog("\(error!)")
             }
             else{
-                self.allRecipes = recipes!
+                DispatchQueue.main.async{
+                    self.allRecipes = recipes!
+                }
             }
         })
     }
@@ -58,22 +60,24 @@ class MainViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "containerView'sTable" else { return }
-        guard segue.destination is RecipesTableViewController else { return }
+        guard let showTableVC = segue.destination as? RecipesTableViewController else { return }
         
+        recipesTableViewController = showTableVC
     }
     
     //MARK: - Methods
     
     func filterRecipes(){
         let textFieldText: String! = textField.text == nil ? "" : textField.text!
-        
+
         switch true{
-        case textFieldText == "":
-            self.filteredRecipes = allRecipes
-        default:
-            self.filteredRecipes = allRecipes.filter{
-                textFieldText.contains($0.name) || textFieldText.contains($0.instructions)
+        case textFieldText != "" && textFieldText != nil:
+            filteredRecipes = allRecipes.filter {
+                $0.name.localizedCaseInsensitiveContains(textFieldText) || $0.instructions.localizedCaseInsensitiveContains(textFieldText)
             }
+        default:
+            self.filteredRecipes = allRecipes
         }
     }
 }
+
