@@ -93,16 +93,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="712"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SI4-c1-kZw">
-                                <rect key="frame" x="20" y="20" width="195" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SI4-c1-kZw">
+                                <rect key="frame" x="20" y="20" width="374" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c4p-II-BaW">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c4p-II-BaW">
                                 <rect key="frame" x="20" y="69" width="374" height="623"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -111,6 +109,16 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="c4p-II-BaW" firstAttribute="top" secondItem="SI4-c1-kZw" secondAttribute="bottom" constant="8" id="JmJ-VR-f0x"/>
+                            <constraint firstItem="c4p-II-BaW" firstAttribute="leading" secondItem="SI4-c1-kZw" secondAttribute="leading" id="LAt-Vh-Pld"/>
+                            <constraint firstItem="SI4-c1-kZw" firstAttribute="top" secondItem="8Bm-hT-NeG" secondAttribute="top" constant="20" id="MlE-hL-PWV"/>
+                            <constraint firstItem="SI4-c1-kZw" firstAttribute="leading" secondItem="8Bm-hT-NeG" secondAttribute="leading" constant="20" id="l2q-1e-fWq"/>
+                            <constraint firstItem="8Bm-hT-NeG" firstAttribute="trailing" secondItem="SI4-c1-kZw" secondAttribute="trailing" constant="20" id="mNO-EQ-eB7"/>
+                            <constraint firstItem="8Bm-hT-NeG" firstAttribute="bottom" secondItem="c4p-II-BaW" secondAttribute="bottom" constant="20" id="qsz-vc-hF8"/>
+                            <constraint firstItem="c4p-II-BaW" firstAttribute="top" relation="lessThanOrEqual" secondItem="SI4-c1-kZw" secondAttribute="bottom" constant="8" id="rcr-Nn-ocC"/>
+                            <constraint firstItem="c4p-II-BaW" firstAttribute="trailing" secondItem="SI4-c1-kZw" secondAttribute="trailing" id="sNc-M5-pN5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8Bm-hT-NeG"/>
                     </view>
                     <navigationItem key="navigationItem" id="2gg-Zq-YuN"/>
