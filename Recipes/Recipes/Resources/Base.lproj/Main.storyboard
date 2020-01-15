@@ -80,7 +80,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="UXR-2L-rYJ" kind="show" id="Jd2-GN-KdK"/>
+                                    <segue destination="UXR-2L-rYJ" kind="show" identifier="RecipeDetailShowSegue" id="Jd2-GN-KdK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -94,17 +94,48 @@
             </objects>
             <point key="canvasLocation" x="1582" y="-182"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="GLb-2G-se8">
             <objects>
-                <viewController id="UXR-2L-rYJ" sceneMemberID="viewController">
+                <viewController id="UXR-2L-rYJ" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hhc-Y4-RDh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7m-6O-6v9">
+                                <rect key="frame" x="14" y="14" width="347" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vh5-MI-Thb">
+                                <rect key="frame" x="14" y="52" width="347" height="508"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="HHz-By-D4Y" firstAttribute="trailing" secondItem="Vh5-MI-Thb" secondAttribute="trailing" constant="14" id="0ba-s0-5sD"/>
+                            <constraint firstItem="v7m-6O-6v9" firstAttribute="leading" secondItem="HHz-By-D4Y" secondAttribute="leading" constant="14" id="9B7-om-DqU"/>
+                            <constraint firstItem="v7m-6O-6v9" firstAttribute="top" secondItem="HHz-By-D4Y" secondAttribute="top" constant="14" id="B8t-zG-hSa"/>
+                            <constraint firstItem="HHz-By-D4Y" firstAttribute="trailing" secondItem="v7m-6O-6v9" secondAttribute="trailing" constant="14" id="Wc0-72-wv9"/>
+                            <constraint firstItem="Vh5-MI-Thb" firstAttribute="top" secondItem="v7m-6O-6v9" secondAttribute="bottom" constant="14" id="dEb-oT-5Ja"/>
+                            <constraint firstItem="Vh5-MI-Thb" firstAttribute="leading" secondItem="HHz-By-D4Y" secondAttribute="leading" constant="14" id="frH-bg-itY"/>
+                            <constraint firstItem="HHz-By-D4Y" firstAttribute="bottom" secondItem="Vh5-MI-Thb" secondAttribute="bottom" constant="14" id="hsW-0Z-FcZ"/>
+                            <constraint firstItem="v7m-6O-6v9" firstAttribute="centerX" secondItem="HHz-By-D4Y" secondAttribute="centerX" id="tDH-Bv-Bpx"/>
+                            <constraint firstItem="Vh5-MI-Thb" firstAttribute="centerX" secondItem="HHz-By-D4Y" secondAttribute="centerX" id="yOM-vk-uhx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HHz-By-D4Y"/>
                     </view>
                     <navigationItem key="navigationItem" id="OHh-wl-C8d"/>
+                    <connections>
+                        <outlet property="recipeNameLabel" destination="v7m-6O-6v9" id="Vzu-qf-MjQ"/>
+                        <outlet property="recipeTextView" destination="Vh5-MI-Thb" id="RIL-G4-kTl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="117-fX-DxF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

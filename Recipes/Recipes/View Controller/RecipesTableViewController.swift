@@ -14,5 +14,4 @@ class RecipesTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-
 }
