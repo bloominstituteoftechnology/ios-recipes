@@ -1,0 +1,405 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red191\green133\blue85;\red31\green31\blue36;\red255\green255\blue255;
+\red84\green130\blue255;\red158\green241\blue221;}
+{\*\expandedcolortbl;;\csgenericrgb\c74902\c52157\c33333;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c100000\c100000\c100000\c85000;
+\csgenericrgb\c33019\c51127\c99859;\csgenericrgb\c61961\c94510\c86667;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab593
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f0\fs56 \cf2 \cb3 # \cf4 Recipes
+\f1\fs24 \
+\
+
+\f0\fs28 A student that completes this project shows that they can:
+\f1\fs24 \
+\
+
+\f0\fs28 \cf2 -\cf4  understand and explain what a closure is and common scenarios for their use
+\f1\fs24 \
+
+\f0\fs28 \cf2 -\cf4  understand and use Swift\'92s closure syntax
+\f1\fs24 \
+
+\f0\fs28 \cf2 -\cf4  use Swift\'92s sort, filter, map, compactMap, and reduce functions
+\f1\fs24 \
+
+\f0\fs28 \cf2 -\cf4  understand and explain what concurrency is, and reasons why it is used
+\f1\fs24 \
+
+\f0\fs28 \cf2 -\cf4  use GCD APIs to dispatch work to another queue
+\f1\fs24 \
+
+\f0\fs28 \cf2 -\cf4  understand and explain the role of the main queue in iOS apps
+\f1\fs24 \
+\
+
+\f0\fs40 \cf2 ## \cf4 Introduction
+\f1\fs24 \
+\
+
+\f0\fs28 Recipes fetches a list of recipes from an API and allows the user to view instructions for them.
+\f1\fs24 \
+\
+
+\f0\fs28 Please look at the screen recording below to know what the finished project should look like:
+\f1\fs24 \
+\
+
+\f0\fs28 \cf2 ![](\cf5 https://user-images.githubusercontent.com/16965587/43731698-8ece680e-996c-11e8-8545-c92fc2c77fed.gif\cf2 )
+\f1\fs24 \cf4 \
+\
+
+\f0\fs40 \cf2 ## \cf4 Instructions
+\f1\fs24 \
+\
+
+\f0\fs28 Please fork and clone this repository. This repository has a starter project with the model and a network client already created for you.
+\f1\fs24 \
+\
+
+\f0\fs32 \cf2 ### \cf4 Part 1 - Storyboard Layout
+\f1\fs24 \
+\
+
+\f0\fs28 \cf2 1.\cf4  Using either the \cf2 `
+\f1\fs26 \cf6 UIViewController
+\f0\fs28 \cf2 `\cf4  scene provided in the Main.storyboard, or a new one if you already deleted it:
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Embed it in a navigation controller. 
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Set the navigation controller as the initial view controller.
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Add a \cf2 `
+\f1\fs26 \cf6 UITextField
+\f0\fs28 \cf2 `\cf4  just below the navigation bar.
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Add a container view right below the text field, and have it fill the rest of the view controller.
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Delete the view controller attached to the container view. 
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Add a \cf2 `
+\f1\fs26 \cf6 UITableViewController
+\f0\fs28 \cf2 `\cf4  scene, and embed it in the container view. 
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Give the embed segue an identifier.
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Create a Cocoa Touch subclass of \cf2 `
+\f1\fs26 \cf6 UIViewController
+\f0\fs28 \cf2 `\cf4  called \cf2 `
+\f1\fs26 \cf6 MainViewController
+\f0\fs28 \cf2 `\cf4 . 
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Set this scene's class to \cf2 `
+\f1\fs26 \cf6 MainViewController
+\f0\fs28 \cf2 `\cf4 .
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Add an outlet from the text field to the \cf2 `
+\f1\fs26 \cf6 MainViewController
+\f0\fs28 \cf2 `\cf4  class. 
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Add an action from the text field as well, with the event as "Editing Did End on Exit". (It should be the first one.)
+\f1\fs24 \
+\
+
+\f0\fs28 \cf2 2.\cf4  In the embedded \cf2 `
+\f1\fs26 \cf6 UITableViewController
+\f0\fs28 \cf2 `\cf4 :
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Set the cell's style to "Basic" if it isn't already.
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Give the cell an identifier.
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Create a Cocoa Touch subclass of \cf2 `
+\f1\fs26 \cf6 UITableViewController
+\f0\fs28 \cf2 `\cf4  called \cf2 `
+\f1\fs26 \cf6 RecipesTableViewController
+\f0\fs28 \cf2 `\cf4 . 
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Set this scene's class to \cf2 `
+\f1\fs26 \cf6 RecipesTableViewController
+\f0\fs28 \cf2 `\cf4 .
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Add a \cf2 `
+\f1\fs26 \cf6 UIViewController
+\f0\fs28 \cf2 `\cf4  scene. This will serve as the table view's detail view controller.
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Create a "Show" segue from the cell to the detail view controller. 
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Give the segue an identifier.
+\f1\fs24 \
+\
+
+\f0\fs28 \cf2 3.\cf4  In the detail view controller scene:
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Add a label to the top of the scene. This will display the name of the recipe. Set its text to be fairly large.
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Add a text view under the label, and have it fill the rest of the view controller. This will display the instructions for the recipe. Text views work fantastic for displaying large strings. They have built in support for selecting text and scrolling if the text is too large to be displayed all at once without you having to do any extra work. 
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  With the text view selected, uncheck the \cf2 `
+\f1\fs26 \cf6 Editable
+\f0\fs28 \cf2 `\cf4  box in Attributes Inspector. With it checked, the user would be able to edit the text view's text, so in order to make it more like a label we make the text view uneditable, but they're still able to scroll and select text.
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Create a Cocoa Touch subclass of \cf2 `
+\f1\fs26 \cf6 UIViewController
+\f0\fs28 \cf2 `\cf4  called \cf2 `
+\f1\fs26 \cf6 RecipeDetailViewController
+\f0\fs28 \cf2 `\cf4 . 
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Set this scene's class to \cf2 `
+\f1\fs26 \cf6 RecipeDetailViewController
+\f0\fs28 \cf2 `\cf4 .
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Add outlets from both the label and text view to the \cf2 `
+\f1\fs26 \cf6 RecipeDetailViewController
+\f0\fs28 \cf2 `\cf4  class.
+\f1\fs24 \
+\
+
+\f0\fs32 \cf2 ### \cf4 Part 2 - View Controller Implementation
+\f1\fs24 \
+\
+
+\f0\fs28 We're going to start the view controller implementation backwards from the actual flow of the application, starting with the \cf2 `
+\f1\fs26 \cf6 RecipeDetailViewController
+\f0\fs28 \cf2 `\cf4 . 
+\f1\fs24 \
+\
+
+\f0\fs32 \cf2 #### \cf4 RecipeDetailViewController
+\f1\fs24 \
+\
+
+\f0\fs28 \cf2 1.\cf4  In the \cf2 `
+\f1\fs26 \cf6 RecipeDetailViewController
+\f0\fs28 \cf2 `\cf4 , add a variable \cf2 `
+\f1\fs26 \cf6 recipe: Recipe?
+\f0\fs28 \cf2 `\cf4 .
+\f1\fs24 \
+
+\f0\fs28 \cf2 2.\cf4  Create a function called \cf2 `
+\f1\fs26 \cf6 updateViews()
+\f0\fs28 \cf2 `\cf4 . This should take the values of the \cf2 `
+\f1\fs26 \cf6 recipe
+\f0\fs28 \cf2 `\cf4  and place them in the corresponding outlets. The recipe's \cf2 `
+\f1\fs26 \cf6 name
+\f0\fs28 \cf2 `\cf4  should go in the label, and the \cf2 `
+\f1\fs26 \cf6 instructions
+\f0\fs28 \cf2 `\cf4  in the text view. Check that the view is loaded when unwrapping the \cf2 `
+\f1\fs26 \cf6 recipe
+\f0\fs28 \cf2 `\cf4  object by using the view controller's \cf2 `
+\f1\fs26 \cf6 isViewLoaded
+\f0\fs28 \cf2 `\cf4  property.
+\f1\fs24 \
+
+\f0\fs28 \cf2 3.\cf4  Call \cf2 `
+\f1\fs26 \cf6 updateViews()
+\f0\fs28 \cf2 `\cf4  in \cf2 `
+\f1\fs26 \cf6 viewDidLoad()
+\f0\fs28 \cf2 `\cf4  and in \cf2 `
+\f1\fs26 \cf6 didSet
+\f0\fs28 \cf2 `\cf4  of the \cf2 `
+\f1\fs26 \cf6 recipe
+\f0\fs28 \cf2 `\cf4  variable.
+\f1\fs24 \
+\
+
+\f0\fs32 \cf2 #### \cf4 RecipesTableViewController
+\f1\fs24 \
+\
+
+\f0\fs28 Since this table view controller is embedded in the \cf2 `
+\f1\fs26 \cf6 MainViewController
+\f0\fs28 \cf2 `\cf4 , it will be relatively simple as its only job is to fill out the table view.
+\f1\fs24 \
+\
+
+\f0\fs28 \cf2 1.\cf4  Add a variable \cf2 `
+\f1\fs26 \cf6 recipes: [Recipe] = []
+\f0\fs28 \cf2 `\cf4 . 
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Add a \cf2 `
+\f1\fs26 \cf6 didSet
+\f0\fs28 \cf2 `\cf4  property observer that reloads the table view.
+\f1\fs24 \
+
+\f0\fs28 \cf2 2.\cf4  Fill out the \cf2 `
+\f1\fs26 \cf6 numberOfRowsInSection
+\f0\fs28 \cf2 `\cf4 , and \cf2 `
+\f1\fs26 \cf6 cellForRowAt
+\f0\fs28 \cf2 `\cf4  methods. The cell should display the name of its corresponding \cf2 `
+\f1\fs26 \cf6 Recipe
+\f0\fs28 \cf2 `\cf4  object.
+\f1\fs24 \
+
+\f0\fs28 \cf2 3.\cf4  In the \cf2 `
+\f1\fs26 \cf6 prepare(for segue: ...)
+\f0\fs28 \cf2 `\cf4 , check the segue's identifier. If the segue is going to the \cf2 `
+\f1\fs26 \cf6 RecipeDetailViewController
+\f0\fs28 \cf2 `\cf4  and triggered by tapping a cell on this table view controller, pass the \cf2 `
+\f1\fs26 \cf6 Recipe
+\f0\fs28 \cf2 `\cf4  that corresponds with the cell that was tapped.
+\f1\fs24 \
+\
+
+\f0\fs32 \cf2 #### \cf4 MainViewController
+\f1\fs24 \
+\
+
+\f0\fs28 \cf2 1.\cf4  In the \cf2 `
+\f1\fs26 \cf6 MainViewController
+\f0\fs28 \cf2 `\cf4 , create a constant called \cf2 `
+\f1\fs26 \cf6 networkClient
+\f0\fs28 \cf2 `\cf4 . Set its value to a new instance of \cf2 `
+\f1\fs26 \cf6 RecipesNetworkClient
+\f0\fs28 \cf2 `\cf4 .
+\f1\fs24 \
+
+\f0\fs28 \cf2 2.\cf4  Create a variable \cf2 `
+\f1\fs26 \cf6 allRecipes: [Recipe] = []
+\f0\fs28 \cf2 `\cf4 .
+\f1\fs24 \
+
+\f0\fs28 \cf2 3.\cf4  In the \cf2 `
+\f1\fs26 \cf6 viewDidLoad
+\f0\fs28 \cf2 `\cf4 , call the \cf2 `
+\f1\fs26 \cf6 networkClient
+\f0\fs28 \cf2 `\cf4 's \cf2 `
+\f1\fs26 \cf6 fetchRecipes
+\f0\fs28 \cf2 `\cf4  method. In its completion closure, if there is an error, NSLog it, and return from the function. If there is no error, set the value of \cf2 `
+\f1\fs26 \cf6 allRecipes
+\f0\fs28 \cf2 `\cf4  to recipes returned in this completion closure.
+\f1\fs24 \
+
+\f0\fs28 \cf2 4.\cf4  Create a variable \cf2 `
+\f1\fs26 \cf6 recipesTableViewController: RecipesTableViewController?
+\f0\fs28 \cf2 `\cf4 . Later, we will make it hold a reference to the embedded table view controller.
+\f1\fs24 \
+
+\f0\fs28 \cf2 5.\cf4  In the \cf2 `
+\f1\fs26 \cf6 prepare(for segue: ...)
+\f0\fs28 \cf2 `\cf4 , check for the embed segue's identifier. If it is, set the \cf2 `
+\f1\fs26 \cf6 recipesTableViewController
+\f0\fs28 \cf2 `\cf4  variable to the segue's \cf2 `
+\f1\fs26 \cf6 destination
+\f0\fs28 \cf2 `\cf4 . You will need to cast the view controller as the correct subclass.
+\f1\fs24 \
+
+\f0\fs28 \cf2 6.\cf4  Create a variable \cf2 `
+\f1\fs26 \cf6 filteredRecipes: [Recipe] = []
+\f0\fs28 \cf2 `\cf4 . 
+\f1\fs24 \
+
+\f0\fs28 \cf2 7.\cf4  Create a function called \cf2 `
+\f1\fs26 \cf6 filterRecipes()
+\f0\fs28 \cf2 `\cf4 . This will take the text from the text field and filter the recipes with it. In the function:
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  Unwrap the search term and make sure it isn't an empty string. If search term is empty or nil, set the value of \cf2 `
+\f1\fs26 \cf6 filteredRecipes
+\f0\fs28 \cf2 `\cf4  to \cf2 `
+\f1\fs26 \cf6 allRecipes
+\f0\fs28 \cf2 `\cf4 . If there is no search term, that means you should display all of the recipes.
+\f1\fs24 \
+
+\f0\fs28    \cf2  -\cf4  If there is a non-empty search term in the text field, using the \cf2 `
+\f1\fs26 \cf6 filter
+\f0\fs28 \cf2 `\cf4  higher-order function to filter the \cf2 `
+\f1\fs26 \cf6 allRecipes
+\f0\fs28 \cf2 `\cf4  array. It should filter by checking if the recipe's \cf2 `
+\f1\fs26 \cf6 name
+\f0\fs28 \cf2 `\cf4  or \cf2 `
+\f1\fs26 \cf6 instructions
+\f0\fs28 \cf2 `\cf4  contains the search term. Set the value of the \cf2 `
+\f1\fs26 \cf6 filteredRecipes
+\f0\fs28 \cf2 `\cf4  to the result of the \cf2 `
+\f1\fs26 \cf6 filter
+\f0\fs28 \cf2 `\cf4  method.
+\f1\fs24 \
+
+\f0\fs28 \cf2 8.\cf4  In the action of the text field, call \cf2 `
+\f1\fs26 \cf6 resignFirstResponder()
+\f0\fs28 \cf2 `\cf4  on the text field, then call \cf2 `
+\f1\fs26 \cf6 filterRecipes()
+\f0\fs28 \cf2 `\cf4 .
+\f1\fs24 \
+
+\f0\fs28 \cf2 9.\cf4  Add a \cf2 `
+\f1\fs26 \cf6 didSet
+\f0\fs28 \cf2 `\cf4  property observer to the \cf2 `
+\f1\fs26 \cf6 filteredRecipes
+\f0\fs28 \cf2 `\cf4  variable. It should set the \cf2 `
+\f1\fs26 \cf6 recipeTableViewController
+\f0\fs28 \cf2 `\cf4 's \cf2 `
+\f1\fs26 \cf6 recipes
+\f0\fs28 \cf2 `\cf4  to the \cf2 `
+\f1\fs26 \cf6 filteredRecipes
+\f0\fs28 \cf2 `\cf4 .
+\f1\fs24 \
+
+\f0\fs28 \cf2 10.\cf4  Add a \cf2 `
+\f1\fs26 \cf6 didSet
+\f0\fs28 \cf2 `\cf4  property observer to the \cf2 `
+\f1\fs26 \cf6 recipesTableViewController
+\f0\fs28 \cf2 `\cf4  variable. Just like the \cf2 `
+\f1\fs26 \cf6 didSet
+\f0\fs28 \cf2 `\cf4  in the \cf2 `
+\f1\fs26 \cf6 filteredRecipes
+\f0\fs28 \cf2 `\cf4 , it should set the \cf2 `
+\f1\fs26 \cf6 recipeTableViewController
+\f0\fs28 \cf2 `\cf4 's \cf2 `
+\f1\fs26 \cf6 recipes
+\f0\fs28 \cf2 `\cf4  to the \cf2 `
+\f1\fs26 \cf6 filteredRecipes
+\f0\fs28 \cf2 `\cf4 .  Between these two property observers, it will ensure that the table view controller has the most current array of recipes, whether filtered or not.
+\f1\fs24 \
+
+\f0\fs28 \cf2 11.\cf4  Add a \cf2 `
+\f1\fs26 \cf6 didSet
+\f0\fs28 \cf2 `\cf4  property observer to the \cf2 `
+\f1\fs26 \cf6 allRecipes
+\f0\fs28 \cf2 `\cf4  variable. Call \cf2 `
+\f1\fs26 \cf6 filterRecipes()
+\f0\fs28 \cf2 `\cf4  in it.
+\f1\fs24 \
+\
+
+\f0\fs40 \cf2 ## \cf4 Go Further
+\f1\fs24 \
+\
+
+\f0\fs28 \cf2 -\cf4  Add local persistence so that the recipes only have to be fetched from the API once.
+\f1\fs24 \
+
+\f0\fs28 \cf2 -\cf4  Add the ability to update the recipes.
+\f1\fs24 \
+
+\f0\fs28 \cf2 -\cf4  Use an actual search bar and adopt the SearchBarDelegate protocol instead of using a text field
+\f1\fs24 \
+}
