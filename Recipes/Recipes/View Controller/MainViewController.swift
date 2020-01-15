@@ -14,8 +14,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     
     //MARK: - Properties
-    let networkClient = RecipesNetworkClient()
-    
     var allRecipes: [Recipe] = [] {
         didSet {
             filterRecipes()
@@ -33,6 +31,8 @@ class MainViewController: UIViewController {
             self.recipesTableViewController?.recipes = filteredRecipes
         }
     }
+    
+    let networkClient = RecipesNetworkClient()
     
     //MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -55,17 +55,18 @@ class MainViewController: UIViewController {
     //MARK: - Private Functions
     private func filterRecipes() {
         guard let searchText = textField.text,
-            searchText != nil else {
+            searchText != "" else {
             filteredRecipes = allRecipes
             return
         }
         
-        filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchText) || $0.instructions.lowercased().contains(searchText)}
+        filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchText.lowercased()) || $0.instructions.lowercased().contains(searchText.lowercased())}
     }
     
     //MARK: - IBActions
     @IBAction func editingDidEnd(_ sender: Any) {
         resignFirstResponder()
+        filterRecipes()
     }
     
     //MARK: - Navigation

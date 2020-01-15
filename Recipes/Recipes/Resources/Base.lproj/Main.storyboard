@@ -11,7 +11,7 @@
         <!--Main View Controller-->
         <scene sceneID="4ZP-5o-yrn">
             <objects>
-                <viewController id="sOu-jp-EX7" customClass="MainViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sOu-jp-EX7" customClass="MainViewController" customModule="Recipes" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qjm-Xu-wHu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,13 +57,13 @@
         <!--Recipes Table View Controller-->
         <scene sceneID="eLG-GV-b8q">
             <objects>
-                <tableViewController id="ZA0-sJ-WIb" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="t8p-1q-dPW" customClass="Recipe">
+                <tableViewController id="ZA0-sJ-WIb" customClass="RecipesTableViewController" customModule="Recipes" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="t8p-1q-dPW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="628"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" textLabel="Agv-rK-R7n" style="IBUITableViewCellStyleDefault" id="Kx9-Wl-Q6s">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" textLabel="Agv-rK-R7n" style="IBUITableViewCellStyleDefault" id="Kx9-Wl-Q6s">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kx9-Wl-Q6s" id="158-A8-c6b">
@@ -97,7 +97,7 @@
         <!--Recipe Detail View Controller-->
         <scene sceneID="GLb-2G-se8">
             <objects>
-                <viewController id="UXR-2L-rYJ" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UXR-2L-rYJ" customClass="RecipeDetailViewController" customModule="Recipes" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hhc-Y4-RDh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

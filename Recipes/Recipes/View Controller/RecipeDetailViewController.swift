@@ -31,7 +31,6 @@ class RecipeDetailViewController: UIViewController {
     private func updateViews() {
         guard let recipe = recipe,
         isViewLoaded else {
-            print("No recipe item found!")
             return
         }
         
