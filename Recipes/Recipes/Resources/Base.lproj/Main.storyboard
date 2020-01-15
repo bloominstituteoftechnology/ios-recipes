@@ -43,24 +43,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHk-Ey-nAO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-36.231884057971016" y="-349.55357142857139"/>
+            <point key="canvasLocation" x="-261" y="-350"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Recipes Table View Controller-->
         <scene sceneID="eOe-IS-ChO">
             <objects>
-                <tableViewController id="hU6-Cx-x9J" sceneMemberID="viewController">
+                <tableViewController id="hU6-Cx-x9J" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ijs-9S-fwW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="766"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="q5O-9Z-XWF">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" textLabel="go3-Vc-jtA" style="IBUITableViewCellStyleDefault" id="q5O-9Z-XWF">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q5O-9Z-XWF" id="Tny-5e-cId">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="go3-Vc-jtA">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="q39-Nh-JIf" kind="show" identifier="ShowRecipeSegue" id="qOW-IH-b6C"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -71,7 +83,23 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n04-TW-EsM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890" y="-357"/>
+            <point key="canvasLocation" x="417" y="-350"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ulc-Sw-S8l">
+            <objects>
+                <viewController id="q39-Nh-JIf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R9m-3F-fsA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="712"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="8Bm-hT-NeG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2gg-Zq-YuN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="onW-zA-XAc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1091" y="-350"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9rv-Qt-tdu">
