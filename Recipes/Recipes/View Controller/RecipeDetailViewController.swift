@@ -15,6 +15,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeLabel: UILabel!
     @IBOutlet weak var recipeTextView: UITextView!
     
+    var recipes: [Recipe]?
     var recipe: Recipe? {
         didSet {
             updateViews()
