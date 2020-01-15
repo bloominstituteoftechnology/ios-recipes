@@ -100,14 +100,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="562"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-de-5yl">
-                                <rect key="frame" x="0.0" y="20" width="375" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicken Noodle Soup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-de-5yl">
+                                <rect key="frame" x="16" y="8" width="343" height="40.666666666666664"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xaj-wv-N8l">
-                                <rect key="frame" x="0.0" y="62" width="375" height="500"/>
+                                <rect key="frame" x="16" y="56.666666666666657" width="343" height="505.33333333333337"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -117,13 +117,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="quU-jE-1aH" firstAttribute="trailing" secondItem="P6w-de-5yl" secondAttribute="trailing" id="2fY-R1-A6C"/>
-                            <constraint firstItem="xaj-wv-N8l" firstAttribute="leading" secondItem="quU-jE-1aH" secondAttribute="leading" id="KOM-Um-106"/>
+                            <constraint firstItem="quU-jE-1aH" firstAttribute="trailing" secondItem="P6w-de-5yl" secondAttribute="trailing" constant="16" id="2fY-R1-A6C"/>
+                            <constraint firstItem="xaj-wv-N8l" firstAttribute="leading" secondItem="quU-jE-1aH" secondAttribute="leading" constant="16" id="KOM-Um-106"/>
                             <constraint firstItem="quU-jE-1aH" firstAttribute="bottom" secondItem="xaj-wv-N8l" secondAttribute="bottom" id="QPZ-wD-PTI"/>
-                            <constraint firstItem="P6w-de-5yl" firstAttribute="leading" secondItem="quU-jE-1aH" secondAttribute="leading" id="SDQ-wi-4fg"/>
-                            <constraint firstItem="P6w-de-5yl" firstAttribute="top" secondItem="quU-jE-1aH" secondAttribute="top" constant="20" id="YRv-ft-Rwc"/>
+                            <constraint firstItem="P6w-de-5yl" firstAttribute="leading" secondItem="quU-jE-1aH" secondAttribute="leading" constant="16" id="SDQ-wi-4fg"/>
+                            <constraint firstItem="P6w-de-5yl" firstAttribute="top" secondItem="quU-jE-1aH" secondAttribute="top" constant="8" id="YRv-ft-Rwc"/>
                             <constraint firstItem="xaj-wv-N8l" firstAttribute="top" secondItem="P6w-de-5yl" secondAttribute="bottom" constant="8" id="cSC-Kk-aIe"/>
-                            <constraint firstItem="quU-jE-1aH" firstAttribute="trailing" secondItem="xaj-wv-N8l" secondAttribute="trailing" id="eeq-qm-PMd"/>
+                            <constraint firstItem="quU-jE-1aH" firstAttribute="trailing" secondItem="xaj-wv-N8l" secondAttribute="trailing" constant="16" id="eeq-qm-PMd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="quU-jE-1aH"/>
                     </view>

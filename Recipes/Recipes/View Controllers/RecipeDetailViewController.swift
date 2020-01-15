@@ -13,15 +13,30 @@ class RecipeDetailViewController: UIViewController {
     // MARK: - Outlets
 
     @IBOutlet weak var recipeNameLabel: UILabel!
-    
     @IBOutlet weak var recipeInstructionsTextView: UITextView!
+    
+    // MARK: - Properties
+
+    var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    // MARK: - Methods
+
+    func updateViews() {
+        guard let recipe = recipe, isViewLoaded else { return }
+        
+        recipeNameLabel.text = recipe.name
+        recipeInstructionsTextView.text = recipe.instructions
+    }
     
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
 
