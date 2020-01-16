@@ -9,7 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     @IBAction func tapRecipeSearch(_ sender: UITextField) {
         resignFirstResponder()
         filterRecipes()
@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
     
     var recipesTableViewController: RecipesTableViewController? {
         didSet {
-          recipesTableViewController?.recipes = filteredRecipes
+            recipesTableViewController?.recipes = filteredRecipes
         }
     }
     
@@ -39,7 +39,7 @@ class MainViewController: UIViewController {
     
     func filterRecipes() {
         if recipeSearch.text == nil || recipeSearch.text == "" {
-            filteredRecipes = allRecipes
+            filteredRecipes = self.allRecipes
         } else {
             filteredRecipes = filteredRecipes.filter { (allRecipes) -> Bool in
                 recipeSearch.text == allRecipes.name || recipeSearch.text == allRecipes.instructions
@@ -49,33 +49,40 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         networkClient.fetchRecipes { (recipes, error) in
-               guard error == nil else {
-                   print("Error loading recipes: \(error!)")
-                   return
-               }
+            guard error == nil else {
+                print("Error loading recipes: \(error!)")
+                return
+            }
             
             guard let recipes = recipes
                 else {return}
-            self.allRecipes = recipes
-                
-        }
 
-        // Do any additional setup after loading the view.
+           
+            DispatchQueue.main.async {
+            self.allRecipes = recipes
+            self.recipesTableViewController?.recipes = recipes
+        }
+      
+    }
+        recipeSearch.text = " "
+        
     }
     
-
+    
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if segue.identifier == "RecipeTableCell" {
-          
-          guard let destinationVC = segue.destination as? RecipesTableViewController else { return }
-        
-        self.recipesTableViewController = destinationVC
-      }
+        if segue.identifier == "RecipeTableCell" {
+            
+            guard let destinationVC = segue.destination as? RecipesTableViewController else { return }
+            
+            self.recipesTableViewController = destinationVC
+        }
     }
     
-
+    
 }
+

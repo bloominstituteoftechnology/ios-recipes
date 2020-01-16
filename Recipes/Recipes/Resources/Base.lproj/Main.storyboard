@@ -16,24 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jgq-1u-t7l">
-                                <rect key="frame" x="16" y="58" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="tapRecipeSearch:" destination="xWD-zO-oLB" eventType="editingDidEndOnExit" id="ASQ-Jp-Z4D"/>
-                                </connections>
-                            </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2MT-Gj-lSw">
-                                <rect key="frame" x="16" y="113" width="343" height="534"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="VMD-h5-W0E" kind="embed" identifier="RecipeTableCell" id="EFZ-7v-zgS"/>
-                                </connections>
-                            </containerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="t1t-no-Hq5">
+                                <rect key="frame" x="16" y="58" width="343" height="588"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jgq-1u-t7l">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="tapRecipeSearch:" destination="xWD-zO-oLB" eventType="editingDidEndOnExit" id="ASQ-Jp-Z4D"/>
+                                        </connections>
+                                    </textField>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2MT-Gj-lSw">
+                                        <rect key="frame" x="0.0" y="55" width="343" height="533"/>
+                                        <connections>
+                                            <segue destination="VMD-h5-W0E" kind="embed" identifier="RecipeTableCell" id="EFZ-7v-zgS"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="t1t-no-Hq5" firstAttribute="centerX" secondItem="swe-mW-HJb" secondAttribute="centerX" id="IS6-eS-uBv"/>
+                            <constraint firstItem="t1t-no-Hq5" firstAttribute="leading" secondItem="swe-mW-HJb" secondAttribute="leadingMargin" id="aDq-q6-qjp"/>
+                            <constraint firstItem="odh-ee-qg8" firstAttribute="bottom" secondItem="t1t-no-Hq5" secondAttribute="bottom" constant="21" id="ku3-Hk-fgQ"/>
+                            <constraint firstItem="t1t-no-Hq5" firstAttribute="top" secondItem="odh-ee-qg8" secondAttribute="top" constant="14" id="tKu-by-E6K"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="odh-ee-qg8"/>
                     </view>
                     <navigationItem key="navigationItem" id="uF9-go-Zx3"/>
@@ -50,7 +59,7 @@
             <objects>
                 <tableViewController id="VMD-h5-W0E" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="baP-iY-glq">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="534"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="533"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -90,27 +99,39 @@
             <objects>
                 <viewController id="buy-Hd-6qb" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eRK-Jd-CTC">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="514"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="513"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofy-uq-g5x">
-                                <rect key="frame" x="131" y="20" width="81" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SbO-ce-2Zh">
-                                <rect key="frame" x="16" y="104" width="311" height="379"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="RU1-nU-fD2">
+                                <rect key="frame" x="16" y="20" width="311" height="473"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofy-uq-g5x">
+                                        <rect key="frame" x="115.5" y="0.0" width="80.5" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SbO-ce-2Zh">
+                                        <rect key="frame" x="0.0" y="84" width="311" height="389"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="SbO-ce-2Zh" firstAttribute="leading" secondItem="RU1-nU-fD2" secondAttribute="leadingMargin" id="e6N-if-E58"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RU1-nU-fD2" firstAttribute="centerY" secondItem="eRK-Jd-CTC" secondAttribute="centerY" id="3fO-gV-gyz"/>
+                            <constraint firstItem="RU1-nU-fD2" firstAttribute="leading" secondItem="eRK-Jd-CTC" secondAttribute="leadingMargin" id="RXs-mX-aBD"/>
+                            <constraint firstItem="RU1-nU-fD2" firstAttribute="centerX" secondItem="eRK-Jd-CTC" secondAttribute="centerX" id="UWo-ll-5oO"/>
+                            <constraint firstItem="RU1-nU-fD2" firstAttribute="top" secondItem="ehf-qg-BrW" secondAttribute="top" constant="20" id="pBh-sH-ur2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ehf-qg-BrW"/>
                     </view>
                     <navigationItem key="navigationItem" id="mVg-FL-rKt"/>
