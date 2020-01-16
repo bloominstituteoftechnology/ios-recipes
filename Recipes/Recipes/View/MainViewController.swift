@@ -50,15 +50,27 @@ class MainViewController: UIViewController {
         }
     }
     
+//    func filterRecipes() {
+//        DispatchQueue.main.async {
+//            guard let searchBarText = self.searchTextField.text,
+//            searchBarText != "" else {
+//                self.filteredRecipes = self.allRecipes
+//                return
+//        }
+//            self.filteredRecipes = self.allRecipes.filter { $0.name.contains(searchBarText) || $0.instructions.contains(searchBarText)}
+//        }
     func filterRecipes() {
-        guard let searchBarText = searchTextField.text,
-            searchBarText != "" else {
-                filteredRecipes = allRecipes
-                return
-        }
-        filteredRecipes = allRecipes.filter { $0.name.contains(searchBarText) || $0.instructions.contains(searchBarText)}
+          DispatchQueue.main.async {
+              guard let textField = self.searchTextField.text,
+                  !textField.isEmpty else { return self.filteredRecipes = self.allRecipes }
+              self.filteredRecipes = self.allRecipes.filter({
+                $0.name.contains(textField) || $0.instructions.contains(textField)
+              })
+          }
+      }
+
 //        filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchBarText.lowercased()) || $0.instructions.lowercased().contains(searchBarText.lowercased())}
-    }
+
 
     // MARK: - Navigation
 
@@ -77,3 +89,4 @@ class MainViewController: UIViewController {
     }
     
 }
+

@@ -12,7 +12,10 @@ class RecipesTableViewController: UITableViewController {
 
     var recipes: [Recipe] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+           
         }
     }
     
@@ -23,10 +26,10 @@ class RecipesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -38,9 +41,9 @@ class RecipesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipiesCell", for: indexPath)
 
         // Configure the cell...
-        guard indexPath.row < recipes.count else { return UITableViewCell()}
-        let recipie = recipes[indexPath.row]
-        cell.textLabel?.text = recipie.name
+//        guard indexPath.row < recipes.count else { return UITableViewCell()}
+//        let recipie = recipes[indexPath.row]
+        cell.textLabel?.text = recipes[indexPath.row].name
         return cell
     }
    

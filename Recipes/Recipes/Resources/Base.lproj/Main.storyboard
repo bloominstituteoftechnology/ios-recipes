@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="1301.449275362319" y="243.75"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Recipes Table View Controller-->
         <scene sceneID="Kl3-ZI-QHM">
             <objects>
-                <tableViewController id="hK7-rP-HNt" sceneMemberID="viewController">
+                <tableViewController id="hK7-rP-HNt" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wM0-ho-Tl9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
