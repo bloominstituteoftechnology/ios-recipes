@@ -26,7 +26,9 @@ struct RecipesNetworkClient {
             
             do {
                 let recipes = try JSONDecoder().decode([Recipe].self, from: data)
-                completion(recipes, nil)
+                DispatchQueue.main.async {
+                    completion(recipes, nil)
+                }
             } catch {
                 completion(nil, error)
                 return
