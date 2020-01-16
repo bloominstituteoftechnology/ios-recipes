@@ -11,7 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
 
     //MARK: - IBOutlets
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     //MARK: - Properties
     var allRecipes: [Recipe] = [] {
@@ -50,11 +50,12 @@ class MainViewController: UIViewController {
             
             self.allRecipes = recipes
         }
+        searchBar.delegate = self
     }
     
     //MARK: - Private Functions
     private func filterRecipes() {
-        guard let searchText = textField.text,
+        guard let searchText = searchBar.text,
             searchText != "" else {
             filteredRecipes = allRecipes
             return
@@ -64,10 +65,6 @@ class MainViewController: UIViewController {
     }
     
     //MARK: - IBActions
-    @IBAction func editingDidEnd(_ sender: Any) {
-        resignFirstResponder()
-        filterRecipes()
-    }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,4 +72,18 @@ class MainViewController: UIViewController {
             recipesTableViewController = segue.destination as? RecipesTableViewController
         }
     }
+}
+
+//MARK: - Protocol Extensions
+extension MainViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterRecipes()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        filterRecipes()
+    }
+    
 }
