@@ -29,10 +29,12 @@ class RecipeDetailViewController: UIViewController {
     }
     
     private func updateViews() {
-        guard let recipe = recipe else { return }
+        guard let recipe = recipe,
+            isViewLoaded else { return }
+    
         recipeNameTxtLbl.text = recipe.name
         recipeIntructionsTextLbl.text = recipe.instructions
-        
+    
     }
  
 
