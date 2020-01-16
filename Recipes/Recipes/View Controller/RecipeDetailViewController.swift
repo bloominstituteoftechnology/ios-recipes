@@ -11,7 +11,6 @@ import UIKit
 class RecipeDetailViewController: UIViewController {
 
     //MARK: - IBOutlets
-    @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeTextView: UITextView!
     
     //MARK: - Properties
@@ -34,7 +33,7 @@ class RecipeDetailViewController: UIViewController {
             return
         }
         
-        recipeNameLabel.text = recipe.name
+        title = recipe.name
         recipeTextView.text = recipe.instructions
     }
 
