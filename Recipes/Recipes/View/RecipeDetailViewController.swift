@@ -10,6 +10,12 @@ import UIKit
 
 class RecipeDetailViewController: UIViewController {
 
+    var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     //IBOutlets
     
     @IBOutlet weak var recipeNameTxtLbl: UILabel!
@@ -18,10 +24,17 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Do any additional setup after loading the view.
     }
     
+    private func updateViews() {
+        guard let recipe = recipe else { return }
+        recipeNameTxtLbl.text = recipe.name
+        recipeIntructionsTextLbl.text = recipe.instructions
+        
+    }
+ 
 
     /*
     // MARK: - Navigation
