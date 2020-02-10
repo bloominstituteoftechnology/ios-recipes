@@ -9,27 +9,65 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
-    @IBOutlet weak var recipeTextField: UITextField!
-   
-    @IBAction func searchTextField(_ sender: UITextField) {
+    // MARK: Properties
+    //create constant called network client
+    let networkClient = RecipesNetworkClient()
+    // create variable allRecipes
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
     }
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    
+    func filterRecipes() {
+        DispatchQueue.main.async {
+            guard let recipeTextField = self.recipeTextField.text,
+                !recipeTextField.isEmpty else { return self.filteredRecipes = self.allRecipes}
+            self.filteredRecipes = self.allRecipes.filter({
+                $0.name.contains(recipeTextField) || $0.instructions.contains(recipeTextField)
+            })
+        }
+    }
+    // MARK: Outlets
+   @IBOutlet weak var recipeTextField: UITextField!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        networkClient.fetchRecipes(completion:  { recipes, error in
+            if let error = error {
+                NSLog("Error: \(error)")
+                return
+            }
+            if let recipes = recipes {
+                self.allRecipes = recipes
+            }
+        })
     }
     
 
-    /*
+
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "recipeSegue" {
+            recipesTableViewController = segue.destination as? RecipesTableViewController
+        }
     }
-    */
-
+    
+    // MARK: Actions
+    @IBAction func searchTextField(_ sender: UITextField) {
+        resignFirstResponder()
+        filterRecipes()
+    }
+     
 }
