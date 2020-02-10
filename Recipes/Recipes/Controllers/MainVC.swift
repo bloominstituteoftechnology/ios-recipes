@@ -45,7 +45,7 @@ class MainVC: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        textField.becomeFirstResponder()
         networkClient.fetchRecipes { (recipes, error) in
             if let error = error {
                 NSLog("Error loading recipes:\(error)")
@@ -64,20 +64,31 @@ class MainVC: UIViewController
     @IBOutlet weak var textField: UITextField!
   
     @IBAction func textFieldChanged(_ sender: UITextField) {
+        
         resignFirstResponder()
         filterRecipes()
     }
     
     func filterRecipes() {
         guard let searchTerm = textField.text else { return }
-         
-              if searchTerm == "" {
-                  filteredRecipes = allRecipes
-              } else {
-                let nameFilter = allRecipes.filter { $0.name.lowercased().contains(searchTerm.lowercased()) }
-                let instructionFiler = allRecipes.filter { $0.instructions.contains(searchTerm.lowercased())}
-                 filteredRecipes = nameFilter + instructionFiler
-              }
-          }
+        
+        if searchTerm == "" {
+            filteredRecipes = allRecipes
+        } else  {
+            for recipe in allRecipes {
+                if recipe.name.contains(searchTerm) {
+                    let nameFilter = allRecipes.filter { $0.name.lowercased().contains(searchTerm.lowercased()) }
+                    filteredRecipes = nameFilter
+                } else if recipe.instructions.contains(searchTerm) {
+                    let instructionFiler = allRecipes.filter { $0.instructions.contains(searchTerm.lowercased())}
+                    filteredRecipes = instructionFiler
+                }
+            }
+            
+            
+            
+            
+        }
+    }
       
 }
