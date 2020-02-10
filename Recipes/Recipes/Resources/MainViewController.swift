@@ -9,27 +9,80 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
-    @IBOutlet weak var RecipeTextField: UITextField!
     
-    @IBAction func RecipeText(_ sender: UITextField) {
+    // MARK: - Properties
+    
+    let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = []{
+        didSet{
+            filterRecipes()
+        }
     }
+    var recipesTableVC: RecipesTableViewController?{
+        didSet{
+            recipesTableVC?.recipes = filteredRecipes
+        }
+    }
+    var filteredRecipes: [Recipe] = []{
+        didSet{
+            recipesTableVC?.recipes = filteredRecipes
+        }
+    }
+    
+    // MARK: - Methods
+    
+    func filterRecipes(){
+        
+        guard let text = recipeTextField.text,
+            !text.isEmpty else { filteredRecipes = allRecipes
+                return }
+     
+        filteredRecipes = allRecipes.filter { $0.name.contains(text)  || $0.instructions.contains(text)}
+        
+        
+    }
+    
+    // MARK: - Outlets and Actions
+
+    @IBOutlet weak var recipeTextField: UITextField!
+    
+    
+    @IBAction func RecipeTextField(_ sender: UITextField) {
+        sender.resignFirstResponder()
+        filterRecipes()
+    }
+    
+  
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        networkClient.fetchRecipes { (recipes, error) in
+            if let error = error{
+                NSLog("Error fetching recipes: \(error)")
+                return
+            }
+            
+            DispatchQueue.main.async {
+               // guard let recipes = recipes else { return }
+                self.allRecipes = recipes ?? []
+            }
+            }
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == segueKeys.recipeTableVCSegue {
+            recipesTableVC = (segue.destination as! RecipesTableViewController)
+           // recipeTableVC.recipes = filteredRecipes
+        }
+    
     }
-    */
+    
 
 }

@@ -17,17 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fea-0i-xHB">
-                                <rect key="frame" x="0.0" y="146" width="375" height="541"/>
+                                <rect key="frame" x="0.0" y="126" width="375" height="541"/>
                                 <connections>
-                                    <segue destination="GGe-mg-kHb" kind="embed" id="2re-OM-jO5"/>
+                                    <segue destination="GGe-mg-kHb" kind="embed" identifier="RecipeTableVCSegue" id="2re-OM-jO5"/>
                                 </connections>
                             </containerView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UhE-YJ-Bj5">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Recipe Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UhE-YJ-Bj5">
                                 <rect key="frame" x="0.0" y="76" width="375" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="RecipeText:" destination="gMF-xO-pRL" eventType="editingDidEnd" id="Brp-RA-66g"/>
+                                    <action selector="RecipeTextField:" destination="gMF-xO-pRL" eventType="editingDidEndOnExit" id="IPi-PB-Fpl"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -45,7 +45,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="BPY-Ci-a1s"/>
                     <connections>
-                        <outlet property="RecipeTextField" destination="UhE-YJ-Bj5" id="Dwn-ea-pb3"/>
+                        <outlet property="recipeTextField" destination="UhE-YJ-Bj5" id="Dwn-ea-pb3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkT-Wn-8Gj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
