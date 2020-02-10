@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct RecipesNetworkClient {
+struct RecipesNetworkClient
+{
     
     static let recipesURL = URL(string: "https://lambdacookbook.vapor.cloud/recipes")!
     
