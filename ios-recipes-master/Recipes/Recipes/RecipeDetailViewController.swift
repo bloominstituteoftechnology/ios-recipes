@@ -2,7 +2,7 @@
 //  RecipeDetailViewController.swift
 //  Recipes
 //
-//  Created by Ufuk Türközü on 13.01.20.
+//  Created by Ufuk Türközü on 10.02.20.
 //  Copyright © 2020 Lambda Inc. All rights reserved.
 //
 
@@ -10,11 +10,11 @@ import UIKit
 
 class RecipeDetailViewController: UIViewController {
 
-    @IBOutlet weak var recipeLabel: UILabel!
-    @IBOutlet weak var recipeTV: UITextView!
+    @IBOutlet weak var recipeName: UILabel!
+    @IBOutlet weak var recipeInstructions: UITextView!
     
     var recipe: Recipe? {
-        didSet{
+        didSet {
             updateViews()
         }
     }
@@ -22,15 +22,13 @@ class RecipeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-
         // Do any additional setup after loading the view.
     }
     
-    func updateViews() {
-        if isViewLoaded {
-            recipeLabel.text = recipe?.name
-            recipeTV.text = recipe?.instructions
-        }
+    private func updateViews() {
+        guard let recipe = recipe, isViewLoaded else { return }
+        recipeName.text = recipe.name
+        recipeInstructions.text = recipe.instructions
     }
     
 
