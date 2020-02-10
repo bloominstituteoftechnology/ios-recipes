@@ -46,8 +46,8 @@
 		72E591C623F1F07200955679 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				72E591CB23F1F2C500955679 /* RecipeDetailViewController.swift */,
 				72E591C723F1F08B00955679 /* MainViewController.swift */,
+				72E591CB23F1F2C500955679 /* RecipeDetailViewController.swift */,
 				72E591C923F1F1D400955679 /* RecipesTableViewController.swift */,
 			);
 			path = ViewControllers;
