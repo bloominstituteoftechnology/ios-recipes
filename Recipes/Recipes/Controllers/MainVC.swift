@@ -14,11 +14,11 @@ class MainVC: UIViewController , UISearchBarDelegate
     
     var allRecipes: [Recipe] = [] {
         didSet {
-             filteredRecipes = allRecipes
+            filteredRecipes = allRecipes
         }
     }
     
-  
+    
     var filteredRecipes = [Recipe]() {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
@@ -50,8 +50,7 @@ class MainVC: UIViewController , UISearchBarDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        
+     
         networkClient.fetchRecipes { (recipes, error) in
             if let error = error {
                 NSLog("Error loading recipes:\(error)")
@@ -71,7 +70,7 @@ class MainVC: UIViewController , UISearchBarDelegate
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
+        if searchText.isEmpty {
             filteredRecipes = allRecipes
         } else {
             for recipe in allRecipes {
@@ -83,6 +82,7 @@ class MainVC: UIViewController , UISearchBarDelegate
                     filteredRecipes = instructionFiler
                 }
             }
+//            filteredRecipes = allRecipes.filter { $0.name.lowercased().contains(searchText.lowercased()) || $0.instructions.lowercased().contains(searchText.lowercased())}
             
         }
         

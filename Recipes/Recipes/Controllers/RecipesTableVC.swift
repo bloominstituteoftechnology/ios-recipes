@@ -8,9 +8,17 @@
 
 import UIKit
 
-class RecipesTableVC: UITableViewController
+class RecipesTableVC: UITableViewController , RecipesDetailVCDelegate
 {
-
+    func didReceivedNewRecipes(name: String, instruction: String) {
+    
+        let index = tableView.indexPathForSelectedRow
+        recipes[index?.row ?? 0].name = name
+        recipes[index?.row ?? 0].instructions = instruction
+       
+        tableView.reloadData()
+    }
+ 
     var recipes : [Recipe] = [] {
         didSet {
             tableView.reloadData()
@@ -21,8 +29,7 @@ class RecipesTableVC: UITableViewController
         super.viewDidLoad()
 
     }
-    
-    
+  
     //MARK: - TableView Datasource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,20 +39,24 @@ class RecipesTableVC: UITableViewController
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = recipes[indexPath.row].name
+        
         return cell
         
     }
-   
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CellSegue" {
             if let destVC = segue.destination as? RecipesDetailVC {
                 if   let index = tableView.indexPathForSelectedRow {
                     destVC.recipe = recipes[index.row]
+                    destVC.delegate = self
                 }
             }
         }
     }
+    
+    
+    
+    
     
 }
