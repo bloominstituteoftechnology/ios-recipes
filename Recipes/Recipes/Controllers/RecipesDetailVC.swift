@@ -19,9 +19,7 @@ class RecipesDetailVC: UIViewController
             updateViews()
         }
     }
-    
-    
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()

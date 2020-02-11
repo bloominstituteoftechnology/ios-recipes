@@ -11,45 +11,43 @@
         <!--MainVC-->
         <scene sceneID="BU0-Ga-lz2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lC5-Ov-Uko" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="vHb-zI-bR5" customClass="MainVC" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AIO-9J-qIW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iha-ZQ-JWi">
-                                <rect key="frame" x="16" y="88" width="382" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldChanged:" destination="vHb-zI-bR5" eventType="editingDidEndOnExit" id="N0d-kf-STt"/>
-                                </connections>
-                            </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AX6-EV-gaY">
                                 <rect key="frame" x="0.0" y="130" width="414" height="746"/>
                                 <connections>
                                     <segue destination="B4e-hs-aPN" kind="embed" identifier="FirstSegue" id="EgA-Jm-MW4"/>
                                 </connections>
                             </containerView>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="VG2-nV-LO7">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vHb-zI-bR5" id="N3W-mk-LBe"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="iha-ZQ-JWi" firstAttribute="top" secondItem="2On-TB-y3a" secondAttribute="top" id="565-eI-sRs"/>
+                            <constraint firstItem="VG2-nV-LO7" firstAttribute="trailing" secondItem="2On-TB-y3a" secondAttribute="trailing" id="55S-lw-pUj"/>
+                            <constraint firstItem="VG2-nV-LO7" firstAttribute="leading" secondItem="2On-TB-y3a" secondAttribute="leading" id="84m-g4-S29"/>
+                            <constraint firstItem="AX6-EV-gaY" firstAttribute="top" secondItem="2On-TB-y3a" secondAttribute="top" constant="42" id="A8p-13-edk"/>
                             <constraint firstItem="AX6-EV-gaY" firstAttribute="trailing" secondItem="2On-TB-y3a" secondAttribute="trailing" id="CEk-13-Mqc"/>
                             <constraint firstAttribute="bottom" secondItem="AX6-EV-gaY" secondAttribute="bottom" constant="20" symbolic="YES" id="FT6-Pa-NUx"/>
-                            <constraint firstItem="AX6-EV-gaY" firstAttribute="top" secondItem="iha-ZQ-JWi" secondAttribute="bottom" constant="8" id="HCd-hg-HMD"/>
-                            <constraint firstItem="AX6-EV-gaY" firstAttribute="top" secondItem="iha-ZQ-JWi" secondAttribute="bottom" constant="8" id="R7z-aH-Wwy"/>
-                            <constraint firstItem="iha-ZQ-JWi" firstAttribute="leading" secondItem="2On-TB-y3a" secondAttribute="leading" constant="16" id="Zj2-gz-o3p"/>
                             <constraint firstItem="AX6-EV-gaY" firstAttribute="leading" secondItem="2On-TB-y3a" secondAttribute="leading" id="eus-mN-m06"/>
-                            <constraint firstItem="2On-TB-y3a" firstAttribute="trailing" secondItem="iha-ZQ-JWi" secondAttribute="trailing" constant="16" id="jFT-jk-abI"/>
+                            <constraint firstItem="VG2-nV-LO7" firstAttribute="top" secondItem="2On-TB-y3a" secondAttribute="top" id="lH4-xj-C89"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2On-TB-y3a"/>
                     </view>
                     <navigationItem key="navigationItem" id="8fz-AS-7jc"/>
                     <connections>
-                        <outlet property="textField" destination="iha-ZQ-JWi" id="vsD-do-Dpf"/>
+                        <outlet property="searchBar" destination="VG2-nV-LO7" id="zKU-tc-9jf"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lC5-Ov-Uko" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1436" y="117.48768472906404"/>
         </scene>

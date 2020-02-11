@@ -8,17 +8,18 @@
 
 import UIKit
 
-class MainVC: UIViewController
+class MainVC: UIViewController , UISearchBarDelegate
 {
     private let networkClient = RecipesNetworkClient()
     
     var allRecipes: [Recipe] = [] {
         didSet {
-           filterRecipes()
+             filteredRecipes = allRecipes
         }
     }
     
-    var filteredRecipes : [Recipe] = [] {
+  
+    var filteredRecipes = [Recipe]() {
         didSet {
             recipesTableViewController?.recipes = filteredRecipes
         }
@@ -42,10 +43,15 @@ class MainVC: UIViewController
         }
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.becomeFirstResponder()
+      
+        
         networkClient.fetchRecipes { (recipes, error) in
             if let error = error {
                 NSLog("Error loading recipes:\(error)")
@@ -60,35 +66,29 @@ class MainVC: UIViewController
        
     }
     
+    @IBOutlet weak var searchBar: UISearchBar!
     
-    @IBOutlet weak var textField: UITextField!
-  
-    @IBAction func textFieldChanged(_ sender: UITextField) {
-        
-        resignFirstResponder()
-        filterRecipes()
-    }
     
-    func filterRecipes() {
-        guard let searchTerm = textField.text else { return }
-        
-        if searchTerm == "" {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
             filteredRecipes = allRecipes
-        } else  {
+        } else {
             for recipe in allRecipes {
-                if recipe.name.contains(searchTerm) {
-                    let nameFilter = allRecipes.filter { $0.name.lowercased().contains(searchTerm.lowercased()) }
+                if recipe.name.contains(searchText) {
+                    let nameFilter = allRecipes.filter { $0.name.lowercased().contains(searchText.lowercased()) }
                     filteredRecipes = nameFilter
-                } else if recipe.instructions.contains(searchTerm) {
-                    let instructionFiler = allRecipes.filter { $0.instructions.contains(searchTerm.lowercased())}
+                } else if recipe.instructions.contains(searchText) {
+                    let instructionFiler = allRecipes.filter { $0.instructions.contains(searchText.lowercased())}
                     filteredRecipes = instructionFiler
                 }
             }
             
-            
-            
-            
         }
+        
+        
     }
+    
+
       
 }
