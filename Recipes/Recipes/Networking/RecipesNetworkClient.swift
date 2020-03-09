@@ -12,12 +12,13 @@ struct RecipesNetworkClient {
     
     static let recipesURL = URL(string: "https://lambdacookbook.vapor.cloud/recipes")!
     
-    func fetchRecipes(completion: @escaping ([Recipe]?, Error?) -> Void) {
+    func fetchRecipes(usingCache: Bool, completion: @escaping ([Recipe]?, Error?) -> Void) {
         
         let request = URLRequest(url: RecipesNetworkClient.recipesURL)
         
         // Try to load recipes from cache
-        if let cachedResponse = URLCache.shared.cachedResponse(for: request) {
+        if usingCache,
+           let cachedResponse = URLCache.shared.cachedResponse(for: request) {
             do {
                 let recipes = try JSONDecoder().decode([Recipe].self, from: cachedResponse.data)
                 completion(recipes, nil)

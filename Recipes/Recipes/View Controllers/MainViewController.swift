@@ -18,9 +18,14 @@ class MainViewController: UIViewController {
     private var filteredRecipes: [Recipe] = [] { didSet { recipesTVC?.recipes = filteredRecipes } }
     
     private var recipesTVC: RecipesTableViewController? { didSet { recipesTVC?.recipes = filteredRecipes } }
+    private let refreshControl = UIRefreshControl()
     
-    private func fetchRecipes() {
-        networkClient.fetchRecipes { recipes, error in
+    @objc func refresh() {
+        fetchRecipes(usingCache: false)
+    }
+    
+    private func fetchRecipes(usingCache: Bool) {
+        networkClient.fetchRecipes(usingCache: usingCache) { recipes, error in
             if let error = error {
                 NSLog("There was an error fetching recipes: \(error)")
                 return
@@ -29,6 +34,7 @@ class MainViewController: UIViewController {
             if let recipes = recipes {
                 DispatchQueue.main.async {
                     self.allRecipes = recipes
+                    self.refreshControl.endRefreshing()
                 }
             }
         }
@@ -51,7 +57,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchRecipes()
+        fetchRecipes(usingCache: true)
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
 
@@ -62,6 +69,7 @@ class MainViewController: UIViewController {
            let recipesTVC = segue.destination as? RecipesTableViewController {
             self.recipesTVC = recipesTVC
             recipesTVC.searchBar.delegate = self
+            recipesTVC.refreshControl = refreshControl
         }
     }
 }
