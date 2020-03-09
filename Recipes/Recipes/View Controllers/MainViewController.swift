@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
             else {
                 filteredRecipes = allRecipes
                 return }
-        filteredRecipes = allRecipes.filter { $0.name.contains(filter) || $0.instructions.contains(filter) }
+        filteredRecipes = allRecipes.filter { $0.name.contains(filter.capitalized) || $0.name.contains(filter.lowercased()) || $0.instructions.contains(filter.capitalized) || $0.instructions.contains(filter.lowercased()) }
     }
     
 
