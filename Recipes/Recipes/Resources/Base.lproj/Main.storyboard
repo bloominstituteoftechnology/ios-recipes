@@ -53,16 +53,16 @@
             </objects>
             <point key="canvasLocation" x="1028" y="50.824587706146929"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Recipes Table View Controller-->
         <scene sceneID="E2S-OZ-5ne">
             <objects>
-                <tableViewController id="SOE-dE-dKh" sceneMemberID="viewController">
+                <tableViewController id="SOE-dE-dKh" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rj4-pY-6FS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="539"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="l7N-vw-iCc" style="IBUITableViewCellStyleDefault" id="3Mr-0Q-EYp">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" textLabel="l7N-vw-iCc" style="IBUITableViewCellStyleDefault" id="3Mr-0Q-EYp">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Mr-0Q-EYp" id="JTF-0S-XdH">
@@ -78,6 +78,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="lrI-cf-8eP" kind="show" identifier="TableDetailSegue" id="i0a-I5-9si"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -89,6 +92,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rJ-gb-rNA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1748" y="51"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="R3Q-fZ-4ew">
+            <objects>
+                <viewController id="lrI-cf-8eP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8aJ-w2-bt4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="519"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="WRm-Cl-mHV"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8kw-7N-AMb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RAi-YD-jWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2526" y="72"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pkg-oe-tj1">
