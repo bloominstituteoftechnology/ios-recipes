@@ -21,7 +21,8 @@ class MainViewController: UIViewController {
     
     // MARK: - Properties
     var allRecipes: [Recipe] = []
-    
+
+    var recipesTableViewController: RecipesTableViewController?
     let networkClient = RecipesNetworkClient()
         
     // MARK: - Methods
@@ -41,14 +42,16 @@ class MainViewController: UIViewController {
         }
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-    }
-    */
 
+        if segue.identifier == "RecipesSegue" {
+            print("RecipesSegue called")
+            //guard let recipesTVC = segue.destination as? RecipesTableViewController else { return }
+        }
+    }
 }

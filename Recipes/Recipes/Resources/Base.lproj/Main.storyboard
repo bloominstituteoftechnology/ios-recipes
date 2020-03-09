@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="106" width="375" height="561"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="eT1-Yj-4bY" kind="embed" identifier="TvSegue" id="GJz-DV-6bz"/>
+                                    <segue destination="eT1-Yj-4bY" kind="embed" identifier="RecipesSegue" id="GJz-DV-6bz"/>
                                 </connections>
                             </containerView>
                         </subviews>
