@@ -10,12 +10,14 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    @IBOutlet weak var textField: UITextField!
+//    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: UISearchBar!
+    
     
     let networkClient = RecipesNetworkClient()
     var allRecipes: [Recipe] = [] {
         didSet {
-            filterRecipes()
+            recipesTableViewController?.recipes = self.allRecipes
         }
     }
     var recipesTableViewController: RecipesTableViewController? {
@@ -31,6 +33,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textField.delegate = self
         networkClient.fetchRecipes { (recipes, error) in
             if let error = error {
                 NSLog("We boomed in main view: \(error)")
@@ -55,23 +58,40 @@ class MainViewController: UIViewController {
         }
     }
     
-    func filterRecipes() {
+//    func filterRecipes() {
+//        DispatchQueue.main.async {
+//            guard let search = self.textField.text,
+//                !search.isEmpty else {
+//                    self.filteredRecipes = self.allRecipes
+//                    return
+//            }
+//            self.filteredRecipes = self.allRecipes.filter { $0.name.contains(search) || $0.instructions.contains(search) }
+//        }
+//
+//
+//    }
+    
+    
+//    @IBAction func editingEnd(_ sender: Any) {
+//        resignFirstResponder()
+//        filterRecipes()
+//    }
+    
+}
+
+
+extension MainViewController: UISearchBarDelegate {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        resignFirstResponder()
+//        filterRecipes()
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         DispatchQueue.main.async {
-            guard let search = self.textField.text,
-                !search.isEmpty else {
+            guard !searchText.isEmpty else {
                     self.filteredRecipes = self.allRecipes
                     return
             }
-            self.filteredRecipes = self.allRecipes.filter { $0.name.contains(search) || $0.instructions.contains(search) }
+            self.filteredRecipes = self.allRecipes.filter { $0.name.contains(searchText) || $0.instructions.contains(searchText) }
         }
-        
-        
     }
-    
-    
-    @IBAction func editingEnd(_ sender: Any) {
-        resignFirstResponder()
-        filterRecipes()
-    }
-    
 }
