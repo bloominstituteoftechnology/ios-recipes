@@ -49,7 +49,7 @@ class MainViewController: UIViewController {
             return
         }
         
-        self.filteredRecipes = updatedRecipes
+        updatedRecipes = self.filteredRecipes
 }
     
 
