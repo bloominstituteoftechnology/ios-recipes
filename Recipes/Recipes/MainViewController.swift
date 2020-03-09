@@ -12,10 +12,13 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var searchTextField: UITextField!
     
+    let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
+        networkClient.fetchRecipes(completion: <#T##([Recipe]?, Error?) -> Void#>)
     }
     
 
