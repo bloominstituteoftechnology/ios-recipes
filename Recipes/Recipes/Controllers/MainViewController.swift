@@ -62,13 +62,7 @@ class MainViewController: UIViewController {
                     self.filteredRecipes = self.allRecipes
                     return
             }
-            self.filteredRecipes = self.allRecipes.filter({ recipe -> Bool in
-                if recipe.name.contains(search) || recipe.instructions.contains(search) {
-                    return true
-                } else {
-                    return false
-                }
-            })
+            self.filteredRecipes = self.allRecipes.filter { $0.name.contains(search) || $0.instructions.contains(search) }
         }
         
         
