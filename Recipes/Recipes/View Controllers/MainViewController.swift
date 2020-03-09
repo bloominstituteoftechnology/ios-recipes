@@ -12,6 +12,8 @@ class MainViewController: UIViewController {
     
     // MARK: - Properties
     let networkClient = RecipesNetworkClient()
+    let recipeController = RecipeController.recipeController
+    
     var allRecipes: [Recipe] = [] {
         didSet {
             filterRecipes()
@@ -43,16 +45,23 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkClient.fetchRecipes { (recipes, error) in
-            if let allRecipes = recipes {
-                DispatchQueue.main.async {
-                    self.allRecipes = allRecipes
+        if UserDefaults.standard.bool(forKey: "HasLoadedFromNetwork") {
+            recipeController.loadFromPersistentStore()
+            allRecipes = recipeController.recipes 
+        } else {
+            networkClient.fetchRecipes { (recipes, error) in
+                if let allRecipes = recipes {
+                    DispatchQueue.main.async {
+                        self.allRecipes = allRecipes
+                    }
+                }
+                
+                if let error = error {
+                    NSLog("Error fetching recipes data: \(error)")
                 }
             }
-            
-            if let error = error {
-                NSLog("Error fetching recipes data: \(error)")
-            }
+            UserDefaults.standard.set(true, forKey: "HasLoadedFromNetwork")
+            recipeController.saveToPersistentStore()
         }
         // Do any additional setup after loading the view.
     }

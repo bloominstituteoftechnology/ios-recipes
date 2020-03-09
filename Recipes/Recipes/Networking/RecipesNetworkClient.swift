@@ -10,6 +10,7 @@ import Foundation
 
 struct RecipesNetworkClient {
     
+    let recipeController = RecipeController.recipeController
     static let recipesURL = URL(string: "https://lambdacookbook.vapor.cloud/recipes")!
     
     func fetchRecipes(completion: @escaping ([Recipe]?, Error?) -> Void) {
@@ -26,6 +27,7 @@ struct RecipesNetworkClient {
             
             do {
                 let recipes = try JSONDecoder().decode([Recipe].self, from: data)
+                self.recipeController.saveToPersistentStore(recipes)
                 completion(recipes, nil)
             } catch {
                 completion(nil, error)
