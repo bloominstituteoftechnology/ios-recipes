@@ -49,18 +49,14 @@ class MainViewController: UIViewController {
     func filterRecipes() {
         var updatedRecipes: [Recipe]
         
-        guard case searchTextField.text = searchTextField.text else {
-            if searchTextField.text != nil {
-                filteredRecipes = allRecipes
-            } else {
-                updatedRecipes = allRecipes.filter { $0.name == "\(searchTextField.text ?? "")" }
-                updatedRecipes = allRecipes.filter { $0.instructions == "\(searchTextField.text ?? "")" }
-            }
-            
+        
+        guard let searchText = searchTextField.text, !searchText.isEmpty else {
+            filteredRecipes = allRecipes
             return
         }
+        updatedRecipes = allRecipes.filter { $0.name.contains(searchText) || $0.instructions.contains(searchText)}
         
-        updatedRecipes = self.filteredRecipes
+        self.filteredRecipes = updatedRecipes
     }
     
     @IBAction func searchTapped(_ sender: Any) {
@@ -70,11 +66,10 @@ class MainViewController: UIViewController {
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeSegue" {
             guard let viewRecipeVC = segue.destination as? RecipesTableViewController else { return }
-            viewRecipeVC.recipes = allRecipes
+            recipesTableViewController = viewRecipeVC
         }
     }
 }
