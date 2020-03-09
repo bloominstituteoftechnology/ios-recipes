@@ -34,19 +34,22 @@ class MainViewController: UIViewController {
         }
     }
     
-    func filterRecipes() {
+    func filterRecipes(completion: @escaping([Recipe]) -> Void) {
         var updatedRecipes: [Recipe]
-        var searchString = searchTextField.text
+        let searchString = searchTextField.text
         
-        guard let searchTextField.text = searchTextField.text else {
+        guard case searchTextField.text = searchTextField.text else {
             if searchString != nil {
             filteredRecipes = allRecipes
             } else {
-                updatedRecipes = allRecipes.filter { $0.name == "\(searchString)" }
-                updatedRecipes = allRecipes.filter { $0.instructions == "\(searchString)" }
+                updatedRecipes = allRecipes.filter { $0.name == "\(searchString ?? "")" }
+                updatedRecipes = allRecipes.filter { $0.instructions == "\(searchString ?? "")" }
         }
+            
             return
-    }
+        }
+        
+        self.filteredRecipes = updatedRecipes
 }
     
 
