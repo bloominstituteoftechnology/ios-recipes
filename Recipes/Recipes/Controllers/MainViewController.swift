@@ -12,26 +12,72 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
     
+    let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = self.filteredRecipes
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkClient.fetchRecipes { (recipes, error) in
+            if let error = error {
+                NSLog("We boomed in main view: \(error)")
+                return
+            }
+            
+            if let recipes = recipes {
+                self.allRecipes = recipes
+            }
+        }
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "EmbedTableSegue" {
+            guard let recipesTableVC = segue.destination as? RecipesTableViewController else { fatalError("Boom at embed segue") }
+            recipesTableViewController = recipesTableVC
+        }
     }
-    */
+    
+    func filterRecipes() {
+        DispatchQueue.main.async {
+            guard let search = self.textField.text,
+                !search.isEmpty else {
+                    self.filteredRecipes = self.allRecipes
+                    return
+            }
+            self.filteredRecipes = self.allRecipes.filter({ recipe -> Bool in
+                if recipe.name.contains(search) || recipe.instructions.contains(search) {
+                    return true
+                } else {
+                    return false
+                }
+            })
+        }
+        
+        
+    }
     
     
     @IBAction func editingEnd(_ sender: Any) {
+        resignFirstResponder()
+        filterRecipes()
     }
     
 }
