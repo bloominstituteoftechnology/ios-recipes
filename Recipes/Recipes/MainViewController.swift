@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UISearchBarDelegate {
 
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     let networkClient = RecipesNetworkClient()
     var allRecipes: [Recipe] = [] {
@@ -32,6 +32,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        searchBar.delegate = self
+        
         networkClient.fetchRecipes { recipes, error in
             if let error = error {
                 NSLog("Error loading students: \(error)")
@@ -55,19 +57,18 @@ class MainViewController: UIViewController {
     }
     
     func filterRecipes() {
-        guard let search = searchTextField.text, !search.isEmpty else {
+        guard let search = searchBar.text, !search.isEmpty else {
             filteredRecipes = allRecipes
             return
         }
         filteredRecipes = allRecipes.filter { $0.name.contains(search) || $0.instructions.contains(search) }
     }
     
-    @IBAction func senderresignFirstResponderdidEndEditing(_ sender: Any) {
-        resignFirstResponder()
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterRecipes()
     }
-    
-    
-    
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        resignFirstResponder()
+    }
 }
