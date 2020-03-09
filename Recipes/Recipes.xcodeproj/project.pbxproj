@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		04A0946624168C8E00B0613F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Resources/MainViewController.swift; sourceTree = "<group>"; };
+		04A0946624168C8E00B0613F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		04A0946824168D9700B0613F /* RecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
 		04A0946A24168F5900B0613F /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		9D59AF422117E647002FB7CD /* RecipesNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesNetworkClient.swift; sourceTree = "<group>"; };
@@ -43,6 +43,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04A0946E2416E22500B0613F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04A0946824168D9700B0613F /* RecipesTableViewController.swift */,
+				04A0946A24168F5900B0613F /* RecipeDetailViewController.swift */,
+				04A0946624168C8E00B0613F /* MainViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		9D59AF412117E637002FB7CD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,9 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
-				04A0946824168D9700B0613F /* RecipesTableViewController.swift */,
-				04A0946A24168F5900B0613F /* RecipeDetailViewController.swift */,
-				04A0946624168C8E00B0613F /* MainViewController.swift */,
+				04A0946E2416E22500B0613F /* View Controllers */,
 				9D59AF412117E637002FB7CD /* Networking */,
 				9D59B52A2117F520002FB7CD /* Model */,
 				9D59AF452117E652002FB7CD /* Resources */,
@@ -132,6 +140,7 @@
 				TargetAttributes = {
 					9DA0F0782117E3F800A99E97 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -332,7 +341,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiftstudent.recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -351,7 +360,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiftstudent.recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

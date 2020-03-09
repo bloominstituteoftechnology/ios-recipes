@@ -9,13 +9,15 @@
 import UIKit
 
 class RecipesTableViewController: UITableViewController {
-
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     //MARK: - Properties
+    
     var recipes: [Recipe] = [] { didSet { tableView.reloadData() } }
     
 
-    // MARK: - Table view data source
-
+    //MARK: - Table View Data Source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         recipes.count
@@ -31,7 +33,14 @@ class RecipesTableViewController: UITableViewController {
     }
 
     
-    // MARK: - Navigation
+    //MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.keyboardDismissMode = .interactive
+    }
+    
+    //MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRecipeDetail",

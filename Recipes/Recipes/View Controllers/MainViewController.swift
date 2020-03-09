@@ -10,11 +10,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    //MARK: - IBOutlets
-   
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-    
     //MARK: - Private
     
     private var networkClient = RecipesNetworkClient()
@@ -40,7 +35,7 @@ class MainViewController: UIViewController {
     }
     
     private func filterRecipes() {
-        guard let searchText = searchBar.text,
+        guard let searchText = recipesTVC?.searchBar.text,
               !searchText.isEmpty else {
             filteredRecipes = allRecipes
             return
@@ -57,15 +52,16 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchRecipes()
-        searchBar.delegate = self
     }
     
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "TableViewController" {
-            recipesTVC = segue.destination as? RecipesTableViewController
+        if segue.identifier == "TableViewController",
+           let recipesTVC = segue.destination as? RecipesTableViewController {
+            self.recipesTVC = recipesTVC
+            recipesTVC.searchBar.delegate = self
         }
     }
 }
