@@ -12,8 +12,23 @@ class MainViewController: UIViewController {
     
     // MARK: - Properties
     let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = []
-    var recipesTableViewController: RecipesTableViewController?
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     // MARK: - IBOutlets
     @IBOutlet var recipeTextField: UITextField!
@@ -21,7 +36,8 @@ class MainViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func recipeTextFieldEdited(_ sender: Any) {
-        
+        recipeTextField.resignFirstResponder()
+        filterRecipes()
     }
     
 
@@ -29,7 +45,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         networkClient.fetchRecipes { (recipes, error) in
             if let allRecipes = recipes {
-                self.allRecipes = allRecipes
+                DispatchQueue.main.async {
+                    self.allRecipes = allRecipes
+                }
             }
             
             if let error = error {
@@ -39,13 +57,23 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    func filterRecipes() {
+        guard let filter = recipeTextField.text, !filter.isEmpty
+            else {
+                filteredRecipes = allRecipes
+                return }
+        filteredRecipes = allRecipes.filter { $0.name.contains(filter) || $0.instructions.contains(filter) }
+    }
+    
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeSegue" {
+            guard let recipeTableVC = segue.destination as? RecipesTableViewController else { return }
+            recipesTableViewController = recipeTableVC
             
+        }
     }
 
 }
