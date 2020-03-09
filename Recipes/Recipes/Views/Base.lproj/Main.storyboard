@@ -113,14 +113,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="sDc-gl-vH0">
+                                <rect key="frame" x="0.0" y="509" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="edit" id="WnP-Hu-ojN">
+                                        <connections>
+                                            <action selector="editButton:" destination="lKV-ff-l63" id="Dlp-tS-o50"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="C48-ZR-Eeg"/>
+                                    <barButtonItem systemItem="save" id="x3d-p0-qZd">
+                                        <connections>
+                                            <action selector="saveRecipeButton:" destination="lKV-ff-l63" id="Gb5-nm-6fJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Sb3-bG-7Z1" firstAttribute="top" secondItem="4c4-qC-El3" secondAttribute="top" constant="8" id="9Cg-AS-CP4"/>
                             <constraint firstItem="w0w-CH-HfF" firstAttribute="leading" secondItem="4c4-qC-El3" secondAttribute="leading" id="An4-sP-tc9"/>
                             <constraint firstItem="4c4-qC-El3" firstAttribute="trailing" secondItem="w0w-CH-HfF" secondAttribute="trailing" id="Azo-sQ-7Mm"/>
+                            <constraint firstItem="4c4-qC-El3" firstAttribute="bottom" secondItem="sDc-gl-vH0" secondAttribute="bottom" id="P1v-du-BEg"/>
                             <constraint firstItem="w0w-CH-HfF" firstAttribute="top" secondItem="Sb3-bG-7Z1" secondAttribute="bottom" constant="8" id="Z9g-ja-NLj"/>
+                            <constraint firstItem="sDc-gl-vH0" firstAttribute="leading" secondItem="4c4-qC-El3" secondAttribute="leading" id="h3s-rZ-CvD"/>
                             <constraint firstItem="4c4-qC-El3" firstAttribute="trailing" secondItem="Sb3-bG-7Z1" secondAttribute="trailing" constant="20" id="kgm-RX-JhC"/>
+                            <constraint firstItem="sDc-gl-vH0" firstAttribute="trailing" secondItem="4c4-qC-El3" secondAttribute="trailing" id="xZM-Ge-qDd"/>
                             <constraint firstItem="Sb3-bG-7Z1" firstAttribute="leading" secondItem="4c4-qC-El3" secondAttribute="leading" constant="20" id="yQG-qW-5Wu"/>
                             <constraint firstItem="4c4-qC-El3" firstAttribute="bottom" secondItem="w0w-CH-HfF" secondAttribute="bottom" id="yTG-hy-N87"/>
                         </constraints>
