@@ -11,11 +11,8 @@ import UIKit
 class MainViewController: UIViewController {
     
     //MARK: - IBOutlets
-    
-    @IBOutlet weak var textField: UITextField!
-    @IBAction func textFieldEndedEditing(_ sender: UITextField) {
-        filterRecipes()
-    }
+   
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     //MARK: - Private
@@ -43,7 +40,7 @@ class MainViewController: UIViewController {
     }
     
     private func filterRecipes() {
-        guard let searchText = textField.text,
+        guard let searchText = searchBar.text,
               !searchText.isEmpty else {
             filteredRecipes = allRecipes
             return
@@ -60,6 +57,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchRecipes()
+        searchBar.delegate = self
     }
     
 
@@ -69,5 +67,18 @@ class MainViewController: UIViewController {
         if segue.identifier == "TableViewController" {
             recipesTVC = segue.destination as? RecipesTableViewController
         }
+    }
+}
+
+
+//MARK: - Search Bar Delegate
+
+extension MainViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterRecipes()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
