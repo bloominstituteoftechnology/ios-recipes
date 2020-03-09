@@ -13,27 +13,60 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        networkClient.fetchRecipes(completion: <#T##([Recipe]?, Error?) -> Void#>)
+        networkClient.fetchRecipes { recipes, error in
+            if let error = error {
+                NSLog("Error loading students: \(error)")
+                return
+            }
+            
+            if let recipes = recipes {
+                DispatchQueue.main.async {
+                    self.allRecipes = recipes
+                }
+            }
+        }
     }
-    
-
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "TableViewSegue" {
+            recipesTableViewController = segue.destination as? RecipesTableViewController
+        }
     }
     
-    
-    @IBAction func editingDidEnd(_ sender: Any) {
+    func filterRecipes() {
+        guard let search = searchTextField.text, !search.isEmpty else {
+            filteredRecipes = allRecipes
+            return
+        }
+        filteredRecipes = allRecipes.filter { $0.name.contains(search) || $0.instructions.contains(search) }
     }
+    
+    @IBAction func senderresignFirstResponderdidEndEditing(_ sender: Any) {
+        resignFirstResponder()
+        filterRecipes()
+    }
+    
     
     
 
