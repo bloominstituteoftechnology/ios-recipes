@@ -10,6 +10,8 @@ import UIKit
 
 class RecipesTableViewController: UITableViewController {
 
+    
+    let recipeDetailViewController = RecipeDetailViewController()
     var recipes: [Recipe] = [] {
         didSet {
             tableView.reloadData()
@@ -81,7 +83,11 @@ class RecipesTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      
+      if segue.identifier == "DetailSegue" {
+                 guard let newRecipeVC = segue.destination as? RecipeDetailViewController else {return }
+//        let recipeIndex = tableView.indexPathForSelectedRow?.row
+//        newRecipeVC.recipe = recipeIndex
+             }
     }
 
 

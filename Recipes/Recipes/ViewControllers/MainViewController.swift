@@ -9,6 +9,12 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    let networkClient: RecipesNetworkClient?
+    var allRecipes: [Recipe] = []
+    
+    
+    
     @IBOutlet weak var searchTextField: UITextField!
     
     

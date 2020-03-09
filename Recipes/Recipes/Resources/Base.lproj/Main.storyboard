@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tqm-LY-o28">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -16,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBc-ng-ord">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBc-ng-ord">
                                 <rect key="frame" x="16" y="44" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -34,6 +33,11 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WBc-ng-ord" firstAttribute="leading" secondItem="Hay-Ww-kQh" secondAttribute="leading" constant="16" id="7E8-5h-8Q2"/>
+                            <constraint firstItem="WBc-ng-ord" firstAttribute="top" secondItem="Hay-Ww-kQh" secondAttribute="top" id="cTi-0n-a0F"/>
+                            <constraint firstItem="Hay-Ww-kQh" firstAttribute="trailing" secondItem="WBc-ng-ord" secondAttribute="trailing" constant="16" id="pmA-Y9-lbw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Hay-Ww-kQh"/>
                     </view>
                     <navigationItem key="navigationItem" id="GO9-f5-1v6"/>
@@ -78,7 +82,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="uba-xk-zmk" kind="show" id="0fo-xW-A7m"/>
+                        <segue destination="uba-xk-zmk" kind="show" identifier="DetailSegue" id="0fo-xW-A7m"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQj-3a-tg8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
