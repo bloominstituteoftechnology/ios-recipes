@@ -16,7 +16,11 @@ class MainViewController: UIViewController {
     let networkClient = RecipesNetworkClient()
     var allRecipes: [Recipe] = []
     var recipesTableViewController: RecipesTableViewController?
-    var filteredRecipes: [Recipe] = []
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +38,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    func filterRecipes(completion: @escaping([Recipe]) -> Void) {
+    func filterRecipes() {
         var updatedRecipes: [Recipe]
         let searchString = searchTextField.text
         
@@ -54,6 +58,8 @@ class MainViewController: UIViewController {
     
 
     @IBAction func searchTapped(_ sender: Any) {
+        resignFirstResponder()
+        filterRecipes()
     }
     
     // MARK: - Navigation
