@@ -20,13 +20,25 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Properties
-
+    var allRecipes: [Recipe] = []
+    
+    let networkClient = RecipesNetworkClient()
+        
     // MARK: - Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        networkClient.fetchRecipes { recipes, error in
+            if let error = error {
+                NSLog("Error loading recipes: \(error)!")
+                return
+            }
+            if let recipes = recipes {
+                self.allRecipes = recipes
+            }
+        }
     }
     
     /*
