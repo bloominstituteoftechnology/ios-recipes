@@ -22,7 +22,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textFieldAction:" destination="OLf-5H-21f" eventType="editingDidEnd" id="j9N-kn-5EE"/>
+                                    <action selector="textFieldAction:" destination="OLf-5H-21f" eventType="editingDidEndOnExit" id="ndi-co-7e3"/>
                                 </connections>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tbi-KY-dGu">
