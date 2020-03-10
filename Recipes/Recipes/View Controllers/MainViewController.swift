@@ -47,6 +47,8 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        textField.delegate = self
+        
         networkClient.fetchRecipes { recipes, error in
             if let error = error {
                 NSLog("Error loading recipes: \(error)!")
@@ -86,5 +88,13 @@ class MainViewController: UIViewController {
             guard let recipesTVC = segue.destination as? RecipesTableViewController else { fatalError() }
             recipesTableViewController = recipesTVC
         }
+    }
+}
+
+extension MainViewController: UITextFieldDelegate {
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        textField.text = ""
+        filterRecipes()
+        return true // text field’s contents should be cleared
     }
 }
