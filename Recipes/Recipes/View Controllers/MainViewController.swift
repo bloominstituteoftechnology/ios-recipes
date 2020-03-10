@@ -17,12 +17,28 @@ class MainViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func textFieldAction(_ sender: Any) {
+        resignFirstResponder()
+        filterRecipes()
     }
     
     // MARK: - Properties
-    var allRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
 
-    var recipesTableViewController: RecipesTableViewController?
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     let networkClient = RecipesNetworkClient()
         
     // MARK: - Methods
@@ -39,6 +55,20 @@ class MainViewController: UIViewController {
             if let recipes = recipes {
                 self.allRecipes = recipes
             }
+        }
+    }
+    
+    func filterRecipes() {
+        if let searchString = textField.text,
+            !searchString.isEmpty
+        {
+            filteredRecipes = allRecipes.filter {
+                $0.name.contains(searchString) ||
+                $0.instructions.contains(searchString)
+            }
+        } else {
+            // Nothing to search for
+            filteredRecipes = allRecipes
         }
     }
     
