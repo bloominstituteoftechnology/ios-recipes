@@ -53,24 +53,24 @@ class MainViewController: UIViewController {
                 return
             }
             if let recipes = recipes {
-                self.allRecipes = recipes
+                DispatchQueue.main.sync {
+                    self.allRecipes = recipes
+                }
             }
         }
     }
     
     func filterRecipes() {
-        DispatchQueue.main.sync {
-            if let searchString = textField.text,
-                !searchString.isEmpty
-            {
-                filteredRecipes = allRecipes.filter {
-                    $0.name.contains(searchString) ||
-                    $0.instructions.contains(searchString)
-                }
-            } else {
-                // Nothing to search for
-                filteredRecipes = allRecipes
+        if let searchString = textField.text,
+            !searchString.isEmpty
+        {
+            filteredRecipes = allRecipes.filter {
+                $0.name.contains(searchString) ||
+                $0.instructions.contains(searchString)
             }
+        } else {
+            // Nothing to search for
+            filteredRecipes = allRecipes
         }
     }
     
