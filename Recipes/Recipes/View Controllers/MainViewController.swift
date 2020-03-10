@@ -59,16 +59,18 @@ class MainViewController: UIViewController {
     }
     
     func filterRecipes() {
-        if let searchString = textField.text,
-            !searchString.isEmpty
-        {
-            filteredRecipes = allRecipes.filter {
-                $0.name.contains(searchString) ||
-                $0.instructions.contains(searchString)
+        DispatchQueue.main.sync {
+            if let searchString = textField.text,
+                !searchString.isEmpty
+            {
+                filteredRecipes = allRecipes.filter {
+                    $0.name.contains(searchString) ||
+                    $0.instructions.contains(searchString)
+                }
+            } else {
+                // Nothing to search for
+                filteredRecipes = allRecipes
             }
-        } else {
-            // Nothing to search for
-            filteredRecipes = allRecipes
         }
     }
     
@@ -81,7 +83,8 @@ class MainViewController: UIViewController {
 
         if segue.identifier == "RecipesSegue" {
             print("RecipesSegue called")
-            //guard let recipesTVC = segue.destination as? RecipesTableViewController else { return }
+            guard let recipesTVC = segue.destination as? RecipesTableViewController else { fatalError() }
+            recipesTableViewController = recipesTVC
         }
     }
 }
