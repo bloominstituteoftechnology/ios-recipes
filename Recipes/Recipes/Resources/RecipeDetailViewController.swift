@@ -23,9 +23,11 @@ class RecipeDetailViewController: UIViewController {
     
     
     func updateViews() {
+        if isViewLoaded {
         guard let newRecipe = recipe else { return }
         recipeLabel.text = newRecipe.name
         recipeTextView.text = newRecipe.instructions
+        }
     }
     
     
