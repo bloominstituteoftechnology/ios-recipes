@@ -36,6 +36,7 @@ class MainViewController: UIViewController {
               filterRecipes()
           }
       }
+     private let refreshControl = UIRefreshControl()
     
     
     override func viewDidLoad() {
@@ -48,10 +49,14 @@ class MainViewController: UIViewController {
           
             DispatchQueue.main.async {
                 self.allRecipes = recipes ?? []
+                self.refreshControl.endRefreshing()
             }
 
         
         }
+        filterRecipes()
+        
+    
         
     }
     
@@ -77,15 +82,15 @@ class MainViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "RecipeSegue" {
-        guard let newRecipeVC = segue.destination as? RecipesTableViewController else {return }
-            newRecipeVC.recipes = allRecipes
-        }
-
-
-}
+           if segue.identifier == "RecipeSegue" {
+               recipesTableViewController = (segue.destination as! RecipesTableViewController)
+        
+           }
+       }
     
 }
+
+
     
 
     

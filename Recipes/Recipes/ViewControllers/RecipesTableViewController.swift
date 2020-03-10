@@ -25,9 +25,7 @@ class RecipesTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -37,8 +35,7 @@ class RecipesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-        let recipe = recipes[indexPath.row]
-        cell.textLabel?.text = recipe.name
+        cell.textLabel?.text = recipes[indexPath.row].name
         // Configure the cell...
 
         return cell
@@ -85,13 +82,11 @@ class RecipesTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if segue.identifier == "DetailSegue" {
-                 guard let newRecipeVC = segue.destination as? RecipeDetailViewController else {return }
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        let recipe = recipes[indexPath.row]
-        
-        newRecipeVC.recipe = recipe
-             }
+      if segue.identifier == "DetailSegue",
+               let recipeDetailVC = segue.destination as? RecipeDetailViewController,
+               let indexPath = tableView.indexPathForSelectedRow {
+                recipeDetailVC.recipe = recipes[indexPath.row]
+            }
         
     }
 
