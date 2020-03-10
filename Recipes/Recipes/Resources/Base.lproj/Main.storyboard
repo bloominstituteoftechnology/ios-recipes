@@ -42,7 +42,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="GO9-f5-1v6"/>
                     <connections>
-                        <outlet property="searchTextField" destination="WBc-ng-ord" id="S9s-ZF-BtJ"/>
+                        <outlet property="searchTextField" destination="WBc-ng-ord" id="hxc-tq-6Nb"/>
+                        <outlet property="viewTable" destination="A4u-q1-U7q" id="rnK-lg-R0j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WWH-OR-MRS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

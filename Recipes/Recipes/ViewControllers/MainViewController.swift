@@ -10,14 +10,32 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var recipesTableViewController: RecipesTableViewController?
-    let networkClient = RecipesNetworkClient()
-    var allRecipes: [Recipe] = []
-    var filteredRecipes: [Recipe] = []
-    
+  
+      
     
     @IBOutlet weak var searchTextField: UITextField!
     
+    @IBOutlet weak var viewTable: UIView!
+    
+    
+    
+     let networkClient = RecipesNetworkClient()
+    
+    private var recipesTableViewController: RecipesTableViewController? {
+          didSet {
+              recipesTableViewController?.recipes = filteredRecipes
+          }
+      }
+    private var filteredRecipes: [Recipe] = [] {
+          didSet {
+              recipesTableViewController?.recipes = filteredRecipes
+          }
+      }
+      private var allRecipes: [Recipe] = [] {
+          didSet {
+              filterRecipes()
+          }
+      }
     
     
     override func viewDidLoad() {
@@ -27,29 +45,32 @@ class MainViewController: UIViewController {
                 NSLog("Error load students: \(error)")
                 return
             }
-            if let recipes = recipes {
+          
             DispatchQueue.main.async {
-                self.allRecipes = recipes
+                self.allRecipes = recipes ?? []
             }
 
-        }
+        
         }
         
     }
+    
+    
+        func filterRecipes() {
+           guard let searchTerm = searchTextField.text, !searchTerm.isEmpty else {
+              filteredRecipes = allRecipes
+               return }
+           filteredRecipes = allRecipes.filter { $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm)}
+            self.filteredRecipes = allRecipes
+       }
     
     @IBAction func searchAction(_ sender: Any) {
+    resignFirstResponder()
+        filterRecipes()
     }
     
+   
     
-    private func filterRecipes() {
-        
-        let filter = TrackType(rawValue: filterSelector.selectedSegmentIndex) ?? .none
-        let sort = SortNames(rawValue: sortSelector.selectedSegmentIndex) ?? .firstName
-         
-        studentController.filter(with: filter, sortedBy: sort) { students in
-        self.filteredAndSortedStudents = students
-        }
-    }
     
     
     // MARK: - Navigation
@@ -58,10 +79,7 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeSegue" {
         guard let newRecipeVC = segue.destination as? RecipesTableViewController else {return }
-        // Get the new view controller using segue.destination.
-//            guard let indexPath =
-//            let recipe = recipes[indexPath.row]
-            
+            newRecipeVC.recipes = allRecipes
         }
 
 

@@ -23,16 +23,16 @@ class RecipeDetailViewController: UIViewController {
     
     
     func updateViews() {
-        
-        recipeLabel.text = recipe?.name
-        recipeTextView.text = recipe?.instructions
+        guard let newRecipe = recipe else { return }
+        recipeLabel.text = newRecipe.name
+        recipeTextView.text = newRecipe.instructions
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-
+       
         // Do any additional setup after loading the view.
     }
     
