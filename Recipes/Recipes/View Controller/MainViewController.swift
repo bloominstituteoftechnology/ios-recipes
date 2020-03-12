@@ -30,6 +30,10 @@ class MainViewController: UIViewController {
         }
     }
     
+    func resetRecipes() {
+        filteredRecipes = allRecipes
+    }
+    
     var searching: Bool = false
 
     override func viewDidLoad() {
@@ -61,7 +65,7 @@ class MainViewController: UIViewController {
 extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
-            filteredRecipes = allRecipes
+            resetRecipes()
         } else {
             filteredRecipes = allRecipes.filter { $0.name.contains(searchText) }
             searching = true
@@ -73,5 +77,6 @@ extension MainViewController: UISearchBarDelegate {
         searching = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        resetRecipes()
     }
 }
