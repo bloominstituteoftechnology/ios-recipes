@@ -45,8 +45,6 @@ class MainViewController: UIViewController {
         }
     }
 
-
-    
     @IBAction func searchTextFieldDidEnd(_ sender: Any) {
         resignFirstResponder()
         filterRecipes()
