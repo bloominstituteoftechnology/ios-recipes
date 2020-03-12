@@ -12,35 +12,27 @@ class RecipeDetailViewController: UIViewController {
     
     var recipe: Recipe? {
         didSet {
-            recipeNameLabel.text = recipe?.name
             updateViews()
         }
     }
 
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeInstructions: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         updateViews()
-        
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .darkGray
+        recipeInstructions.backgroundColor = .lightGray
     }
     
     func updateViews() {
-        recipeNameLabel.text = recipe?.name
-        recipeInstructions.text = recipe?.instructions
+        guard let recipe = recipe else { return }
+        if isViewLoaded {
+            recipeNameLabel.text = recipe.name
+            recipeNameLabel.textColor = .systemRed
+            recipeInstructions.text = recipe.instructions
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
