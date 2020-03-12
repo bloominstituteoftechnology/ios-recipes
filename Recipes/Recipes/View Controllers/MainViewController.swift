@@ -12,21 +12,60 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var searchTextField: UITextField!
 
+    let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        networkClient.fetchRecipes { recipes, error in
+            guard error == nil else {
+                print("Error: \(error!)")
+                return
+            }
+            guard let recipes = recipes else { return }
+
+            DispatchQueue.main.async {
+                self.allRecipes = recipes
+            }
+        }
     }
+
+
     
     @IBAction func searchTextFieldDidEnd(_ sender: Any) {
-        
+        resignFirstResponder()
+        filterRecipes()
     }
 
-    /*
-    // MARK: - Navigation
+    private func filterRecipes() {
+        guard let searchText = searchTextField.text, !searchText.isEmpty else {
+            filteredRecipes = allRecipes
+            return
+        }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+        filteredRecipes = allRecipes.filter { $0.name.localizedCaseInsensitiveContains(searchText) || $0.instructions.localizedCaseInsensitiveContains(searchText) }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "EmbedSegue" {
+            guard let recipesTVC = segue.destination as? RecipesTableViewController else { return }
+
+            recipesTableViewController = recipesTVC
+        }
     }
-    */
 }
