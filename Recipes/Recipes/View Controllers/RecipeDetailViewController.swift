@@ -12,7 +12,7 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateViews()
     }
     
     //MARK: -IBOutlets-
@@ -33,9 +33,9 @@ class RecipeDetailViewController: UIViewController {
     //MARK: -Methods-
     
     func updateViews() {
-        guard let recipe = recipe, self.isViewLoaded else {return}
-        recipeTitleLabel.text = recipe.name
-        instructionsTextView.text = recipe.instructions
+        guard let unwrappedRecipe = recipe, isViewLoaded else {return}
+        recipeTitleLabel.text = unwrappedRecipe.name
+        instructionsTextView.text = unwrappedRecipe.instructions
     }
     
     
