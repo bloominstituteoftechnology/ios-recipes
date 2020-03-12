@@ -10,9 +10,6 @@ import UIKit
 
 class RecipesTableViewController: UITableViewController {
     
-//    var recipes: [Recipe] = [Recipe(name: "Baba Ganoosh", instructions: "Just make it man"),
-//    Recipe(name: "Pizza", instructions: "Everyone loves pizza")]
-    
     var recipes: [Recipe] = [] {
         didSet {
             tableView.reloadData()
@@ -39,6 +36,7 @@ class RecipesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
+        //checks if user is searching in searchBar
         let mainVC = MainViewController()
         if mainVC.searching {
             cell.textLabel?.text = mainVC.filteredRecipes[indexPath.row].name

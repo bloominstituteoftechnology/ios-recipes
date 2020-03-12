@@ -49,26 +49,12 @@ class MainViewController: UIViewController {
         }
     }
     
-
-//        resignFirstResponder()
-//        filterRecipes()
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TableViewSegue" {
             let destinationVC = segue.destination as! RecipesTableViewController
             recipesTableViewController = destinationVC
         }
     }
-    
-//    func filterRecipes() {
-//        DispatchQueue.main.async {
-//            guard let searchTextField = self.searchBar.text?.lowercased() else { return self.filteredRecipes = self.allRecipes }
-//            self.filteredRecipes = self.allRecipes.filter { $0.name.lowercased().contains(searchTextField)
-//                || $0.instructions.lowercased().contains(searchTextField)
-//            }
-//        }
-//    }
     
 }
 
