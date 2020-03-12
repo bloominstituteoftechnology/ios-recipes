@@ -9,7 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     // MARK: - IBOutlets
     @IBOutlet var recipeSearchBar: UITextField!
     
@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         networkClient.fetchRecipes { (allRecipes, error) in
             guard error == nil else {
                 print("Error loading recipes: \(error!)")
@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
     //MARK: - Functions
     func filterRecipes() {
         if let recipeSearch = recipeSearchBar.text,
-        !recipeSearch.isEmpty {
+            !recipeSearch.isEmpty {
             filteredRecipes = allRecipes.filter({$0.name.contains(recipeSearch) || $0.instructions.contains(recipeSearch)})
         } else {
             filteredRecipes = allRecipes
@@ -71,10 +71,10 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TableViewSegue" {
             recipesTableViewController = segue.destination as? RecipesTableViewController
-              }
+        }
     }
 }
