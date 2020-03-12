@@ -6,9 +6,29 @@
 //  Copyright © 2020 Lambda Inc. All rights reserved.
 //
 
+
+
+
+/*
+ 
+ private var filteredAndSortedStudents: [Student] = [] {
+ // another way to do it is private var filteredAndSortedStudents = [Student]()
+ 
+ didSet {
+     DispatchQueue.main.async {
+         self.tableView.reloadData()
+     }
+     
+ }
+ 
+ 
+ */
+
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
+    
+    var recipe: Recipe?
 
   
     @IBOutlet weak var recipeDetailTextLabel: UILabel!
@@ -20,8 +40,17 @@ class RecipeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+        updateViews()
+        
+    
+
+}
+    
+    func updateViews() {
+            guard let recipe = recipe, isViewLoaded else { return }
+            recipeDetailTextLabel?.text = recipe.name
+            recipeDetailTextView?.text = recipe.instructions
+        }
     
 
     /*
