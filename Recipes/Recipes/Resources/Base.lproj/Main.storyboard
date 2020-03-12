@@ -93,21 +93,51 @@
             </objects>
             <point key="canvasLocation" x="1862" y="-684"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="cnb-DP-s3m">
             <objects>
-                <viewController id="PPU-lu-tbF" sceneMemberID="viewController">
+                <viewController id="PPU-lu-tbF" customClass="RecipeDetailViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DsY-4S-x4e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdg-e9-BtR">
+                                <rect key="frame" x="20" y="20" width="85" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y9H-N3-c3L">
+                                <rect key="frame" x="0.0" y="71" width="414" height="589"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="589" id="umw-3C-Cfq"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="y9H-N3-c3L" firstAttribute="leading" secondItem="QOr-qE-x3c" secondAttribute="leading" id="Ngy-y4-ldm"/>
+                            <constraint firstItem="y9H-N3-c3L" firstAttribute="top" secondItem="kdg-e9-BtR" secondAttribute="bottom" constant="8" id="QCm-Tv-KLt"/>
+                            <constraint firstItem="y9H-N3-c3L" firstAttribute="centerX" secondItem="DsY-4S-x4e" secondAttribute="centerX" id="Qqb-0D-K1I"/>
+                            <constraint firstItem="kdg-e9-BtR" firstAttribute="leading" secondItem="DsY-4S-x4e" secondAttribute="leadingMargin" id="RfC-k5-fO7"/>
+                            <constraint firstItem="y9H-N3-c3L" firstAttribute="bottom" secondItem="QOr-qE-x3c" secondAttribute="bottom" id="Vgp-lw-Uxa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QOr-qE-x3c"/>
                     </view>
                     <navigationItem key="navigationItem" id="U2b-vQ-iZN"/>
+                    <connections>
+                        <outlet property="recipeDetailTextLabel" destination="kdg-e9-BtR" id="hDF-tF-7lb"/>
+                        <outlet property="recipeDetailTextView" destination="y9H-N3-c3L" id="Nk7-DN-DZy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9t-Mj-vhA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2728" y="-684"/>
+            <point key="canvasLocation" x="2726.0869565217395" y="-684.375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="j8b-7H-yoz">
