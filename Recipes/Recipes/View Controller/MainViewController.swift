@@ -9,9 +9,9 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
+
     // MARK: - IBOutlets
-    @IBOutlet var recipeSearchBar: UITextField!
+    @IBOutlet var recipeSearchBar: UISearchBar!
     
     
     // MARK: - Properties
@@ -35,7 +35,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        recipeSearchBar.delegate = self
+
         networkClient.fetchRecipes { (allRecipes, error) in
             guard error == nil else {
                 print("Error loading recipes: \(error!)")
@@ -53,17 +54,11 @@ class MainViewController: UIViewController {
         }
     }
     
-    // MARK: - IBAction
-    @IBAction func searching(_ sender: UITextField) {
-        sender.resignFirstResponder()
-        filterRecipes()
-    }
-    
     //MARK: - Functions
     func filterRecipes() {
         if let recipeSearch = recipeSearchBar.text,
-            !recipeSearch.isEmpty {
-            filteredRecipes = allRecipes.filter({$0.name.contains(recipeSearch) || $0.instructions.contains(recipeSearch)})
+        !recipeSearch.isEmpty {
+            filteredRecipes = allRecipes.filter({$0.name.localizedStandardContains(recipeSearch) || $0.instructions.localizedStandardContains(recipeSearch)})
         } else {
             filteredRecipes = allRecipes
         }
@@ -71,10 +66,21 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TableViewSegue" {
             recipesTableViewController = segue.destination as? RecipesTableViewController
-        }
+              }
+    }
+}
+
+// MARK: - Search Bar Delegate
+extension MainViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterRecipes()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
