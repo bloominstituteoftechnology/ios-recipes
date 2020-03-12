@@ -16,37 +16,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qwF-mk-oAs">
-                                <rect key="frame" x="20" y="64" width="335" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="searchDidEnd:" destination="m3j-lw-cl4" eventType="editingDidEndOnExit" id="g5h-OE-gqQ"/>
-                                </connections>
-                            </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDN-pC-mHL">
-                                <rect key="frame" x="0.0" y="128" width="375" height="539"/>
+                                <rect key="frame" x="0.0" y="150" width="375" height="517"/>
                                 <connections>
                                     <segue destination="k1K-jx-TU7" kind="embed" identifier="TableViewSegue" id="iOf-hN-7vr"/>
                                 </connections>
                             </containerView>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPu-5h-5fI">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" red="0.25047515891267608" green="0.27950834963772364" blue="0.41008027890761423" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.18073528289999999" green="0.1986349661" blue="0.2888642132" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="qwF-mk-oAs" firstAttribute="top" secondItem="5My-65-PtX" secondAttribute="top" constant="20" id="6bt-bY-JWG"/>
                             <constraint firstItem="5My-65-PtX" firstAttribute="bottom" secondItem="pDN-pC-mHL" secondAttribute="bottom" id="Hvt-fu-Gw2"/>
-                            <constraint firstItem="qwF-mk-oAs" firstAttribute="leading" secondItem="5My-65-PtX" secondAttribute="leading" constant="20" id="Xca-yB-kb1"/>
-                            <constraint firstItem="pDN-pC-mHL" firstAttribute="top" secondItem="qwF-mk-oAs" secondAttribute="bottom" constant="30" id="Y4T-Di-KBu"/>
+                            <constraint firstItem="oPu-5h-5fI" firstAttribute="centerX" secondItem="EoF-xH-48g" secondAttribute="centerX" id="KvE-BG-5gw"/>
+                            <constraint firstItem="pDN-pC-mHL" firstAttribute="top" secondItem="oPu-5h-5fI" secondAttribute="bottom" constant="30" id="OXB-Ce-Xq3"/>
+                            <constraint firstItem="oPu-5h-5fI" firstAttribute="top" secondItem="5My-65-PtX" secondAttribute="top" constant="20" id="afx-Wf-3tT"/>
                             <constraint firstItem="pDN-pC-mHL" firstAttribute="leading" secondItem="5My-65-PtX" secondAttribute="leading" id="hjA-it-lzC"/>
-                            <constraint firstItem="5My-65-PtX" firstAttribute="trailing" secondItem="qwF-mk-oAs" secondAttribute="trailing" constant="20" id="qyN-Jr-kr6"/>
-                            <constraint firstItem="qwF-mk-oAs" firstAttribute="centerX" secondItem="EoF-xH-48g" secondAttribute="centerX" id="utt-hS-pkf"/>
+                            <constraint firstItem="oPu-5h-5fI" firstAttribute="leading" secondItem="5My-65-PtX" secondAttribute="leading" id="ml2-iM-ySp"/>
                             <constraint firstItem="5My-65-PtX" firstAttribute="trailing" secondItem="pDN-pC-mHL" secondAttribute="trailing" id="yFL-eH-P3s"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5My-65-PtX"/>
                     </view>
                     <navigationItem key="navigationItem" id="tXX-23-CWD"/>
                     <connections>
-                        <outlet property="searchTextField" destination="qwF-mk-oAs" id="44z-V8-kBu"/>
+                        <outlet property="searchBar" destination="oPu-5h-5fI" id="1FP-oj-nZ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n8s-T0-Itv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -58,7 +59,7 @@
             <objects>
                 <viewController id="K7R-Se-32u" customClass="DetailRecipeViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s7O-q6-cHO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="497"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5M-Ck-BkG">
@@ -68,7 +69,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1KA-0a-SEE">
-                                <rect key="frame" x="20" y="89" width="335" height="430"/>
+                                <rect key="frame" x="20" y="89" width="335" height="408"/>
                                 <color key="backgroundColor" red="0.18073528289999999" green="0.1986349661" blue="0.2888642132" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -104,7 +105,7 @@
             <objects>
                 <tableViewController id="k1K-jx-TU7" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hF0-AN-W4g">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="539"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.18073528289999999" green="0.1986349661" blue="0.2888642132" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>

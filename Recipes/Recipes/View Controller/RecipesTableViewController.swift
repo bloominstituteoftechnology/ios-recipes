@@ -21,20 +21,32 @@ class RecipesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipes.count
+        let mainVC = MainViewController()
+        if mainVC.searching {
+            return mainVC.filteredRecipes.count
+        } else {
+            return recipes.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-        let recipe = recipes[indexPath.row]
-        cell.textLabel?.text = recipe.name
+        let mainVC = MainViewController()
+        if mainVC.searching {
+            cell.textLabel?.text = mainVC.filteredRecipes[indexPath.row].name
+        } else {
+            let recipe = recipes[indexPath.row]
+            cell.textLabel?.text = recipe.name
+        }
+        
         cell.backgroundColor = .darkColor
         cell.textLabel?.textColor = .white
         
