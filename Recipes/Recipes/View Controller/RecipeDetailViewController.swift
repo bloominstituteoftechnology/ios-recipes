@@ -9,28 +9,31 @@
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
-
-    // MARK: - IBOutlets
     
+    // MARK: - IBOutlets
     @IBOutlet var recipeTitleLabel: UILabel!
     @IBOutlet var recipeDetailTextView: UITextView!
     
+    // MARK: - Properties
+    var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Functions
+    func updateViews() {
+        if let recipe = recipe,
+            isViewLoaded {
+            recipeTitleLabel.text = recipe.name
+            recipeDetailTextView.text = recipe.instructions
+        }
     }
-    */
-
+    
+    
 }
