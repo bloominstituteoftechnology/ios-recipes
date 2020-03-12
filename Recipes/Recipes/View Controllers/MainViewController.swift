@@ -30,11 +30,10 @@ class MainViewController: UIViewController {
                 print("Error loading recipes: \(error!)")
                 return
             }
-            guard let recipes = recipes else {
-                print("Error loading recipes: The recipes array was nil.")
-                return
+            DispatchQueue.main.async {
+                self.allRecipes = recipes ?? []
+                print(self.allRecipes)
             }
-            self.allRecipes = recipes
         }
     }
     
@@ -55,14 +54,12 @@ class MainViewController: UIViewController {
     }
     
     func filterRecipes() {
-        DispatchQueue.main.async {
-            if self.recipeTextField.text == nil || self.recipeTextField.text == "" {
-                self.filteredRecipes = self.allRecipes
-            } else {
-                self.filteredRecipes = self.filteredRecipes.filter({ (searchTerm) -> Bool in
-                    self.allRecipes.contains(searchTerm)
-                })
-            }
+        guard let searchTerm = recipeTextField.text, !searchTerm.isEmpty else {
+            filteredRecipes = allRecipes
+            return
+        }
+            filteredRecipes = filteredRecipes.filter{
+                $0.name.contains(searchTerm) || $0.instructions.contains(searchTerm)
         }
     }
 }
