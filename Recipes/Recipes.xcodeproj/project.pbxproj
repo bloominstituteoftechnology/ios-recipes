@@ -46,8 +46,9 @@
 		13BC53692419AC4F008B01DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				13BC53672419AC48008B01DA /* MainViewController.swift */,
+				13E0D4A32419B27500B29FEC /* RecipeDetailViewController.swift */,
 				13E0D4A12419AF5700B29FEC /* RecipesTableViewController.swift */,
+				13BC53672419AC48008B01DA /* MainViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -64,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
-				13E0D4A32419B27500B29FEC /* RecipeDetailViewController.swift */,
 				9DA0F0832117E40100A99E97 /* Assets.xcassets */,
 				9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */,
 				9DA0F0882117E40100A99E97 /* Info.plist */,
