@@ -48,10 +48,12 @@ class MainViewController: UIViewController {
     }
     
     func filterRecipes() {
-        if let recipeSearch = searchTextField.text, !recipeSearch.isEmpty {
-            filteredRecipes = allRecipes.filter {$0.name.contains(recipeSearch)}
-        } else {
+        guard let recipeSearch = searchTextField.text, !recipeSearch.isEmpty
+            else {
             filteredRecipes = allRecipes
+                return }
+        filteredRecipes = allRecipes.filter { (recipe: Recipe) -> Bool in
+            return (recipe.name.range(of: recipeSearch, options: .caseInsensitive, range: nil, locale: nil) != nil) || (recipe.instructions.range(of: recipeSearch, options: .caseInsensitive, range: nil, locale: nil) != nil)
         }
     }
     
