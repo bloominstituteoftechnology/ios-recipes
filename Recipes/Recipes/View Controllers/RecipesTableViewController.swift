@@ -38,10 +38,14 @@ class RecipesTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeDetailSegue" {
-            if let recipeDetailVC = segue.destination as? RecipeDetailViewController,
-                let indexPath = tableView.indexPathForSelectedRow {
-                recipeDetailVC.recipe = recipes[indexPath.row]
-            }
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let recipeDetailVC = segue.destination as! RecipeDetailViewController
+            recipeDetailVC.recipe = recipes[indexPath.row]
+            
+//            if let recipeDetailVC = segue.destination as? RecipeDetailViewController,
+//                let indexPath = tableView.indexPathForSelectedRow {
+//                recipeDetailVC.recipe = recipes[indexPath.row]
+//            }
         }
     }
 }
