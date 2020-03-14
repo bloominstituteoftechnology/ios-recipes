@@ -10,13 +10,25 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    // MARK: - Properties
     let networkClient = RecipesNetworkClient()
-    var allrecipes: [Recipe] = []
-    var recipesTableViewController: RecipesTableViewController?
-    var filteredRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet { filterRecipes() }
+    }
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet { self.recipesTableViewController?.recipes = filteredRecipes }
+    }
+    var filteredRecipes: [Recipe] = [] {
+        didSet { recipesTableViewController?.recipes = self.filteredRecipes }
+    }
 
+    // MARK: - IBOutlets
     @IBOutlet weak var searchTextField: UITextField!
+    
+    // MARK: - IBActions
     @IBAction func searchTextFieldAction(_ sender: Any) {
+        searchTextField.resignFirstResponder()
+        filterRecipes()
     }
     
     override func viewDidLoad() {
@@ -28,29 +40,26 @@ class MainViewController: UIViewController {
                 return
             }
             
-            guard let recipes = recipes else {
-                print("Error loading recipes: The recipes array was nil")
-                return
+            DispatchQueue.main.async {
+                self.allRecipes = recipes ?? []
             }
-            
-            self.allrecipes = recipes
+            print(self.allRecipes)
         }
     }
     
     func filterRecipes() {
-        if searchTextField.text!.isEmpty {
-            return allrecipes
+        if let recipeSearch = searchTextField.text, !recipeSearch.isEmpty {
+            filteredRecipes = allRecipes.filter {$0.name.contains(recipeSearch)}
         } else {
-            let filter = allrecipes ?? .name
+            filteredRecipes = allRecipes
         }
     }
-
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbededSegue" {
-            let recipeVC = segue.destination as?  else { return }
+            recipesTableViewController = segue.destination as? RecipesTableViewController
         }
     }
 }
