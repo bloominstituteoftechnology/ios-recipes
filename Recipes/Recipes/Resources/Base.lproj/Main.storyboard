@@ -16,24 +16,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B9B-r7-TEW">
-                                <rect key="frame" x="16" y="89" width="343" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B9B-r7-TEW">
+                                <rect key="frame" x="16" y="69" width="343" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="recipeTextField:" destination="gre-Yb-3Pw" eventType="editingDidEndOnExit" id="wkb-Cz-ZqJ"/>
                                 </connections>
                             </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sem-my-OZu">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sem-my-OZu">
                                 <rect key="frame" x="0.0" y="137" width="375" height="530"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="tzP-Q4-Pgi" kind="embed" identifier="containerViewSegue" id="qbV-w2-dPq"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="B9B-r7-TEW" firstAttribute="leading" secondItem="gkU-vp-3on" secondAttribute="leadingMargin" id="75V-hS-16u"/>
+                            <constraint firstItem="Sem-my-OZu" firstAttribute="bottom" secondItem="Uxo-0M-rwA" secondAttribute="bottom" id="Q7m-dk-IXV"/>
+                            <constraint firstItem="Sem-my-OZu" firstAttribute="top" secondItem="B9B-r7-TEW" secondAttribute="bottom" constant="28" id="cP7-su-8Pq"/>
+                            <constraint firstItem="B9B-r7-TEW" firstAttribute="centerX" secondItem="Sem-my-OZu" secondAttribute="centerX" id="djs-84-DeD"/>
+                            <constraint firstItem="B9B-r7-TEW" firstAttribute="trailing" secondItem="gkU-vp-3on" secondAttribute="trailingMargin" id="kF2-NO-PVt"/>
+                            <constraint firstItem="Sem-my-OZu" firstAttribute="leading" secondItem="Uxo-0M-rwA" secondAttribute="leading" id="pXm-vD-RnZ"/>
+                            <constraint firstItem="B9B-r7-TEW" firstAttribute="top" secondItem="Uxo-0M-rwA" secondAttribute="top" constant="25" id="qmS-Ho-U9w"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Uxo-0M-rwA"/>
                     </view>
                     <navigationItem key="navigationItem" id="8ST-Ti-tL2"/>
