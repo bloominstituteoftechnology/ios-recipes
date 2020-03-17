@@ -9,27 +9,61 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = [] { didSet { filterRecipes() } }
+    var recipesTableViewController: RecipeTableViewController? { didSet { recipesTableViewController?.recipes = filteredRecipes } }
+    private var filteredRecipes: [Recipe] = [] { didSet { recipesTableViewController?.recipes = filteredRecipes } }
 
     @IBOutlet weak var recipeTextField: UITextField!
     
     @IBAction func textFieldDidEndOnExit(_ sender: UITextField) {
+        filterRecipes()
     }
+
+    private func fetchRecipes() {
+        networkClient.fetchRecipes { recipes, error in
+            if let error = error {
+                NSLog("There was an error fetching recipes: \(error)")
+                return
+            }
+
+            if let recipes = recipes {
+                DispatchQueue.main.async {
+                    self.allRecipes = recipes
+                }
+            }
+        }
+    }
+
+    private func filterRecipes() {
+        guard let searchText = recipeTextField.text,
+              !searchText.isEmpty else {
+            filteredRecipes = allRecipes
+            return
+        }
+
+        filteredRecipes = allRecipes.filter {
+            $0.name.localizedStandardContains(searchText) || $0.instructions.localizedStandardContains(searchText)
+        }
+    }
+
+    //MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        fetchRecipes()
     }
-    
 
-    /*
+
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "EmbeddedTableViewSegue" {
+            recipesTableViewController = segue.destination as? RecipeTableViewController
+        }
     }
-    */
 
 }
+
+

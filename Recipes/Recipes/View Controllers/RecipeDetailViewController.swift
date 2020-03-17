@@ -7,28 +7,18 @@
 //
 
 
-
-
-/*
- 
- private var filteredAndSortedStudents: [Student] = [] {
- // another way to do it is private var filteredAndSortedStudents = [Student]()
- 
- didSet {
-     DispatchQueue.main.async {
-         self.tableView.reloadData()
-     }
-     
- }
- 
- 
- */
-
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
     
-    var recipe: Recipe?
+    var recipe: Recipe? {
+        didSet {
+            DispatchQueue.main.async {
+                self.updateViews()
+            }
+    }
+        
+}
 
   
     @IBOutlet weak var recipeDetailTextLabel: UILabel!
@@ -41,16 +31,13 @@ class RecipeDetailViewController: UIViewController {
         super.viewDidLoad()
 
         updateViews()
-        
-    
-
 }
     
-    func updateViews() {
-            guard let recipe = recipe, isViewLoaded else { return }
-            recipeDetailTextLabel?.text = recipe.name
-            recipeDetailTextView?.text = recipe.instructions
-        }
+private func updateViews() {
+              guard let recipe = recipe, isViewLoaded else { return }
+              recipeDetailTextLabel?.text = recipe.name
+              recipeDetailTextView?.text = recipe.instructions
+}
     
 
     /*
