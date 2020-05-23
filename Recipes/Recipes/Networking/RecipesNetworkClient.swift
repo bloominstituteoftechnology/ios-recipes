@@ -10,7 +10,7 @@ import Foundation
 
 struct RecipesNetworkClient {
     
-    static let recipesURL = URL(string: "https://lambdacookbook.vapor.cloud/recipes")!
+    static let recipesURL = URL(string: "https://lambdarecipeapi.herokuapp.com/recipes")!
     
     func fetchRecipes(completion: @escaping ([Recipe]?, Error?) -> Void) {
         URLSession.shared.dataTask(with: RecipesNetworkClient.recipesURL) { (data, _, error) in
