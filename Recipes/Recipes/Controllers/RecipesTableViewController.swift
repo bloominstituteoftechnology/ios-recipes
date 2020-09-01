@@ -11,27 +11,29 @@ import UIKit
 class RecipesTableViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
   
   private let networkClient = RecipesNetworkClient()
+  private(set) var recipeController = RecipeStorage()
+  private let searchController = UISearchController(searchResultsController: nil)
   
-  let searchController = UISearchController(searchResultsController: nil)
-  var recipes: [Recipe] = []
-  var filteredRecipes: [Recipe] = []
-  
+  private var notFirstTimeLaunched: Bool {
+    UserDefaults.standard.bool(forKey: "NotFirstTime")
+  }
+ 
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    setUpSearchController()
     
-    searchController.delegate = self
-    searchController.searchResultsUpdater = self
-    searchController.searchBar.autocapitalizationType = .none
-    searchController.dimsBackgroundDuringPresentation = false
-    searchController.searchBar.delegate = self
-    searchController.searchBar.placeholder = "Find recipe"
-    navigationItem.searchController = searchController
-    
-    definesPresentationContext = true
-    
-    fetchRecipes()
-    
+    if notFirstTimeLaunched {
+      recipeController.loadPersistent()
+      
+    } else {
+      fetchRecipesFromInternet()
+    }
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.reloadData()
   }
   
   private var isSearchBarEmpty: Bool {
@@ -42,10 +44,23 @@ class RecipesTableViewController: UITableViewController, UISearchControllerDeleg
     return searchController.isActive && !isSearchBarEmpty
   }
   
-  private func fetchRecipes() {
+  private func setUpSearchController() {
+    searchController.delegate = self
+    searchController.searchResultsUpdater = self
+    searchController.searchBar.autocapitalizationType = .none
+    searchController.searchBar.delegate = self
+    searchController.searchBar.placeholder = "Find recipe"
+    searchController.obscuresBackgroundDuringPresentation = false
+    navigationItem.searchController = searchController
+    definesPresentationContext = true
+  }
+  
+  private func fetchRecipesFromInternet() {
     networkClient.fetchRecipes { (recipes, error) in
       guard let recipes = recipes else { return }
-      self.recipes = recipes
+      self.recipeController.recipes = recipes
+      self.recipeController.pesister.save(recipes)
+      UserDefaults.standard.set(true, forKey: "NotFirstTime")
       DispatchQueue.main.async {
         self.tableView.reloadData()
       }
@@ -53,16 +68,15 @@ class RecipesTableViewController: UITableViewController, UISearchControllerDeleg
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if isFiltering {
-      return filteredRecipes.count
-    }
-    return recipes.count
+    return isFiltering ? recipeController.filteredRecipes.count : recipeController.recipes.count
+  
   }
+  
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let recipe: Recipe
-    recipe = isFiltering ? filteredRecipes[indexPath.row] : recipes[indexPath.row]
-    let cell = tableView.dequeueReusableCell(withIdentifier: "RecipCell", for: indexPath)
+    recipe = isFiltering ? recipeController.filteredRecipes[indexPath.row] : recipeController.recipes[indexPath.row]
+    let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
     cell.textLabel?.text = recipe.name
     return cell
   }
@@ -70,10 +84,11 @@ class RecipesTableViewController: UITableViewController, UISearchControllerDeleg
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let recipe: Recipe
     
-    recipe = isFiltering ? filteredRecipes[indexPath.row] : recipes[indexPath.row]
-   
+    recipe = isFiltering ? recipeController.filteredRecipes[indexPath.row] : recipeController.recipes[indexPath.row]
+    
     let detailViewController = storyboard?.instantiateViewController(withIdentifier: "Detail") as! RecipesDetailViewController
     detailViewController.recipe = recipe
+    detailViewController.recipeController = recipeController
     navigationController?.pushViewController(detailViewController, animated: true)
   }
 }
@@ -83,7 +98,7 @@ extension RecipesTableViewController: UISearchResultsUpdating {
     
     if let searchText = searchController.searchBar.text, !searchText.isEmpty {
       
-      filteredRecipes = recipes.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+      recipeController.filteredRecipes = recipeController.recipes.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
     tableView.reloadData()
   }
