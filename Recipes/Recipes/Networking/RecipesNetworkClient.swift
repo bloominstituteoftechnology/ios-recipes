@@ -1,11 +1,3 @@
-//
-//  RecipesNetworkClient.swift
-//  Recipes
-//
-//  Created by Andrew R Madsen on 8/5/18.
-//  Copyright © 2018 Lambda Inc. All rights reserved.
-//
-
 import Foundation
 
 struct RecipesNetworkClient {
@@ -33,4 +25,43 @@ struct RecipesNetworkClient {
             }
         }.resume()
     }
+    
+    // Helper method to get a URL to the user's caches directory
+    func getCachesURL() -> URL {
+        if let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first {
+            return url
+        } else {
+            fatalError("Could not retrieve documents directory")
+        }
+    }
+    
+    func saveRecipesToDisk(recipes: [Recipe]) {
+        // create a URL for caches/recipes.json
+        let url = getCachesURL().appendingPathComponent("recipes.json")
+        // endcode our [Recipe] data to JSON Data
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(recipes)
+            // write data to the specified url
+            try data.write(to: url, options: [])
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
+    func getRecipesFromDisk() -> [Recipe] {
+        // create a url for caches/recipes.json
+        let url = getCachesURL().appendingPathComponent("recipes.json")
+        let decoder = JSONDecoder()
+        do {
+            // retrieve the data on the file in this path (if there is any)
+            let data = try Data(contentsOf: url, options: [])
+            // decode the array of [Recipe] from this JSON Data
+            let recipes = try decoder.decode([Recipe].self, from: data)
+            return recipes
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+
 }
