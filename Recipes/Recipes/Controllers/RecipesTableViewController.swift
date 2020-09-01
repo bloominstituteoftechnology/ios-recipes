@@ -11,7 +11,7 @@ import UIKit
 class RecipesTableViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
   
   private let networkClient = RecipesNetworkClient()
-  private(set) var recipeController = RecipeStorage()
+  private(set) var recipeStorage = RecipeStorage()
   private let searchController = UISearchController(searchResultsController: nil)
   
   private var notFirstTimeLaunched: Bool {
@@ -24,7 +24,7 @@ class RecipesTableViewController: UITableViewController, UISearchControllerDeleg
     setUpSearchController()
     
     if notFirstTimeLaunched {
-      recipeController.loadPersistent()
+      recipeStorage.loadPersistent()
       
     } else {
       fetchRecipesFromInternet()
@@ -58,8 +58,8 @@ class RecipesTableViewController: UITableViewController, UISearchControllerDeleg
   private func fetchRecipesFromInternet() {
     networkClient.fetchRecipes { (recipes, error) in
       guard let recipes = recipes else { return }
-      self.recipeController.recipes = recipes
-      self.recipeController.pesister.save(recipes)
+      self.recipeStorage.recipes = recipes
+      self.recipeStorage.pesister.save(recipes)
       UserDefaults.standard.set(true, forKey: "NotFirstTime")
       DispatchQueue.main.async {
         self.tableView.reloadData()
@@ -68,14 +68,14 @@ class RecipesTableViewController: UITableViewController, UISearchControllerDeleg
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return isFiltering ? recipeController.filteredRecipes.count : recipeController.recipes.count
+    return isFiltering ? recipeStorage.filteredRecipes.count : recipeStorage.recipes.count
   
   }
   
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let recipe: Recipe
-    recipe = isFiltering ? recipeController.filteredRecipes[indexPath.row] : recipeController.recipes[indexPath.row]
+    recipe = isFiltering ? recipeStorage.filteredRecipes[indexPath.row] : recipeStorage.recipes[indexPath.row]
     let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
     cell.textLabel?.text = recipe.name
     return cell
@@ -84,11 +84,11 @@ class RecipesTableViewController: UITableViewController, UISearchControllerDeleg
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let recipe: Recipe
     
-    recipe = isFiltering ? recipeController.filteredRecipes[indexPath.row] : recipeController.recipes[indexPath.row]
+    recipe = isFiltering ? recipeStorage.filteredRecipes[indexPath.row] : recipeStorage.recipes[indexPath.row]
     
     let detailViewController = storyboard?.instantiateViewController(withIdentifier: "Detail") as! RecipesDetailViewController
     detailViewController.recipe = recipe
-    detailViewController.recipeController = recipeController
+    detailViewController.recipeController = recipeStorage
     navigationController?.pushViewController(detailViewController, animated: true)
   }
 }
@@ -98,7 +98,7 @@ extension RecipesTableViewController: UISearchResultsUpdating {
     
     if let searchText = searchController.searchBar.text, !searchText.isEmpty {
       
-      recipeController.filteredRecipes = recipeController.recipes.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+      recipeStorage.filteredRecipes = recipeStorage.recipes.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
     tableView.reloadData()
   }
