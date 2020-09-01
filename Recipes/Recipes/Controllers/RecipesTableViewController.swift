@@ -10,45 +10,37 @@ import UIKit
 
 class RecipesTableViewController: UITableViewController {
  
-  var recipes = [Recipe]() { didSet { tableView.reloadData() }  }
- 
-  //MARK:- View Life Cycle
+  let networkClient = RecipesNetworkClient()
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    tableView.reloadData()
+  var recipes: [Recipe] = []
+  
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    networkClient.fetchRecipes { (recipes, error) in
+      guard let recipes = recipes else { return }
+      self.recipes = recipes
+      DispatchQueue.main.async {
+        self.tableView.reloadData()
+      }
+    }
   }
-
-  //MARK: - TableView Datasource
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return recipes.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-    cell.textLabel?.text = recipes[indexPath.row].name
-    
+    let recipe = recipes[indexPath.row]
+    let cell = tableView.dequeueReusableCell(withIdentifier: "RecipCell", for: indexPath)
+    cell.textLabel?.text = recipe.name
     return cell
-    
   }
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "CellSegue" {
-      if let destVC = segue.destination as? RecipesDetailViewController {
-        if let index = tableView.indexPathForSelectedRow {
-          destVC.recipe = recipes[index.row]
-          destVC.delegate = self
-        }
-      }
-    }
-  }
-}
-extension RecipesTableViewController : RecipesDetailVCDelegate {
-  func didReceivedNewRecipes(recipe: Recipe) {
-    guard let index = tableView.indexPathForSelectedRow else { return }
-    recipes.remove(at: index.row)
-    recipes.insert(recipe, at: 0)
-    tableView.reloadData()
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let recipe = recipes[indexPath.row]
+    let detailViewController = storyboard?.instantiateViewController(withIdentifier: "Detail") as! RecipesDetailViewController
+    detailViewController.recipe = recipe
+    navigationController?.pushViewController(detailViewController, animated: true)
   }
 }
