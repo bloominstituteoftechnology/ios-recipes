@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BB0DC2B21FFA96600E5230C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB0DC2A21FFA96600E5230C /* MainViewController.swift */; };
+		1BB0DC2E21FFA9D700E5230C /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB0DC2D21FFA9D700E5230C /* RecipesTableViewController.swift */; };
+		1BB0DC3121FFAAB900E5230C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB0DC3021FFAAB900E5230C /* DetailViewController.swift */; };
 		9D59AF432117E647002FB7CD /* RecipesNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D59AF422117E647002FB7CD /* RecipesNetworkClient.swift */; };
 		9D59B52C2117F533002FB7CD /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D59B52B2117F533002FB7CD /* Recipe.swift */; };
 		9DA0F07D2117E3F800A99E97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1BB0DC2A21FFA96600E5230C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1BB0DC2D21FFA9D700E5230C /* RecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
+		1BB0DC3021FFAAB900E5230C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9D59AF422117E647002FB7CD /* RecipesNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesNetworkClient.swift; sourceTree = "<group>"; };
 		9D59B52B2117F533002FB7CD /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		9DA0F0792117E3F800A99E97 /* Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +43,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BB0DC2921FFA8A300E5230C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
+				1BB0DC2C21FFA97300E5230C /* View Controllers */,
+				1BB0DC2F21FFA9DD00E5230C /* Table Views */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1BB0DC2C21FFA97300E5230C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1BB0DC2A21FFA96600E5230C /* MainViewController.swift */,
+				1BB0DC3021FFAAB900E5230C /* DetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1BB0DC2F21FFA9DD00E5230C /* Table Views */ = {
+			isa = PBXGroup;
+			children = (
+				1BB0DC2D21FFA9D700E5230C /* RecipesTableViewController.swift */,
+			);
+			path = "Table Views";
+			sourceTree = "<group>";
+		};
 		9D59AF412117E637002FB7CD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -48,7 +81,6 @@
 		9D59AF452117E652002FB7CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9DA0F0802117E3F800A99E97 /* Main.storyboard */,
 				9DA0F0832117E40100A99E97 /* Assets.xcassets */,
 				9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */,
 				9DA0F0882117E40100A99E97 /* Info.plist */,
@@ -84,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */,
+				1BB0DC2921FFA8A300E5230C /* Views */,
 				9D59AF412117E637002FB7CD /* Networking */,
 				9D59B52A2117F520002FB7CD /* Model */,
 				9D59AF452117E652002FB7CD /* Resources */,
@@ -165,6 +198,9 @@
 				9D59AF432117E647002FB7CD /* RecipesNetworkClient.swift in Sources */,
 				9DA0F07D2117E3F800A99E97 /* AppDelegate.swift in Sources */,
 				9D59B52C2117F533002FB7CD /* Recipe.swift in Sources */,
+				1BB0DC3121FFAAB900E5230C /* DetailViewController.swift in Sources */,
+				1BB0DC2B21FFA96600E5230C /* MainViewController.swift in Sources */,
+				1BB0DC2E21FFA9D700E5230C /* RecipesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,14 +347,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = X4W7EQ4E4R;
 				INFOPLIST_FILE = "$(SRCROOT)/Recipes/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.Recipes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.michael.flowers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -330,14 +366,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = X4W7EQ4E4R;
 				INFOPLIST_FILE = "$(SRCROOT)/Recipes/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.Recipes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.michael.flowers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -14,6 +14,7 @@ struct RecipesNetworkClient {
     
     func fetchRecipes(completion: @escaping ([Recipe]?, Error?) -> Void) {
         URLSession.shared.dataTask(with: RecipesNetworkClient.recipesURL) { (data, _, error) in
+            print(RecipesNetworkClient.recipesURL)
             if let error = error {
                 completion(nil, error)
                 return
