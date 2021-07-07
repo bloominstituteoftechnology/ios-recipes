@@ -13,6 +13,9 @@
 		9DA0F0822117E3F800A99E97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0F0802117E3F800A99E97 /* Main.storyboard */; };
 		9DA0F0842117E40100A99E97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0F0832117E40100A99E97 /* Assets.xcassets */; };
 		9DA0F0872117E40100A99E97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0F0852117E40100A99E97 /* LaunchScreen.storyboard */; };
+		F1B2A5B3215060F900B29F5E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2A5B2215060F900B29F5E /* MainViewController.swift */; };
+		F1B2A5B52150621400B29F5E /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2A5B42150621400B29F5E /* RecipesTableViewController.swift */; };
+		F1B2A5B72150633B00B29F5E /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2A5B62150633B00B29F5E /* RecipeDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		9DA0F0832117E40100A99E97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DA0F0862117E40100A99E97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DA0F0882117E40100A99E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1B2A5B2215060F900B29F5E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F1B2A5B42150621400B29F5E /* RecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
+		F1B2A5B62150633B00B29F5E /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,9 +92,20 @@
 				9DA0F07C2117E3F800A99E97 /* AppDelegate.swift */,
 				9D59AF412117E637002FB7CD /* Networking */,
 				9D59B52A2117F520002FB7CD /* Model */,
+				F1B2A5B1215060D600B29F5E /* View Controllers */,
 				9D59AF452117E652002FB7CD /* Resources */,
 			);
 			path = Recipes;
+			sourceTree = "<group>";
+		};
+		F1B2A5B1215060D600B29F5E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F1B2A5B2215060F900B29F5E /* MainViewController.swift */,
+				F1B2A5B42150621400B29F5E /* RecipesTableViewController.swift */,
+				F1B2A5B62150633B00B29F5E /* RecipeDetailViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +182,9 @@
 				9D59AF432117E647002FB7CD /* RecipesNetworkClient.swift in Sources */,
 				9DA0F07D2117E3F800A99E97 /* AppDelegate.swift in Sources */,
 				9D59B52C2117F533002FB7CD /* Recipe.swift in Sources */,
+				F1B2A5B3215060F900B29F5E /* MainViewController.swift in Sources */,
+				F1B2A5B72150633B00B29F5E /* RecipeDetailViewController.swift in Sources */,
+				F1B2A5B52150621400B29F5E /* RecipesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,9 +331,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5KBWP959TD;
 				INFOPLIST_FILE = "$(SRCROOT)/Recipes/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +350,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5KBWP959TD;
 				INFOPLIST_FILE = "$(SRCROOT)/Recipes/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
